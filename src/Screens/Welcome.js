@@ -4,6 +4,7 @@ import { Content,Container,Header } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
+
 const Welcome = ({ navigation }) => {
 return (
 <Container>
@@ -21,7 +22,8 @@ export default Welcome;
 const styles = StyleSheet.create({
 
     image:{
-        height:hp('130%'),
+        height:hp('120%'),
+       
     },
     image1:{marginTop:40,
         height:hp('90%'),

@@ -8,9 +8,9 @@ import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const TextInputLogin = ({navigation,name1}) => {
+const TextInputLogin = ({navigation,name1,value}) => {
     return (
-       <TextInput placeholder={ name1 || "Email" } placeholderTextColor='#707070'
+       <TextInput placeholder={ name1 || "Email" } secureTextEntry={value} placeholderTextColor='#707070'
        style={styles.textinput}></TextInput>
     )
 }
