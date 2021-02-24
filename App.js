@@ -21,11 +21,13 @@ const Stack = createStackNavigator();
 import Welcome from './src/Screens/Welcome';
 import Register from './src/Screens/Register'
 import Login from './src/Screens/Login'
+import SavedJobs from './src/Screens/SavedJobs'
+import PersonalInfo from './src/Screens/PersonalInfo'
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="PersonalInfo">
         <Stack.Screen name="Welcome" component={Welcome}
           options={({ navigation }) => ({ header: (props) => null })}
         />
@@ -33,6 +35,12 @@ const App = () => {
           options={({ navigation }) => ({ header: (props) => null })}
         />
            <Stack.Screen name="Login" component={Login}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+         <Stack.Screen name="SavedJobs" component={SavedJobs}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+        <Stack.Screen name="PersonalInfo" component={PersonalInfo}
           options={({ navigation }) => ({ header: (props) => null })}
         />
       </Stack.Navigator>

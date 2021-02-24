@@ -8,26 +8,31 @@ import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const TextInputLogin = ({navigation,name1,Ktype}) => {
+const ButtonP = ({navigation,NameButton}) => {
     return (
-       <TextInput placeholder={ name1 || "" } placeholderTextColor='#707070' keyboardType={ Ktype ||'email-address'}
-       style={styles.textinput}></TextInput>
+        <TouchableOpacity>
+        <View style={styles.textinput}>
+            
+       <Text style={{textAlign:'center',marginTop:5}} >{NameButton}</Text>
+       </View>
+       </TouchableOpacity>
     )
 }
-export default TextInputLogin;
+export default ButtonP;
 
 const styles = StyleSheet.create({
 
     textinput:{
-        height:hp('5%'),
-        width:wp('80%'),
+        height:hp('4%'),
+        width:wp('25%'),
         borderColor:'#707070',
         borderWidth:0.5,
         borderRadius:5,
-        fontSize:12,
-        padding:10,
+      alignContent:'center',
         marginBottom:15,
-        alignSelf:'center'
+        marginLeft:-158,
+        marginTop:30
+      
     },
     
 
