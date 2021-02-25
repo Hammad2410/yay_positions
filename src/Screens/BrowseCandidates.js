@@ -4,34 +4,28 @@ import { Content,Container,Header,Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
-import Jobs from '../Components/Jobs'
+import Candidatecard from '../Components/Candidatecard'
 
 
-const BrowseJobs = ({ navigation }) => {
+const BrowseCandidates = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
 <MyHeader/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>
-<Text style={styles.text}>Browse Jobs</Text>
+<Text style={styles.text}>Browse Candidates</Text>
 <View style={styles.line}>
 </View>
 </View>
-
-<View style={{alignItems:'flex-end',marginTop:15,marginRight:25}}>
-    <TouchableOpacity>
-    <Text style={styles.text1}>Search Filters</Text>
-    </TouchableOpacity>
-</View>
-<Jobs/>
-<Jobs bottom={'2%'}/>
+<Candidatecard />
+<Candidatecard   bottom={'10%'}/>
 </View>
 </Content>
 </Container>
   )    
 }
-export default BrowseJobs;
+export default BrowseCandidates;
 const styles = StyleSheet.create({
     text:{
         color:'#707070',

@@ -14,7 +14,7 @@ return (
 <MyHeader/>
 <Content >
 <View style={{flex:1}}>
-    <View style={{marginTop:10,marginLeft:40}}>
+    <View style={{marginLeft:40}}>
 <Text style={styles.text}>Browse Jobs</Text>
 <View style={styles.line}>
 </View>

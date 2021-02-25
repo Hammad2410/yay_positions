@@ -25,11 +25,22 @@ import Candidate from './src/Screens/Candidate'
 import BrowseJobs from './src/Screens/BrowseJobs'
 import Filter from './src/Screens/Filter'
 import Applyjob from './src/Screens/Applyjob'
+import Invitations from './src/Screens/Invitations'
+import BrowseCandidates from './src/Screens/BrowseCandidates'
+import Favorite from './src/Screens/Favorite'
+import Hired from './src/Screens/Hired'
+import Invitationentries from './src/Screens/Invitationentries'
+import Jobs from './src/Screens/Jobs'
+import Employer from './src/Screens/Employer'
+import MyProfile from './src/Screens/MyProfile'
+
+
+
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Applyjob">
+      <Stack.Navigator initialRouteName="MyProfile">
         <Stack.Screen name="Welcome" component={Welcome}
           options={({ navigation }) => ({ header: (props) => null })}
         />
@@ -51,6 +62,31 @@ const App = () => {
            <Stack.Screen name="Applyjob" component={Applyjob}
           options={({ navigation }) => ({ header: (props) => null })}
         />
+            <Stack.Screen name="Invitations" component={Invitations}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+           <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+          <Stack.Screen name="Favorite" component={Favorite}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+          <Stack.Screen name="Hired" component={Hired}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+           <Stack.Screen name="Invitationentries" component={Invitationentries}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+          <Stack.Screen name="Jobs" component={Jobs}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+          <Stack.Screen name="Employer" component={Employer}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+        <Stack.Screen name="MyProfile" component={MyProfile}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+    
       </Stack.Navigator>
     </NavigationContainer>
 
