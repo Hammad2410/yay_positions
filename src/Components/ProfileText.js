@@ -19,7 +19,8 @@ export default ProfileText;
 const styles = StyleSheet.create({
 
     textinput:{
-        
+        fontWeight:'bold',
+        fontFamily:'Seoge UI',
         fontSize:12,
         marginLeft:-240,
         marginBottom:5,

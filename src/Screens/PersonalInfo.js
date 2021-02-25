@@ -132,12 +132,13 @@ return (
                            
                             color: '#707070'
                         }}>{datename}</Text>
-                         <Icon name="calendar" size={20} color="#707070" style={{right:-180, position:'absolute'}} />
+                        
                     </TouchableOpacity>
                     
                    
                     </View>
-    
+                    <TouchableOpacity  onPress={() => DateModal()}>
+                    <Icon name="calendar" size={20} color="#707070" style={{alignSelf:'center', right:8,top:10, position:'absolute'}} /></TouchableOpacity>
 </View>
 <View>
                     <Modal

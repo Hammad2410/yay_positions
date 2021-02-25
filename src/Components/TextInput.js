@@ -7,11 +7,12 @@ import {
 import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react/cjs/react.development';
 
-const TextInputLogin = ({navigation,name1,Ktype}) => {
+const TextInputLogin = ({navigation,name1,Ktype,sentry}) => {
     return (
-       <TextInput placeholder={ name1 || "" } placeholderTextColor='#707070' keyboardType={ Ktype ||'email-address'}
-       style={styles.textinput}></TextInput>
+       <TextInput  placeholder={ name1 || "" } placeholderTextColor='#707070' keyboardType={ Ktype ||'email-address'} 
+       style={styles.textinput}/>
     )
 }
 export default TextInputLogin;
@@ -19,6 +20,7 @@ export default TextInputLogin;
 const styles = StyleSheet.create({
 
     textinput:{
+        
         height:hp('5%'),
         width:wp('80%'),
         borderColor:'#707070',
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
         fontSize:12,
         padding:10,
         marginBottom:15,
-        alignSelf:'center'
+        alignSelf:'center',
     },
     
 

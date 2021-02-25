@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
     textinput:{
         height:hp('4%'),
-        width:wp('25%'),
+      
         borderColor:'#707070',
         borderWidth:0.5,
         borderRadius:5,
