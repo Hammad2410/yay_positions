@@ -6,7 +6,7 @@ const initialState = {
     groups: [],
 };
 
-const chat = (state = initialState, action) => {
+const auth = (state = initialState, action) => {
     switch (action.type) {
 
         case types.COMET_CHAT_USERS_FETCHED:
@@ -35,4 +35,4 @@ const chat = (state = initialState, action) => {
 
 }
 
-export default chat
+export default auth
