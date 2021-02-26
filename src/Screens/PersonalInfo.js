@@ -276,7 +276,7 @@ return (
     }
     inputStyle={{ backgroundColor: "white" }}
     containerStyle={{ justifyContent: "center" }}
-    style={{flex:1,flexDirection:'row' ,height:hp('5%'),
+    style={{flex:1,flexDirection:'row' ,
         width:wp('80%'),
         borderColor:'#707070',
         borderWidth:0.5,
