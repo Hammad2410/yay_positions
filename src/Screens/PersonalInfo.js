@@ -10,6 +10,8 @@ import Dropdown from '../Components/Dropdown';
 import ButtonP from '../Components/ButtonP';
 import DocumentPicker from 'react-native-document-picker';
 import DatePicker from 'react-native-date-picker';
+import Tags from "react-native-tags";
+
 
 const PersonalInfo = ({ navigation, }) => {
     const [date, setDate] = useState(new Date());
@@ -261,8 +263,33 @@ return (
 <View style={styles.line}/>
 </View>
 <View style={{marginTop:20,alignItems:'center'}}>
-<ProfileText nametext="Your Full Name"  marginLeftt={-235} />
-<TextInputLogin  name1="Test Candidate"  />
+<ProfileText nametext="Select Skills"  marginLeftt={-250} />
+<Tags
+    
+    textInputProps={{
+      placeholder: "Application Development"
+    }}
+    initialTags={["Application Development"]}
+    onChangeTags={tags => console.log(tags)}
+    onTagPress={(index, tagLabel, event, deleted) =>
+      console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
+    }
+    inputStyle={{ backgroundColor: "white" }}
+    containerStyle={{ justifyContent: "center" }}
+    style={{flex:1,flexDirection:'row' ,height:hp('5%'),
+        width:wp('80%'),
+        borderColor:'#707070',
+        borderWidth:0.5,
+        borderRadius:5,
+        fontSize:12,
+      
+       
+        }}
+  
+  />
+  
+
+
 <ButtonP NameButton="Save Skills"/>
 </View>
 
