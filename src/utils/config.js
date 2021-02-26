@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://lms.phenomenaltechnology.com/api/';
+export const BASE_URL = 'https://lms.phenomenaltechnology.com/';

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Tabs, Tab, Footer, FooterTab } from 'native-base';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { Content, Container, Tabs, Tab, Footer, FooterTab, Button } from 'native-base';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import CheckBox from '@react-native-community/checkbox';
+import { connect } from 'react-redux';
+import { login } from '../redux/actions/auth';
 
-
-const Login = ({ navigation }) => {
+const Login = ({ login, navigation, auth }) => {
 
 
     const [role, setRole] = useState('Candidate');
@@ -19,7 +20,7 @@ const Login = ({ navigation }) => {
 
     return (
         <Container>
-            <MyHeader />
+            <MyHeader navigation={navigation} />
             <Content contentContainerStyle={{ flex: 1, backgroundColor: 'white' }}>
 
                 <View style={{ flex: 1 }}>
@@ -38,11 +39,11 @@ const Login = ({ navigation }) => {
                             </Button>
                         </View>
 
-                        <TextInputLogin value={email} setter={() => setEmail} />
-                        <TextInputLogin label="Name" />
+                        <TextInputLogin value={email} setter={setEmail} />
+                        <TextInputLogin value={password} setter={setPassword} label="Password" />
 
                     </View>
-
+                    <Text style={{ alignSelf: 'center', color: 'red' }}>{auth.error}</Text>
                     <View style={{ flexDirection: 'row', marginLeft: 35, marginVertical: 8 }}>
                         <CheckBox
                             value={isSelected}
@@ -51,14 +52,20 @@ const Login = ({ navigation }) => {
                         />
                         <Text style={{ paddingTop: 5, color: '#707070', fontSize: 12 }}> Remember me?</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', marginLeft: 35 }}>
-                        <TouchableOpacity style={styles.btn}>
-                            <Text style={styles.btntext}>Login</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.btn1}>
-                            <Text style={styles.btntext1}>Register as new user</Text>
-                        </TouchableOpacity>
-                    </View>
+                    {
+                        auth.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :
+                            <View style={{ flexDirection: 'row', marginLeft: 35 }}>
+                                <TouchableOpacity style={styles.btn} onPress={() => login(email, password)}>
+                                    <Text style={styles.btntext}>Login</Text>
+                                </TouchableOpacity>
+
+
+                                <TouchableOpacity style={styles.btn1} onPress={() => navigation.navigate('Register')}>
+                                    <Text style={styles.btntext1}>Register as new user</Text>
+                                </TouchableOpacity>
+                            </View>
+                    }
+
                 </View>
             </Content>
             <Footer style={{ backgroundColor: '#009961', height: 40 }}>
@@ -67,7 +74,8 @@ const Login = ({ navigation }) => {
         </Container>
     )
 }
-export default Login;
+
+
 const styles = StyleSheet.create({
     text: {
         color: '#707070',
@@ -142,3 +150,9 @@ const styles = StyleSheet.create({
         fontSize: 13
     }
 })
+
+const mapStateToProps = ({ auth }) => ({ auth })
+
+const mapDispatchToProps = { login }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

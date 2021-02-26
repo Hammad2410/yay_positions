@@ -1,31 +1,38 @@
 import * as types from '../actionTypes';
 
 const initialState = {
-    users: [],
-    actualUsers: [],
-    groups: [],
+    loading: false,
+    error: '',
+    token: null,
 };
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
 
-        case types.COMET_CHAT_USERS_FETCHED:
+        case types.AUTH_LOADING:
             return {
                 ...state,
-                users: action.users,
-                actualUsers: action.actualUsers
+                loading: true,
             }
 
-        case types.COMET_CHAT_GROUPS_FETCHED:
+        case types.AUTH_ERROR:
             return {
                 ...state,
-                groups: action.groups
+                error: action.message,
+                loading: false
             }
 
-        case types.SET_COMET_CHAT_USER:
+        case types.AUTH_LOGGED_IN:
             return {
                 ...state,
-                users: action.users
+                loading: false,
+                token: action.token
+            }
+
+        case types.AUTH_RESET_ERROR:
+            return {
+                ...state,
+                error: ''
             }
 
 

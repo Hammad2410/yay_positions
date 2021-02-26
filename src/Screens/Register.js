@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Tabs, Tab, Footer } from 'native-base';
+import { Content, Container, Tabs, Tab, Footer, Button } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
@@ -8,9 +8,11 @@ import TextInputLogin from '../Components/TextInput';
 
 const Register = ({ navigation }) => {
 
+    const [role, setRole] = useState('Candidate');
+
     return (
         <Container style={{ backgroundColor: 'white' }}>
-            <MyHeader />
+            <MyHeader navigation={navigation} />
             <Content >
 
                 <View style={{ flex: 1 }}>
@@ -22,16 +24,14 @@ const Register = ({ navigation }) => {
                     <View style={{ height: 200, alignItems: 'center', marginTop: '7%' }}>
                         <TextInputLogin />
                         <TextInputLogin name1="Name" />
-                        <Tabs style={{ marginTop: 10, width: '80%', alignSelf: 'center' }} tabBarUnderlineStyle={{ borderColor: '#009961' }}>
-                            <Tab heading="Candidate" tabStyle={{ backgroundColor: '#009961' }}
-                                textStyle={{ color: 'white', fontSize: 12 }} activeTabStyle={{ backgroundColor: '#016742' }}
-                                activeTextStyle={{ color: '#fff', fontWeight: 'normal', fontSize: 13 }}>
-                            </Tab>
-                            <Tab heading="Employer" tabStyle={{ backgroundColor: '#009961' }}
-                                textStyle={{ color: 'white', fontSize: 12 }} activeTabStyle={{ backgroundColor: '#016742' }}
-                                activeTextStyle={{ color: '#fff', fontWeight: 'normal', fontSize: 13 }}>
-                            </Tab>
-                        </Tabs>
+                        <View style={styles.switchContainer}>
+                            <Button onPress={() => setRole('Candidate')} style={[styles.switchBtn, { backgroundColor: role === 'Candidate' ? '#016742' : '#009961' }]}>
+                                <Text style={styles.switchText} >Candidate</Text>
+                            </Button>
+                            <Button onPress={() => setRole('Employer')} style={[styles.switchBtn, { backgroundColor: role === 'Employer' ? '#016742' : '#009961' }]}>
+                                <Text style={styles.switchText}>Employer</Text>
+                            </Button>
+                        </View>
                     </View>
                     <View style={{ alignItems: 'center', height: 170 }}>
                         <TextInputLogin name1="Country" />
@@ -82,6 +82,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: '#FFFFFF',
         fontWeight: 'bold'
+    },
+    switchContainer:
+    {
+        marginVertical: 10,
+        width: '80%',
+        alignSelf: 'center',
+        flexDirection: 'row'
+    },
+    switchBtn:
+    {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    switchText:
+    {
+        textAlign: 'center',
+        color: '#FFF',
+        fontSize: 13
     }
 
 
