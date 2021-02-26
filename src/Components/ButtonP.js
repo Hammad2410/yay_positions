@@ -7,30 +7,32 @@ import {
 import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react/cjs/react.development';
 
-
-const TextInputLogin = ({navigation,name1,value}) => {
+const ButtonP = ({navigation,NameButton}) => {
     return (
-       <TextInput placeholder={ name1 || "Email" } secureTextEntry={value} placeholderTextColor='#707070'
-       style={styles.textinput}></TextInput>
+        <TouchableOpacity>
+        <View style={styles.textinput}>
+            
+       <Text style={{textAlign:'center',marginTop:5}} >{NameButton}</Text>
+       </View>
+       </TouchableOpacity>
     )
 }
-export default TextInputLogin;
+export default ButtonP;
 
 const styles = StyleSheet.create({
 
     textinput:{
-        
-        height:hp('5%'),
-        width:wp('80%'),
+        height:hp('4%'),
+      
         borderColor:'#707070',
         borderWidth:0.5,
         borderRadius:5,
-        fontSize:12,
-        padding:10,
+      alignContent:'center',
         marginBottom:15,
-        alignSelf:'center',
+        marginLeft:-158,
+        marginTop:30
+      
     },
     
 
