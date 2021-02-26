@@ -15,13 +15,14 @@ const MyHeader = ({ navigation }) => {
                 backgroundColor: "white",
                 elevation: 0,
             }}>
-            <Left style={{ flex: 1 }}>
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}>
-                    <Icon name="arrow-back-outline" size={30} />
-                </TouchableOpacity>
-            </Left>
-        </Header>
+
+                <Left style={{ flex: 1 }}>
+                    <TouchableOpacity
+                        onPress={() => navigation.goBack()}>
+                        <Icon name="arrow-back-outline" size={30} color={'#E4E4E4'}  />
+                    </TouchableOpacity>
+                </Left>
+            </Header>s
     )
 }
 export default MyHeader;

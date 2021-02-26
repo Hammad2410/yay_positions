@@ -5,6 +5,7 @@ import SplashScreen from 'react-native-splash-screen'
 
 class Welcome extends React.Component {
 
+
     componentDidMount() {
 
         setTimeout(() => {
@@ -18,6 +19,7 @@ class Welcome extends React.Component {
             <Container>
                 <Content contentContainerStyle={{ flex: 1 }}>
                     <View>
+
 
                     </View>
                 </Content>
