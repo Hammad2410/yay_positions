@@ -10,7 +10,7 @@ return (
 
 <Content contentContainerStyle={{ flex: 1 }}>
 <View >
-    <Image resizeMode="cover" style={styles.image} source={require('../assests/image/Welcome.png')}></Image>
+    <Image resizeMode="cover" style={styles.image} source={require('../assests/image/welcome.png')}></Image>
     <Image  style={styles.image1} source={require('../assests/image/text.png')}></Image>
 </View>
 </Content>
