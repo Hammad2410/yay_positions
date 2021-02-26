@@ -9,10 +9,11 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react/cjs/react.development';
 
-const TextInputLogin = ({navigation,name1,Ktype,sentry}) => {
+
+const TextInputLogin = ({navigation,name1,value}) => {
     return (
-       <TextInput  placeholder={ name1 || "" } placeholderTextColor='#707070' keyboardType={ Ktype ||'email-address'} 
-       style={styles.textinput}/>
+       <TextInput placeholder={ name1 || "Email" } secureTextEntry={value} placeholderTextColor='#707070'
+       style={styles.textinput}></TextInput>
     )
 }
 export default TextInputLogin;

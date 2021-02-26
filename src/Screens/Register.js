@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text,StyleSheet,TouchableOpacity,Image } from 'react-native';
-import { Content,Container,Tabs,Tab } from 'native-base';
+import { Content,Container,Tabs,Tab,Footer } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
@@ -8,9 +8,9 @@ import TextInputLogin from '../Components/TextInput';
 
 const Register = ({ navigation }) => {
 return (
-<Container>
+<Container style={{backgroundColor: 'white' }}>
 <MyHeader/>
-<Content contentContainerStyle={{ flex: 1, backgroundColor: 'white' }}>
+<Content >
 
 <View style={{flex:1}}>
     <View style={{marginTop:30,marginLeft:40}}>
@@ -34,14 +34,20 @@ return (
 </View>
 <View style={{alignItems:'center',height:170}}>
 <TextInputLogin name1="Country"/>
-<TextInputLogin name1="Password"/>
-<TextInputLogin name1="Confirm Password"/>
+<TextInputLogin value name1="Password"/>
+<TextInputLogin value name1="Confirm Password"/>
 </View>
 <TouchableOpacity style={styles.btn}>
 <Text style={styles.btntext}>Register</Text>
 </TouchableOpacity>
 </View>
+
+
+
 </Content>
+<Footer style={{backgroundColor:'#009961',height:40}}> 
+
+</Footer>
 </Container>
   )    
 }

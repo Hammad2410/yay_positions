@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text,StyleSheet,TouchableOpacity,Image } from 'react-native';
-import { Content,Container,Tabs,Tab } from 'native-base';
+import { Content,Container,Tabs,Tab,Footer,FooterTab } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
+import CheckBox from '@react-native-community/checkbox';
 
 
 const Login = ({ navigation }) => {
+    const [isSelected, setSelection] = useState(false);
+    const [PhoneNumber, setPhoneNumber] = useState('');
+    const [Password, setPassword] = useState('');
 return (
 <Container>
 <MyHeader/>
@@ -30,15 +34,30 @@ return (
       </Tab>
         </Tabs>
     <TextInputLogin/>
-    <TextInputLogin name1="Name"/>
-  
+    <TextInputLogin value name1="Password"/>
+   
 </View>
-
+<View style={{flexDirection:'row',marginLeft:35,marginVertical:8}}>
+<CheckBox
+          value={isSelected}
+          onValueChange={setSelection}
+          style={styles.checkbox}
+        />
+        <Text style={{paddingTop:5,color:'#707070',fontSize:12}}> Remember me?</Text>
+</View>
+<View style={{flexDirection:'row',marginLeft:35}}>
 <TouchableOpacity style={styles.btn}>
 <Text style={styles.btntext}>Login</Text>
 </TouchableOpacity>
+<TouchableOpacity style={styles.btn1}>
+<Text style={styles.btntext1}>Register as new user</Text>
+</TouchableOpacity>
+</View>
 </View>
 </Content>
+<Footer style={{backgroundColor:'#009961',height:40}}> 
+
+</Footer>
 </Container>
   )    
 }
@@ -58,11 +77,21 @@ line:{
 },
 btn:{
     backgroundColor:'#009961',
-    width:wp('40%'),
+    width:wp('30%'),
     height:hp(6),
-    marginLeft:'10%',
     borderRadius:30,
     justifyContent: 'center',
+    
+},
+btn1:{
+    backgroundColor:'white',
+    width:wp('50%'),
+    height:hp(6),
+    borderRadius:30,
+    borderWidth:2,
+    borderColor:'#009961',
+    justifyContent: 'center',
+    marginLeft:10
     
 },
 btntext:
@@ -70,7 +99,16 @@ btntext:
     textAlign: 'center',
     justifyContent: 'center',
     color: '#FFFFFF',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize:12
+},
+btntext1:
+{
+    textAlign: 'center',
+    justifyContent: 'center',
+    color: '#009961',
+    fontWeight: 'bold',
+    fontSize:12
 }
 
 
