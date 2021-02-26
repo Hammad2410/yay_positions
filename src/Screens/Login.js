@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Tabs, Tab, Footer, FooterTab } from 'native-base';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
@@ -8,10 +10,12 @@ import CheckBox from '@react-native-community/checkbox';
 
 
 const Login = ({ navigation }) => {
-    const [isSelected, setSelection] = useState(false);
+
+
     const [role, setRole] = useState('Candidate');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isSelected, setSelection] = useState(false);
 
     return (
         <Container>
@@ -83,7 +87,6 @@ const styles = StyleSheet.create({
         height: hp(6),
         borderRadius: 30,
         justifyContent: 'center',
-
     },
     btn1: {
         backgroundColor: 'white',
@@ -112,13 +115,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 12
     },
-    btntext:
-    {
-        textAlign: 'center',
-        justifyContent: 'center',
-        color: '#FFFFFF',
-        fontWeight: 'bold'
-    },
+
     innerContainer:
     {
         height: 200,

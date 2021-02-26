@@ -16,6 +16,10 @@ import {
   StatusBar,
 } from 'react-native';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b1792a84c7fe7a37884a405d7ef98f0531c23a64
 import { Provider } from "react-redux"
 import Navigator from './src/Navigator'
 import configureStore from './src/redux/createStore'

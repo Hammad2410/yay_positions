@@ -7,6 +7,7 @@ import TextInputLogin from '../Components/TextInput';
 
 
 const Register = ({ navigation }) => {
+
     return (
         <Container style={{ backgroundColor: 'white' }}>
             <MyHeader />
@@ -50,6 +51,7 @@ const Register = ({ navigation }) => {
             </Footer>
         </Container>
     )
+
 }
 export default Register;
 const styles = StyleSheet.create({

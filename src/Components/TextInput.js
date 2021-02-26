@@ -20,7 +20,6 @@ export default TextInputLogin;
 const styles = StyleSheet.create({
 
     textinput: {
-
         height: hp('5%'),
         width: wp('80%'),
         borderColor: '#707070',
