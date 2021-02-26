@@ -8,22 +8,21 @@ import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const MyHeader = ({navigation}) => {
+const MyHeader = ({ navigation }) => {
     return (
-        <View>
-            <Header androidStatusBarColor="white"
-             style={{
-                backgroundColor:"white",
+        <Header androidStatusBarColor="white"
+            style={{
+                backgroundColor: "white",
                 elevation: 0,
             }}>
-                <Left style={{ flex: 1 }}>
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack()}>
-                        <Icon name="arrow-back-outline" size={30} color={'#E4E4E4'}  />
-                    </TouchableOpacity>
-                </Left>
-            </Header>
-        </View>
+            <Left style={{ flex: 1 }}>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}>
+                    <Icon name="arrow-back-outline" size={30} color={'#E4E4E4'} />
+                </TouchableOpacity>
+            </Left>
+        </Header>
+
     )
 }
 export default MyHeader;

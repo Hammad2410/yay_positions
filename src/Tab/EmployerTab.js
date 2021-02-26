@@ -30,30 +30,30 @@ import Changepass from '../Screens/Changepass';
 
 const Tab = createBottomTabNavigator();
 
-const TabBarCustomButton = ({ accessibilityState, children, onPress,}) => {
+const TabBarCustomButton = ({ accessibilityState, children, onPress, }) => {
 
     var isSelected = accessibilityState.selected
 
     if (isSelected) {
         return (
             <View style={{ flex: 1, alignItems: "center" }}>
-                <View style={{ flexDirection: 'row', position: 'absolute',  }}>
-                    <View style={{ flex: 1, backgroundColor:'white' }}></View>
+                <View style={{ flexDirection: 'row', position: 'absolute', }}>
+                    <View style={{ flex: 1, backgroundColor: 'white' }}></View>
                 </View>
                 <TouchableOpacity
                     style={{
                         justifyContent: 'center',
                         alignItems: 'center',
-                        width:100,
+                        width: 100,
                         height: 50,
-                       
-                        backgroundColor:'#FAFAFA'
+
+                        backgroundColor: '#FAFAFA'
                     }}
                     onPress={onPress}
                 >
                     {children}
                 </TouchableOpacity>
-                
+
             </View>
         )
     } else {
@@ -62,7 +62,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress,}) => {
                 style={{
                     flex: 1,
                     height: 50,
-                    backgroundColor:'#FAFAFA'
+                    backgroundColor: '#FAFAFA'
                 }}
                 activeOpacity={1}
                 onPress={onPress}
@@ -74,141 +74,141 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress,}) => {
 }
 
 const EmployerTab = () => {
-    return(
-<Tab.Navigator 
-initialRouteName="Register"
+    return (
+        <Tab.Navigator
+            initialRouteName="Register"
 
-tabBarOptions={{
-    activeTintColor: '#009961',
-    inactiveTintColor:"#E4E4E4",
-    showLabel: false,
-    
-    style: {
-        left: 0,
-        bottom: 10,
-        right: 0,
-        top:-5,
-        
-        borderTopWidth: 0,
-        elevation: 0,
-    }
-}}
-    >
-        
-    <Tab.Screen
-    
-     name="welcome"
-     component={Welcome}
-     
-     options={{
-         
-         tabBarIcon: ({ focused,color }) => (
-             <Icons
-             name='id-card' size={30} style={{color:color}}
-                  
-    />
-         ),
-         tabBarButton: (props) => (
-            <TabBarCustomButton
-                {...props}
-              
-            />
-        )
-                }}
-                />
+            tabBarOptions={{
+                activeTintColor: '#009961',
+                inactiveTintColor: "#E4E4E4",
+                showLabel: false,
 
-<Tab.Screen
-     name="MyResume"
-     component={MyResume}
+                style: {
+                    left: 0,
+                    bottom: 10,
+                    right: 0,
+                    top: -5,
 
-     options={{
-         
-         tabBarIcon: ({ focused ,color}) => (
-           
-            <Icon5
-            name='pencil-box' size={35} 
-            style={{color:color}}   
-   />
-   
-         ),
-         
-         tabBarButton: (props) => (
-            <TabBarCustomButton
-                {...props
+                    borderTopWidth: 0,
+                    elevation: 0,
                 }
-                
-              
-            />
-        )
-                }}
-                />
-                <Tab.Screen
-     name="PersonalInfo"
-     component={PersonalInfo}
-     options={{
-         
-         tabBarIcon: ({ focused,color }) => (
-            <Icon5
-            name='upload' size={40} 
-            style={{color:color}}    
-   />
-         ),
-         
-         tabBarButton: (props) => (
-            <TabBarCustomButton
-                {...props}
-              
-            />
-        )
-                }}
-                />
+            }}
+        >
 
-<Tab.Screen
-     name="SavedJobs"
-     component={SavedJobs}
-     options={{
-         
-         tabBarIcon: ({ focused,color }) => (
-            <IconF
-            name='shopping-bag' size={40} 
-            style={{color:color}}  
-   />
-         ),
-         
-         tabBarButton: (props) => (
-            <TabBarCustomButton
-                {...props}
-              
-            />
-        )
-                }}
-                />
+            <Tab.Screen
 
-<Tab.Screen
-     name="Changepass"
-     
-     component={Changepass}
-     options={{
-         
-         tabBarIcon: ({ focused,color }) => (
-            <Icon
-            name='mail' size={35} 
-            style={{color:color}}  
-   />
-         ),
-         
-         tabBarButton: (props) => (
-            <TabBarCustomButton
-                {...props}
-              
-            />
-        )
+                name="welcome"
+                component={Welcome}
+
+                options={{
+
+                    tabBarIcon: ({ focused, color }) => (
+                        <Icons
+                            name='id-card' size={30} style={{ color: color }}
+
+                        />
+                    ),
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+
+                        />
+                    )
                 }}
-                />
+            />
+
+            <Tab.Screen
+                name="MyResume"
+                component={MyResume}
+
+                options={{
+
+                    tabBarIcon: ({ focused, color }) => (
+
+                        <Icon5
+                            name='pencil-box' size={35}
+                            style={{ color: color }}
+                        />
+
+                    ),
+
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props
+                            }
 
 
-                
-</Tab.Navigator>
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="PersonalInfo"
+                component={PersonalInfo}
+                options={{
+
+                    tabBarIcon: ({ focused, color }) => (
+                        <Icon5
+                            name='upload' size={40}
+                            style={{ color: color }}
+                        />
+                    ),
+
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="SavedJobs"
+                component={SavedJobs}
+                options={{
+
+                    tabBarIcon: ({ focused, color }) => (
+                        <IconF
+                            name='shopping-bag' size={40}
+                            style={{ color: color }}
+                        />
+                    ),
+
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Changepass"
+
+                component={Changepass}
+                options={{
+
+                    tabBarIcon: ({ focused, color }) => (
+                        <Icon
+                            name='mail' size={35}
+                            style={{ color: color }}
+                        />
+                    ),
+
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+
+                        />
+                    )
+                }}
+            />
+
+
+
+        </Tab.Navigator>
     )
 }
 export default EmployerTab;
