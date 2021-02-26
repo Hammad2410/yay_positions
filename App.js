@@ -18,6 +18,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
+
 import Welcome from './src/Screens/Welcome';
 import Register from './src/Screens/Register'
 import Login from './src/Screens/Login'
@@ -36,10 +37,15 @@ import MyProfile from './src/Screens/MyProfile'
 
 
 
+import CandidateTab from './src/Tab/CandidateTab';
+import EmployerTab from './src/Tab/EmployerTab';
+
+
 
 const App = () => {
   return (
     <NavigationContainer>
+
       <Stack.Navigator initialRouteName="MyProfile">
         <Stack.Screen name="Welcome" component={Welcome}
           options={({ navigation }) => ({ header: (props) => null })}
@@ -88,6 +94,9 @@ const App = () => {
         />
     
       </Stack.Navigator>
+
+     <EmployerTab/>
+
     </NavigationContainer>
 
   );
