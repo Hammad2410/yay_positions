@@ -11,7 +11,7 @@ return (
 <Container style={{backgroundColor:'white'}} >
 <Content >
     
-<EmployerDrawer/>
+<EmployerDrawer navigation={navigation}/>
 <View style={{flexDirection:'column',justifyContent:'space-between' }}>
     <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
     <TouchableOpacity
@@ -22,7 +22,7 @@ return (
     </View>
 
     <TouchableOpacity>
-    <Text style={{marginLeft:'80%'}}>Log Off</Text>
+    <Text style={{marginLeft:'80%',marginTop:'170%'}}>Log Off</Text>
     </TouchableOpacity>
     </View>
 </Content>

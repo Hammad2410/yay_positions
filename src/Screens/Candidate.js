@@ -3,20 +3,40 @@ import { View, Text,StyleSheet,TouchableOpacity,Image } from 'react-native';
 import { Content,Container,Header,Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import SideDrawer from '../Components/Drawer'
+import SideDrawer from '../Components/SideDrawer'
 
 
 const Candidate = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
 <Content >
-<SideDrawer/>
+<SideDrawer navigation={navigation}/>
+<View style={{flex:1}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:30}}>
     <TouchableOpacity
                         onPress={() => navigation.goBack()}>
                         <Icon style={{paddingLeft:25}} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity>
                     <Text style={styles.text}>Hello Jason </Text>
+    </View>
+    <View style={{marginLeft:30,marginTop:18}}>
+        <Text style={styles.text1}>All Jobs</Text>
+    </View>
+    <View style={styles.view}>
+<Text style={{color:'#FFFFFF',fontSize:41,fontFamily:'Calibri',fontWeight:'bold',paddingTop:20,paddingLeft:15}}>1</Text>
+
+<View style={{flexDirection:'row',justifyContent:'space-between'}}>
+<Text style={styles.text2}>All Jobs</Text>
+<Icon style={{paddingRight:15,paddingBottom:10}} name="stats-chart-sharp" size={45} color='#24963E' />
+</View>
+<View style={{marginTop:20,flex:1,backgroundColor:'#24963E',borderBottomLeftRadius:12,borderBottomRightRadius:12}}>
+<View style={{flexDirection:'row',justifyContent:'center',marginTop:5}}>
+<Text style={styles.text3}>More info</Text>
+<TouchableOpacity>
+<Icon style={{paddingRight:15,paddingBottom:10}} name="arrow-forward-circle" size={30} color='white' />
+</TouchableOpacity>
+</View>
+</View>
     </View>
     <View style={{marginLeft:30,marginTop:18}}>
         <Text style={styles.text1}>All invitations</Text>
@@ -38,8 +58,9 @@ return (
 </View>
     </View>
     <TouchableOpacity>
-    <Text style={{marginTop:'105%',marginLeft:'80%'}}>Log Off</Text>
+    <Text style={{alignSelf:'flex-end',paddingRight:25,marginTop:100}}>Log Off</Text>
     </TouchableOpacity>
+    </View>
 </Content>
 </Container>
   )    
@@ -66,7 +87,6 @@ const styles = StyleSheet.create({
         marginTop:'2%',
         marginHorizontal:'7%',
         borderRadius:12,
-        height:200
     },
     text:{
         fontSize:12,

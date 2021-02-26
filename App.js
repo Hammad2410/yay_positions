@@ -17,7 +17,9 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 const Stack = createStackNavigator();
+
 import Welcome from './src/Screens/Welcome';
 import Register from './src/Screens/Register'
 import Login from './src/Screens/Login'
@@ -33,14 +35,14 @@ import Invitationentries from './src/Screens/Invitationentries'
 import Jobs from './src/Screens/Jobs'
 import Employer from './src/Screens/Employer'
 import MyProfile from './src/Screens/MyProfile'
-
-
+import SideDrawer from './src/Components/SideDrawer';
+import MyDrawer from './src/Navigation/Drawer/Drawer';
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MyProfile">
+      <Stack.Navigator initialRouteName="Employer">
         <Stack.Screen name="Welcome" component={Welcome}
           options={({ navigation }) => ({ header: (props) => null })}
         />
@@ -86,8 +88,15 @@ const App = () => {
         <Stack.Screen name="MyProfile" component={MyProfile}
           options={({ navigation }) => ({ header: (props) => null })}
         />
+           <Stack.Screen name="SideDrawer" component={SideDrawer}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
+         <Stack.Screen name="MyDrawer" component={MyDrawer}
+          options={({ navigation }) => ({ header: (props) => null })}
+        />
     
       </Stack.Navigator>
+    
     </NavigationContainer>
 
   );
