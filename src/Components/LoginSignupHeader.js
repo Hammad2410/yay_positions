@@ -18,10 +18,11 @@ const MyHeader = ({ navigation }) => {
             <Left style={{ flex: 1 }}>
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}>
-                    <Icon name="arrow-back-outline" size={30} />
+                    <Icon name="arrow-back-outline" size={30} color={'#E4E4E4'} />
                 </TouchableOpacity>
             </Left>
         </Header>
+
     )
 }
 export default MyHeader;

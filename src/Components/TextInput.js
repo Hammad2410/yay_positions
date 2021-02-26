@@ -7,17 +7,27 @@ import {
 import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react/cjs/react.development';
 
+<<<<<<< HEAD
 const TextInputLogin = ({ navigation, label }) => {
     return (
         <TextInput placeholder={label || "Email"} placeholderTextColor='#707070'
             style={styles.textinput} />
+=======
+
+const TextInputLogin = ({navigation,name1,value}) => {
+    return (
+       <TextInput placeholder={ name1 || "Email" } secureTextEntry={value} placeholderTextColor='#707070'
+       style={styles.textinput}></TextInput>
+>>>>>>> 6f6bf8ea416661d7677c335dcf4ab480f20bf410
     )
 }
 export default TextInputLogin;
 
 const styles = StyleSheet.create({
 
+<<<<<<< HEAD
     textinput: {
         height: hp('5%'),
         width: wp('80%'),
@@ -27,6 +37,19 @@ const styles = StyleSheet.create({
         fontSize: 12,
         padding: 10,
         marginBottom: 15
+=======
+    textinput:{
+        
+        height:hp('5%'),
+        width:wp('80%'),
+        borderColor:'#707070',
+        borderWidth:0.5,
+        borderRadius:5,
+        fontSize:12,
+        padding:10,
+        marginBottom:15,
+        alignSelf:'center',
+>>>>>>> 6f6bf8ea416661d7677c335dcf4ab480f20bf410
     },
 
 
