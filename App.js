@@ -15,12 +15,10 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-<<<<<<< HEAD
 
 import { Provider } from "react-redux"
 import Navigator from './src/Navigator'
 import configureStore from './src/redux/createStore'
-=======
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
@@ -47,72 +45,68 @@ import CandidateTab from './src/Tab/CandidateTab';
 import EmployerTab from './src/Tab/EmployerTab';
 
 
->>>>>>> 6f6bf8ea416661d7677c335dcf4ab480f20bf410
 
 const App = () => {
   const store = configureStore()
   return (
-<<<<<<< HEAD
-    <Provider store={store}>
-      <Navigator />
-    </Provider>
-=======
+    // <Provider store={store}>
+    //   <Navigator />
+    // </Provider>
     <NavigationContainer>
 
       <Stack.Navigator initialRouteName="MyProfile">
         <Stack.Screen name="Welcome" component={Welcome}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-            <Stack.Screen name="Register" component={Register}
+        <Stack.Screen name="Register" component={Register}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-           <Stack.Screen name="Login" component={Login}
+        <Stack.Screen name="Login" component={Login}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-               <Stack.Screen name="Candidate" component={Candidate}
+        <Stack.Screen name="Candidate" component={Candidate}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-              <Stack.Screen name="BrowseJobs" component={BrowseJobs}
+        <Stack.Screen name="BrowseJobs" component={BrowseJobs}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-            <Stack.Screen name="Filter" component={Filter}
+        <Stack.Screen name="Filter" component={Filter}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-           <Stack.Screen name="Applyjob" component={Applyjob}
+        <Stack.Screen name="Applyjob" component={Applyjob}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-            <Stack.Screen name="Invitations" component={Invitations}
+        <Stack.Screen name="Invitations" component={Invitations}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-           <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
+        <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-          <Stack.Screen name="Favorite" component={Favorite}
+        <Stack.Screen name="Favorite" component={Favorite}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-          <Stack.Screen name="Hired" component={Hired}
+        <Stack.Screen name="Hired" component={Hired}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-           <Stack.Screen name="Invitationentries" component={Invitationentries}
+        <Stack.Screen name="Invitationentries" component={Invitationentries}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-          <Stack.Screen name="Jobs" component={Jobs}
+        <Stack.Screen name="Jobs" component={Jobs}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-          <Stack.Screen name="Employer" component={Employer}
+        <Stack.Screen name="Employer" component={Employer}
           options={({ navigation }) => ({ header: (props) => null })}
         />
         <Stack.Screen name="MyProfile" component={MyProfile}
           options={({ navigation }) => ({ header: (props) => null })}
         />
-    
+
       </Stack.Navigator>
 
-     <EmployerTab/>
+      <EmployerTab />
 
     </NavigationContainer>
 
->>>>>>> 6f6bf8ea416661d7677c335dcf4ab480f20bf410
   );
 };
 
