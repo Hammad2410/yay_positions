@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { Content, Container, Tabs, Tab, Footer, Button } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
+import { connect } from 'react-redux';
+import { register, resetUserRegistered } from '../redux/actions/auth';
 
-
-const Register = ({ navigation }) => {
+const Register = (props) => {
 
     const [role, setRole] = useState('Candidate');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [country, setCountry] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     return (
         <Container style={{ backgroundColor: 'white' }}>
-            <MyHeader navigation={navigation} />
+            <MyHeader navigation={props.navigation} />
             <Content >
 
                 <View style={{ flex: 1 }}>
@@ -22,8 +28,8 @@ const Register = ({ navigation }) => {
                         </View>
                     </View>
                     <View style={{ height: 200, alignItems: 'center', marginTop: '7%' }}>
-                        <TextInputLogin />
-                        <TextInputLogin name1="Name" />
+                        <TextInputLogin value={email} setter={setEmail} />
+                        <TextInputLogin label="Name" value={name} setter={setName} />
                         <View style={styles.switchContainer}>
                             <Button onPress={() => setRole('Candidate')} style={[styles.switchBtn, { backgroundColor: role === 'Candidate' ? '#016742' : '#009961' }]}>
                                 <Text style={styles.switchText} >Candidate</Text>
@@ -34,13 +40,16 @@ const Register = ({ navigation }) => {
                         </View>
                     </View>
                     <View style={{ alignItems: 'center', height: 170 }}>
-                        <TextInputLogin name1="Country" />
-                        <TextInputLogin value name1="Password" />
-                        <TextInputLogin value name1="Confirm Password" />
+                        <TextInputLogin label="Country" value={country} setter={setCountry} />
+                        <TextInputLogin value label="Password" value={password} setter={setPassword} />
+                        <TextInputLogin value label="Confirm Password" value={confirmPassword} setter={setConfirmPassword} />
                     </View>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.btntext}>Register</Text>
-                    </TouchableOpacity>
+                    <Text style={{ alignSelf: 'center', color: 'red' }}>{props.auth.error}</Text>
+                    {
+                        props.auth.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> : <TouchableOpacity style={styles.btn} onPress={() => props.register(email, name, country, role, password, confirmPassword)}>
+                            <Text style={styles.btntext}>Register</Text>
+                        </TouchableOpacity>
+                    }
                 </View>
 
 
@@ -53,7 +62,7 @@ const Register = ({ navigation }) => {
     )
 
 }
-export default Register;
+
 const styles = StyleSheet.create({
     text: {
         color: '#707070',
@@ -102,6 +111,10 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontSize: 13
     }
-
-
 })
+
+const mapStateToProps = ({ auth }) => ({ auth })
+
+const mapDispatchToProps = { register, resetUserRegistered }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

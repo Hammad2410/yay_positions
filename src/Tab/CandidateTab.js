@@ -15,12 +15,13 @@ import Icon5 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Candidate from '../Screens/Candidate';
 import SavedJobs from '../Screens/SavedJobs'
 import PersonalInfo from '../Screens/PersonalInfo'
-import Educationalinfo from '../Screens/Educationalinfo'
-import JobExper from '../Screens/JobExper'
+
+
 import CompanyDetail from '../Screens/CompanyDetail';
 import CreateJob from '../Screens/CreateJob';
 import MyResume from '../Screens/MyResume';
 import Changepass from '../Screens/Changepass';
+import Invitationentries from '../Screens/Invitationentries';
 
 
 
@@ -184,7 +185,7 @@ const CandidateTab = () => {
             <Tab.Screen
                 name="Changepass"
 
-                component={Changepass}
+                component={Invitationentries}
                 options={{
 
                     tabBarIcon: ({ focused, color }) => (

@@ -9,7 +9,7 @@ class Welcome extends React.Component {
 
         setTimeout(() => {
             SplashScreen.hide()
-            this.props.navigation.navigate("Login")
+            this.props.navigation.navigate("CandidateHome")
         }, 3000)
     }
 
