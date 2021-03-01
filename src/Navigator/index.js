@@ -17,7 +17,9 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 import Welcome from '../Screens/Welcome';
 import Register from '../Screens/Register'
@@ -34,14 +36,54 @@ import Invitationentries from '../Screens/Invitationentries'
 import Jobs from '../Screens/Jobs'
 import Employer from '../Screens/Employer'
 import MyProfile from '../Screens/MyProfile'
-
+import Educationalinfo from '../Screens/Educationalinfo'
 import CandidateTab from '../Tab/CandidateTab';
 import EmployerTab from '../Tab/EmployerTab';
+import JobExper from '../Screens/JobExper';
+import MyResume from '../Screens/MyResume';
+import Changepass from '../Screens/Changepass';
+import SavedJobs from '../Screens/SavedJobs'
+
+
+const CandidateDrawer = () => {
+    return (
+        <Drawer.Navigator>
+            <Drawer.Screen name="Dashboard" component={CandidateTab}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="MyProfile" component={MyProfile}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="EducationalInfo" component={Educationalinfo}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="JobExper" component={JobExper}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="MyResume" component={MyResume}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="ChangePass" component={Changepass}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="Invitations" component={Invitations}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="BrowseJobs" component={BrowseJobs}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+            <Drawer.Screen name="SavedJobs" component={SavedJobs}
+                options={({ navigation }) => ({ header: (props) => null })}
+            />
+        </Drawer.Navigator>
+    )
+}
+
 
 const Navigator = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="CandidateHome">
+            <Stack.Navigator initialRouteName="Welcome">
                 <Stack.Screen name="Welcome" component={Welcome}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
@@ -51,19 +93,14 @@ const Navigator = () => {
                 <Stack.Screen name="Login" component={Login}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                <Stack.Screen name="CandidateHome" component={CandidateTab}
+                <Stack.Screen name="CandidateHome" component={CandidateDrawer}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                <Stack.Screen name="BrowseJobs" component={BrowseJobs}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
+
                 <Stack.Screen name="Filter" component={Filter}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="Applyjob" component={Applyjob}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
-                <Stack.Screen name="Invitations" component={Invitations}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
@@ -84,12 +121,8 @@ const Navigator = () => {
                 <Stack.Screen name="Employer" component={Employer}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                <Stack.Screen name="MyProfile" component={MyProfile}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
-            </Stack.Navigator>
 
-            {/* <EmployerTab /> */}
+            </Stack.Navigator>
 
         </NavigationContainer>
 

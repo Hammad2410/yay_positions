@@ -4,6 +4,7 @@ const initialState = {
     loading: false,
     error: '',
     token: null,
+    userRegistered: false
 };
 
 const auth = (state = initialState, action) => {
@@ -33,6 +34,19 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 error: ''
+            }
+
+        case types.AUTH_USER_REGISTERED:
+            return {
+                ...state,
+                loading: false,
+                userRegistered: true
+            }
+
+        case types.AUTH_RESET_USER_REGISTERED:
+            return {
+                ...state,
+                userRegistered: false
             }
 
 
