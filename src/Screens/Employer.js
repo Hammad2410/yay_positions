@@ -21,7 +21,7 @@ return (
                     <Text style={styles.text}>Hello Jason </Text>
     </View>
 
-    <TouchableOpacity>
+    <TouchableOpacity    onPress={() => {navigation.navigate('CandidateHome')}}>
     <Text style={{marginLeft:'80%'}}>Log Off</Text>
     </TouchableOpacity>
     </View>

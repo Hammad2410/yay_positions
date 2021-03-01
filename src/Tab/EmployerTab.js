@@ -24,7 +24,7 @@ import CompanyDetail from '../Screens/CompanyDetail';
 import CreateJob from '../Screens/CreateJob';
 import MyResume from '../Screens/MyResume';
 import Changepass from '../Screens/Changepass';
-
+import Employer from '../Screens/Employer'
 
 
 
@@ -97,8 +97,8 @@ const EmployerTab = () => {
 
             <Tab.Screen
 
-                name="welcome"
-                component={Welcome}
+                name="Employer"
+                component={Employer}
 
                 options={{
 
