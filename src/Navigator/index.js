@@ -45,6 +45,8 @@ import MyResume from '../Screens/MyResume';
 import Changepass from '../Screens/Changepass';
 import SavedJobs from '../Screens/SavedJobs'
 import PersonalInfo from '../Screens/PersonalInfo'
+import CreateJob from '../Screens/CreateJob'
+import Efilter from '../Screens/Efilter'
 import { DrawerContent } from './CandidateDrawer';
 import EmployerDrawer from './EmployerNavigatorDrawer'
 const CandidateDrawer = () => {
@@ -104,28 +106,20 @@ const Navigator = () => {
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
 
-                <Stack.Screen name="Filter" component={Filter}
+              
+                <Stack.Screen name="Employer" component={EmployerDrawer}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="CreateJob" component={CreateJob}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="Applyjob" component={Applyjob}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
+                <Stack.Screen name="Filter" component={Filter}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                <Stack.Screen name="Favorite" component={Favorite}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
-                <Stack.Screen name="Hired" component={Hired}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
-                <Stack.Screen name="Invitationentries" component={Invitationentries}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
-                <Stack.Screen name="Jobs" component={Jobs}
-                    options={({ navigation }) => ({ header: (props) => null })}
-                />
-                <Stack.Screen name="Employer" component={EmployerDrawer}
+                <Stack.Screen name="Efilter" component={Efilter}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
 

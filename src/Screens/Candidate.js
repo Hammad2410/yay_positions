@@ -21,8 +21,29 @@ const Candidate = (props) => {
                     <TouchableOpacity
                         onPress={() => props.navigation.goBack()}>
                         <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
-                    </TouchableOpacity>
+                    </TouchableOpacity >
+                    <TouchableOpacity onPress={() => {props.navigation.navigate('Employer')}}>
                     <Text style={styles.text}>Hello Jason </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{ marginLeft: 30, marginTop: 18 }}>
+                    <Text style={styles.text1}>All Jobs</Text>
+                </View>
+                <View style={styles.view}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.invitations.length}</Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.text2}>All Jobs</Text>
+                        <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="stats-chart-sharp" size={45} color='#24963E' />
+                    </View>
+                    <View style={{ marginTop: 20, flex: 1, backgroundColor: '#24963E', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
+                            <Text style={styles.text3}>More info</Text>
+                            <TouchableOpacity>
+                                <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="arrow-forward-circle" size={30} color='white' />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All invitations</Text>
@@ -43,8 +64,9 @@ const Candidate = (props) => {
                         </View>
                     </View>
                 </View>
+              
                 <TouchableOpacity>
-                    <Text style={{ marginTop: '105%', marginLeft: '80%' }}>Log Off</Text>
+                    <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
             </Content>
         </Container>

@@ -14,6 +14,10 @@ import Tags from "react-native-tags";
 
 
 const PersonalInfo = ({ navigation, }) => {
+    const [Fullname, setFullname] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [portfolio, setPortfolio] = useState('');
     const [date, setDate] = useState(new Date());
     const [datename, setDateName] = useState('mm/dd/yy');
     const [Photo,setPhoto] = useState('');
@@ -96,7 +100,7 @@ const PersonalInfo = ({ navigation, }) => {
     }
 return (
 <Container>
-<MyHeader/>
+<MyHeader  navigation={navigation}/>
 <Content >
 
 <View style={{flex:1}}>
@@ -110,11 +114,11 @@ return (
 <View style={{marginTop:40,alignItems:'center'}}>
 
 <ProfileText nametext="Your Full Name"  marginLeftt={-235} />
-<TextInputLogin  name1="Test Candidate"  />
+<TextInputLogin value={Fullname} setter={setFullname}  label="Test Candidate"  />
 <ProfileText nametext="Email" marginLeftt={-285}/>
-<TextInputLogin  name1="abc@gmail.com"  />
+<TextInputLogin value={email} setter={setEmail} label="abc@gmail.com"  />
 <ProfileText nametext="Phone"  marginLeftt={-280}/>
-<TextInputLogin  name1="637352322" Ktype='number-pad' />
+<TextInputLogin  value={phone} setter={setPhone} label="637352322" Ktype='number-pad' />
 <ProfileText nametext="Date of birth" marginLeftt={-247} />
 <View style={{flexDirection:'row',alignSelf:'center'}}>
 
@@ -332,7 +336,7 @@ return (
 </View>
 <View style={{marginTop:20,alignItems:'center'}}>
 <ProfileText nametext="Add Description of your projects"  marginLeftt={-140} />
-<TextInputLogin   />
+<TextInputLogin  value={portfolio} setter={setPortfolio}     />
 <ProfileText nametext="Add Photos of your projects"  marginLeftt={-165} />
 <View style={{ height:hp('5%'),
         width:wp('80%'),

@@ -10,13 +10,18 @@ import Candidatecard from '../Components/Candidatecard'
 const BrowseCandidates = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>
 <Text style={styles.text}>Browse Candidates</Text>
 <View style={styles.line}>
 </View>
+</View>
+<View style={{alignItems:'flex-end',marginTop:15,marginRight:25}}>
+    <TouchableOpacity  onPress={() => {navigation.navigate('Efilter')}}>
+    <Text style={styles.text1}>Search Filters</Text>
+    </TouchableOpacity>
 </View>
 <Candidatecard />
 <Candidatecard   bottom={'10%'}/>

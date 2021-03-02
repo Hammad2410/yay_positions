@@ -11,7 +11,7 @@ import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react/cjs/re
 
 const TextInputLogin = ({ navigation, label, value, setter }) => {
     return (
-        <TextInput value={value} placeholder={label || "Email"} placeholderTextColor='#707070'
+        <TextInput value={value} placeholder={label || ""} placeholderTextColor='#707070'
             style={styles.textinput} onChangeText={(text) => setter(text)} />
     )
 }

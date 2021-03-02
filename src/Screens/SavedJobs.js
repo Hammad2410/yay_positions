@@ -35,12 +35,12 @@ const SavedJobs = ({ navigation }) => {
     ])
 return (
 <Container>
-<MyHeader/>
+<MyHeader  navigation={navigation}/>
 <Content contentContainerStyle={{ flex: 1, backgroundColor: 'white' }}>
 
 <View style={{flex:1}}>
     <View style={{marginTop:30,marginLeft:21}}>
-<Text style={styles.text}>Saved Jobs</Text>
+<Text style={styles.text} >Saved Jobs</Text>
 <View style={styles.line}>
 </View>
 </View>

@@ -33,7 +33,7 @@ const JobExper = ({ navigation, }) => {
 
 return (
 <Container>
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 
 <View style={{flex:1}}>
@@ -47,9 +47,9 @@ return (
 <View style={{marginTop:10,alignItems:'center'}}>
 
 <ProfileText nametext="Company Name"  marginLeftt={-230} />
-<TextInputLogin  name1="Abc international"  />
+<TextInputLogin  label="Abc international"  />
 <ProfileText nametext="Your Role" marginLeftt={-265}/>
-<TextInputLogin  name1="2233432423"  />
+<TextInputLogin  label="2233432423"  />
 
 <ProfileText nametext="Start Date" marginLeftt={-260} />
 <View style={{flexDirection:'row',alignSelf:'center'}}>
