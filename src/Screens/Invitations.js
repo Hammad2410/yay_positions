@@ -49,7 +49,7 @@ return (
 <Text style={{fontSize:13,
         color:'#000000',
         fontFamily:'Segoe UI',
-        paddingVertical:20,paddingRight:5}}>02/11/2021</Text>
+        paddingVertical:20,paddingRight:5,marginLeft:14}}>02/11/2021</Text>
 <Text style={{  fontSize:13,
         color:'#000000',
         fontFamily:'Segoe UI',

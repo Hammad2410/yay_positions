@@ -74,17 +74,18 @@ export function DrawerContent(props) {
                             label="Company Details" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('CompanyDetail')}}
                         />
-                        <DrawerItem 
+                         <DrawerItem 
                             icon={({color, size}) => (
-                                <MIcon 
-                                name="mail" 
+                                <JIcon 
+                                name="shopping-bag" 
                                 color='#009961'
-                                size={size}
+                                size={28}
                                 />
                             )}
-                            label="Invitations" labelStyle={{color:'white'}}
-                            onPress={() => {props.navigation.navigate('Invitations')}}
+                            label="Jobs" labelStyle={{color:'white'}}
+                            onPress={() => {props.navigation.navigate('Jobs')}}
                         />
+                       
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
@@ -118,18 +119,6 @@ export function DrawerContent(props) {
                             label="Hired Candidates" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('Hired')}}
                         />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <JIcon 
-                                name="shopping-bag" 
-                                color='#009961'
-                                size={28}
-                                />
-                            )}
-                            label="Jobs" labelStyle={{color:'white'}}
-                            onPress={() => {props.navigation.navigate('Jobs')}}
-                        />
-                       
                     </Drawer.Section>
                     
                 </View>

@@ -25,7 +25,7 @@ import CreateJob from '../Screens/CreateJob';
 import MyResume from '../Screens/MyResume';
 import Changepass from '../Screens/Changepass';
 import Employer from '../Screens/Employer'
-
+import Invitations from '../Screens/Invitations'
 
 
 const Tab = createBottomTabNavigator();
@@ -118,8 +118,8 @@ const EmployerTab = () => {
             />
 
             <Tab.Screen
-                name="MyResume"
-                component={MyResume}
+                name="CreateJob"
+                component={CreateJob}
 
                 options={{
 
@@ -185,9 +185,9 @@ const EmployerTab = () => {
             />
 
             <Tab.Screen
-                name="Changepass"
+                name="Invitations"
 
-                component={Changepass}
+                component={Invitations}
                 options={{
 
                     tabBarIcon: ({ focused, color }) => (

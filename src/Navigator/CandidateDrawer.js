@@ -63,6 +63,17 @@ export function DrawerContent(props) {
                             label="Dashboard" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('Dashboard')}}
                         />
+                         <DrawerItem 
+                            icon={({color, size}) => (
+                                <IIcon 
+                                name="person" 
+                                color='#009961'
+                                size={size}
+                                />
+                            )}
+                            label="View My Profile" labelStyle={{color:'white'}}
+                            onPress={() => {props.navigation.navigate('ViewMyProfile')}}
+                        />
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <PIcon 
@@ -85,7 +96,7 @@ export function DrawerContent(props) {
                             label="Educational Information" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('EducationalInformation')}}
                         />
-                        <DrawerItem 
+                         <DrawerItem 
                             icon={({color, size}) => (
                                 <JIcon 
                                 name="graph-bar" 
@@ -109,39 +120,6 @@ export function DrawerContent(props) {
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <IIcon 
-                                name="md-settings-sharp" 
-                                color='#009961'
-                                size={size}
-                                />
-                            )}
-                            label="Change Password" labelStyle={{color:'white'}}
-                            onPress={() => {props.navigation.navigate('ChangePassword')}}
-                        />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <IIcon 
-                                name="person" 
-                                color='#009961'
-                                size={size}
-                                />
-                            )}
-                            label="View My Profile" labelStyle={{color:'white'}}
-                            onPress={() => {props.navigation.navigate('ViewMyProfile')}}
-                        />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <MIcon 
-                                name="mail" 
-                                color='#009961'
-                                size={size}
-                                />
-                            )}
-                            label="Invitations" labelStyle={{color:'white'}}
-                            onPress={() => {props.navigation.navigate('Invitations')}}
-                        />
-                        <DrawerItem 
-                            icon={({color, size}) => (
                                 <Icon 
                                 name="upload" 
                                 color='#009961'
@@ -154,6 +132,18 @@ export function DrawerContent(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <MIcon 
+                                name="mail" 
+                                color='#009961'
+                                size={size}
+                                />
+                            )}
+                            label="Invitations" labelStyle={{color:'white'}}
+                            onPress={() => {props.navigation.navigate('Invitations')}}
+                        />
+                       
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <MIcon 
                                 name="save" 
                                 color='#009961'
                                 size={size}
@@ -161,6 +151,17 @@ export function DrawerContent(props) {
                             )}
                             label="Saved Jobs" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('SavedJobs')}}
+                        />
+                         <DrawerItem 
+                            icon={({color, size}) => (
+                                <IIcon 
+                                name="md-settings-sharp" 
+                                color='#009961'
+                                size={size}
+                                />
+                            )}
+                            label="Change Password" labelStyle={{color:'white'}}
+                            onPress={() => {props.navigation.navigate('ChangePassword')}}
                         />
                     </Drawer.Section>
                     
