@@ -9,6 +9,7 @@ import JobApply from '../Components/JobApply'
 
 
 const Applyjob = ({ navigation }) => {
+
     return (
         <Container style={{ backgroundColor: 'white' }} >
             <MyHeader />
@@ -24,6 +25,7 @@ const Applyjob = ({ navigation }) => {
             </Content>
         </Container>
     )
+
 }
 export default Applyjob;
 

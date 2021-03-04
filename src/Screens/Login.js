@@ -39,7 +39,7 @@ const Login = ({ login, navigation, auth }) => {
                             </Button>
                         </View>
 
-                        <TextInputLogin value={email} setter={setEmail} />
+                        <TextInputLogin value={email} setter={setEmail} label="Email" />
                         <TextInputLogin value={password} setter={setPassword} label="Password" />
 
                     </View>

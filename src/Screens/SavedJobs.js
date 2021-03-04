@@ -40,6 +40,7 @@ const SavedJobs = (props) => {
 
         }
     ])
+
     return (
         <Container>
             <MyHeader />
@@ -57,6 +58,7 @@ const SavedJobs = (props) => {
                             data={props.candidate.savedJobs}
                             renderItem={({ item, index }) =>
                                 <TouchableOpacity style={{
+
                                     flex: 1,
                                     flexDirection: 'row',
                                     marginVertical: 5,

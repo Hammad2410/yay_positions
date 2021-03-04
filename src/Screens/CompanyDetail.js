@@ -12,7 +12,9 @@ import DatePicker from 'react-native-date-picker';
 
 const CompanyDetail = ({ navigation, }) => {
 
+
     const [Photo, setPhoto] = useState('');
+
     const openPhoto = async () => {
         try {
             const res = await DocumentPicker.pick({
@@ -35,6 +37,7 @@ const CompanyDetail = ({ navigation, }) => {
             }
         }
     }
+
 
     return (
         <Container>
@@ -79,12 +82,14 @@ const CompanyDetail = ({ navigation, }) => {
                                 }}>
                                 <Text style={{ textAlign: 'center' }}>
                                     Choose File
+
                     </Text>
                             </TouchableOpacity>
                             <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
                                 {Photo.name || 'No File Chosen'}
                             </Text>
                         </View>
+
 
                         <ProfileText nametext="Description" marginLeftt={-255} />
                         <TextInput placeholder="Test" placeholderTextColor='#707070' style={styles.textinput}></TextInput>

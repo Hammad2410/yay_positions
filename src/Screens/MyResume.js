@@ -16,7 +16,7 @@ const MyResume = ({ navigation, }) => {
 
 return (
 <Container>
-<MyHeader/>
+<MyHeader  navigation={navigation}/>
 <Content >
 
 <View style={{flex:1}}>

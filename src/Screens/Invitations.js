@@ -7,61 +7,60 @@ import MyHeader from '../Components/LoginSignupHeader'
 
 
 const Invitations = ({ navigation }) => {
-  return (
-    <Container style={{ backgroundColor: 'white' }} >
-      <MyHeader />
-      <Content >
-        <View style={{ flex: 1 }}>
-          <View style={{ marginLeft: 40 }}>
-            <Text style={styles.text}>Invitations</Text>
-            <View style={styles.line}>
-            </View>
-          </View>
-          <View style={styles.view}>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={styles.view1}>
-                <View style={{ flexDirection: 'column' }}>
-                  <Text style={styles.text2}>Company Name</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                  <Text style={styles.text2}>Phone</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                  <Text style={styles.text2}>Country</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                  <Text style={styles.text2}>Status</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                  <Text style={styles.text2}>Meeting Date</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                  <Text style={styles.text2}>Is Hired</Text>
-                </View>
 
-              </View>
-              <View style={styles.view2}>
-                <View style={{ flexDirection: 'column' }}>
-                  <Text style={styles.text3}>Test</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                  <Text style={styles.text3}>32342343243</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                  <Text style={styles.text3}>Canada</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                  <Text style={styles.text3}>Accepted</Text>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={{
-                      fontSize: 13,
-                      color: '#000000',
-                      fontFamily: 'Segoe UI',
-                      paddingVertical: 20, paddingRight: 5
-                    }}>02/11/2021</Text>
-                    <Text style={{
-                      fontSize: 13,
-                      color: '#000000',
-                      fontFamily: 'Segoe UI',
-                      paddingVertical: 20,
-                    }}>5:26:00 PM</Text>
-                  </View>
-                  <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                  <Text style={styles.text3}>Test</Text>
-                </View>
+return (
+<Container style={{backgroundColor:'white'}} >
+<MyHeader navigation={navigation}/>
+<Content >
+<View style={{flex:1}}>
+    <View style={{marginLeft:40}}>
+<Text style={styles.text}>Invitations</Text>
+<View style={styles.line}>
+</View>
+</View>
+<View style={styles.view}>
+    <View style={{flexDirection:'row'}}>
+  <View style={styles.view1}>
+<View style={{flexDirection:'column'}}>
+<Text style={styles.text2}>Company Name</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
+<Text style={styles.text2}>Phone</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
+<Text style={styles.text2}>Country</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
+<Text style={styles.text2}>Status</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
+<Text style={styles.text2}>Meeting Date</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
+<Text style={styles.text2}>Is Hired</Text>
+</View>
+
+  </View>
+  <View style={styles.view2}>
+<View style={{flexDirection:'column'}}>
+<Text style={styles.text3}>Test</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('40%')}}></View>
+<Text style={styles.text3}>32342343243</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('40%')}}></View>
+<Text style={styles.text3}>Canada</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('40%')}}></View>
+<Text style={styles.text3}>Accepted</Text>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('40%')}}></View>
+<View style={{flexDirection:'row'}}>
+<Text style={{fontSize:13,
+        color:'#000000',
+        fontFamily:'Segoe UI',
+        paddingVertical:20,paddingRight:5,marginLeft:14}}>02/11/2021</Text>
+<Text style={{  fontSize:13,
+        color:'#000000',
+        fontFamily:'Segoe UI',
+        paddingVertical:20,
+}}>5:26:00 PM</Text>
+</View>
+<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('40%')}}></View>
+<Text style={styles.text3}>Test</Text>
+</View>
+
 
               </View>
             </View>

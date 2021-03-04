@@ -8,7 +8,6 @@ import Jobs from '../Components/Jobs'
 import { connect } from 'react-redux';
 import { getJobs } from '../redux/actions/candidate';
 
-
 const BrowseJobs = (props) => {
 
     useEffect(() => {
@@ -42,6 +41,7 @@ const BrowseJobs = (props) => {
             </Content>
         </Container>
     )
+
 }
 
 const styles = StyleSheet.create({

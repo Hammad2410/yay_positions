@@ -11,7 +11,7 @@ import Jobcard from '../Components/Jobcard'
 const Jobs = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>
@@ -19,7 +19,7 @@ return (
 <View style={styles.line}>
 </View>
 </View>
-<TouchableOpacity style={styles.btn}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('CreateJob')}}>
 <Text style={styles.btntext}>Create Job</Text>
 </TouchableOpacity>
 <Jobcard/>

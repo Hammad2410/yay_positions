@@ -8,22 +8,24 @@ import Favoritecard from '../Components/Favoritecard'
 
 
 const Favorite = ({ navigation }) => {
-    return (
-        <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader />
-            <Content >
-                <View style={{ flex: 1 }}>
-                    <View style={{ marginLeft: 40 }}>
-                        <Text style={styles.text}>Favorite</Text>
-                        <View style={styles.line}>
-                        </View>
-                    </View>
-                    <Favoritecard />
-                    <Favoritecard bottom={'10%'} />
-                </View>
-            </Content>
-        </Container>
-    )
+
+return (
+<Container style={{backgroundColor:'white'}} >
+<MyHeader navigation={navigation}/>
+<Content >
+<View style={{flex:1}}>
+    <View style={{marginLeft:40}}>
+<Text style={styles.text}>Favorite</Text>
+<View style={styles.line}>
+</View>
+</View>
+<Favoritecard  />
+<Favoritecard   bottom={'10%'}/>
+</View>
+</Content>
+</Container>
+  )    
+
 }
 export default Favorite;
 const styles = StyleSheet.create({

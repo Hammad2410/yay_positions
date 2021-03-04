@@ -8,16 +8,18 @@ import Profile from '../Components/Profile'
 
 
 const MyProfile = ({ navigation }) => {
-    return (
-        <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader />
-            <Content >
-                <View style={{ flex: 1 }}>
-                    <View style={{ marginLeft: 25 }}>
-                        <Text style={styles.text}>MyProfile</Text>
-                        <View style={styles.line}>
-                        </View>
-                    </View>
+
+return (
+<Container style={{backgroundColor:'white'}} >
+<MyHeader navigation={navigation}/>
+<Content >
+<View style={{flex:1}}>
+    <View style={{marginLeft:25}}>
+<Text style={styles.text}>MyProfile</Text>
+<View style={styles.line}>
+</View>
+</View>
+
 
                     <Profile bottom={10} />
                 </View>

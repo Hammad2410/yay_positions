@@ -42,119 +42,121 @@ var job = [
 
 const Filter = ({ navigation }) => {
 
-  return (
-    <Container style={{ backgroundColor: 'white' }} >
-      <MyHeader />
-      <Content >
-        <View style={{ flex: 1 }}>
-          <View style={{ marginLeft: 40, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text style={styles.text}>Search Filters</Text>
-            <TouchableOpacity>
-              <Text style={styles.text1}>Clear all</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 15 }} />
-          <View style={{ flexDirection: 'column', marginTop: '3%', marginLeft: '10%' }}>
-            <Text style={styles.text2}>Job Type</Text>
-            <RadioForm
-              radio_props={filter}
-              initial={0}
-              onPress={(value) => { (value.toString(), ToastAndroid.SHORT) }}
-              buttonSize={8}
-              buttonOuterSize={20}
-              selectedButtonColor={'green'}
-              selectedLabelColor={'#000000'}
-              buttonColor={'#707070'}
-              labelStyle={{ fontSize: 13 }}
-              style={{ marginTop: 15 }}
 
-            />
+return (
+<Container style={{backgroundColor:'white'}} >
+<MyHeader  navigation={navigation}/>
+<Content >
+<View style={{flex:1}}>
+<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+<Text style={styles.text}>Search Filters</Text>
+<TouchableOpacity>
+<Text style={styles.text1}>Clear all</Text>
+</TouchableOpacity>
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
+    <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
+    <Text style={styles.text2}>Job Type</Text>
+    <RadioForm
+          radio_props={filter}
+          initial={0}
+          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          buttonSize={8}
+          buttonOuterSize={20}
+          selectedButtonColor={'green'}
+          selectedLabelColor={'#000000'}
+          buttonColor={'#707070'}
+          labelStyle={{ fontSize: 13}}
+          style={{marginTop:15}}
+      
+        />
+    
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
+    <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
+    <Text style={styles.text2}>Salary Type</Text>
+    <RadioForm
+          radio_props={salary}
+          initial={0}
+          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          buttonSize={8}
+          buttonOuterSize={20}
+          selectedButtonColor={'green'}
+          selectedLabelColor={'#000000'}
+          buttonColor={'#707070'}
+          labelStyle={{ fontSize: 13}}
+          style={{marginTop:15}}
+      
+        />
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
+    <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
+    <Text style={styles.text2}>Skills</Text>
+    <DropDownPicker
+    placeholder={'Select your skills'}
+    placeholderStyle={{color:'#000000',fontSize:12}}
+    arrowSize={20}
+    arrowColor={'#47525E'}
+    containerStyle={{height:50,width:wp('80%')}}
+    style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
+    dropDownStyle={{backgroundColor: '#009961'}}
+/>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
+<Text style={styles.btntext}>Search</Text>
+</TouchableOpacity>
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
+    <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
+    <Text style={styles.text2}>Job Experience</Text>
+    <DropDownPicker
+    placeholder={'Select your skills'}
+    placeholderStyle={{color:'#000000',fontSize:12}}
+    arrowSize={20}
+    arrowColor={'#47525E'}
+    containerStyle={{height:50,width:wp('80%')}}
+    style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
+    dropDownStyle={{backgroundColor: '#009961'}}
+/>
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:20}}/>
+    <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
+    <Text style={styles.text2}>Job Qualification</Text>
+    <RadioForm
+          radio_props={job}
+          initial={0}
+          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          buttonSize={8}
+          buttonOuterSize={20}
+          selectedButtonColor={'green'}
+          selectedLabelColor={'#000000'}
+          buttonColor={'#707070'}
+          labelStyle={{ fontSize: 13}}
+          style={{marginTop:15}}
+      
+        />
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
+    <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
+    <Text style={styles.text2}>Salary Range</Text>
+    <DropDownPicker
+    placeholder={'Select your skills'}
+    placeholderStyle={{color:'#000000',fontSize:12}}
+    arrowSize={20}
+    arrowColor={'#47525E'}
+    containerStyle={{height:50,width:wp('80%')}}
+    style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
+    dropDownStyle={{backgroundColor: '#009961'}}
+/>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
+<Text style={styles.btntext}>Search</Text>
+</TouchableOpacity>
+    </View>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginBottom:25,marginTop:20}}/>
+</View>
+</Content>
+</Container>
+  )    
 
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 15 }} />
-          <View style={{ flexDirection: 'column', marginTop: '3%', marginLeft: '10%' }}>
-            <Text style={styles.text2}>Salary Type</Text>
-            <RadioForm
-              radio_props={salary}
-              initial={0}
-              onPress={(value) => { (value.toString(), ToastAndroid.SHORT) }}
-              buttonSize={8}
-              buttonOuterSize={20}
-              selectedButtonColor={'green'}
-              selectedLabelColor={'#000000'}
-              buttonColor={'#707070'}
-              labelStyle={{ fontSize: 13 }}
-              style={{ marginTop: 15 }}
-
-            />
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 15 }} />
-          <View style={{ flexDirection: 'column', marginTop: '3%', marginLeft: '10%' }}>
-            <Text style={styles.text2}>Skills</Text>
-            <DropDownPicker
-              placeholder={'Select your skills'}
-              placeholderStyle={{ color: '#000000', fontSize: 12 }}
-              arrowSize={20}
-              arrowColor={'#47525E'}
-              containerStyle={{ height: 50, width: wp('80%') }}
-              style={{ backgroundColor: '#fffff', borderColor: '#707070', marginTop: 10 }}
-              dropDownStyle={{ backgroundColor: '#009961' }}
-            />
-            <TouchableOpacity style={styles.btn}>
-              <Text style={styles.btntext}>Search</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 15 }} />
-          <View style={{ flexDirection: 'column', marginTop: '3%', marginLeft: '10%' }}>
-            <Text style={styles.text2}>Job Experience</Text>
-            <DropDownPicker
-              placeholder={'Select your skills'}
-              placeholderStyle={{ color: '#000000', fontSize: 12 }}
-              arrowSize={20}
-              arrowColor={'#47525E'}
-              containerStyle={{ height: 50, width: wp('80%') }}
-              style={{ backgroundColor: '#fffff', borderColor: '#707070', marginTop: 10 }}
-              dropDownStyle={{ backgroundColor: '#009961' }}
-            />
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 20 }} />
-          <View style={{ flexDirection: 'column', marginTop: '3%', marginLeft: '10%' }}>
-            <Text style={styles.text2}>Job Qualification</Text>
-            <RadioForm
-              radio_props={job}
-              initial={0}
-              onPress={(value) => { (value.toString(), ToastAndroid.SHORT) }}
-              buttonSize={8}
-              buttonOuterSize={20}
-              selectedButtonColor={'green'}
-              selectedLabelColor={'#000000'}
-              buttonColor={'#707070'}
-              labelStyle={{ fontSize: 13 }}
-              style={{ marginTop: 15 }}
-
-            />
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 15 }} />
-          <View style={{ flexDirection: 'column', marginTop: '3%', marginLeft: '10%' }}>
-            <Text style={styles.text2}>Salary Range</Text>
-            <DropDownPicker
-              placeholder={'Select your skills'}
-              placeholderStyle={{ color: '#000000', fontSize: 12 }}
-              arrowSize={20}
-              arrowColor={'#47525E'}
-              containerStyle={{ height: 50, width: wp('80%') }}
-              style={{ backgroundColor: '#fffff', borderColor: '#707070', marginTop: 10 }}
-              dropDownStyle={{ backgroundColor: '#009961' }}
-            />
-            <TouchableOpacity style={styles.btn}>
-              <Text style={styles.btntext}>Search</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginBottom: 25, marginTop: 20 }} />
-        </View>
-      </Content>
-    </Container>
-  )
 }
 export default Filter;
 

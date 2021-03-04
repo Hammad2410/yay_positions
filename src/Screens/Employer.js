@@ -7,27 +7,65 @@ import EmployerDrawer from '../Components/EmployerDrawer'
 
 
 const Employer = ({ navigation }) => {
-    return (
-        <Container style={{ backgroundColor: 'white' }} >
-            <Content >
 
-                <EmployerDrawer />
-                <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
-                        <TouchableOpacity
-                            onPress={() => navigation.goBack()}>
-                            <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
-                        </TouchableOpacity>
-                        <Text style={styles.text}>Hello Jason </Text>
-                    </View>
+return (
+<Container style={{backgroundColor:'white'}} >
+<Content >
+    
+<EmployerDrawer/>
 
-                    <TouchableOpacity>
-                        <Text style={{ marginLeft: '80%' }}>Log Off</Text>
+    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
+    <TouchableOpacity
+                        onPress={() => navigation.goBack()}>
+                        <Icon style={{paddingLeft:25}} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity>
+                    <Text style={styles.text}>Hello Jason </Text>
+    </View>
+                <View style={{ marginLeft: 30, marginTop: 18 }}>
+                    <Text style={styles.text1}>All Applicants</Text>
                 </View>
-            </Content>
-        </Container>
-    )
+                <View style={[styles.view,{backgroundColor:'#001F3F'}]}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>0</Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.text2}>All Applicants</Text>
+                        <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="stats-chart-sharp" size={45} color='#24963E' />
+                    </View>
+                    <View style={{ marginTop: 20, flex: 1, backgroundColor: '#24963E', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
+                            <Text style={styles.text3}>More info</Text>
+                            <TouchableOpacity>
+                                <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="arrow-forward-circle" size={30} color='white' />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+                <View style={{ marginLeft: 30, marginTop: 18 }}>
+                    <Text style={styles.text1}>All Jobs</Text>
+                </View>
+                <View style={styles.view}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>0</Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.text2}>All Jobs</Text>
+                        <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="stats-chart-sharp" size={45} color='#24963E' />
+                    </View>
+                    <View style={{ marginTop: 20, flex: 1, backgroundColor: '#24963E', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
+                            <Text style={styles.text3}>More info</Text>
+                            <TouchableOpacity>
+                                <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="arrow-forward-circle" size={30} color='white' />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+                <TouchableOpacity onPress={() => {navigation.navigate('CandidateHome')}}>
+                    <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
+                </TouchableOpacity>
+</Content>
+</Container>
+  )    
+
 }
 export default Employer;
 const styles = StyleSheet.create({

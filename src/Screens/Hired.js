@@ -8,22 +8,24 @@ import Hiredcard from '../Components/Hiredcard'
 
 
 const Hired = ({ navigation }) => {
-    return (
-        <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader />
-            <Content >
-                <View style={{ flex: 1 }}>
-                    <View style={{ marginLeft: 40 }}>
-                        <Text style={styles.text}>Hired</Text>
-                        <View style={styles.line}>
-                        </View>
-                    </View>
-                    <Hiredcard />
-                    <Hiredcard bottom={'10%'} />
-                </View>
-            </Content>
-        </Container>
-    )
+
+return (
+<Container style={{backgroundColor:'white'}} >
+<MyHeader navigation={navigation}/>
+<Content >
+<View style={{flex:1}}>
+    <View style={{marginLeft:40}}>
+<Text style={styles.text}>Hired</Text>
+<View style={styles.line}>
+</View>
+</View>
+<Hiredcard  />
+<Hiredcard   bottom={'10%'}/>
+</View>
+</Content>
+</Container>
+  )    
+
 }
 export default Hired;
 const styles = StyleSheet.create({

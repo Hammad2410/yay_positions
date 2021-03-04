@@ -28,7 +28,7 @@ const Register = (props) => {
                         </View>
                     </View>
                     <View style={{ height: 200, alignItems: 'center', marginTop: '7%' }}>
-                        <TextInputLogin value={email} setter={setEmail} />
+                        <TextInputLogin value={email} setter={setEmail} label="Email" />
                         <TextInputLogin label="Name" value={name} setter={setName} />
                         <View style={styles.switchContainer}>
                             <Button onPress={() => setRole('Candidate')} style={[styles.switchBtn, { backgroundColor: role === 'Candidate' ? '#016742' : '#009961' }]}>
