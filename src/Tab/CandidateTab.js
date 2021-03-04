@@ -15,8 +15,8 @@ import Icon5 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Candidate from '../Screens/Candidate';
 import SavedJobs from '../Screens/SavedJobs'
 import PersonalInfo from '../Screens/PersonalInfo'
-
-
+import Jobs from '../Screens/Jobs';
+import BrowseJobs from '../Screens/BrowseJobs';
 import CompanyDetail from '../Screens/CompanyDetail';
 import CreateJob from '../Screens/CreateJob';
 import MyResume from '../Screens/MyResume';
@@ -141,8 +141,8 @@ const CandidateTab = () => {
                 }}
             />
             <Tab.Screen
-                name="PersonalInfo"
-                component={PersonalInfo}
+                name="BrowseJobs"
+                component={BrowseJobs}
                 options={{
 
                     tabBarIcon: ({ focused, color }) => (

@@ -1,46 +1,47 @@
 import React, { useState } from 'react';
-import { View, Text,StyleSheet,TouchableOpacity,Image, ToastAndroid } from 'react-native';
-import { Content,Container,Header,Title, Left } from 'native-base';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ToastAndroid } from 'react-native';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import RadioForm, {
-    RadioButton, 
-    RadioButtonInput, 
-    RadioButtonLabel
-  } from 'react-native-simple-radio-button';
+  RadioButton,
+  RadioButtonInput,
+  RadioButtonLabel
+} from 'react-native-simple-radio-button';
 import MyHeader from '../Components/LoginSignupHeader';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 
 var filter = [
-    {label: "Full Time", value: 0},
-    {label: "Part Time", value: 1},
-    {label: "Internship", value: 2},
-    {label: "Temporary", value: 4},
-    {label: "Permanent", value: 5},
-    {label: "Contract", value: 6},
-    {label: " Freelance", value: 7},
-  ];
+  { label: "Full Time", value: 0 },
+  { label: "Part Time", value: 1 },
+  { label: "Internship", value: 2 },
+  { label: "Temporary", value: 4 },
+  { label: "Permanent", value: 5 },
+  { label: "Contract", value: 6 },
+  { label: " Freelance", value: 7 },
+];
 
-  var salary = [
-    {label: "Hourly", value: 0},
-    {label: "Weekly", value: 1},
-    {label: "Monthly", value: 2},
-    {label: "Yearly", value: 4},
-    
-  ];
+var salary = [
+  { label: "Hourly", value: 0 },
+  { label: "Weekly", value: 1 },
+  { label: "Monthly", value: 2 },
+  { label: "Yearly", value: 4 },
 
-  var job = [
-    {label: "High School", value: 0},
-    {label: "Bachelors", value: 1},
-    {label: "Masters", value: 2},
-    {label: "Doctorate", value: 4},
-    {label: "Diploma", value: 5},
-    {label: "MBBS", value: 6},
-    
-  ];
-  
-  
+];
+
+var job = [
+  { label: "High School", value: 0 },
+  { label: "Bachelors", value: 1 },
+  { label: "Masters", value: 2 },
+  { label: "Doctorate", value: 4 },
+  { label: "Diploma", value: 5 },
+  { label: "MBBS", value: 6 },
+
+];
+
+
 const Filter = ({ navigation }) => {
+
 
 return (
 <Container style={{backgroundColor:'white'}} >
@@ -155,44 +156,46 @@ return (
 </Content>
 </Container>
   )    
+
 }
 export default Filter;
 
 const styles = StyleSheet.create({
-   
-    text:{
-        color:'#707070',
-        fontSize:17,
-        fontFamily:'Segoe UI',
-    },
-    
-    text1:{
-        color:'#707070',
-        fontSize:12,
-        paddingRight:40,
-        paddingTop:5
-    },
-text2:{
-    color:'#000000',
-    fontSize:14,
-    fontFamily:'Segoe UI',
-},
-btn:{
-    width:wp('20%'),
-    height:35,
-    backgroundColor:'#17A2B8',
-    marginTop:10,
-    borderRadius:8,
+
+  text: {
+    color: '#707070',
+    fontSize: 17,
+    fontFamily: 'Segoe UI',
+  },
+
+  text1: {
+    color: '#707070',
+    fontSize: 12,
+    paddingRight: 40,
+    paddingTop: 5
+  },
+  text2: {
+    color: '#000000',
+    fontSize: 14,
+    fontFamily: 'Segoe UI',
+  },
+  btn: {
+    width: wp('20%'),
+    height: 35,
+    backgroundColor: '#17A2B8',
+    marginTop: 10,
+    borderRadius: 8,
     justifyContent: 'center',
-    
-},
-btntext:
-{ fontFamily:'Segoe UI',
-   fontSize:14,
+
+  },
+  btntext:
+  {
+    fontFamily: 'Segoe UI',
+    fontSize: 14,
     textAlign: 'center',
     justifyContent: 'center',
     color: '#FFFFFF',
     fontWeight: 'bold'
-}
+  }
 
 })

@@ -51,9 +51,6 @@ const Register = (props) => {
                         </TouchableOpacity>
                     }
                 </View>
-
-
-
             </Content>
             <Footer style={{ backgroundColor: '#009961', height: 40 }}>
 

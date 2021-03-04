@@ -41,7 +41,7 @@ export const register = (email, name, country, role, password, confirmPassword) 
             dispatch({ type: types.AUTH_USER_REGISTERED })
         }).
             catch((error) => {
-
+                console.log("Error : ", error.message)
 
                 dispatch({ type: types.AUTH_ERROR, message: error.message })
 
