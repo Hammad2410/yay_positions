@@ -3,7 +3,9 @@ import * as types from '../actionTypes';
 const initialState = {
     loading: false,
     error: '',
-    invitations: []
+    invitations: [],
+    jobs: [],
+    savedJobs: [],
 };
 
 const candidate = (state = initialState, action) => {
@@ -33,6 +35,18 @@ const candidate = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 invitations: action.invitations
+            }
+
+        case types.CANDIDATE_JOBS_FETCHED:
+            return {
+                ...state,
+                jobs: action.jobs
+            }
+
+        case types.CANDIDATE_SAVED_JOBS_FETCHED:
+            return {
+                ...state,
+                savedJobs: [...action.jobs]
             }
 
         default:

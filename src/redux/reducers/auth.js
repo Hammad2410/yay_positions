@@ -4,7 +4,8 @@ const initialState = {
     loading: false,
     error: '',
     token: null,
-    userRegistered: false
+    userRegistered: false,
+    profile: null
 };
 
 const auth = (state = initialState, action) => {
@@ -49,6 +50,12 @@ const auth = (state = initialState, action) => {
                 userRegistered: false
             }
 
+        case types.AUTH_PROFILE_FETCHED:
+            return {
+                ...state,
+                loading: false,
+                profile: action.profile
+            }
 
         default:
             return state;
