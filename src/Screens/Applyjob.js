@@ -11,7 +11,7 @@ import JobApply from '../Components/JobApply'
 const Applyjob = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>

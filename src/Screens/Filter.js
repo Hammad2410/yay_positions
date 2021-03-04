@@ -44,7 +44,7 @@ const Filter = ({ navigation }) => {
 
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader  navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
 <View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
@@ -100,7 +100,7 @@ return (
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#009961'}}
 />
-<TouchableOpacity style={styles.btn}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>
@@ -146,7 +146,7 @@ return (
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#009961'}}
 />
-<TouchableOpacity style={styles.btn}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>

@@ -31,7 +31,7 @@ const Educationalinfo = ({ navigation, }) => {
 
 return (
 <Container>
-<MyHeader/>
+<MyHeader  navigation={navigation}/>
 <Content >
 
 <View style={{flex:1}}>
@@ -45,9 +45,9 @@ return (
 <View style={{marginTop:10,alignItems:'center'}}>
 
 <ProfileText nametext="Degree Title"  marginLeftt={-249} />
-<TextInputLogin  name1="60"  />
+<TextInputLogin  label="60"  />
 <ProfileText nametext="Institute Name" marginLeftt={-235}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 
 <ProfileText nametext="Start Date" marginLeftt={-260} />
 <View style={{flexDirection:'row',alignSelf:'center'}}>
@@ -105,7 +105,7 @@ return (
 </View>
 
 <ProfileText nametext="Grade" marginLeftt={-285}/>
-<TextInputLogin  name1="A"  />
+<TextInputLogin  label="A"  />
 <ProfileText nametext="Description" marginLeftt={-255}/>
 <TextInput placeholder="1 year" placeholderTextColor='#707070'  style={styles.textinput}></TextInput>
 <ButtonP NameButton="Update Information"/>

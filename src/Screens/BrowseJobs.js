@@ -10,7 +10,7 @@ import Jobs from '../Components/Jobs'
 const BrowseJobs = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>
@@ -20,7 +20,7 @@ return (
 </View>
 
 <View style={{alignItems:'flex-end',marginTop:15,marginRight:25}}>
-    <TouchableOpacity>
+    <TouchableOpacity  onPress={() => {navigation.navigate('Filter')}}>
     <Text style={styles.text1}>Search Filters</Text>
     </TouchableOpacity>
 </View>

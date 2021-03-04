@@ -10,7 +10,7 @@ import Hiredcard from '../Components/Hiredcard'
 const Hired = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>

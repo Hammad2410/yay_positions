@@ -9,7 +9,7 @@ import MyHeader from '../Components/LoginSignupHeader'
 const Invitations = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:40}}>
@@ -49,7 +49,7 @@ return (
 <Text style={{fontSize:13,
         color:'#000000',
         fontFamily:'Segoe UI',
-        paddingVertical:20,paddingRight:5}}>02/11/2021</Text>
+        paddingVertical:20,paddingRight:5,marginLeft:14}}>02/11/2021</Text>
 <Text style={{  fontSize:13,
         color:'#000000',
         fontFamily:'Segoe UI',

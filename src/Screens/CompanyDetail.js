@@ -11,7 +11,11 @@ import ButtonP from '../Components/ButtonP';
 import DatePicker from 'react-native-date-picker';
 
 const CompanyDetail = ({ navigation, }) => {
-    
+    const [Cname, setCname] = useState('');
+    const [Pnumber, setPnumber] = useState('');
+    const [Headline, setHeadline] = useState('');
+    const [Website, setWebsite] = useState('');
+    const [Description, setDescription] = useState('');
     const [Photo,setPhoto] = useState('');
     const openPhoto = async () => {
         try {
@@ -38,7 +42,7 @@ const CompanyDetail = ({ navigation, }) => {
 
 return (
 <Container>
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 
 <View style={{flex:1}}>
@@ -52,13 +56,13 @@ return (
 <View style={{marginTop:10,alignItems:'center'}}>
 
 <ProfileText nametext="Company Name"  marginLeftt={-230} />
-<TextInputLogin  name1="Abc international"  />
+<TextInputLogin  label="Abc international"  value={Cname} setter={setCname}  />
 <ProfileText nametext="Phone No." marginLeftt={-260}/>
-<TextInputLogin  name1="2233432423" Ktype={'number-pad'} />
+<TextInputLogin  label="2233432423" Ktype={'number-pad'} value={Pnumber} setter={setPnumber}/>
 <ProfileText nametext="Headline"  marginLeftt={-265} />
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test" value={Headline} setter={setHeadline} />
 <ProfileText nametext="Website"  marginLeftt={-265} />
-<TextInputLogin  name1="www.abcinternational.com.pk"  />
+<TextInputLogin  label="www.abcinternational.com.pk"  value={Website} setter={setWebsite} />
 <ProfileText nametext="Profile Image" marginLeftt={-243} />
 <View style={{ height:hp('5%'),
         width:wp('80%'),
@@ -85,7 +89,7 @@ return (
         </View>
 
 <ProfileText nametext="Description" marginLeftt={-255}/>
-<TextInput placeholder="Test" placeholderTextColor='#707070'  style={styles.textinput}></TextInput>
+<TextInput placeholder="Test" placeholderTextColor='#707070' value={Description} onChangeText={setDescription} style={styles.textinput}></TextInput>
 <ButtonP NameButton="Update Information"/>
 </View>
 

@@ -16,7 +16,7 @@ const CreateJob = ({ navigation, }) => {
 
 return (
 <Container>
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 
 <View style={{flex:1}}>
@@ -30,25 +30,25 @@ return (
 <View style={{marginTop:10,alignItems:'center'}}>
 
 <ProfileText nametext="Title"  marginLeftt={-290} />
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Level" marginLeftt={-285}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Experience" marginLeftt={-255}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Qualification" marginLeftt={-245}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Job Type" marginLeftt={-265}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Salary Type" marginLeftt={-252}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Salary Range" marginLeftt={-245}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Location" marginLeftt={-267}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Remote or Inhouse" marginLeftt={-212}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Select Skills" marginLeftt={-248}/>
-<TextInputLogin  name1="Test"  />
+<TextInputLogin  label="Test"  />
 <ProfileText nametext="Job Description" marginLeftt={-230}/>
 <TextInput placeholder="Test" placeholderTextColor='#707070'  style={styles.textinput}></TextInput>
 <ProfileText nametext="Details" marginLeftt={-278}/>

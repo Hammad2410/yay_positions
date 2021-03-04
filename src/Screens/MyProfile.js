@@ -10,7 +10,7 @@ import Profile from '../Components/Profile'
 const MyProfile = ({ navigation }) => {
 return (
 <Container style={{backgroundColor:'white'}} >
-<MyHeader/>
+<MyHeader navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:25}}>
