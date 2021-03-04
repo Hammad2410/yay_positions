@@ -29,7 +29,7 @@ const Candidate = (props) => {
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Jobs</Text>
                 </View>
-                <View style={styles.view}>
+                <View style={[styles.view,{backgroundColor:'#001F3F'}]}>
                     <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.invitations.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

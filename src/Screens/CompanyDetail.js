@@ -55,13 +55,13 @@ const CompanyDetail = ({ navigation, }) => {
                     <View style={{ marginTop: 10, alignItems: 'center' }}>
 
                         <ProfileText nametext="Company Name" marginLeftt={-230} />
-                        <TextInputLogin name1="Abc international" />
+                        <TextInputLogin label="Abc international" />
                         <ProfileText nametext="Phone No." marginLeftt={-260} />
-                        <TextInputLogin name1="2233432423" Ktype={'number-pad'} />
+                        <TextInputLogin label="2233432423" Ktype={'number-pad'} />
                         <ProfileText nametext="Headline" marginLeftt={-265} />
-                        <TextInputLogin name1="Test" />
+                        <TextInputLogin label="Test" />
                         <ProfileText nametext="Website" marginLeftt={-265} />
-                        <TextInputLogin name1="www.abcinternational.com.pk" />
+                        <TextInputLogin label="www.abcinternational.com.pk" />
                         <ProfileText nametext="Profile Image" marginLeftt={-243} />
                         <View style={{
                             height: hp('5%'),

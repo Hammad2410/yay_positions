@@ -55,7 +55,20 @@ const Login = ({ login, navigation, auth }) => {
                     {
                         auth.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :
                             <View style={{ flexDirection: 'row', marginLeft: 35 }}>
-                                <TouchableOpacity style={styles.btn} onPress={() => login(email, password)}>
+                                <TouchableOpacity style={styles.btn} //onPress={() => login(email, password)}
+                                onPress={() => {
+                                    if(role==='Employer') {
+                                        navigation.navigate('Employer')
+                                    }
+                               else if ( role==='Candidate') {
+                                navigation.navigate('CandidateHome') 
+                               }
+                               else{
+                                   alert('hf')
+                               }
+                                    
+                                   }}
+                                >
                                     <Text style={styles.btntext}>Login</Text>
                                 </TouchableOpacity>
 

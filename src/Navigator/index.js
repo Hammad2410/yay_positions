@@ -47,6 +47,7 @@ import SavedJobs from '../Screens/SavedJobs'
 import PersonalInfo from '../Screens/PersonalInfo'
 import CreateJob from '../Screens/CreateJob'
 import Efilter from '../Screens/Efilter'
+import CompanyDetail from '../Screens/CompanyDetail'
 import { DrawerContent } from './CandidateDrawer';
 import EmployerDrawer from './EmployerNavigatorDrawer'
 const CandidateDrawer = () => {
@@ -122,7 +123,33 @@ const Navigator = () => {
                 <Stack.Screen name="Efilter" component={Efilter}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-
+                <Stack.Screen name="CompanyDetail" component={CompanyDetail}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="Jobs" component={Jobs}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                 <Stack.Screen name="Invitationentries" component={Invitationentries}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                 <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="MyResume" component={MyResume}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                 <Stack.Screen name="PersonalInfo" component={PersonalInfo}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                 <Stack.Screen name="MyProfile" component={MyProfile}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                 <Stack.Screen name="BrowseJobs" component={BrowseJobs}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="Invitations" component={Invitations}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
             </Stack.Navigator>
 
         </NavigationContainer>

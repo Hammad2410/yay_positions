@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import Favoritecard from '../Components/Favoritecard'
-
+import EmployerTab from '../Components/EmployerTab'
 
 const Favorite = ({ navigation }) => {
 
@@ -23,6 +23,7 @@ return (
 <Favoritecard   bottom={'10%'}/>
 </View>
 </Content>
+<EmployerTab navigation={navigation}/>
 </Container>
   )    
 
