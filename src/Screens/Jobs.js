@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import MyHeader from '../Components/LoginSignupHeader'
 import Jobcard from '../Components/Jobcard'
-
+import EmployerTab from '../Components/EmployerTab'
 
 const Jobs = ({ navigation }) => {
 return (
@@ -25,6 +25,8 @@ return (
 <Jobcard/>
 </View>
 </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
+
 </Container>
   )    
 }

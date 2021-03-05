@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import Candidatecard from '../Components/Candidatecard'
-
+import EmployerTab from '../Components/EmployerTab'
 
 const BrowseCandidates = ({ navigation }) => {
 return (
@@ -23,10 +23,11 @@ return (
     <Text style={styles.text1}>Search Filters</Text>
     </TouchableOpacity>
 </View>
-<Candidatecard />
-<Candidatecard   bottom={'10%'}/>
+<Candidatecard navigation={navigation}/>
+<Candidatecard navigation={navigation}   bottom={'10%'}/>
 </View>
 </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
 </Container>
   )    
 }

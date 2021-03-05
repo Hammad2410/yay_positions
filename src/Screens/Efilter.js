@@ -9,7 +9,7 @@ import RadioForm, {
   } from 'react-native-simple-radio-button';
 import MyHeader from '../Components/LoginSignupHeader';
 import DropDownPicker from 'react-native-dropdown-picker';
-
+import EmployerTab from '../Components/EmployerTab'
 
 var filter = [
     {label: "Full Time", value: 0},
@@ -153,6 +153,7 @@ return (
     <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginBottom:25,marginTop:20}}/>
 </View>
 </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
 </Container>
   )    
 }

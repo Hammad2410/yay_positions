@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import Hiredcard from '../Components/Hiredcard'
-
+import EmployerTab from '../Components/EmployerTab'
 
 const Hired = ({ navigation }) => {
 
@@ -23,6 +23,7 @@ return (
 <Hiredcard   bottom={'10%'}/>
 </View>
 </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
 </Container>
   )    
 

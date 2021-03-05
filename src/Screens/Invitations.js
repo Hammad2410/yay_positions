@@ -4,6 +4,7 @@ import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
+import CandidateTab from '../Components/CandidateTab';
 
 
 const Invitations = ({ navigation }) => {
@@ -71,6 +72,7 @@ return (
 
         </View>
       </Content>
+      <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#009961'}/>
     </Container>
   )
 }

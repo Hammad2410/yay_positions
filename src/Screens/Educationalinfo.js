@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import ButtonP from '../Components/ButtonP';
 
 import DatePicker from 'react-native-date-picker';
+import CandidateTab from '../Components/CandidateTab';
 
 const Educationalinfo = ({ navigation, }) => {
 
@@ -258,6 +259,7 @@ return (
 </View>
 
 </Content>
+<CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
 </Container>
   )    
 }

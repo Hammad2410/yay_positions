@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import MyHeader from '../Components/LoginSignupHeader';
 
 import ProfileText from '../Components/ProfileText';
-
+import CandidateTab from '../Components/CandidateTab';
 import ButtonP from '../Components/ButtonP';
 
 
@@ -51,6 +51,7 @@ return (
 
 
 </Content>
+<CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
 </Container>
   )    
 }

@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
-
+import EmployerTab from '../Components/EmployerTab'
 
 
 
@@ -64,6 +64,7 @@ return (
 </View>
 
 </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#009961'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
 </Container>
   )    
 }

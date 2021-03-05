@@ -4,6 +4,7 @@ import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import EmployerDrawer from '../Components/EmployerDrawer'
+import EmployerTab from '../Components/EmployerTab'
 
 
 const Employer = ({ navigation }) => {
@@ -12,7 +13,7 @@ return (
 <Container style={{backgroundColor:'white'}} >
 <Content >
     
-<EmployerDrawer/>
+<EmployerDrawer navigation={navigation}/>
 
     <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
     <TouchableOpacity
@@ -63,6 +64,8 @@ return (
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
 </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
+
 </Container>
   )    
 

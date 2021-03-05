@@ -48,6 +48,7 @@ import PersonalInfo from '../Screens/PersonalInfo'
 import CreateJob from '../Screens/CreateJob'
 import Efilter from '../Screens/Efilter'
 import CompanyDetail from '../Screens/CompanyDetail'
+import CProfile from '../Screens/CProfile'
 import { DrawerContent } from './CandidateDrawer';
 import EmployerDrawer from './EmployerNavigatorDrawer'
 const CandidateDrawer = () => {
@@ -55,7 +56,7 @@ const CandidateDrawer = () => {
        
         <Drawer.Navigator  drawerContent={props => <DrawerContent {...props} />}>
             
-            <Drawer.Screen name="Dashboard" component={CandidateTab}
+            <Drawer.Screen name="Dashboard" component={Candidate}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
             <Drawer.Screen name="UpdateProfile" component={PersonalInfo}
@@ -85,6 +86,7 @@ const CandidateDrawer = () => {
              <Drawer.Screen name="SavedJobs" component={SavedJobs}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
+              
         </Drawer.Navigator>
     )
 }
@@ -148,6 +150,12 @@ const Navigator = () => {
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="Invitations" component={Invitations}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="Favorite" component={Favorite}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="CProfile" component={CProfile}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
             </Stack.Navigator>

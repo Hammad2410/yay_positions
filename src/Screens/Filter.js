@@ -9,6 +9,7 @@ import RadioForm, {
 } from 'react-native-simple-radio-button';
 import MyHeader from '../Components/LoginSignupHeader';
 import DropDownPicker from 'react-native-dropdown-picker';
+import CandidateTab from '../Components/CandidateTab';
 
 
 var filter = [
@@ -154,6 +155,8 @@ return (
     <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginBottom:25,marginTop:20}}/>
 </View>
 </Content>
+<CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#009961'} Fifth={'#E4E4E4'}/>
+
 </Container>
   )    
 

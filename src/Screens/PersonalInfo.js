@@ -11,7 +11,7 @@ import ButtonP from '../Components/ButtonP';
 import DocumentPicker from 'react-native-document-picker';
 import DatePicker from 'react-native-date-picker';
 import Tags from "react-native-tags";
-
+import CandidateTab from '../Components/CandidateTab';
 
 const PersonalInfo = ({ navigation, }) => {
     const [Fullname, setFullname] = useState('');
@@ -379,6 +379,7 @@ return (
                 
 
             </Content>
+            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#009961'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 }

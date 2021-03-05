@@ -7,7 +7,7 @@ import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
 import DocumentPicker from 'react-native-document-picker';
 import ButtonP from '../Components/ButtonP';
-
+import EmployerTab from '../Components/EmployerTab'
 import DatePicker from 'react-native-date-picker';
 
 const CompanyDetail = ({ navigation, }) => {
@@ -41,7 +41,7 @@ const CompanyDetail = ({ navigation, }) => {
 
     return (
         <Container>
-            <MyHeader />
+            <MyHeader navigation={navigation} />
             <Content >
 
                 <View style={{ flex: 1 }}>
@@ -99,6 +99,7 @@ const CompanyDetail = ({ navigation, }) => {
                 </View>
 
             </Content>
+            <EmployerTab navigation={navigation} EFirst={'#009961'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
         </Container>
     )
 }

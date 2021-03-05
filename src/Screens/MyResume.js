@@ -45,7 +45,7 @@ return (
 
 
 </Content>
-<CandidateTab navigation={navigation}/>
+<CandidateTab navigation={navigation} First={'#009961'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
 </Container>
   )    
 }

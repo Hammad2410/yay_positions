@@ -9,25 +9,25 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 import Icon5 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-const CandidateTab = ({ navigation}) => {
+const CandidateTab = ({ navigation,First,Second,Third,Fourth,Fifth}) => {
   return (
 
     <View >
       <View style={styles.view}>
           <TouchableOpacity style={{ flex:1,marginLeft:40}} onPress={() => {navigation.navigate('MyResume')}}>
-          <Iconss name='person' size={30} style={{ color: 'green' }}/>
+          <Iconss name='person' size={30} style={{color:First }}/>
       </TouchableOpacity>
       <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('PersonalInfo')}} >
-      <Icons  name='file-text' size={27}  style={{ color: 'green' }}/>
+      <Icons  name='file-text' size={27}  style={{ color:Second }}/>
       </TouchableOpacity>
       <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('MyProfile')}} >
-      <Icon5 name='upload' size={40}style={{ color:'green' }}/>
+      <Icon5 name='upload' size={40}style={{ color:Third }}/>
       </TouchableOpacity>
       <TouchableOpacity style={{ flex:1}}  onPress={() => {navigation.navigate('BrowseJobs')}}>
-      <Icon name='save' size={35} style={{ color: 'green' }}/>
+      <Icon name='save' size={35} style={{ color:Fourth }}/>
       </TouchableOpacity>
       <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('Invitations')}} >
-      <Icon name='mail' size={35}   style={{ color: 'green' }} />
+      <Icon name='mail' size={35}   style={{ color:Fifth }} />
       </TouchableOpacity>
       </View>
     </View>

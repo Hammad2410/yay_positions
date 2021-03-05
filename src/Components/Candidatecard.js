@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text,StyleSheet,TouchableOpacity,Image } from 'react-native';
+import { View, Text,StyleSheet,TouchableOpacity,Image,Modal,Pressable,TextInput} from 'react-native';
 import { Content,Container,Header,Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -7,10 +7,46 @@ import MyHeader from './LoginSignupHeader'
 
 
 const Candidatecard = ({ navigation,bottom }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
 return (
 
  
 <View style={[styles.view,{marginBottom:bottom}]}>
+<Modal
+        
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+              <Pressable onPress={() => setModalVisible(!modalVisible)}>
+            <Text style={styles.modalText}>Date Time for call</Text>
+            <TextInput placeholder='yyyy-mm-dd hh:mm:ss' placeholderTextColor='#707070' style={styles.modalInput}></TextInput>
+            </Pressable>
+           
+            <View style={{flex:1,flexDirection:'row',marginTop:20}}>
+            <Pressable
+              style={[styles.button,{backgroundColor:'#EA3A3A',marginLeft:-17}]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Send Invitation</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.button,{backgroundColor:'#007AFF',marginLeft:48}]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </Pressable>
+            </View>
+          </View>
+        </View>
+        
+      </Modal> 
 <TouchableOpacity>
     <View style={{alignItems:'flex-end',padding:10}}>
       
@@ -46,11 +82,11 @@ return (
 <Text style={styles.text3}>Test</Text>
 <View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
 <View style={{flexDirection:'row'}}>
-<TouchableOpacity style={styles.btn}>
+<TouchableOpacity style={styles.btn} onPress={() => setModalVisible(!modalVisible)}>
 <Text style={styles.btntext}>Send Invitation</Text>
 </TouchableOpacity>
-<TouchableOpacity style={styles.btn1}>
-<Text style={styles.btntext}>View Profile</Text>
+<TouchableOpacity style={styles.btn1} onPress={()=> navigation.navigate('CProfile')}>
+<Text style={styles.btntext} >View Profile</Text>
 </TouchableOpacity>
 </View>
 <View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
@@ -156,7 +192,67 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: '#FFFFFF',
         fontWeight: 'bold'
-    }
+    },
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      
+     alignSelf:'center'
+    },
+    modalView: {
+      margin: 20,
+      backgroundColor: "white",
+      padding: 35,
+      width:270,
+      height:182,
+      borderRadius:10,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5
+    },
+    button: {
+      borderRadius: 10,
+      padding: 10,
+      elevation: 2,
+      
+      height:30,
 
+    },
+    
+    buttonClose: {
+      backgroundColor: "rgba(0,54,168,1)",
+    },
+    textStyle: {
+      color: "white",
+      fontWeight: "400",
+      textAlign: "center",
+      marginTop:-6,
+      fontSize:16
+    },
+    modalText: {
+      alignSelf:'center',
+      fontSize:16,
+      color:'black',
+      fontWeight:"400",
+     marginTop:8,
+     textAlign:'center',
+    width:160
+    },
+   modalInput:{
+    height: hp('5%'),
+    width: wp('60%'),
+    borderColor: '#707070',
+    borderWidth: 0.5,
+    borderRadius: 5,
+    fontSize: 12,
+    padding: 10,
+    marginTop:10,
+    alignSelf: 'center',
+   }
 
 })
