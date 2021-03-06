@@ -11,7 +11,7 @@ import ButtonP from '../Components/ButtonP';
 import DocumentPicker from 'react-native-document-picker';
 import DatePicker from 'react-native-date-picker';
 import Tags from "react-native-tags";
-
+import CandidateTab from '../Components/CandidateTab';
 
 const PersonalInfo = ({ navigation, }) => {
     const [Fullname, setFullname] = useState('');
@@ -112,49 +112,14 @@ return (
 </View>
 
 
-<View style={{marginTop:40,alignItems:'center'}}>
+                    <View style={{ marginTop: 20, alignItems: 'center' }}>
 
-<ProfileText nametext="Your Full Name"  marginLeftt={-235} />
-<TextInputLogin value={Fullname} setter={setFullname}  label="Test Candidate"  />
-<ProfileText nametext="Email" marginLeftt={-285}/>
-<TextInputLogin value={email} setter={setEmail} label="abc@gmail.com"  />
-<ProfileText nametext="Phone"  marginLeftt={-280}/>
-<TextInputLogin  value={phone} setter={setPhone} label="637352322" Ktype='number-pad' />
-<ProfileText nametext="Date of birth" marginLeftt={-247} />
-<View style={{flexDirection:'row',alignSelf:'center'}}>
-
-<View style={{ height:hp('5%'),
-        width:wp('80%'),
-        borderColor:'#707070',
-        borderWidth:0.5,
-        borderRadius:5,
-        fontSize:12,
-        padding:10,
-        marginBottom:15,
-        alignSelf:'center',flexDirection:'row'}}>
-<TouchableOpacity
-                       
-                        onPress={() => DateModal()}>
-                        <Text style={{
-                           
-                            color: '#707070'
-                        }}>{datename}</Text>
-                        
-                    </TouchableOpacity>
-                    
-                   
-
-                    </View>
-
-
-                    <View style={{ marginTop: 40, alignItems: 'center' }}>
-
-                        <ProfileText nametext="Your Full Name" marginLeftt={-235} />
-                        <TextInputLogin name1="Test Candidate" />
-                        <ProfileText nametext="Email" marginLeftt={-285} />
-                        <TextInputLogin name1="abc@gmail.com" />
-                        <ProfileText nametext="Phone" marginLeftt={-280} />
-                        <TextInputLogin name1="637352322" Ktype='number-pad' />
+                    <ProfileText nametext="Your Full Name"  marginLeftt={-235} />
+                        <TextInputLogin value={Fullname} setter={setFullname}  label="Test Candidate"  />
+                        <ProfileText nametext="Email" marginLeftt={-285}/>
+                        <TextInputLogin value={email} setter={setEmail} label="abc@gmail.com"  />
+                        <ProfileText nametext="Phone"  marginLeftt={-280}/>
+                        <TextInputLogin  value={phone} setter={setPhone} label="637352322" Ktype='number-pad' />
                         <ProfileText nametext="Date of birth" marginLeftt={-247} />
                         <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
 
@@ -339,83 +304,6 @@ return (
                         <ButtonP NameButton="Save Skills" />
                     </View>
 
-
-
-                    </Modal>
-                </View>
-<ProfileText nametext="Profile Image" marginLeftt={-243} />
-<View style={{ height:hp('5%'),
-        width:wp('80%'),
-        borderColor:'#707070',
-        borderWidth:0.5,
-        borderRadius:5,
-        fontSize:12,
-        padding:10,
-        marginBottom:15,
-        alignSelf:'center',flexDirection:'row'}}>
-            <TouchableOpacity   onPress={() => openPhoto()}
-                    style={{
-                        borderColor: '#707070',
-                         backgroundColor: '#E4E4E4',width:90,
-
-                    }}>
-              <Text style={{ textAlign:'center' }}>
-                        Choose File
-                    </Text>
-            </TouchableOpacity>
-            <Text style={{ paddingHorizontal: '5%',color:'#707070' }}>
-                        {Photo.name || 'No File Chosen'}
-                    </Text>
-        </View>
-<ProfileText nametext="Experience" marginLeftt={-255} />
-<Dropdown />
-
-<ProfileText nametext="Level"  marginLeftt={-285} />
-<Dropdown plholder="Skilled work"/>
-<ProfileText nametext="Qualification" marginLeftt={-250}/>
-<Dropdown plholder="Bachelors"/>
-<ProfileText nametext="Type" marginLeftt={-290} />
-<Dropdown plholder="Full time"/>
-<ProfileText nametext="Salary Type" marginLeftt={-255} />
-<Dropdown plholder="Salary Type"/>
-<ProfileText nametext="Salary Range"  marginLeftt={-245} />
-<Dropdown plholder="Salary Range"/>
-<ButtonP NameButton="Save"/>
-</View>
-
-<View style={{marginTop:30,marginLeft:40}}>
-<Text style={styles.text}>Skills</Text>
-<View style={styles.line}/>
-</View>
-<View style={{marginTop:20,alignItems:'center'}}>
-<ProfileText nametext="Select Skills"  marginLeftt={-250} />
-<Tags
-    
-    textInputProps={{
-      placeholder: "Application Development"
-    }}
-    initialTags={["Application Development"]}
-    onChangeTags={tags => console.log(tags)}
-    onTagPress={(index, tagLabel, event, deleted) =>
-      console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
-    }
-    inputStyle={{ backgroundColor: "white" }}
-    containerStyle={{ justifyContent: "center" }}
-    style={{flex:1,flexDirection:'row' ,
-        width:wp('80%'),
-        borderColor:'#707070',
-        borderWidth:0.5,
-        borderRadius:5,
-        fontSize:12,
-      
-       
-        }}
-  
-  />
-  
-
-
-<ButtonP NameButton="Save Skills"/>
 </View>
 
 
@@ -450,41 +338,6 @@ return (
         </View>
 <ButtonP NameButton="Save Skills"/>
 </View>
-
-<View style={{marginTop:30,marginLeft:40}}>
-<Text style={styles.text}>Portfolio</Text>
-<View style={styles.line}/>
-</View>
-<View style={{marginTop:20,alignItems:'center'}}>
-<ProfileText nametext="Add Description of your projects"  marginLeftt={-140} />
-<TextInputLogin  value={portfolio} setter={setPortfolio}     />
-<ProfileText nametext="Add Photos of your projects"  marginLeftt={-165} />
-<View style={{ height:hp('5%'),
-        width:wp('80%'),
-        borderColor:'#707070',
-        borderWidth:0.5,
-        borderRadius:5,
-        fontSize:12,
-        padding:10,
-        marginBottom:15,
-        alignSelf:'center',flexDirection:'row'}}>
-            <TouchableOpacity   onPress={() => openPPhoto()}
-                    style={{
-                        borderColor: '#707070',
-                         backgroundColor: '#E4E4E4',width:90,
-
-                    }}>
-              <Text style={{ textAlign:'center' }}>
-                        Choose File
-
-                    </Text>
-                            </TouchableOpacity>
-                            <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
-                                {Resume.name || 'No File Chosen'}
-                            </Text>
-                        </View>
-                        <ButtonP NameButton="Save Skills" />
-                    </View>
 
                     <View style={{ marginTop: 30, marginLeft: 40 }}>
                         <Text style={styles.text}>Portfolio</Text>
@@ -523,9 +376,10 @@ return (
                         <ButtonP NameButton="Save Skills" />
                     </View>
 
-                </View>
+                
 
             </Content>
+            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#009961'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 }

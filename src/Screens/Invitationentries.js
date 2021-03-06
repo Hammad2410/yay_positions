@@ -6,12 +6,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import MyHeader from '../Components/LoginSignupHeader'
 import Invitationcard from '../Components/Invitationcard'
+import EmployerTab from '../Components/EmployerTab'
 import { connect } from 'react-redux';
 
 const Invitationentries = (props) => {
     return (
         <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader />
+            <MyHeader navigation={props.navigation} />
             <Content >
                 <View style={{ flex: 1 }}>
                     <View style={{ marginLeft: 40 }}>
@@ -56,6 +57,8 @@ const Invitationentries = (props) => {
                     </View>
                 </View>
             </Content>
+            <EmployerTab navigation={props.navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#009961'}/>
+
         </Container>
     )
 }

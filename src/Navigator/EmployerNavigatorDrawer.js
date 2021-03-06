@@ -53,7 +53,7 @@ const EmployerDrawer = () => {
        
         <Drawer.Navigator  drawerContent={props => <DrawerContent {...props} />}>
             
-            <Drawer.Screen name="Dashboard" component={EmployerTab}
+            <Drawer.Screen name="Dashboard" component={Employer}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
             <Drawer.Screen name="CompanyDetail" component={CompanyDetail}

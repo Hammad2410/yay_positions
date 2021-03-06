@@ -7,6 +7,7 @@ import MyHeader from '../Components/LoginSignupHeader'
 import Jobs from '../Components/Jobs'
 import { connect } from 'react-redux';
 import { getJobs } from '../redux/actions/candidate';
+import CandidateTab from '../Components/CandidateTab';
 
 const BrowseJobs = (props) => {
 
@@ -16,7 +17,7 @@ const BrowseJobs = (props) => {
 
     return (
         <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader />
+            <MyHeader navigation={props.navigation}/>
             <Content >
                 <View style={{ flex: 1 }}>
                     <View style={{ marginLeft: 40 }}>
@@ -26,7 +27,7 @@ const BrowseJobs = (props) => {
                     </View>
 
                     <View style={{ alignItems: 'flex-end', marginTop: 15, marginRight: 25 }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => props.navigation.navigate('Filter')}>
                             <Text style={styles.text1}>Search Filters</Text>
                         </TouchableOpacity>
                     </View>
@@ -39,6 +40,7 @@ const BrowseJobs = (props) => {
                     {/* <Jobs bottom={'2%'} /> */}
                 </View>
             </Content>
+            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#009961'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 

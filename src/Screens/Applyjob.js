@@ -5,14 +5,14 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import JobApply from '../Components/JobApply'
-
+import CandidateTab from '../Components/CandidateTab';
 
 
 const Applyjob = ({ navigation }) => {
 
     return (
         <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader />
+            <MyHeader navigation={navigation}/>
             <Content >
                 <View style={{ flex: 1 }}>
                     <View style={{ marginLeft: 40 }}>
@@ -23,6 +23,8 @@ const Applyjob = ({ navigation }) => {
                     <JobApply bottom={'2%'} />
                 </View>
             </Content>
+            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#009961'} Fifth={'#E4E4E4'}/>
+
         </Container>
     )
 

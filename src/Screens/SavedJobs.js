@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import MyHeader from '../Components/LoginSignupHeader';
 import { getSavedJobs, saveJobs } from '../redux/actions/candidate';
 import { connect } from 'react-redux';
-
+import CandidateTab from '../Components/CandidateTab';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const SavedJobs = (props) => {
@@ -43,7 +43,7 @@ const SavedJobs = (props) => {
 
     return (
         <Container>
-            <MyHeader />
+            <MyHeader navigation={props.navigation} />
             <Content contentContainerStyle={{ flex: 1, backgroundColor: 'white' }}>
 
                 <View style={{ flex: 1 }}>
@@ -126,6 +126,7 @@ const SavedJobs = (props) => {
 
                 </View>
             </Content>
+            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 }

@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import SideDrawer from '../Components/Drawer';
 import { connect } from 'react-redux';
 import { getInvitations } from '../redux/actions/candidate';
+import CandidateTab from '../Components/CandidateTab';
 
 const Candidate = (props) => {
 
@@ -16,7 +17,7 @@ const Candidate = (props) => {
     return (
         <Container style={{ backgroundColor: 'white' }} >
             <Content >
-                <SideDrawer />
+                <SideDrawer navigation={props.navigation}/>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 30 }}>
                     <TouchableOpacity
                         onPress={() => props.navigation.goBack()}>
@@ -29,7 +30,7 @@ const Candidate = (props) => {
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Jobs</Text>
                 </View>
-                <View style={styles.view}>
+                <View style={[styles.view,{backgroundColor:'#001F3F'}]}>
                     <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.invitations.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -69,6 +70,7 @@ const Candidate = (props) => {
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
             </Content>
+            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 }

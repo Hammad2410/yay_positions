@@ -5,7 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import Profile from '../Components/Profile'
-
+import CandidateTab from '../Components/CandidateTab';
 
 const MyProfile = ({ navigation }) => {
 
@@ -24,6 +24,7 @@ return (
                     <Profile bottom={10} />
                 </View>
             </Content>
+            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 }
