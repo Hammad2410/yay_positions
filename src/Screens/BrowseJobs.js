@@ -12,7 +12,7 @@ import CandidateTab from '../Components/CandidateTab';
 const BrowseJobs = (props) => {
 
     useEffect(() => {
-        props.getJobs()
+        //  props.getJobs()
     }, [])
 
     return (

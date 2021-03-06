@@ -5,13 +5,15 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import SideDrawer from '../Components/Drawer';
 import { connect } from 'react-redux';
-import { getInvitations } from '../redux/actions/candidate';
+import { getInvitations, getJobs } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
+
 
 const Candidate = (props) => {
 
     useEffect(() => {
         props.getInvitations()
+        props.getJobs()
     }, [])
 
     return (
@@ -23,15 +25,16 @@ const Candidate = (props) => {
                         onPress={() => props.navigation.goBack()}>
                         <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity >
-                    <TouchableOpacity onPress={() => {props.navigation.navigate('Employer')}}>
-                    <Text style={styles.text}>Hello Jason </Text>
+                    <TouchableOpacity onPress={() => { props.navigation.navigate('Employer') }}>
+                        <Text style={styles.text}>Hello Jason </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Jobs</Text>
                 </View>
+
                 <View style={[styles.view,{backgroundColor:'#001F3F'}]}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.invitations.length}</Text>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.jobs.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>All Jobs</Text>
@@ -65,7 +68,7 @@ const Candidate = (props) => {
                         </View>
                     </View>
                 </View>
-              
+
                 <TouchableOpacity>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
@@ -132,6 +135,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = { getInvitations }
+const mapDispatchToProps = { getInvitations, getJobs }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Candidate);

@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
+
 import { View, Text,StyleSheet,TouchableOpacity,Image,Modal,Pressable,TextInput} from 'react-native';
 import { Content,Container,Header,Title, Left } from 'native-base';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import MyHeader from './LoginSignupHeader'
+import MyHeader from './LoginSignupHeader';
+import { connect } from 'react-redux';
+import { sendInvite } from '../redux/actions/employer';
 
+const Candidatecard = ({ navigation, bottom, item, sendInvite }) => {
 
-const Candidatecard = ({ navigation,bottom }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const [modalVisible, setModalVisible] = useState(false);
+  const [sentInvite, setSentInvite] = useState(false);
 
-return (
-
- 
-<View style={[styles.view,{marginBottom:bottom}]}>
-<Modal
+  return (
+    <View style={[styles.view, { marginBottom: bottom }]}>
+    <Modal
         
         transparent={true}
         visible={modalVisible}
@@ -47,59 +50,64 @@ return (
         </View>
         
       </Modal> 
-<TouchableOpacity>
-    <View style={{alignItems:'flex-end',padding:10}}>
-      
-<Icon color={'#001F3F'} name={'square-o'} size={35}></Icon>
-    <Icon color={'green'} name={'heart-o'} size={15} style={{marginTop:-27,marginRight:6.5}}></Icon>
-   
+    
+      <TouchableOpacity>
+        <View style={{ alignItems: 'flex-end', padding: 10 }}>
+
+          <Icon color={'#001F3F'} name={'square-o'} size={35}></Icon>
+          <Icon color={'green'} name={'heart-o'} size={15} style={{ marginTop: -27, marginRight: 6.5 }}></Icon>
+
+        </View>
+      </TouchableOpacity>
+      <View style={{ flexDirection: 'row' }}>
+        <View style={styles.view1}>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={styles.text2}>Name</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <Text style={styles.text2}>Profession</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <Text style={styles.text2}>Experience</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <Text style={styles.text2}>Level</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <Text style={styles.text2}></Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+          </View>
+
+        </View>
+        <View style={styles.view2}>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={styles.text3}>{item.FullName}</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <Text style={styles.text3}>{item.Profession}</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <Text style={styles.text3}>{item.Experience}</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <Text style={styles.text3}>{item.Level}</Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <View style={{ flexDirection: 'row' }}>
+              {!item.InInvited && <TouchableOpacity disabled={sentInvite} style={styles.btn} onPress={() => {
+                setSentInvite(true);
+                sendInvite(item.CandidateId)
+              }}>
+                <Text style={styles.btntext}>{!sendInvite ? "Invite Sent" : "Send Invitation"}</Text>
+              </TouchableOpacity>}
+              <TouchableOpacity style={styles.btn1}>
+                <Text style={styles.btntext}>View Profile</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+          </View>
+
+        </View>
+      </View>
     </View>
-    </TouchableOpacity>
-    <View style={{flexDirection:'row'}}>
-  <View style={styles.view1}>
-<View style={{flexDirection:'column'}}>
-<Text style={styles.text2}>Name</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
-<Text style={styles.text2}>Profession</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
-<Text style={styles.text2}>Experience</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
-<Text style={styles.text2}>Level</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
-<Text style={styles.text2}></Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',marginLeft:10,width:wp('40%')}}></View>
-</View>
-
-  </View>
-  <View style={styles.view2}>
-<View style={{flexDirection:'column'}}>
-<Text style={styles.text3}>Test</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
-<Text style={styles.text3}>Test</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
-<Text style={styles.text3}>Test</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
-<Text style={styles.text3}>Test</Text>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
-<View style={{flexDirection:'row'}}>
-<TouchableOpacity style={styles.btn} onPress={() => setModalVisible(!modalVisible)}>
-<Text style={styles.btntext}>Send Invitation</Text>
-</TouchableOpacity>
-<TouchableOpacity style={styles.btn1} onPress={()=> navigation.navigate('CProfile')}>
-<Text style={styles.btntext} >View Profile</Text>
-</TouchableOpacity>
-</View>
-<View style={{borderWidth:0.5,borderColor:'#E4E4E4',width:wp('42%')}}></View>
-</View>
-
-  </View>
-</View>
-</View>
 
 
-  )    
+  )
+
 }
-export default Candidatecard;
+
 const styles = StyleSheet.create({
     text:{
         color:'#707070',
@@ -256,3 +264,11 @@ const styles = StyleSheet.create({
    }
 
 })
+
+const mapStateToProps = ({ employer }) => ({ employer })
+
+const mapDispatchToProps = { sendInvite }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Candidatecard);
+
+

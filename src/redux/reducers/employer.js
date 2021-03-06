@@ -3,65 +3,54 @@ import * as types from '../actionTypes';
 const initialState = {
     loading: false,
     error: '',
-    invitations: [],
+    candidates: [],
     jobs: [],
-    savedJobs: [],
+    favorites: []
 };
 
-const candidate = (state = initialState, action) => {
+const employer = (state = initialState, action) => {
     switch (action.type) {
 
-        case types.CANDIDATE_LOADING:
+        case types.EMPLOYER_LOADING:
             return {
                 ...state,
                 loading: true,
             }
 
-        case types.CANDIDATE_ERROR:
+        case types.EMPLOYER_ERROR:
             return {
                 ...state,
                 error: action.message,
                 loading: false
             }
 
-        case types.CANDIDATE_RESET_ERROR:
+        case types.EMPLOYER_RESET_ERROR:
             return {
                 ...state,
                 error: ''
             }
 
-        case types.CANDIDATE_INVITATION_FETCHED:
+        case types.EMPLOYER_CANDIDATES_FETCHED:
             return {
                 ...state,
                 loading: false,
-                invitations: action.invitations
+                candidates: action.candidates
             }
 
-        case types.CANDIDATE_JOBS_FETCHED:
+        case types.EMPLOYER_JOBS_FETCHED:
             return {
                 ...state,
+                loading: false,
                 jobs: action.jobs
             }
 
-        case types.CANDIDATE_SAVED_JOBS_FETCHED:
-            return {
-                ...state,
-                savedJobs: [...action.jobs]
-            }
-
-        case types.CANDIDATE_EDUCATION_ADDED:
+        case types.EMPLOYER_FAVORITES_FETCHED:
             return {
                 ...state,
                 loading: false,
-                error: action.message
+                favorites: action.favorites
             }
 
-        case types.CANDIDATE_JOB_ADDED:
-            return {
-                ...state,
-                loading: false,
-                error: action.message
-            }
 
         default:
             return state;
@@ -69,4 +58,4 @@ const candidate = (state = initialState, action) => {
 
 }
 
-export default candidate
+export default employer

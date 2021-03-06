@@ -121,28 +121,28 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Organization Name</Text>
-                        <Text style={styles.text3}>Test</Text>
+                        <Text style={styles.text3}>{auth.profile.JobExperiences[0].OrganizationName}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Your Role</Text>
-                        <Text style={styles.text3}>Test</Text>
+                        <Text style={styles.text3}>{auth.profile.JobExperiences[0].YourRole}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Start Date</Text>
-                        <Text style={styles.text3}>12-24-2019</Text>
+                        <Text style={styles.text3}>{auth.profile.JobExperiences[0].JobStartDate}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>End Date</Text>
-                        <Text style={styles.text3}>02-11-2021</Text>
+                        <Text style={styles.text3}>{auth.profile.JobExperiences[0].JobEndDate}</Text>
                     </View>
 
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
 
                     <Text style={styles.text5}>Description</Text>
-                    <Text style={styles.text3}>I am a creative designer ………….</Text>
+                    <Text style={styles.text3}>{auth.profile.JobExperiences[0].DescriptionJob}</Text>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
                 </View>
