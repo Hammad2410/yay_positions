@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
 import Favoritecard from '../Components/Favoritecard';
 import { connect } from 'react-redux';
+import EmployerTab from '../Components/EmployerTab'
 
 const Favorite = ({ navigation, employer }) => {
 
@@ -28,8 +29,10 @@ const Favorite = ({ navigation, employer }) => {
 
                 </View>
             </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#009961'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
         </Container>
     )
+
 
 }
 

@@ -6,7 +6,7 @@ import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
 import Icon from 'react-native-vector-icons/Feather';
-
+import CandidateTab from '../Components/CandidateTab';
 import ButtonP from '../Components/ButtonP';
 
 import DatePicker from 'react-native-date-picker';
@@ -277,9 +277,11 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                     </View>
                 </View>
 
-            </Content>
-        </Container>
-    )
+
+</Content>
+<CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+</Container>
+  )    
 }
 
 const styles = StyleSheet.create({

@@ -5,6 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import Candidatecard from '../Components/Candidatecard'
+import EmployerTab from '../Components/EmployerTab'
 import { connect } from 'react-redux';
 
 const BrowseCandidates = ({ navigation, employer }) => {
@@ -27,13 +28,15 @@ const BrowseCandidates = ({ navigation, employer }) => {
                     <FlatList
                         data={employer.candidates}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item, index }) => <Candidatecard bottom={'10%'} item={item} />}
+                        renderItem={({ item, index }) => <Candidatecard navigation={navigation} bottom={'10%'} item={item} />}
                     />
 
                 </View>
             </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
         </Container>
     )
+
 }
 
 const styles = StyleSheet.create({

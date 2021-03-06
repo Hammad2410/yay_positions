@@ -26,7 +26,9 @@ import MyResume from '../Screens/MyResume';
 import Changepass from '../Screens/Changepass';
 import Employer from '../Screens/Employer'
 import Invitations from '../Screens/Invitations'
-
+import Jobs from '../Screens/Jobs'
+import Favorite from '../Screens/Favorite'
+import Invitationentries from '../Screens/Invitationentries'
 
 const Tab = createBottomTabNavigator();
 
@@ -143,8 +145,8 @@ const EmployerTab = () => {
                 }}
             />
             <Tab.Screen
-                name="PersonalInfo"
-                component={PersonalInfo}
+                name="Favorite"
+                component={Favorite}
                 options={{
 
                     tabBarIcon: ({ focused, color }) => (
@@ -164,8 +166,8 @@ const EmployerTab = () => {
             />
 
             <Tab.Screen
-                name="SavedJobs"
-                component={SavedJobs}
+                name="Jobs"
+                component={Jobs}
                 options={{
 
                     tabBarIcon: ({ focused, color }) => (
@@ -186,7 +188,6 @@ const EmployerTab = () => {
 
             <Tab.Screen
                 name="Invitations"
-
                 component={Invitations}
                 options={{
 

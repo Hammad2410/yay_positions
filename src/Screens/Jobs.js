@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import MyHeader from '../Components/LoginSignupHeader'
 import Jobcard from '../Components/Jobcard';
+import EmployerTab from '../Components/EmployerTab'
 import { connect } from 'react-redux';
 
 const Jobs = ({ navigation, employer }) => {
@@ -29,8 +30,10 @@ const Jobs = ({ navigation, employer }) => {
                     />
                 </View>
             </Content>
+<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
         </Container>
     )
+
 }
 
 

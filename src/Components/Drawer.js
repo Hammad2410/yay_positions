@@ -18,14 +18,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
-const SideDrawer = ({ props }) => {
+const SideDrawer = ({ navigation }) => {
     const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
     //Structure for the navigatin Drawer
     const toggleDrawer = () => {
       //Props to open/close the drawer
-      props.navigationProps.toggleDrawer();
+      navigation.toggleDrawer();
     };
 return (
 

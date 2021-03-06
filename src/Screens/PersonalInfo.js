@@ -11,7 +11,7 @@ import ButtonP from '../Components/ButtonP';
 import DocumentPicker from 'react-native-document-picker';
 import DatePicker from 'react-native-date-picker';
 import Tags from "react-native-tags";
-
+import CandidateTab from '../Components/CandidateTab';
 
 const PersonalInfo = ({ navigation, }) => {
     const [Fullname, setFullname] = useState('');
@@ -99,6 +99,7 @@ const PersonalInfo = ({ navigation, }) => {
         }
     }
 
+
     return (
         <Container>
             <MyHeader navigation={navigation} />
@@ -120,6 +121,7 @@ const PersonalInfo = ({ navigation, }) => {
                         <TextInputLogin value={email} setter={setEmail} label="abc@gmail.com" />
                         <ProfileText nametext="Phone" marginLeftt={-280} />
                         <TextInputLogin value={phone} setter={setPhone} label="637352322" Ktype='number-pad' />
+
                         <ProfileText nametext="Date of birth" marginLeftt={-247} />
                         <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
 
@@ -423,7 +425,6 @@ const PersonalInfo = ({ navigation, }) => {
                         <ButtonP NameButton="Save Skills" />
                     </View>
 
-
                     <View style={{ marginTop: 30, marginLeft: 40 }}>
                         <Text style={styles.text}>Resume</Text>
                         <View style={styles.line} />
@@ -495,6 +496,7 @@ const PersonalInfo = ({ navigation, }) => {
                         <ButtonP NameButton="Save Skills" />
                     </View>
 
+
                     <View style={{ marginTop: 30, marginLeft: 40 }}>
                         <Text style={styles.text}>Portfolio</Text>
                         <View style={styles.line} />
@@ -532,10 +534,13 @@ const PersonalInfo = ({ navigation, }) => {
                         <ButtonP NameButton="Save Skills" />
                     </View>
 
-                </View>
+                
 
             </Content>
-        </Container >
+
+            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#009961'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+        </Container>
+
     )
 }
 export default PersonalInfo;
