@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { Content, Container, Tabs, Tab, Footer, FooterTab, Button } from 'native-base';
@@ -17,6 +17,17 @@ const Login = ({ login, navigation, auth }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSelected, setSelection] = useState(false);
+
+
+    useEffect(() => {
+        if (auth.role === 'Employer') {
+            navigation.navigate('Employer')
+        }
+        else if (auth.role === 'Candidate') {
+            navigation.navigate('CandidateHome')
+        }
+
+    }, [auth])
 
     return (
         <Container>
@@ -55,19 +66,19 @@ const Login = ({ login, navigation, auth }) => {
                     {
                         auth.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :
                             <View style={{ flexDirection: 'row', marginLeft: 35 }}>
-                                <TouchableOpacity style={styles.btn} //onPress={() => login(email, password)}
-                                onPress={() => {
-                                    if(role==='Employer') {
-                                        navigation.navigate('Employer')
-                                    }
-                               else if ( role==='Candidate') {
-                                navigation.navigate('CandidateHome') 
-                               }
-                               else{
-                                   alert('hf')
-                               }
-                                    
-                                   }}
+                                <TouchableOpacity style={styles.btn} onPress={() => login(email, password)}
+                                // onPress={() => {
+                                //     // if (role === 'Employer') {
+                                //     //     navigation.navigate('Employer')
+                                //     // }
+                                //     // else if (role === 'Candidate') {
+                                //     //     navigation.navigate('CandidateHome')
+                                //     // }
+                                //     // else {
+                                //     //     alert('hf')
+                                //     // }
+
+                                // }}
                                 >
                                     <Text style={styles.btntext}>Login</Text>
                                 </TouchableOpacity>

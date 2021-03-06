@@ -1,34 +1,39 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left } from 'native-base';
+import { Content, Container, Header, Title, Left, Flatlist } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MyHeader from '../Components/LoginSignupHeader'
-import Hiredcard from '../Components/Hiredcard'
-import EmployerTab from '../Components/EmployerTab'
+import MyHeader from '../Components/LoginSignupHeader';
+import Hiredcard from '../Components/Hiredcard';
+import EmployerTab from '../Components/EmployerTab';
+import { connect } from 'react-redux';
 
-const Hired = ({ navigation }) => {
+const Hired = ({ navigation, employer }) => {
 
-return (
-<Container style={{backgroundColor:'white'}} >
-<MyHeader navigation={navigation}/>
-<Content >
-<View style={{flex:1}}>
-    <View style={{marginLeft:40}}>
-<Text style={styles.text}>Hired</Text>
-<View style={styles.line}>
-</View>
-</View>
-<Hiredcard  />
-<Hiredcard   bottom={'10%'}/>
-</View>
-</Content>
-<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
-</Container>
-  )    
+    return (
+        <Container style={{ backgroundColor: 'white' }} >
+            <MyHeader navigation={navigation} />
+            <Content >
+                <View style={{ flex: 1 }}>
+                    <View style={{ marginLeft: 40 }}>
+                        <Text style={styles.text}>Hired</Text>
+                        <View style={styles.line}>
+                        </View>
+                    </View>
+                    <Flatlist
+                        data={employer.hired}
+                        keyExtractor={(item, index) => index.toString()}
+                        renderItem={({ item, index }) => <Hiredcard bottom={'10%'} item={item} />}
+                    />
+                    {/* <Hiredcard /> */}
+                </View>
+            </Content>
+            <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'} />
+        </Container>
+    )
 
 }
-export default Hired;
+
 const styles = StyleSheet.create({
     text: {
         color: '#707070',
@@ -51,3 +56,7 @@ const styles = StyleSheet.create({
 
 
 })
+
+const mapStateToProps = ({ employer }) => ({ employer })
+
+export default connect(mapStateToProps)(Hired);

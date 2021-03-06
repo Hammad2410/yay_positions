@@ -5,7 +5,10 @@ const initialState = {
     error: '',
     candidates: [],
     jobs: [],
-    favorites: []
+    favorites: [],
+    candidateProfile: null,
+    candidateId: null,
+    hired: []
 };
 
 const employer = (state = initialState, action) => {
@@ -48,9 +51,36 @@ const employer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                favorites: action.favorites
+                favorites: [...action.favorites]
             }
 
+        case types.EMPLOYER_CANDIDATE_PROFILE_FETCHED:
+            return {
+                ...state,
+                loading: false,
+                candidateProfile: action.profile
+            }
+
+        case types.EMPLOYER_SET_CANDIDATE_ID:
+            return {
+                ...state,
+                candidateProfile: null,
+                candidateId: action.id
+            }
+
+        case types.EMPLOYER_JOB_CREATED:
+            return {
+                ...state,
+                error: action.message,
+                loading: false
+            }
+
+        case types.EMPLOYER_HIRED_CANDIDATES_FETCHED:
+            return {
+                ...state,
+                hired: action.hired,
+                loading: false
+            }
 
         default:
             return state;

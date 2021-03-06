@@ -6,18 +6,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import EmployerDrawer from '../Components/EmployerDrawer';
 import { connect } from 'react-redux';
-import { browseCandidate, getJobs, getFavorites } from '../redux/actions/employer';
+import { resetUserLoggedIn } from '../redux/actions/auth';
+import { browseCandidate, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations } from '../redux/actions/employer';
 import EmployerTab from '../Components/EmployerTab'
 
 
 
-const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites }) => {
+const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations, resetUserLoggedIn }) => {
 
 
     useEffect(() => {
         browseCandidate()
         getJobs()
         getFavorites()
+        getHiredCandidates()
+        getCompanyProfile()
+        getInvitations()
+        resetUserLoggedIn()
     }, [])
 
 
@@ -76,11 +81,11 @@ const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
 
-</Content>
-<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
+            </Content>
+            <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'} />
 
-</Container>
-  )    
+        </Container>
+    )
 
 
 }
@@ -144,6 +149,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ employer }) => ({ employer })
 
-const mapDispatchToProps = { browseCandidate, getJobs, getFavorites }
+const mapDispatchToProps = { browseCandidate, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations, resetUserLoggedIn }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Employer);

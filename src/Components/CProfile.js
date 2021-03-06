@@ -5,40 +5,40 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader'
 import { connect } from 'react-redux';
-import { getCandidateProfile } from '../redux/actions/candidate'
+import { getCandidateProfile } from '../redux/actions/employer'
 
-const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
+const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
 
     useEffect(() => {
         getCandidateProfile();
-    }, [])
+    }, [employer.candidateId])
 
     return (
         <View style={{ flex: 1 }}>
-            { auth.profile != null ? (<>
+            { employer.candidateProfile != null ? (<>
                 <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view1}>
                         <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} />
-                        <Text style={styles.text1}>{auth.profile.Profile.Name}</Text>
+                        <Text style={styles.text1}>{employer.candidateProfile.Profile.Name}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Email Address</Text>
-                        <Text style={styles.text3}>{auth.profile.Profile.Email}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Profile.Email}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Gender</Text>
-                        <Text style={styles.text3}>{auth.profile.Profile.Gender}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Profile.Gender}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Salary Range</Text>
-                        <Text style={styles.text3}>{auth.profile.Profile.SalaryRange}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Profile.SalaryRange}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Qualification</Text>
-                        <Text style={styles.text3}>{auth.profile.Profile.Qualification}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Profile.Qualification}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
@@ -49,17 +49,17 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Country</Text>
-                        <Text style={styles.text3}>{auth.profile.Country}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Country}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Level</Text>
-                        <Text style={styles.text3}>{auth.profile.Profile.Level}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Profile.Level}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Experience</Text>
-                        <Text style={styles.text3}>{auth.profile.Profile.Experience}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.Profile.Experience}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
@@ -69,7 +69,7 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                         <Text style={styles.text4}>Skills and Tools</Text>
                     </View>
                     {
-                        auth.profile.Skills.map((item) => <><Text style={styles.text2}>{item}</Text>
+                        employer.candidateProfile.Skills.map((item) => <><Text style={styles.text2}>{item}</Text>
                             <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} /></>)
                     }
 
@@ -81,37 +81,37 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Degree</Text>
-                        <Text style={styles.text3}>{auth.profile.EducationalInfos[0].Degree}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].Degree}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Institute Name</Text>
-                        <Text style={styles.text3}>{auth.profile.EducationalInfos[0].InstituteName}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].InstituteName}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Start Date</Text>
-                        <Text style={styles.text3}>{auth.profile.EducationalInfos[0].StartDate}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].StartDate}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>End Date</Text>
-                        <Text style={styles.text3}>{auth.profile.EducationalInfos[0].EndDate}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].EndDate}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Qualification Title</Text>
-                        <Text style={styles.text3}>{auth.profile.EducationalInfos[0].QualificationTitle}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].QualificationTitle}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Grade</Text>
-                        <Text style={styles.text3}>{auth.profile.EducationalInfos[0].Grade}</Text>
+                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].Grade}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
 
                     <Text style={styles.text5}>Description</Text>
-                    <Text style={styles.text3}>{auth.profile.EducationalInfos[0].DescriptionEducational}</Text>
+                    <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].DescriptionEducational}</Text>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
                 </View>
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
 
 })
 
-const mapStateToProps = ({ auth }) => ({ auth })
+const mapStateToProps = ({ employer }) => ({ employer })
 
 const mapDispatchToProps = { getCandidateProfile }
 

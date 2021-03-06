@@ -1,21 +1,29 @@
 import * as types from '../actionTypes';
 import axios from 'axios';
 import { BASE_URL } from '../../utils/config';
-
+import qs from 'qs';
 export const login = (email, password) => {
     return (dispatch) => {
         dispatch({ type: types.AUTH_LOADING })
 
-        axios.post(BASE_URL + 'token', JSON.stringify({
+
+        var formData = new FormData()
+        formData.append("username", email)
+        formData.append("password", password)
+        formData.append("grant_type", 'password')
+
+        axios.post(BASE_URL + 'token', qs.stringify({
             username: email,
             password: password,
             grant_type: 'password'
         }), {
+            // axios.post(BASE_URL + 'token', formData, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then((response) => {
-            dispatch({ type: types.AUTH_LOGGED_IN, token: response.data.access_token })
+            // console.log("Response : " + response.data.role)
+            dispatch({ type: types.AUTH_LOGGED_IN, token: response.data.access_token, role: response.data.role })
         }).
             catch((error) => {
                 console.log("Error: ", error.toString())
@@ -51,6 +59,12 @@ export const register = (email, name, country, role, password, confirmPassword) 
 }
 
 export const resetUserRegistered = () => {
+    return (dispatch) => {
+        dispatch({ type: types.AUTH_RESET_USER_REGISTERED })
+    }
+}
+
+export const resetUserLoggedIn = () => {
     return (dispatch) => {
         dispatch({ type: types.AUTH_RESET_USER_REGISTERED })
     }
