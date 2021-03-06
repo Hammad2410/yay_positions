@@ -8,32 +8,31 @@ import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const ButtonP = ({navigation,NameButton}) => {
+const ButtonP = ({ navigation, NameButton, buttonAction }) => {
     return (
-        <TouchableOpacity>
-        <View style={styles.textinput}>
-            
-       <Text style={{textAlign:'center',marginTop:5}} >{NameButton}</Text>
-       </View>
-       </TouchableOpacity>
+        <TouchableOpacity onPress={() => buttonAction()}>
+            <View style={styles.textinput}>
+                <Text style={{ textAlign: 'center', marginTop: 5 }} >{NameButton}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 export default ButtonP;
 
 const styles = StyleSheet.create({
 
-    textinput:{
-        height:hp('4%'),
-      
-        borderColor:'#707070',
-        borderWidth:0.5,
-        borderRadius:5,
-      alignContent:'center',
-        marginBottom:15,
-        marginLeft:-158,
-        marginTop:30
-      
+    textinput: {
+        height: hp('4%'),
+
+        borderColor: '#707070',
+        borderWidth: 0.5,
+        borderRadius: 5,
+        alignContent: 'center',
+        marginBottom: 15,
+        // marginLeft: -158,
+        marginTop: 30
+
     },
-    
+
 
 })

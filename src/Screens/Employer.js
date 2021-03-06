@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import EmployerDrawer from '../Components/EmployerDrawer'
+import EmployerDrawer from '../Components/EmployerDrawer';
+import { connect } from 'react-redux';
+import { browseCandidate, getJobs, getFavorites } from '../redux/actions/employer';
 
 
-const Employer = ({ navigation }) => {
+const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites }) => {
 
-return (
-<Container style={{backgroundColor:'white'}} >
-<Content >
-    
-<EmployerDrawer/>
+    useEffect(() => {
+        browseCandidate()
+        getJobs()
+        getFavorites()
+    }, [])
 
-    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-    <TouchableOpacity
+    return (
+        <Container style={{ backgroundColor: 'white' }} >
+            <Content >
+
+                <EmployerDrawer />
+
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
+                    <TouchableOpacity
                         onPress={() => navigation.goBack()}>
-                        <Icon style={{paddingLeft:25}} name="arrow-back-outline" size={20} color='#E4E4E4' />
+                        <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity>
                     <Text style={styles.text}>Hello Jason </Text>
-    </View>
+                </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Applicants</Text>
                 </View>
-                <View style={[styles.view,{backgroundColor:'#001F3F'}]}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>0</Text>
+                <View style={[styles.view, { backgroundColor: '#001F3F' }]}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{employer.candidates.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>All Applicants</Text>
@@ -44,7 +52,7 @@ return (
                     <Text style={styles.text1}>All Jobs</Text>
                 </View>
                 <View style={styles.view}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>0</Text>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{employer.jobs.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>All Jobs</Text>
@@ -59,15 +67,15 @@ return (
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity onPress={() => {navigation.navigate('CandidateHome')}}>
+                <TouchableOpacity onPress={() => { navigation.navigate('CandidateHome') }}>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
-</Content>
-</Container>
-  )    
+            </Content>
+        </Container>
+    )
 
 }
-export default Employer;
+
 const styles = StyleSheet.create({
 
     header: {
@@ -124,3 +132,9 @@ const styles = StyleSheet.create({
     }
 
 })
+
+const mapStateToProps = ({ employer }) => ({ employer })
+
+const mapDispatchToProps = { browseCandidate, getJobs, getFavorites }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Employer);

@@ -11,7 +11,7 @@ import { getJobs } from '../redux/actions/candidate';
 const BrowseJobs = (props) => {
 
     useEffect(() => {
-        props.getJobs()
+        //  props.getJobs()
     }, [])
 
     return (
