@@ -5,13 +5,13 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
 import { connect } from 'react-redux';
-import { markFavorite } from '../redux/actions/employer';
+import { markFavorite, changeCandidateId } from '../redux/actions/employer';
 
-const Favoritecard = ({ navigation, bottom, item }) => {
+const Favoritecard = ({ navigation, bottom, item, markFavorite, changeCandidateId }) => {
   return (
 
     <View style={[styles.view, { marginBottom: bottom }]}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => markFavorite(item)}>
         <View style={{ alignItems: 'flex-end', padding: 10 }}>
 
           <Icon color={'#009860'} name={'heart'} size={20}></Icon>
@@ -45,7 +45,10 @@ const Favoritecard = ({ navigation, bottom, item }) => {
             <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.text3}>{!item.InInvited ? "Not Invited" : "Already Invited"}</Text>
-              <TouchableOpacity style={styles.btn1}>
+              <TouchableOpacity style={styles.btn1} onPress={() => {
+                changeCandidateId(item.CandidateId)
+                navigation.navigate("CProfile")
+              }}>
                 <Text style={styles.btntext}>View Profile</Text>
               </TouchableOpacity>
             </View>
@@ -150,6 +153,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ employer }) => ({ employer })
 
-const mapDispatchToProps = { markFavorite }
+const mapDispatchToProps = { markFavorite, changeCandidateId }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favoritecard);

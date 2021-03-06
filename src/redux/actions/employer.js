@@ -8,8 +8,8 @@ export const browseCandidate = () => {
 
         axios.get(BASE_URL + "/api/employer/candidates", {
             headers: {
-                //Authorization: "bearer " + store().auth.token
-                Authorization: "Bearer 04Q6JzNzRT2dNTzMxS9SbRGEvNxp8D9Ryf2mN8JNdl9aquQ5Lb2A_UgFHBd0BhRfhYscxOiil-wxvEeGtrHFmHNk-NbmXboFqCnH-MXGI8C09_Iql1dybFUJCnzbc4sQoZtyOGNH0RFZScO7L0FxczI2GT6aw8dhFLv4NpFmHoDeD6_3Ev831B6gfJlW-Z6_cvC6W4knA4on09axrCwIbzOi8JW0-asJT4we97ymGsqXgiAZUT_aSxk7ka1WxCMVxmSxGl_voEpGQsE_Ee5KSD1tz9dLocL2dEYUsL0DeGhnJNu1-95TxQ-xXMyUEz7uhONiPDMznKI-g3QTi4Fkj7TCINXLAkRLhaXf35d8fCCPLLieXWIwzhOF1GE4zkEVabI-iwGeOKhEiJosiaBzMLkVjZBI41upytXOjnDFZztEKHB-djpGsTU1a15hLMN6ctWIkcVpskOSJzrbkNH31zPhnk3tvcgGqjAoHd14s_EQEeOmagzj1MgddjdlQOlfIiD5wpQPD-Ejn4OKfj-sr1NS7kTEB-d7GoUC3KwpJor891ZGURklFpzl8IIym86h"
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
             }
         })
             .then((response) => {
@@ -31,8 +31,8 @@ export const sendInvite = (id) => {
             candidateid: id
         }, {
             headers: {
-                //Authorization: "bearer " + store().auth.token
-                Authorization: "Bearer 04Q6JzNzRT2dNTzMxS9SbRGEvNxp8D9Ryf2mN8JNdl9aquQ5Lb2A_UgFHBd0BhRfhYscxOiil-wxvEeGtrHFmHNk-NbmXboFqCnH-MXGI8C09_Iql1dybFUJCnzbc4sQoZtyOGNH0RFZScO7L0FxczI2GT6aw8dhFLv4NpFmHoDeD6_3Ev831B6gfJlW-Z6_cvC6W4knA4on09axrCwIbzOi8JW0-asJT4we97ymGsqXgiAZUT_aSxk7ka1WxCMVxmSxGl_voEpGQsE_Ee5KSD1tz9dLocL2dEYUsL0DeGhnJNu1-95TxQ-xXMyUEz7uhONiPDMznKI-g3QTi4Fkj7TCINXLAkRLhaXf35d8fCCPLLieXWIwzhOF1GE4zkEVabI-iwGeOKhEiJosiaBzMLkVjZBI41upytXOjnDFZztEKHB-djpGsTU1a15hLMN6ctWIkcVpskOSJzrbkNH31zPhnk3tvcgGqjAoHd14s_EQEeOmagzj1MgddjdlQOlfIiD5wpQPD-Ejn4OKfj-sr1NS7kTEB-d7GoUC3KwpJor891ZGURklFpzl8IIym86h"
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
             }
         })
             .then((response) => {
@@ -54,8 +54,8 @@ export const getJobs = () => {
 
         axios.get(BASE_URL + "/api/jobs", {
             headers: {
-                //Authorization: "bearer " + store().auth.token
-                Authorization: "Bearer 04Q6JzNzRT2dNTzMxS9SbRGEvNxp8D9Ryf2mN8JNdl9aquQ5Lb2A_UgFHBd0BhRfhYscxOiil-wxvEeGtrHFmHNk-NbmXboFqCnH-MXGI8C09_Iql1dybFUJCnzbc4sQoZtyOGNH0RFZScO7L0FxczI2GT6aw8dhFLv4NpFmHoDeD6_3Ev831B6gfJlW-Z6_cvC6W4knA4on09axrCwIbzOi8JW0-asJT4we97ymGsqXgiAZUT_aSxk7ka1WxCMVxmSxGl_voEpGQsE_Ee5KSD1tz9dLocL2dEYUsL0DeGhnJNu1-95TxQ-xXMyUEz7uhONiPDMznKI-g3QTi4Fkj7TCINXLAkRLhaXf35d8fCCPLLieXWIwzhOF1GE4zkEVabI-iwGeOKhEiJosiaBzMLkVjZBI41upytXOjnDFZztEKHB-djpGsTU1a15hLMN6ctWIkcVpskOSJzrbkNH31zPhnk3tvcgGqjAoHd14s_EQEeOmagzj1MgddjdlQOlfIiD5wpQPD-Ejn4OKfj-sr1NS7kTEB-d7GoUC3KwpJor891ZGURklFpzl8IIym86h"
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
             }
         })
             .then((response) => {
@@ -75,8 +75,8 @@ export const getFavorites = () => {
 
         axios.get(BASE_URL + "/api/employer/FavouriteCandidates", {
             headers: {
-                //Authorization: "bearer " + store().auth.token
-                Authorization: "Bearer lBMxNm4UZ5TUhgg8tUbymHCJTbCzKYO9IVBcsQRW5WDqAbtSEpr8ha5XP2s3plhofn_wtJMazkFLrf_i0BjogVqEqKxqU31GSyy3Mdyn2DCyQoMChCY4VR9_gISOukcCi7uDF5MChMCwqdMlqPMSSkc9OTozimfVyW3nax9CoTbwy88sHpuvN11errYBAUN7blWdypI4bByipyx5tTY-7S3KATCQigEvbD2lKKSnYwPmPm3ADxc-N3LlQdUPcmdw3gZWKjr-cFwTY49CZYP9zZ1ajkoXmnWJr4WF_Ha9kwlPW-juBwOJOIxHQ9F1pEj4eGlS-miJMYswniyVi6BilCSN8CvW7gNSe4jXb5b67sfsipHnYaFvGeLjANONcpnsMBor3iJLBgiN6Jkc0093JUDF04xNtY1-tIxMJMPVvnnYtRpT7GxS8-Fr5iYnYuY1Bw39l2W8QCJGZOOVhU_YyAEUbgtOIv6A07_qIwaW3r6KCfcr9Ip0xQfqcFhk2Qv-h49FNlpA1bYMOrQYNp9W-K2tcB1Bquxk3RVKSfF18f1bAdFUoNVDTA8X9P4Y6Lvw"
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
             }
         })
             .then((response) => {
@@ -94,14 +94,15 @@ export const markFavorite = (job) => {
     return (dispatch, store) => {
         dispatch({ type: types.EMPLOYER_LOADING })
 
-        axios.get(BASE_URL + "/api/candidate/Favourite?jobid=" + job.Id, {
+        axios.get(BASE_URL + "/api/employer/Favourite?candidateid=" + job.CandidateId, {
             headers: {
-                //Authorization: "bearer " + store().auth.token
-                Authorization: "Bearer GD14fLiO27Ty0HRbblZNwDjvJxbfYqneDMlly7T9fP-aYcXaiAnKOQXkLZpiOJ-OSXweuvVYGd8tRR-sjaVa4EJ2xA0B_vqQFZaB6yvZKmK2a3Q9W1gXcEGwrwWFANEWWfqAk2YUKDtptMNJURn5FLiNY0hZ4ldyuxeEUsA-VSCJuoc1Y73x_OQLoG3YPLoSxtp0pa5P3ba7nVoDD1f5U0y_MHrR85-HQnqDs3la61f_8p_MTAeuJuPfyOvZdOvkAWvaNwXQlDJenQvfHQU4RH--q2QTRpbcFtxq3QMNRvaNZ8kJW2RC2lqkhDUgWvAd-0bH9NuKpMOom1dZiHRBuFxv2O2rtNdZUDc7PX6Nkvd8cKxWdf3YNWUDjNL5ges10_EHYd3D-S86e2NrG1llHol6qfpZObBqdvnzA2jhoBkGuByr0EGt_lVMcosQu61k_lkcG_EbwRr3B10Rbbu32prM-MTfhznzLTjlSbs5xOIzf06UJKkVg1J8kkdVjb7bnpgaGrS26EQ_IWf7c-_kJvk7oA28_6Yy8hhSXblak-ln8LmtTtHDTprE0gZFBFdY"
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
             }
         })
             .then((response) => {
                 if (store().employer.favorites.filter((item) => item.CandidateId == job.CandidateId).length == 0) {
+                    console.log('Working')
                     dispatch({ type: types.EMPLOYER_FAVORITES_FETCHED, favorites: store().employer.favorites.push(job) })
                 }
                 else {
@@ -116,6 +117,141 @@ export const markFavorite = (job) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
                 setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const getCandidateProfile = () => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.get(BASE_URL + "/api/employer/CandidateProfile?id=" + store().employer.candidateId, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Profile : ", response.data.profile)
+                dispatch({ type: types.EMPLOYER_CANDIDATE_PROFILE_FETCHED, profile: response.data.candidateprofile })
+            })
+            .catch((error) => {
+
+                console.log("error: ", error.message)
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const changeCandidateId = (id) => {
+    return (dispatch) => {
+        dispatch({ type: types.EMPLOYER_SET_CANDIDATE_ID, id: id })
+    }
+}
+
+export const createJob = (title, level, experience, qualification, jobType, salaryType, salaryRange, jobDescription, detail, location, remoteOrInHouse) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.post(BASE_URL + "/api/jobs", {
+            Title: title,
+            Level: level,
+            Experience: experience,
+            Qualification: qualification,
+            JobType: jobType,
+            SalaryType: salaryType,
+            SalaryRange: salaryRange,
+            JobDescription: jobDescription,
+            Detail: detail,
+            Location: location,
+            RemoteOrInHouse: remoteOrInHouse
+
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                dispatch({ type: types.EMPLOYER_JOB_CREATED, message: "Job Created" })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const getHiredCandidates = () => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.get(BASE_URL + "/api/employer/hiredcandidates", {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                dispatch({ type: types.EMPLOYER_HIRED_CANDIDATES_FETCHED, hired: response.data.hired })
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const getCompanyProfile = () => {
+    return (dispatch, store) => {
+        dispatch({ type: types.AUTH_LOADING })
+
+        axios.get(BASE_URL + "/api/employer/profile", {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Profile : ", response.data.profile)
+                dispatch({ type: types.AUTH_PROFILE_FETCHED, profile: response.data.profile })
+            })
+            .catch((error) => {
+
+                console.log("error: ", error.message)
+                dispatch({ type: types.AUTH_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const getInvitations = () => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.get(BASE_URL + "/api/employer/Invitations", {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: response.data.invitations })
+            })
+            .catch((error) => {
+
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
             })
     }
 }

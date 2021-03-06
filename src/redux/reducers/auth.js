@@ -5,7 +5,8 @@ const initialState = {
     error: '',
     token: null,
     userRegistered: false,
-    profile: null
+    profile: null,
+    role: null
 };
 
 const auth = (state = initialState, action) => {
@@ -28,7 +29,8 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                token: action.token
+                token: action.token,
+                role: action.role
             }
 
         case types.AUTH_RESET_ERROR:
@@ -55,6 +57,12 @@ const auth = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 profile: action.profile
+            }
+
+        case types.AUTH_RESET_LOGIN:
+            return {
+                ...state,
+                role: null
             }
 
         default:

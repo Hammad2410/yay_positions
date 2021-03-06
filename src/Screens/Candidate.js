@@ -5,6 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import SideDrawer from '../Components/Drawer';
 import { connect } from 'react-redux';
+import { resetUserLoggedIn } from '../redux/actions/auth';
 import { getInvitations, getJobs } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
 
@@ -14,12 +15,13 @@ const Candidate = (props) => {
     useEffect(() => {
         props.getInvitations()
         props.getJobs()
+        props.resetUserLoggedIn()
     }, [])
 
     return (
         <Container style={{ backgroundColor: 'white' }} >
             <Content >
-                <SideDrawer navigation={props.navigation}/>
+                <SideDrawer navigation={props.navigation} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 30 }}>
                     <TouchableOpacity
                         onPress={() => props.navigation.goBack()}>
@@ -33,7 +35,7 @@ const Candidate = (props) => {
                     <Text style={styles.text1}>All Jobs</Text>
                 </View>
 
-                <View style={[styles.view,{backgroundColor:'#001F3F'}]}>
+                <View style={[styles.view, { backgroundColor: '#001F3F' }]}>
                     <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.jobs.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -73,7 +75,7 @@ const Candidate = (props) => {
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
             </Content>
-            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'} />
         </Container>
     )
 }
@@ -135,6 +137,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = { getInvitations, getJobs }
+const mapDispatchToProps = { getInvitations, getJobs, resetUserLoggedIn }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Candidate);

@@ -24,12 +24,12 @@ const Favorite = ({ navigation, employer }) => {
                     <FlatList
                         data={employer.favorites}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item, index }) => <Favoritecard bottom={'10%'} item={item} />}
+                        renderItem={({ item, index }) => <Favoritecard bottom={'10%'} item={item} navigation={navigation} />}
                     />
 
                 </View>
             </Content>
-<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#009961'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'}/>
+            <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#009961'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'} />
         </Container>
     )
 

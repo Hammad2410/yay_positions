@@ -7,46 +7,48 @@ import MyHeader from '../Components/LoginSignupHeader'
 import Profile from '../Components/CProfile'
 import EmployerTab from '../Components/EmployerTab'
 import Icons from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
+import { markFavorite, sendInvite } from '../redux/actions/employer'
 
-const CProfile = ({ navigation }) => {
+const CProfile = ({ navigation, employer, markFavorite, sendInvite }) => {
 
-return (
-<Container style={{backgroundColor:'white'}} >
-<MyHeader navigation={navigation}/>
-<Content >
+    return (
+        <Container style={{ backgroundColor: 'white' }} >
+            <MyHeader navigation={navigation} />
+            <Content >
 
-<View style={{flex:1}}>
-    <View style={{marginLeft:25}}>
-<Text style={styles.text}>Candidate Profile</Text>
-<View style={styles.line}>
-</View>
-</View>
-<View style={{flex:1,flexDirection:'row'}}>
-<TouchableOpacity>
-        <View style={styles.textinput}>
-            
-       <Text style={{textAlign:'center',marginTop:5}} >Invited</Text>
-       </View>
-       </TouchableOpacity>
-       <TouchableOpacity>
-    <View style={{alignItems:'flex-end',marginTop:5,marginLeft:80}}>
-      
-<Icons color={'#001F3F'} name={'square-o'} size={35}></Icons>
-    <Icons color={'green'} name={'heart-o'} size={15} style={{marginTop:-27,marginRight:6.5}}></Icons>
-   
-    </View>
-    </TouchableOpacity>
-</View>
+                <View style={{ flex: 1 }}>
+                    <View style={{ marginLeft: 25 }}>
+                        <Text style={styles.text}>Candidate Profile</Text>
+                        <View style={styles.line}>
+                        </View>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <TouchableOpacity>
+                            <View style={styles.textinput}>
+
+                                <Text style={{ textAlign: 'center', marginTop: 5 }} >Invited</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View style={{ alignItems: 'flex-end', marginTop: 5, marginLeft: 80 }}>
+
+                                <Icons color={'#001F3F'} name={'square-o'} size={35}></Icons>
+                                <Icons color={'green'} name={'heart-o'} size={15} style={{ marginTop: -27, marginRight: 6.5 }}></Icons>
+
+                            </View>
+                        </TouchableOpacity>
+                    </View>
 
 
                     <Profile bottom={10} navigation={navigation} />
                 </View>
             </Content>
-            <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
+            <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'} />
         </Container>
     )
 }
-export default CProfile;
+
 
 const styles = StyleSheet.create({
     text: {
@@ -124,19 +126,25 @@ const styles = StyleSheet.create({
         paddingTop: 15
 
     },
-    textinput:{
-        height:hp('4%'),
-        width:wp('20%'),
-      flex:1,
-        borderColor:'#707070',
-        borderWidth:0.5,
-        borderRadius:5,
-      alignContent:'center',
-        marginBottom:15,
-        marginLeft:100,
-        marginTop:5
-      
+    textinput: {
+        height: hp('4%'),
+        width: wp('20%'),
+        flex: 1,
+        borderColor: '#707070',
+        borderWidth: 0.5,
+        borderRadius: 5,
+        alignContent: 'center',
+        marginBottom: 15,
+        marginLeft: 100,
+        marginTop: 5
+
     },
 
 
 })
+
+const mapStateToProps = ({ employer }) => ({ employer })
+
+const mapDispatchToProps = { markFavorite, sendInvite }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CProfile);
