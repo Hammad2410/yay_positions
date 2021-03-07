@@ -20,6 +20,7 @@ const Login = ({ login, navigation, auth }) => {
 
 
     useEffect(() => {
+        
         if (auth.role === 'Employer') {
             navigation.navigate('Employer')
         }
@@ -27,7 +28,7 @@ const Login = ({ login, navigation, auth }) => {
             navigation.navigate('CandidateHome')
         }
 
-    }, [auth])
+    }, [auth.role])
 
     return (
         <Container>

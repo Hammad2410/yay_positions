@@ -148,25 +148,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                 bottom: 0,
                                 alignSelf: 'center'
                             }}>
-                                <TouchableOpacity
-                                    onPress={() => setSDateModalVisible(false)}
-
-                                    style={{
-                                        borderRadius: 5,
-                                        alignSelf: 'flex-start',
-                                        marginVertical: '3%',
-                                        marginHorizontal: '1%',
-                                        // marginLeft: '3%',
-                                        borderColor: 'grey',
-                                        borderWidth: 1, backgroundColor: '#fff',
-                                        width: wp('20%'), height: hp('5%')
-                                    }}>
-
-                                    <Text style={{
-                                        marginTop: 5,
-                                        paddingHorizontal: '15%', paddingVertical: 4, color: 'black'
-                                    }}>CANCEL</Text>
-                                </TouchableOpacity>
+                              
 
                                 <DatePicker style={{ marginHorizontal: '10%' }}
                                     date={date}
@@ -174,7 +156,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                     style={{
                                         width: wp('50%'),
                                         marginTop: '3%',
-                                        marginLeft: '2%'
+                                        marginLeft: '20%'
                                     }}
 
                                     minimumDate={new Date()}
@@ -222,25 +204,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                 bottom: 0,
                                 alignSelf: 'center'
                             }}>
-                                <TouchableOpacity
-                                    onPress={() => setDateModalVisible(false)}
-
-                                    style={{
-                                        borderRadius: 5,
-                                        alignSelf: 'flex-start',
-                                        marginVertical: '3%',
-                                        marginHorizontal: '1%',
-                                        // marginLeft: '3%',
-                                        borderColor: 'grey',
-                                        borderWidth: 1, backgroundColor: '#fff',
-                                        width: wp('20%'), height: hp('5%')
-                                    }}>
-
-                                    <Text style={{
-                                        marginTop: 5,
-                                        paddingHorizontal: '15%', paddingVertical: 4, color: 'black'
-                                    }}>CANCEL</Text>
-                                </TouchableOpacity>
+                                
 
                                 <DatePicker style={{ marginHorizontal: '10%' }}
                                     date={date}
@@ -248,7 +212,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                     style={{
                                         width: wp('50%'),
                                         marginTop: '3%',
-                                        marginLeft: '2%'
+                                        marginLeft: '20%'
                                     }}
 
                                     minimumDate={new Date()}
