@@ -10,10 +10,13 @@ import { resetUserLoggedIn } from '../redux/actions/auth';
 import { browseCandidate, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations } from '../redux/actions/employer';
 import EmployerTab from '../Components/EmployerTab'
 
-
+import {
+    NavigationContainer,
+    CommonActions,
+  } from '@react-navigation/native';
 
 const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations, resetUserLoggedIn }) => {
-
+   
 
     useEffect(() => {
         browseCandidate()
@@ -77,9 +80,19 @@ const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity onPress={() => { navigation.navigate('CandidateHome') }}>
+                <TouchableOpacity onPress={() =>
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [
+                { name: 'Login' },//to go to initial stack screen
+            ],
+            })
+          )
+        }>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
+               
 
             </Content>
             <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'} />

@@ -63,7 +63,7 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 role: null
-            }
+            }   
 
         default:
             return state;

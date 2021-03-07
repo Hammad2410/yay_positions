@@ -66,6 +66,6 @@ export const resetUserRegistered = () => {
 
 export const resetUserLoggedIn = () => {
     return (dispatch) => {
-        dispatch({ type: types.AUTH_RESET_USER_REGISTERED })
+        dispatch({ type: types.AUTH_RESET_LOGIN })
     }
 }

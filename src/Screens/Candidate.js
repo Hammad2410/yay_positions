@@ -8,7 +8,10 @@ import { connect } from 'react-redux';
 import { resetUserLoggedIn } from '../redux/actions/auth';
 import { getInvitations, getJobs } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
-
+import {
+    NavigationContainer,
+    CommonActions,
+  } from '@react-navigation/native';
 
 const Candidate = (props) => {
 
@@ -71,7 +74,16 @@ const Candidate = (props) => {
                     </View>
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() =>
+          props.navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [
+                { name: 'Login' },//to go to initial stack screen
+            ],
+            })
+          )
+        }>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
             </Content>
