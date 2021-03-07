@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left, Flatlist } from 'native-base';
+import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
@@ -17,10 +17,9 @@ const Hired = ({ navigation, employer }) => {
                 <View style={{ flex: 1 }}>
                     <View style={{ marginLeft: 40 }}>
                         <Text style={styles.text}>Hired</Text>
-                        <View style={styles.line}>
-                        </View>
+                        <View style={styles.line} />
                     </View>
-                    <Flatlist
+                    <FlatList
                         data={employer.hired}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) => <Hiredcard bottom={'10%'} item={item} />}

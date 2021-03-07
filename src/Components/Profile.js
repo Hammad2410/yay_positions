@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator, Modal, Dimensions } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader'
 import { connect } from 'react-redux';
 import { getCandidateProfile } from '../redux/actions/candidate'
+import Pdf from 'react-native-pdf';
 
 const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
+
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         getCandidateProfile();
@@ -151,7 +154,15 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                         <Text style={styles.text4}>Resumes</Text>
                     </View>
 
-                    <TouchableOpacity style={styles.btn1}>
+                    <TouchableOpacity style={styles.btn1} onPress={() => {
+                        if (auth.profile.Resumes.length > 0) {
+                            setShowModal(true)
+                        }
+                        else {
+                            alert("Resume not found")
+                        }
+
+                    }}>
                         <Text style={styles.btntext}>View</Text>
                     </TouchableOpacity>
 
@@ -164,8 +175,36 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                     <Image resizeMode="contain" source={require('../assests/image/resume.png')} style={{ margin: 15 }}></Image>
 
                 </View>
+                <Modal
+                    visible={showModal}
+                    onRequestClose={() => setShowModal(false)}
+                >
+                    <View style={{ flex: 1 }}>
+                        <Pdf
+                            source={{ uri: auth.profile.Resumes.length > 0 ? 'https://lms.phenomenaltechnology.com' + auth.profile.Resumes[0].ResumePath : null }}
+                            onLoadComplete={(numberOfPages, filePath) => {
+                                console.log(`number of pages: ${numberOfPages}`);
+                            }}
+                            onPageChanged={(page, numberOfPages) => {
+                                console.log(`current page: ${page}`);
+                            }}
+                            onError={(error) => {
+                                console.log(error);
+                            }}
+                            onPressLink={(uri) => {
+                                console.log(`Link presse: ${uri}`)
+                            }}
+                            style={styles.pdf}
+                        />
+                    </View>
+                </Modal>
+
+
             </>) : <ActivityIndicator size={'large'} color={'#009961'} style={{ justifyContent: 'center', alignItems: 'center' }} />
             }
+
+
+
         </View>
 
     )
@@ -278,6 +317,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: 'black',
         fontWeight: 'bold'
+    },
+    pdf: {
+        flex: 1,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     }
 
 })

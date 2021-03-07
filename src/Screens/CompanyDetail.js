@@ -27,8 +27,6 @@ const CompanyDetail = ({ navigation, auth }) => {
                 type: [DocumentPicker.types.allFiles],
             });
             setPhoto(res);
-
-
             console.log(
                 res.uri,
                 res.type, // mime type
@@ -42,6 +40,10 @@ const CompanyDetail = ({ navigation, auth }) => {
                 throw err;
             }
         }
+    }
+
+    onPress = () => {
+
     }
 
 
@@ -99,7 +101,7 @@ const CompanyDetail = ({ navigation, auth }) => {
 
                             <ProfileText nametext="Description" marginLeftt={-255} />
                             <TextInput placeholder="Test" placeholderTextColor='#707070' style={styles.textinput} value={description} onChangeText={(text) => setDescription(text)} ></TextInput>
-                            <ButtonP NameButton="Update Information" />
+                            <ButtonP NameButton="Update Information" buttonAction={onPress} />
                         </View>
 
                     </View>
@@ -136,10 +138,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         padding: 10,
         textAlignVertical: 'top'
-
     },
-
-
 })
 
 const mapStateToProps = ({ auth }) => ({ auth })
