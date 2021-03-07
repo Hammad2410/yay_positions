@@ -12,8 +12,11 @@ import DocumentPicker from 'react-native-document-picker';
 import DatePicker from 'react-native-date-picker';
 import Tags from "react-native-tags";
 import CandidateTab from '../Components/CandidateTab';
+import { updatePersonalInfo, updateSkills, updateResume, updatePortfolio } from '../redux/actions/candidate';
+import { connect } from 'react-redux';
+var RNFS = require('react-native-fs');
 
-const PersonalInfo = ({ navigation, }) => {
+const PersonalInfo = ({ navigation, auth, updatePersonalInfo, updateSkills, updateResume, updatePortfolio }) => {
     const [Fullname, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -23,10 +26,10 @@ const PersonalInfo = ({ navigation, }) => {
     const [Photo, setPhoto] = useState('');
     const [PPhoto, setPPhoto] = useState('');
     const [Resume, setResume] = useState('');
+    const [skills, setSkills] = useState([]);
     const [DatemodalVisible, setDateModalVisible] = useState(false);
     const DateModal = () => {
         setDateModalVisible(!DatemodalVisible)
-
     }
 
     const openPhoto = async () => {
@@ -34,7 +37,10 @@ const PersonalInfo = ({ navigation, }) => {
             const res = await DocumentPicker.pick({
                 type: [DocumentPicker.types.allFiles],
             });
-            setPhoto(res);
+            RNFS.readFile(res.uri, 'base64')
+                .then(res1 => {
+                    setPhoto("data:" + res.type + ";base64," + res1);
+                });
 
 
             console.log(
@@ -59,7 +65,11 @@ const PersonalInfo = ({ navigation, }) => {
             });
 
 
-            setResume(res);
+            RNFS.readFile(res.uri, 'base64')
+                .then(res1 => {
+                    setResume("data:" + res.type + ";base64," + res1);
+                });
+
 
             console.log(
                 res.uri,
@@ -82,7 +92,12 @@ const PersonalInfo = ({ navigation, }) => {
             });
 
 
-            setPPhoto(res);
+            RNFS.readFile(res.uri, 'base64')
+                .then(res1 => {
+                    setPPhoto("data:" + res.type + ";base64," + res1);
+                });
+
+            // setPPhoto(res);
 
             console.log(
                 res.uri,
@@ -90,6 +105,8 @@ const PersonalInfo = ({ navigation, }) => {
                 res.name,
                 res.size
             );
+
+
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {
                 // User cancelled the picker, exit any dialogs or menus and move on
@@ -98,6 +115,23 @@ const PersonalInfo = ({ navigation, }) => {
             }
         }
     }
+
+    const onPressProfileInfo = () => {
+        updatePersonalInfo(Fullname, email, phone, "male", datename, Photo, '0', '0', '0', '0', '0', '0', '0')
+    }
+
+    const onPressSkill = () => {
+        updateSkills(skills)
+    }
+
+    const onPressResume = () => {
+        updateResume(Resume)
+    }
+
+    const onPressPortfolio = () => {
+        updatePortfolio(PPhoto, portfolio)
+    }
+
 
     return (
         <Container>
@@ -265,7 +299,7 @@ const PersonalInfo = ({ navigation, }) => {
                         <Dropdown plholder="Salary Type" />
                         <ProfileText nametext="Salary Range" marginLeftt={-245} />
                         <Dropdown plholder="Salary Range" />
-                        <ButtonP NameButton="Save" />
+                        <ButtonP NameButton="Save" buttonAction={onPressProfileInfo} />
                     </View>
 
                     <View style={{ marginTop: 30, marginLeft: 40 }}>
@@ -277,10 +311,10 @@ const PersonalInfo = ({ navigation, }) => {
                         <Tags
 
                             textInputProps={{
-                                placeholder: "Application Development"
+                                placeholder: "skills"
                             }}
-                            initialTags={["Application Development"]}
-                            onChangeTags={tags => console.log(tags)}
+                            initialTags={skills}
+                            onChangeTags={tags => setSkills(tags)}
                             onTagPress={(index, tagLabel, event, deleted) =>
                                 console.log(index, tagLabel, event, deleted ? "deleted" : "not deleted")
                             }
@@ -301,7 +335,7 @@ const PersonalInfo = ({ navigation, }) => {
 
 
 
-                        <ButtonP NameButton="Save Skills" />
+                        <ButtonP NameButton="Save Skills" buttonAction={onPressSkill} />
                     </View>
 
                 </View>
@@ -338,7 +372,7 @@ const PersonalInfo = ({ navigation, }) => {
                             {Resume.name || 'No File Chosen'}
                         </Text>
                     </View>
-                    <ButtonP NameButton="Save Skills" />
+                    <ButtonP NameButton="Save Resume" buttonAction={onPressResume} />
                 </View>
 
                 <View style={{ marginTop: 30, marginLeft: 40 }}>
@@ -347,7 +381,7 @@ const PersonalInfo = ({ navigation, }) => {
                 </View>
                 <View style={{ marginTop: 20, alignItems: 'center' }}>
                     <ProfileText nametext="Add Description of your projects" marginLeftt={-140} />
-                    <TextInputLogin />
+                    <TextInputLogin value={portfolio} setter={setPortfolio} />
                     <ProfileText nametext="Add Photos of your projects" marginLeftt={-165} />
                     <View style={{
                         height: hp('5%'),
@@ -375,7 +409,7 @@ const PersonalInfo = ({ navigation, }) => {
                         </Text>
                     </View>
 
-                    <ButtonP NameButton="Save Skills" />
+                    <ButtonP NameButton="Save Portfolio" buttonAction={onPressPortfolio} />
                 </View>
 
 
@@ -385,7 +419,7 @@ const PersonalInfo = ({ navigation, }) => {
         </Container>
     )
 }
-export default PersonalInfo;
+
 const styles = StyleSheet.create({
 
     text: {
@@ -401,6 +435,10 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
 
-
-
 })
+
+const mapStateToProps = ({ auth }) => ({ auth })
+
+const mapDispatchToProps = { updatePersonalInfo, updateSkills, updateResume, updatePortfolio }
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo);

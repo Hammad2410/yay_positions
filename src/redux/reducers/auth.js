@@ -65,6 +65,12 @@ const auth = (state = initialState, action) => {
                 role: null
             }   
 
+        case types.AUTH_PASSWORD_CHANGED:
+            return {
+                ...state,
+                loading: false
+            }
+
         default:
             return state;
     }

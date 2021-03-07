@@ -181,3 +181,141 @@ export const updateJob = (company, role, startDate, endDate, description) => {
             })
     }
 }
+
+export const updatePersonalInfo = (name, email, phone, gender, dob, file, level, experience, qualification, jobType, salaryType, salaryRange, about) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.post(BASE_URL + "/api/candidate/PersonalInfo", {
+            FullName: name,
+            Email: email,
+            PhoneNo: phone,
+            Gender: gender,
+            DOB: dob,
+            file: file,
+            Level: level,
+            Experience: experience,
+            Qualification: qualification,
+            JobType: jobType,
+            SalaryType: salaryType,
+            SalaryRange: salaryRange,
+            AboutYourself: about
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer 7dfs0t_Pk1ekqVtHV_tLQtepZmZU-jsZLUzgT3pCLdFaCh66qv4mQdSm3evROMjt4AFeCshoiNFymYe0X56rwNzsdgwW36AWD_0CKW5f_D1Bn36np9Z7eh1d892AVbC3bNrlWLTJpd8IVmo1cRa5Kdgh7e9CHmDSqJ4CORfRP_63ZTkqletrgzqAyr6OVWCL7bBeBwE3W4x7d0_YxzP3CDye2Ai1i1jgn8cCsH2uIBkZ3msw0uStv3i4LutZTzyw39a5eNl0gkt-9V94hJpZKLuf8lw7WUqQZr8pxmnJhg7gybsdBegMyVrdqgV75GX6UPePMbk0B54TJo4F4TuZJTZ7wJF0tvxgkihScBVlzraLu95HBt9WHT-tD8RRS38g8WcDJVHdNHEuqRRrcpMLjXfCGoxS8K7JJX63iVjDD75kECQ0kRL7fHHmoPYfpHc341wpJjL_lzGGfsj5bOhcNfvSnPYjouDaZDUlKi-mtZ3i0Pr055zj_aItep_ztLOhHH6T8QERZ_baZvneV-9ICs_Bdwm141MxI_51LL1Ni3JrrLZeb5uelatKbmF7Q_IU"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                alert("Profile Updated");
+                // dispatch({ type: types.CANDIDATE_EDUCATION_ADDED, message: "Education Added" })
+                // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+            .catch((error) => {
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const updateSkills = (skills) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.post(BASE_URL + "/api/candidate/UpdateSkills", {
+            Skills: skills
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer RqP6RAkdaAvZrlIJxb0npCeKkui0npuZVGcShAXrgOqYuXqFWXod26O5evMjJwsABWWTa4a6fp1vxHOGPT8qmHrGV_2kPC7xEeH8-nYZ4pq7jyM-fNkXJCtEU4dVhdVJGsaciOr-vBiGZxDFJ3Glh0cElxTSpY0Hoy9bIBXaOm6DFrRfWpzmM81P_5OGYap8kqn7Fyxki3yzm0DpfAcJplYkHBapT_djrXKAsT4KSaONq1tJjNNblS13M5ifAvQcK3-NXlet-_m8UtvJhyVh5aUP4VeMfPPV3qQhyotZcx59uEPzcP7uGazSMrcFXzuVX3EnmyL9VsCg2ddPi8wMUuMU-P2PL0thqlHG6BMfaneqNr1ULAKN4IFh5meUi8xZy_5FhICkszo3Ox8Ee1eoyk-Kev8CBLd0hfWnie4zSQIS1lSYX47Qc4AqvLPvEVPHRFcJWNObfVz8vtYDJczG7NSwB40Jsx7F-3ekJ32eILEMDpaHbU1DLGQwsCid7cI4MHs1aN3QwiJfs30xNQl5kwuQsfH8erCgJ5Un47C0NxxVP0eT_lW0bJObEmN-DJ_G"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                alert("Skills Updated")
+            })
+            .catch((error) => {
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const updateResume = (resume) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.post(BASE_URL + "/api/candidate/UploadResume", {
+            file: resume
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer RqP6RAkdaAvZrlIJxb0npCeKkui0npuZVGcShAXrgOqYuXqFWXod26O5evMjJwsABWWTa4a6fp1vxHOGPT8qmHrGV_2kPC7xEeH8-nYZ4pq7jyM-fNkXJCtEU4dVhdVJGsaciOr-vBiGZxDFJ3Glh0cElxTSpY0Hoy9bIBXaOm6DFrRfWpzmM81P_5OGYap8kqn7Fyxki3yzm0DpfAcJplYkHBapT_djrXKAsT4KSaONq1tJjNNblS13M5ifAvQcK3-NXlet-_m8UtvJhyVh5aUP4VeMfPPV3qQhyotZcx59uEPzcP7uGazSMrcFXzuVX3EnmyL9VsCg2ddPi8wMUuMU-P2PL0thqlHG6BMfaneqNr1ULAKN4IFh5meUi8xZy_5FhICkszo3Ox8Ee1eoyk-Kev8CBLd0hfWnie4zSQIS1lSYX47Qc4AqvLPvEVPHRFcJWNObfVz8vtYDJczG7NSwB40Jsx7F-3ekJ32eILEMDpaHbU1DLGQwsCid7cI4MHs1aN3QwiJfs30xNQl5kwuQsfH8erCgJ5Un47C0NxxVP0eT_lW0bJObEmN-DJ_G"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                alert("Resume Updated")
+            })
+            .catch((error) => {
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const updatePortfolio = (portfolio, description) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.post(BASE_URL + "/api/candidate/UploadPortfolio", {
+            file: portfolio,
+            Description: description
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer RqP6RAkdaAvZrlIJxb0npCeKkui0npuZVGcShAXrgOqYuXqFWXod26O5evMjJwsABWWTa4a6fp1vxHOGPT8qmHrGV_2kPC7xEeH8-nYZ4pq7jyM-fNkXJCtEU4dVhdVJGsaciOr-vBiGZxDFJ3Glh0cElxTSpY0Hoy9bIBXaOm6DFrRfWpzmM81P_5OGYap8kqn7Fyxki3yzm0DpfAcJplYkHBapT_djrXKAsT4KSaONq1tJjNNblS13M5ifAvQcK3-NXlet-_m8UtvJhyVh5aUP4VeMfPPV3qQhyotZcx59uEPzcP7uGazSMrcFXzuVX3EnmyL9VsCg2ddPi8wMUuMU-P2PL0thqlHG6BMfaneqNr1ULAKN4IFh5meUi8xZy_5FhICkszo3Ox8Ee1eoyk-Kev8CBLd0hfWnie4zSQIS1lSYX47Qc4AqvLPvEVPHRFcJWNObfVz8vtYDJczG7NSwB40Jsx7F-3ekJ32eILEMDpaHbU1DLGQwsCid7cI4MHs1aN3QwiJfs30xNQl5kwuQsfH8erCgJ5Un47C0NxxVP0eT_lW0bJObEmN-DJ_G"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                alert("Resume Updated")
+            })
+            .catch((error) => {
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const ChangePassword = (oldPass, pass, confirmPass) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.AUTH_LOADING })
+
+        axios.post(BASE_URL + "/api/Account/ChangePassword", {
+            OldPassword: oldPass,
+            NewPassword: pass,
+            ConfirmPassword: confirmPass
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer RqP6RAkdaAvZrlIJxb0npCeKkui0npuZVGcShAXrgOqYuXqFWXod26O5evMjJwsABWWTa4a6fp1vxHOGPT8qmHrGV_2kPC7xEeH8-nYZ4pq7jyM-fNkXJCtEU4dVhdVJGsaciOr-vBiGZxDFJ3Glh0cElxTSpY0Hoy9bIBXaOm6DFrRfWpzmM81P_5OGYap8kqn7Fyxki3yzm0DpfAcJplYkHBapT_djrXKAsT4KSaONq1tJjNNblS13M5ifAvQcK3-NXlet-_m8UtvJhyVh5aUP4VeMfPPV3qQhyotZcx59uEPzcP7uGazSMrcFXzuVX3EnmyL9VsCg2ddPi8wMUuMU-P2PL0thqlHG6BMfaneqNr1ULAKN4IFh5meUi8xZy_5FhICkszo3Ox8Ee1eoyk-Kev8CBLd0hfWnie4zSQIS1lSYX47Qc4AqvLPvEVPHRFcJWNObfVz8vtYDJczG7NSwB40Jsx7F-3ekJ32eILEMDpaHbU1DLGQwsCid7cI4MHs1aN3QwiJfs30xNQl5kwuQsfH8erCgJ5Un47C0NxxVP0eT_lW0bJObEmN-DJ_G"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                dispatch({ type: types.AUTH_PASSWORD_CHANGED })
+                alert("Password Changed")
+            })
+            .catch((error) => {
+                dispatch({ type: types.AUTH_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+            })
+    }
+}
