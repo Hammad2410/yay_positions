@@ -8,10 +8,10 @@ import { Container, Content, Header, Left, Right, Body, Thumbnail } from 'native
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const ButtonP = ({ navigation, NameButton, buttonAction }) => {
+const ButtonP = ({ navigation, NameButton, buttonAction,Bwidth,Mleft }) => {
     return (
         <TouchableOpacity onPress={() => buttonAction()}>
-            <View style={styles.textinput}>
+            <View style={[styles.textinput,{width:Bwidth,marginLeft:Mleft}]}>
                 <Text style={{ textAlign: 'center', marginTop: 5 }} >{NameButton}</Text>
             </View>
         </TouchableOpacity>

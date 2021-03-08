@@ -9,17 +9,21 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-const Dropdown = ({navigation,plholder}) => {
+const Dropdown = ({navigation,plholder,itemss}) => {
     return (
         <View style={{alignItems:'center'}}>
         <DropDownPicker
-            placeholder={ plholder ||'1 Year'}
+            items={itemss}
+            placeholder={ plholder ||'Select'}
             placeholderStyle={{color:'#707070',fontSize:11.33}}
             arrowSize={20}
             arrowColor={'#47525E'}
             containerStyle={{height: 40,  width:wp('80%'),}}
             style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5}}
             dropDownStyle={{backgroundColor: '#ffffff'}}
+            itemStyle={{
+                justifyContent: 'flex-start'
+            }}
         />
         </View>
     )

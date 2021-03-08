@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
-    View, Text, TouchableOpacity,
+    View, Text, 
     StyleSheet, Image, TextInput,Modal,Pressable,KeyboardAvoidingView,ScrollView
 } from 'react-native';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import Icon from 'react-native-vector-icons/Entypo';
 
 
 
@@ -24,17 +24,18 @@ const ErrorModal = ({ navigation, title, message, visible, onPress }) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-             
+            <View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
+
+          <Text style={{alignSelf:'flex-start',color:'black',marginTop:-20,fontSize:20}}>Alert</Text>
+          <Pressable onPress={() => {onPress()}}>
+          <Icon name='cross'  size={25} color='grey' style={{marginTop:-20,marginLeft:150}}/>
+          </Pressable>
+          </View>
             <Text style={styles.modalText}>Error?</Text>
          
            
             <View style={{flex:1,flexDirection:'row',marginTop:50,alignSelf:'center'}}>
-            <Pressable
-              style={[styles.button,{backgroundColor:'#EA3A3A',}]}
-              onPress={() => {onPress()}}
-            >
-              <Text style={styles.textStyle}>OK</Text>
-            </Pressable>
+            
             </View>
           </View>
         </View>
@@ -69,8 +70,8 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         padding: 35,
         width:270,
-        height:182,
-        borderRadius:10,
+        height:110,
+      
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
@@ -102,9 +103,9 @@ const styles = StyleSheet.create({
       modalText: {
         alignSelf:'center',
         fontSize:16,
-        color:'black',
+        color:'green',
         fontWeight:"400",
-       marginTop:8,
+       marginTop:30,
        textAlign:'center',
       width:160
       }

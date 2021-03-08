@@ -7,6 +7,7 @@ import TextInputLogin from '../Components/TextInput';
 import { connect } from 'react-redux';
 import { register, resetUserRegistered } from '../redux/actions/auth';
 
+
 const Register = (props) => {
 
     const [role, setRole] = useState('Candidate');
