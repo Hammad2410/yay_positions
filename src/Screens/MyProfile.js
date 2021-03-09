@@ -24,7 +24,7 @@ return (
                     <Profile bottom={10} />
                 </View>
             </Content>
-            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+            <CandidateTab navigation={navigation} First={'#009961'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
         </Container>
     )
 }

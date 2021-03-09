@@ -14,16 +14,16 @@ const CandidateTab = ({ navigation,First,Second,Third,Fourth,Fifth}) => {
 
     <View >
       <View style={styles.view}>
-          <TouchableOpacity style={{ flex:1,marginLeft:30}} onPress={() => {navigation.navigate('MyResume')}}>
+          <TouchableOpacity style={{ flex:1,marginLeft:30}} onPress={() => {navigation.navigate('MyProfile')}}>
           <Image resizeMode='contain' style={{width:30,height:30,tintColor:First}} source={require('../assests/image/person.png') } />
       </TouchableOpacity>
-      <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('PersonalInfo')}} >
+      <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('MyResume')}} >
       <Image resizeMode='contain' style={{width:26,height:32,tintColor:Second}} source={require('../assests/image/document.png') } />
       </TouchableOpacity>
-      <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('MyProfile')}} >
+      <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('BrowseJobs')}} >
       <Image resizeMode='contain' style={{width:35,height:30,tintColor:Third}} source={require('../assests/image/upload.png') } />
       </TouchableOpacity>
-      <TouchableOpacity style={{ flex:1}}  onPress={() => {navigation.navigate('BrowseJobs')}}>
+      <TouchableOpacity style={{ flex:1}}  onPress={() => {navigation.navigate('SavedJobs')}}>
       <Image  resizeMode='contain' style={{width:30, height:30,tintColor:Fourth}} source={require('../assests/image/save.png') } />
       </TouchableOpacity>
       <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('Invitations')}} >
