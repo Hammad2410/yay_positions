@@ -63,13 +63,13 @@ const CompanyDetail = ({ navigation, auth }) => {
                         <View style={{ marginTop: 10, alignItems: 'center' }}>
 
                             <ProfileText nametext="Company Name" marginLeftt={-230} />
-                            <TextInputLogin label="Abc international" value={company} setter={setCompany} />
+                            <TextInputLogin label="Company" value={company} setter={setCompany} />
                             <ProfileText nametext="Phone No." marginLeftt={-260} />
-                            <TextInputLogin label="2233432423" Ktype={'number-pad'} value={phone} setter={setPhone} />
-                            <ProfileText nametext="Headline" marginLeftt={-265} />
-                            <TextInputLogin label="Test" value={headLine} setter={setHeadLine} />
+                            <TextInputLogin label="Phone No" Ktype={'number-pad'} value={phone} setter={setPhone} />
+                            <ProfileText nametext="Head line" marginLeftt={-265} />
+                            <TextInputLogin label="Head line" value={headLine} setter={setHeadLine} />
                             <ProfileText nametext="Website" marginLeftt={-265} />
-                            <TextInputLogin label="www.abcinternational.com.pk" value={website} setter={setWebsite} />
+                            <TextInputLogin label="Website" value={website} setter={setWebsite} />
                             <ProfileText nametext="Profile Image" marginLeftt={-243} />
                             <View style={{
                                 height: hp('5%'),
@@ -100,8 +100,10 @@ const CompanyDetail = ({ navigation, auth }) => {
 
 
                             <ProfileText nametext="Description" marginLeftt={-255} />
-                            <TextInput placeholder="Test" placeholderTextColor='#707070' style={styles.textinput} value={description} onChangeText={(text) => setDescription(text)} ></TextInput>
-                            <ButtonP NameButton="Update Information" buttonAction={onPress} />
+                            <TextInput placeholder="About Yourself" placeholderTextColor='#707070' style={styles.textinput} value={description} onChangeText={(text) => setDescription(text)} ></TextInput>
+                            <View style={{marginLeft:-160}}>
+                            <ButtonP Bwidth={ wp('40%')} NameButton="Update Information" buttonAction={onPress} />
+                            </View>
                         </View>
 
                     </View>

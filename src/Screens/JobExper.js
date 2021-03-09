@@ -73,7 +73,8 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                                 fontSize: 12,
                                 padding: 10,
                                 marginBottom: 15,
-                                alignSelf: 'center', flexDirection: 'row'
+                                alignSelf: 'center', flexDirection: 'row',
+                                marginLeft:-11
                             }}>
                                 <TouchableOpacity
 
@@ -87,8 +88,10 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
 
 
                             </View>
+                            <View style={{ marginLeft:-30,marginTop:10}}>
                             <TouchableOpacity onPress={() => SDateModal()}>
-                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center', right: 8, top: 10, position: 'absolute' }} /></TouchableOpacity>
+                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
+                                </View>
                         </View>
                         <ProfileText nametext="End Date" marginLeftt={-260} />
                         <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
@@ -102,7 +105,8 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                                 fontSize: 12,
                                 padding: 10,
                                 marginBottom: 15,
-                                alignSelf: 'center', flexDirection: 'row'
+                                alignSelf: 'center', flexDirection: 'row',
+                                marginLeft:-11
                             }}>
                                 <TouchableOpacity
 
@@ -116,17 +120,20 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
 
 
                             </View>
+                            <View style={{ marginLeft:-30,marginTop:10}}>
                             <TouchableOpacity onPress={() => DateModal()}>
-                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center', right: 8, top: 10, position: 'absolute' }} /></TouchableOpacity>
+                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
+                                </View>
                         </View>
 
                         <ProfileText nametext="Description" marginLeftt={-255} />
                         <TextInput placeholder="Description" value={description} onChangeText={(text) => setDescription(text)} placeholderTextColor='#707070' style={styles.textinput}></TextInput>
                         <Text style={{ alignSelf: 'center', color: 'red' }}>{candidate.error}</Text>
-
                         {
-                            candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> : <ButtonP NameButton="Update Information" buttonAction={onPress} />
-                        }
+                            candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> : <View style={{marginLeft:-160}}>
+                      <ButtonP Bwidth={ wp('40%')} NameButton="Update Information" buttonAction={onPress} />
+                      </View>
+                        } 
                     </View>
                     <View>
                         <Modal
@@ -142,25 +149,7 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                                 bottom: 0,
                                 alignSelf: 'center'
                             }}>
-                                <TouchableOpacity
-                                    onPress={() => setSDateModalVisible(false)}
-
-                                    style={{
-                                        borderRadius: 5,
-                                        alignSelf: 'flex-start',
-                                        marginVertical: '3%',
-                                        marginHorizontal: '1%',
-                                        // marginLeft: '3%',
-                                        borderColor: 'grey',
-                                        borderWidth: 1, backgroundColor: '#fff',
-                                        width: wp('20%'), height: hp('5%')
-                                    }}>
-
-                                    <Text style={{
-                                        marginTop: 5,
-                                        paddingHorizontal: '15%', paddingVertical: 4, color: 'black'
-                                    }}>CANCEL</Text>
-                                </TouchableOpacity>
+                                
 
                                 <DatePicker style={{ marginHorizontal: '10%' }}
                                     date={date}
@@ -168,7 +157,7 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                                     style={{
                                         width: wp('50%'),
                                         marginTop: '3%',
-                                        marginLeft: '2%'
+                                        marginLeft: '20%'
                                     }}
 
                                     minimumDate={new Date()}
@@ -216,25 +205,7 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                                 bottom: 0,
                                 alignSelf: 'center'
                             }}>
-                                <TouchableOpacity
-                                    onPress={() => setDateModalVisible(false)}
-
-                                    style={{
-                                        borderRadius: 5,
-                                        alignSelf: 'flex-start',
-                                        marginVertical: '3%',
-                                        marginHorizontal: '1%',
-                                        // marginLeft: '3%',
-                                        borderColor: 'grey',
-                                        borderWidth: 1, backgroundColor: '#fff',
-                                        width: wp('20%'), height: hp('5%')
-                                    }}>
-
-                                    <Text style={{
-                                        marginTop: 5,
-                                        paddingHorizontal: '15%', paddingVertical: 4, color: 'black'
-                                    }}>CANCEL</Text>
-                                </TouchableOpacity>
+                               
 
                                 <DatePicker style={{ marginHorizontal: '10%' }}
                                     date={date}
@@ -242,7 +213,7 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
                                     style={{
                                         width: wp('50%'),
                                         marginTop: '3%',
-                                        marginLeft: '2%'
+                                        marginLeft: '20%'
                                     }}
 
                                     minimumDate={new Date()}

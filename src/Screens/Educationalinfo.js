@@ -74,7 +74,8 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                 fontSize: 12,
                                 padding: 10,
                                 marginBottom: 15,
-                                alignSelf: 'center', flexDirection: 'row'
+                                alignSelf: 'center', flexDirection: 'row',
+                                marginLeft:-11
                             }}>
                                 <TouchableOpacity
 
@@ -88,8 +89,10 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
 
 
                             </View>
+                            <View style={{ marginLeft:-30,marginTop:10}}>
                             <TouchableOpacity onPress={() => SDateModal()}>
-                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center', right: 8, top: 10, position: 'absolute' }} /></TouchableOpacity>
+                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
+                                </View>
                         </View>
                         <ProfileText nametext="End Date" marginLeftt={-260} />
                         <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
@@ -103,7 +106,8 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                 fontSize: 12,
                                 padding: 10,
                                 marginBottom: 15,
-                                alignSelf: 'center', flexDirection: 'row'
+                                alignSelf: 'center', flexDirection: 'row',
+                                marginLeft:-11
                             }}>
                                 <TouchableOpacity
 
@@ -117,8 +121,10 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
 
 
                             </View>
+                            <View style={{ marginLeft:-30,marginTop:10}}>
                             <TouchableOpacity onPress={() => DateModal()}>
-                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center', right: 8, top: 10, position: 'absolute' }} /></TouchableOpacity>
+                                <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center'}} /></TouchableOpacity>
+                                </View>
                         </View>
 
                         <ProfileText nametext="Grade" marginLeftt={-285} />
@@ -128,10 +134,10 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                         <ProfileText nametext="Description" marginLeftt={-255} />
                         <TextInput placeholder="description" value={description} onChangeText={(text) => setDescription(text)} placeholderTextColor='#707070' style={styles.textinput}></TextInput>
                         <Text style={{ alignSelf: 'center', color: 'red' }}>{candidate.error}</Text>
-
-                        {
-                            candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> : <ButtonP NameButton="Update Information" buttonAction={onPress} />
-                        }
+                        {      candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :    <View style={{marginLeft:-160}}>         
+                   <ButtonP Bwidth={ wp('40%')} NameButton="Update Information" buttonAction={onPress} />
+                   </View>  
+                     } 
 
                     </View>
                     <View>

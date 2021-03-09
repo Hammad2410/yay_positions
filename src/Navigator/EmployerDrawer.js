@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,Image } from 'react-native';
 import {
     useTheme,
     Avatar,
@@ -65,22 +65,16 @@ export function DrawerContent(props) {
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <PIcon 
-                                name="id-card" 
-                                color='#009961'
-                                size={21}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/profile1.png') } />
+
                             )}
                             label="Company Details" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('CompanyDetail')}}
                         />
                          <DrawerItem 
                             icon={({color, size}) => (
-                                <JIcon 
-                                name="shopping-bag" 
-                                color='#009961'
-                                size={28}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/case.png') } />
+
                             )}
                             label="Jobs" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('Jobs')}}
@@ -88,11 +82,8 @@ export function DrawerContent(props) {
                        
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <Icon 
-                                name="upload" 
-                                color='#009961'
-                                size={size}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/upload.png') } />
+
                             )}
                             label="Browse Candidates"  labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('BrowseCandidates')}}
@@ -110,11 +101,8 @@ export function DrawerContent(props) {
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <IIcon 
-                                name="person" 
-                                color='#009961'
-                                size={size}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/person.png') } />
+
                             )}
                             label="Hired Candidates" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('Hired')}}

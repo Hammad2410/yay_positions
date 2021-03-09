@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,Image } from 'react-native';
 import {
     useTheme,
     Avatar,
@@ -65,22 +65,16 @@ export function DrawerContent(props) {
                         />
                          <DrawerItem 
                             icon={({color, size}) => (
-                                <IIcon 
-                                name="person" 
-                                color='#009961'
-                                size={size}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/person.png') } />
+
                             )}
                             label="View My Profile" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('ViewMyProfile')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <PIcon 
-                                name="id-card" 
-                                color='#009961'
-                                size={21}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/profile1.png') } />
+
                             )}
                             label="Update Profile" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('UpdateProfile')}}
@@ -109,33 +103,22 @@ export function DrawerContent(props) {
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <PIcon 
-                                name="file-text" 
-                                color='#009961'
-                                size={28}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/document.png') } />
                             )}
                             label="My Resume" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('MyResume')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <Icon 
-                                name="upload" 
-                                color='#009961'
-                                size={size}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/upload.png') } />
                             )}
                             label="Browse Jobs"  labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('BrowseJobs')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <MIcon 
-                                name="mail" 
-                                color='#009961'
-                                size={size}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/email.png') } />
+
                             )}
                             label="Invitations" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('Invitations')}}
@@ -143,11 +126,8 @@ export function DrawerContent(props) {
                        
                         <DrawerItem 
                             icon={({color, size}) => (
-                                <MIcon 
-                                name="save" 
-                                color='#009961'
-                                size={size}
-                                />
+                                <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/save.png') } />
+
                             )}
                             label="Saved Jobs" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('SavedJobs')}}

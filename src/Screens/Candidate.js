@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { resetUserLoggedIn } from '../redux/actions/auth';
 import { getInvitations, getJobs } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
+
 import {
     NavigationContainer,
     CommonActions,
@@ -30,9 +31,9 @@ const Candidate = (props) => {
                         onPress={() => props.navigation.goBack()}>
                         <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity >
-                    <TouchableOpacity onPress={() => { props.navigation.navigate('Employer') }}>
+                  
                         <Text style={styles.text}>Hello Jason </Text>
-                    </TouchableOpacity>
+                  
                 </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Jobs</Text>
@@ -86,6 +87,7 @@ const Candidate = (props) => {
         }>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
+               
             </Content>
             <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'} />
         </Container>

@@ -40,7 +40,65 @@ var job = [
 
 ];
 
+var Skills =[
+  {label: 'Select', value: 0, },
+{label: 'Analytical Skills', value:1, },
+{label: 'Application Development', value: 2, }, 
+{label: 'Architecture', value: 3,},
+{label: 'Arts', value: 4,},
+{label: 'Communication Skills', value: 5, },
+{label: 'Cooking', value: 6, },
+{label: 'Culinary Arts', value: 7,}, 
+{label: 'Data Network', value: 8,},
+{label: 'Designing', value: 9,},  
+{label: 'Development', value: 10,},
+{label: 'Education', value: 11,}, 
+{label: 'Flexibility', value: 12,},  
+{label: 'Food Products', value: 13,}, 
+{label: 'IT Engineering', value: 14,}, 
+{label: 'JS', value: 15,}, 
+{label: 'Managment', value: 16,}, 
+{label: 'Medical and Healthcare', value: 17,},
+{label: 'Modeling', value: 18,},
+{label: 'Office Managment', value: 19},
+{label: 'Painting', value: 20},
+{label: 'Patience', value: 21},
+{label: 'Php', value: 22}, 
+{label: 'Problem Solving', value: 23},
+{label: 'SEO', value: 24},
+{label: 'SMM', value: 25},
+{label: 'Stress Managment', value: 26,},
+{label: 'Team Managment', value: 27,},
+{label: 'Team Work', value: 28,},
+{label: 'Technical', value: 29,},
+{label: 'Trainings', value: 30,},             
+]
+var Jexp =[
 
+{label: '1 year', value: '1year',},
+{label: '2 years', value: '2years', },
+{label: '3 years', value: '3years', },
+{label: '4 years', value: '4years', },
+{label: '5 years', value: '5years', },
+{label: '6 years', value: '6years', },
+{label: '7 years', value: '7years', },
+{label: '8 years', value: '8years', },
+{label: '9 years', value: '9years', },
+{label: '10 years', value: '10years', },
+{label: '10+years', value: '10+years', },
+    ]
+var SRange =[
+{label: 'Select', value: 'Select', },
+{label: '$50,000-$100,000', value: 'S1', },
+{label: '$200,000-$300,000', value: 'S2', }, 
+{label: '$300,000-$400,000', value: 'S3',},
+{label: '$400,000-$500,000', value: 'S4',},
+{label: '$500,000-$600,000', value: 'S5', },
+{label: '$600,000-$700,000', value: 'S6', },
+{label: '$700,000-$800,000', value: 'S7',}, 
+{label: '$800,000-$900,000', value: 'S8',},
+{label: '$900,000-$1,000,000', value: 'S9',},  
+]
 const Filter = ({ navigation }) => {
 
 
@@ -94,13 +152,17 @@ return (
     <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
     <Text style={styles.text2}>Skills</Text>
     <DropDownPicker
+    items={Skills}
+    itemStyle={{
+      justifyContent: 'flex-start'
+  }}
     placeholder={'Select your skills'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
     containerStyle={{height:50,width:wp('80%')}}
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
-    dropDownStyle={{backgroundColor: '#009961'}}
+    dropDownStyle={{backgroundColor: '#ffffff'}}
 />
 <TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
 <Text style={styles.btntext}>Search</Text>
@@ -110,13 +172,17 @@ return (
     <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
     <Text style={styles.text2}>Job Experience</Text>
     <DropDownPicker
+    items={Jexp}
+    itemStyle={{
+      justifyContent: 'flex-start'
+  }}
     placeholder={'Select your skills'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
     containerStyle={{height:50,width:wp('80%')}}
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
-    dropDownStyle={{backgroundColor: '#009961'}}
+    dropDownStyle={{backgroundColor: '#ffffff'}}
 />
     </View>
     <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:20}}/>
@@ -140,22 +206,26 @@ return (
     <View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%'}}>
     <Text style={styles.text2}>Salary Range</Text>
     <DropDownPicker
+    items={SRange}
+    itemStyle={{
+      justifyContent: 'flex-start'
+  }}
     placeholder={'Select your skills'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
     containerStyle={{height:50,width:wp('80%')}}
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
-    dropDownStyle={{backgroundColor: '#009961'}}
+    dropDownStyle={{backgroundColor: '#ffffff'}}
 />
 <TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>
-    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginBottom:25,marginTop:20}}/>
+    <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginBottom:80,marginTop:20}}/>
 </View>
 </Content>
-<CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#009961'} Fifth={'#E4E4E4'}/>
+<CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
 
 </Container>
   )    
