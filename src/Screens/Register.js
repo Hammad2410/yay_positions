@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
-import { Content, Container, Tabs, Tab, Footer, Button } from 'native-base';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator,PixelRatio } from 'react-native';
+import { Content, Container, Tabs, Tab, Footer, Button, Form, Input,  } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import { connect } from 'react-redux';
 import { register, resetUserRegistered } from '../redux/actions/auth';
-
+import CountryPicker from 'react-native-country-picker-modal'
+import Icon from 'react-native-vector-icons/AntDesign'
 
 const Register = (props) => {
+    const [visibility, setVisibility] = useState(false);
+    const [countryCode, setCountryCode] = useState('')
+    const [country, setCountry] = useState(null)
+    const [withFlag, setWithFlag] = useState(true)
+    const [withCallingCode, setWithCallingCode] = useState(false)
+    const onSelect = (country:Country) => {
+        setCountryCode(country.cca2)
+        setCountry(country)
+        setWithCallingCode(country.callingCode)
+    }
 
     const [role, setRole] = useState('Candidate');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [country, setCountry] = useState('');
+   
     const [confirmPassword, setConfirmPassword] = useState('');
 
     return (
@@ -41,7 +52,45 @@ const Register = (props) => {
                         </View>
                     </View>
                     <View style={{ alignItems: 'center', height: 170 }}>
-                        <TextInputLogin label="Country" value={country} setter={setCountry} />
+                    <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    alignSelf: 'center',
+                  
+                    height: hp('8%'),
+                    width: wp('80%'),
+                    borderColor: '#707070',
+                    borderWidth: 0.5,
+                    borderRadius: 5,
+                    fontSize: 12,
+                   paddingLeft:10,
+                  alignItems:'center',
+                    marginBottom: 15,
+                    alignSelf: 'center',
+                }}>
+
+                    <CountryPicker
+                        {...{
+                            countryCode,
+                            withFlag,
+                            withCallingCode,
+                            onSelect,
+                            
+                        }}
+                        withFilter={true}
+                        
+                        visible={visibility}
+                        onClose={() => setVisibility(false)}
+                    />
+                    {country !== null ? 
+                        <Text style={styles.data}>{(country.name)}</Text>
+                        : <Text style={{  fontSize: 15 }}></Text>
+                    }
+
+                   
+                    
+                   
+                </View>
                         <TextInputLogin value label="Password" value={password} setter={setPassword} />
                         <TextInputLogin value label="Confirm Password" value={confirmPassword} setter={setConfirmPassword} />
                     </View>
@@ -108,7 +157,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
         fontSize: 13
-    }
+    },
+    data: {
+        
+        marginTop:5,
+        
+      
+        color: 'black',
+      },
 })
 
 const mapStateToProps = ({ auth }) => ({ auth })

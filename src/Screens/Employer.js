@@ -55,7 +55,7 @@ const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites
                     <View style={{ marginTop: 20, flex: 1, backgroundColor: '#24963E', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
                             <Text style={styles.text3}>More info</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('BrowseCandidates') }}>
                                 <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="arrow-forward-circle" size={30} color='white' />
                             </TouchableOpacity>
                         </View>
@@ -74,7 +74,7 @@ const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites
                     <View style={{ marginTop: 20, flex: 1, backgroundColor: '#24963E', borderBottomLeftRadius: 12, borderBottomRightRadius: 12 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
                             <Text style={styles.text3}>More info</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Jobs') }}>
                                 <Icon style={{ paddingRight: 15, paddingBottom: 10 }} name="arrow-forward-circle" size={30} color='white' />
                             </TouchableOpacity>
                         </View>
@@ -152,8 +152,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'white',
         fontFamily: 'Segoe UI',
-        paddingTop: 2,
-        paddingRight: 5
+        paddingTop: 5,
+        paddingRight: 5,
+        
 
 
     }
