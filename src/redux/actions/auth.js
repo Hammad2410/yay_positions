@@ -29,7 +29,7 @@ export const login = (email, password) => {
                 console.log("Error: ", error.toString())
                 dispatch({ type: types.AUTH_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
             })
     }
 }
@@ -53,7 +53,7 @@ export const register = (email, name, country, role, password, confirmPassword) 
 
                 dispatch({ type: types.AUTH_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
             })
     }
 }
@@ -67,5 +67,11 @@ export const resetUserRegistered = () => {
 export const resetUserLoggedIn = () => {
     return (dispatch) => {
         dispatch({ type: types.AUTH_RESET_LOGIN })
+    }
+}
+
+export const resetModal = () => {
+    return (dispatch) => {
+        dispatch({ type: types.AUTH_RESET_ERROR })
     }
 }

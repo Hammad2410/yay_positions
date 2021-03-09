@@ -319,3 +319,9 @@ export const ChangePassword = (oldPass, pass, confirmPass) => {
             })
     }
 }
+
+export const resetModal = () => {
+    return (dispatch) => {
+        dispatch({ type: types.CANDIDATE_RESET_ERROR })
+    }
+}

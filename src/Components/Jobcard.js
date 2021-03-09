@@ -3,10 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import { deleteJob } from '../redux/actions/employer';
 
 
-
-const Jobcard = ({ navigation, item }) => {
+const Jobcard = ({ navigation, item, deleteJob }) => {
   return (
 
     <View style={styles.view}>
@@ -64,7 +65,7 @@ const Jobcard = ({ navigation, item }) => {
         <TouchableOpacity style={styles.btn}>
           <Text style={styles.btntext}>Details</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn2}>
+        <TouchableOpacity style={styles.btn2} onPress={() => deleteJob(item.Id)}>
           <Text style={styles.btntext}>Delete</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btn3}>
@@ -77,7 +78,7 @@ const Jobcard = ({ navigation, item }) => {
 
   )
 }
-export default Jobcard;
+
 const styles = StyleSheet.create({
 
   text: {
@@ -221,3 +222,9 @@ const styles = StyleSheet.create({
   },
 
 })
+
+const mapStateToProps = ({ auth }) => ({ auth })
+
+const mapDispatchToProps = { deleteJob }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Jobcard);
