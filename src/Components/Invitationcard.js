@@ -45,7 +45,7 @@ const Invitationcard = ({ item }) => {
             <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('43%') }}></View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
               <Text style={styles.text4}>{item.IsHired.toString()}</Text>
-              <TouchableOpacity style={styles.btn1}>
+              <TouchableOpacity disabled={true} style={styles.btn1}>
                 <Text style={styles.btntext1}>Hired</Text>
               </TouchableOpacity>
             </View>
@@ -74,7 +74,7 @@ const Invitationcard = ({ item }) => {
 
   )
 }
-export default Invitationcard;
+
 const styles = StyleSheet.create({
 
   text: {
@@ -206,3 +206,7 @@ const styles = StyleSheet.create({
   },
 
 })
+
+
+
+export default Invitationcard;

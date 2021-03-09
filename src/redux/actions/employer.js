@@ -23,12 +23,13 @@ export const browseCandidate = () => {
     }
 }
 
-export const sendInvite = (id) => {
+export const sendInvite = (id, time) => {
     return (dispatch, store) => {
         dispatch({ type: types.EMPLOYER_LOADING })
 
         axios.post(BASE_URL + "/api/employer/SendInvite", {
-            candidateid: id
+            candidateid: id,
+            DateTime: time
         }, {
             headers: {
                 Authorization: "bearer " + store().auth.token
@@ -37,7 +38,7 @@ export const sendInvite = (id) => {
         })
             .then((response) => {
                 console.log("Response : ", response.data)
-                alert(id)
+                // alert(id)
                 //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
             })
             .catch((error) => {
@@ -253,5 +254,72 @@ export const getInvitations = () => {
 
                 setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
             })
+    }
+}
+
+export const updateCompanyDetail = (name, headline, phone, website, file, country, about) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.post(BASE_URL + "/api/employer/updateprofile", {
+            CompanyId: store().auth.profile.CompanyId,
+            User: store().auth.profile.User,
+            UserId: store().auth.profile.UserId,
+            CompanyName: name,
+            HeadLine: headline,
+            PhoneNo: phone,
+            Website: website,
+            Country: country,
+            AboutYourself: about,
+            file: file,
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer 7dfs0t_Pk1ekqVtHV_tLQtepZmZU-jsZLUzgT3pCLdFaCh66qv4mQdSm3evROMjt4AFeCshoiNFymYe0X56rwNzsdgwW36AWD_0CKW5f_D1Bn36np9Z7eh1d892AVbC3bNrlWLTJpd8IVmo1cRa5Kdgh7e9CHmDSqJ4CORfRP_63ZTkqletrgzqAyr6OVWCL7bBeBwE3W4x7d0_YxzP3CDye2Ai1i1jgn8cCsH2uIBkZ3msw0uStv3i4LutZTzyw39a5eNl0gkt-9V94hJpZKLuf8lw7WUqQZr8pxmnJhg7gybsdBegMyVrdqgV75GX6UPePMbk0B54TJo4F4TuZJTZ7wJF0tvxgkihScBVlzraLu95HBt9WHT-tD8RRS38g8WcDJVHdNHEuqRRrcpMLjXfCGoxS8K7JJX63iVjDD75kECQ0kRL7fHHmoPYfpHc341wpJjL_lzGGfsj5bOhcNfvSnPYjouDaZDUlKi-mtZ3i0Pr055zj_aItep_ztLOhHH6T8QERZ_baZvneV-9ICs_Bdwm141MxI_51LL1Ni3JrrLZeb5uelatKbmF7Q_IU"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                dispatch({ type: types.EMPLOYER_ERROR, message: '' })
+                alert("Profile Updated");
+                // dispatch({ type: types.CANDIDATE_EDUCATION_ADDED, message: "Education Added" })
+                // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const deleteJob = (id) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.delete(BASE_URL + "/api/jobs/" + id, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                dispatch({ type: types.EMPLOYER_JOBS_FETCHED, jobs: store().employer.jobs.filter((item) => item.Id != id) })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const resetModal = () => {
+    return (dispatch) => {
+        dispatch({ type: types.EMPLOYER_RESET_ERROR })
     }
 }

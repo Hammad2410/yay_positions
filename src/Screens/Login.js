@@ -8,19 +8,20 @@ import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import CheckBox from '@react-native-community/checkbox';
 import { connect } from 'react-redux';
-import { login } from '../redux/actions/auth';
+import { login, resetModal } from '../redux/actions/auth';
+import ErrorModal from '../Components/ErrorModal';
 
-const Login = ({ login, navigation, auth }) => {
+const Login = ({ login, navigation, auth, resetModal }) => {
 
 
     const [role, setRole] = useState('Candidate');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('hanzalarasool2515@gmail.com');
+    const [password, setPassword] = useState('Hanzala@786');
     const [isSelected, setSelection] = useState(false);
 
 
     useEffect(() => {
-        
+
         if (auth.role === 'Employer') {
             navigation.navigate('Employer')
         }
@@ -55,7 +56,8 @@ const Login = ({ login, navigation, auth }) => {
                         <TextInputLogin value={password} setter={setPassword} label="Password" />
 
                     </View>
-                    <Text style={{ alignSelf: 'center', color: 'red' }}>{auth.error}</Text>
+                    {/* <Text style={{ alignSelf: 'center', color: 'red' }}>{auth.error}</Text> */}
+                    <ErrorModal message={auth.error} visible={auth.error != ''} onPress={resetModal} />
                     <View style={{ flexDirection: 'row', marginLeft: 35, marginVertical: 8 }}>
                         <CheckBox
                             value={isSelected}
@@ -178,6 +180,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ auth }) => ({ auth })
 
-const mapDispatchToProps = { login }
+const mapDispatchToProps = { login, resetModal }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

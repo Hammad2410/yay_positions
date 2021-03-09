@@ -10,8 +10,10 @@ import ButtonP from '../Components/ButtonP';
 import EmployerTab from '../Components/EmployerTab'
 import DatePicker from 'react-native-date-picker';
 import { connect } from 'react-redux';
+import { updateCompanyDetail } from '../redux/actions/employer';
+var RNFS = require('react-native-fs');
 
-const CompanyDetail = ({ navigation, auth }) => {
+const CompanyDetail = ({ navigation, auth, updateCompanyDetail, employer }) => {
 
     const [company, setCompany] = useState(auth.profile.CompanyName);
     const [phone, setPhone] = useState(auth.profile.PhoneNo);
@@ -26,7 +28,10 @@ const CompanyDetail = ({ navigation, auth }) => {
             const res = await DocumentPicker.pick({
                 type: [DocumentPicker.types.allFiles],
             });
-            setPhoto(res);
+            RNFS.readFile(res.uri, 'base64')
+                .then(res1 => {
+                    setPhoto("data:" + res.type + ";base64," + res1);
+                });
             console.log(
                 res.uri,
                 res.type, // mime type
@@ -42,8 +47,8 @@ const CompanyDetail = ({ navigation, auth }) => {
         }
     }
 
-    onPress = () => {
-
+    const onPressSave = () => {
+        updateCompanyDetail(company, headLine, phone, website, Photo, "Pakistan", description)
     }
 
 
@@ -101,9 +106,9 @@ const CompanyDetail = ({ navigation, auth }) => {
 
                             <ProfileText nametext="Description" marginLeftt={-255} />
                             <TextInput placeholder="About Yourself" placeholderTextColor='#707070' style={styles.textinput} value={description} onChangeText={(text) => setDescription(text)} ></TextInput>
-                            <View style={{marginLeft:-160}}>
-                            <ButtonP Bwidth={ wp('40%')} NameButton="Update Information" buttonAction={onPress} />
-                            </View>
+                            {employer.loading ? <ActivityIndicator size={'large'} color={'#009961'} style={{ justifyContent: 'center', alignItems: 'center' }} /> : <View style={{ marginLeft: -160 }}>
+                                <ButtonP Bwidth={wp('40%')} NameButton="Update Information" buttonAction={onPressSave} />
+                            </View>}
                         </View>
 
                     </View>
@@ -143,6 +148,8 @@ const styles = StyleSheet.create({
     },
 })
 
-const mapStateToProps = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth, employer }) => ({ auth, employer })
 
-export default connect(mapStateToProps)(CompanyDetail);
+const mapDispatchToProps = { updateCompanyDetail }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyDetail);

@@ -75,7 +75,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
 
 
                 </View>
-                <View style={[styles.view, { marginBottom: bottom }]}>
+                { employer.candidateProfile.EducationalInfos.length > 0 && <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view2}>
                         <Text style={styles.text4}>Educational Info</Text>
                     </View>
@@ -114,8 +114,8 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                     <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].DescriptionEducational}</Text>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
-                </View>
-                <View style={[styles.view, { marginBottom: bottom }]}>
+                </View>}
+                {<View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view2}>
                         <Text style={styles.text4}>Job Experience </Text>
                     </View>
@@ -145,7 +145,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                     <Text style={styles.text3}>I am a creative designer ………….</Text>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
-                </View>
+                </View>}
                 <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view2}>
                         <Text style={styles.text4}>Resumes</Text>

@@ -7,12 +7,13 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
 import { connect } from 'react-redux';
-import { sendInvite, markFavorite } from '../redux/actions/employer';
+import { sendInvite, markFavorite, changeCandidateId } from '../redux/actions/employer';
 
-const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, employer }) => {
+const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, employer, changeCandidateId }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [sentInvite, setSentInvite] = useState(false);
+  const [time, setTime] = useState('');
 
   return (
     <View style={[styles.view, { marginBottom: bottom }]}>
@@ -29,13 +30,17 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
           <View style={styles.modalView}>
             <Pressable onPress={() => setModalVisible(!modalVisible)}>
               <Text style={styles.modalText}>Date Time for call</Text>
-              <TextInput placeholder='yyyy-mm-dd hh:mm:ss' placeholderTextColor='#707070' style={styles.modalInput}></TextInput>
+              <TextInput placeholder='yyyy-mm-dd hh:mm:ss' placeholderTextColor='#707070' style={styles.modalInput} onChangeText={(text) => setTime(text)}></TextInput>
             </Pressable>
 
             <View style={{ flex: 1, flexDirection: 'row', marginTop: 20 }}>
               <Pressable
                 style={[styles.button, { backgroundColor: '#EA3A3A', marginLeft: -17 }]}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={() => {
+                  setSentInvite(true);
+                  sendInvite(item.CandidateId, time)
+                  setModalVisible(!modalVisible)
+                }}
               >
                 <Text style={styles.textStyle}>Send Invitation</Text>
               </Pressable>
@@ -87,12 +92,15 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
             <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
             <View style={{ flexDirection: 'row' }}>
               {!item.InInvited && <TouchableOpacity disabled={sentInvite} style={styles.btn} onPress={() => {
-                setSentInvite(true);
-                sendInvite(item.CandidateId)
+                setModalVisible(true)
               }}>
-                <Text style={styles.btntext}>{!sendInvite ? "Invite Sent" : "Send Invitation"}</Text>
+                <Text style={styles.btntext}>{sentInvite ? "Invite Sent" : "Send Invitation"}</Text>
               </TouchableOpacity>}
-              <TouchableOpacity style={styles.btn1}>
+              <TouchableOpacity style={styles.btn1} onPress={() => {
+                // alert(item.CandidateId)
+                changeCandidateId(item.CandidateId)
+                navigation.navigate("CProfile")
+              }}>
                 <Text style={styles.btntext}>View Profile</Text>
               </TouchableOpacity>
             </View>
@@ -268,7 +276,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ employer }) => ({ employer })
 
-const mapDispatchToProps = { sendInvite, markFavorite }
+const mapDispatchToProps = { sendInvite, markFavorite, changeCandidateId }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Candidatecard);
 
