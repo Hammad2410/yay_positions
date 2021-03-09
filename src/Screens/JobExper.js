@@ -11,9 +11,10 @@ import ButtonP from '../Components/ButtonP';
 
 import DatePicker from 'react-native-date-picker';
 import { connect } from 'react-redux';
-import { updateJob } from '../redux/actions/candidate';
+import { updateJob,resetModal } from '../redux/actions/candidate';
+import ErrorModal from '../Components/ErrorModal';
 
-const JobExper = ({ navigation, candidate, updateJob }) => {
+const JobExper = ({ navigation, candidate, updateJob ,resetModal}) => {
 
     const [date, setDate] = useState(new Date());
     const [Sdatename, setSDateName] = useState('mm/dd/yy');
@@ -128,7 +129,9 @@ const JobExper = ({ navigation, candidate, updateJob }) => {
 
                         <ProfileText nametext="Description" marginLeftt={-255} />
                         <TextInput placeholder="Description" value={description} onChangeText={(text) => setDescription(text)} placeholderTextColor='#707070' style={styles.textinput}></TextInput>
-                        <Text style={{ alignSelf: 'center', color: 'red' }}>{candidate.error}</Text>
+                        
+                        <ErrorModal message={candidate.error} visible={candidate.error != ''} onPress={resetModal} />
+
                         {
                             candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> : <View style={{marginLeft:-160}}>
                       <ButtonP Bwidth={ wp('40%')} NameButton="Update Information" buttonAction={onPress} />
@@ -287,6 +290,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = { updateJob }
+const mapDispatchToProps = { updateJob,resetModal }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobExper);

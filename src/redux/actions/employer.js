@@ -18,7 +18,7 @@ export const browseCandidate = () => {
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -44,7 +44,7 @@ export const sendInvite = (id, time) => {
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -65,7 +65,7 @@ export const getJobs = () => {
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -86,7 +86,7 @@ export const getFavorites = () => {
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -117,7 +117,7 @@ export const markFavorite = (job) => {
                 console.log("error: ", error.message)
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -141,7 +141,7 @@ export const getCandidateProfile = () => {
                 console.log("error: ", error.message)
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -179,13 +179,13 @@ export const createJob = (title, level, experience, qualification, jobType, sala
                 console.log("Response : ", response.data)
                 dispatch({ type: types.EMPLOYER_JOB_CREATED, message: "Job Created" })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
                 //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
             })
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -206,7 +206,7 @@ export const getHiredCandidates = () => {
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -288,7 +288,7 @@ export const updateCompanyDetail = (name, headline, phone, website, file, countr
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
@@ -307,13 +307,13 @@ export const deleteJob = (id) => {
                 console.log("Response : ", response.data)
                 dispatch({ type: types.EMPLOYER_JOBS_FETCHED, jobs: store().employer.jobs.filter((item) => item.Id != id) })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
                 //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
             })
             .catch((error) => {
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             })
     }
 }
