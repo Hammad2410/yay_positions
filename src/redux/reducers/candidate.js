@@ -6,7 +6,8 @@ const initialState = {
     invitations: [],
     jobs: [],
     savedJobs: [],
-    jobDetail: null
+    jobDetail: null,
+    filteredJob:[]
 };
 
 const candidate = (state = initialState, action) => {
@@ -41,7 +42,8 @@ const candidate = (state = initialState, action) => {
         case types.CANDIDATE_JOBS_FETCHED:
             return {
                 ...state,
-                jobs: action.jobs
+                jobs: action.jobs,
+                filteredJob:action.jobs
             }
 
         case types.CANDIDATE_SAVED_JOBS_FETCHED:
@@ -69,6 +71,12 @@ const candidate = (state = initialState, action) => {
                     ...state,
                     jobDetail:action.job
                 }
+
+                case types.CANDIDATE_APPLY_JOB_FILTER:
+                    return{
+                        ...state,
+                        filteredJob: action.jobs
+                    }
 
         default:
             return state;

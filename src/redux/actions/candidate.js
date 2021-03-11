@@ -331,3 +331,9 @@ export const selectJob = (job) => {
         dispatch({ type: types.CANDIDATE_SELECT_JOB, job:job })
     }
 }
+
+export const applyJobFilter = (jobs) => {
+    return (dispatch) => {
+        dispatch({ type: types.CANDIDATE_APPLY_JOB_FILTER, jobs:jobs })
+    }
+}

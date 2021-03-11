@@ -10,23 +10,26 @@ import RadioForm, {
 import MyHeader from '../Components/LoginSignupHeader';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CandidateTab from '../Components/CandidateTab';
-
+import {applyJobFilter} from '../redux/actions/candidate';  
+import {connect} from  'react-redux';
 
 var filter = [
-  { label: "Full Time", value: 0 },
-  { label: "Part Time", value: 1 },
-  { label: "Internship", value: 2 },
-  { label: "Temporary", value: 4 },
-  { label: "Permanent", value: 5 },
-  { label: "Contract", value: 6 },
-  { label: " Freelance", value: 7 },
+  { label: "All", value:"All" },
+  { label: "Full Time", value: "Full Time" },
+  { label: "Part Time", value: "Part Time" },
+  { label: "Internship", value: "Internship" },
+  { label: "Temporary", value: "Temporary" },
+  { label: "Permanent", value: "Permanent" },
+  { label: "Contract", value: "Contract" },
+  { label: " Freelance", value: "Freelance" },
 ];
 
 var salary = [
-  { label: "Hourly", value: 0 },
-  { label: "Weekly", value: 1 },
-  { label: "Monthly", value: 2 },
-  { label: "Yearly", value: 4 },
+  { label: "All", value:"All" },
+  { label: "Hourly", value: "Hourly" },
+  { label: "Weekly", value: "Weekly" },
+  { label: "Monthly", value: "Monthly" },
+  { label: "Yearly", value: "Yearly" },
 
 ];
 
@@ -41,7 +44,7 @@ var job = [
 ];
 
 var Skills =[
-  {label: 'Select', value: 0, },
+  {label: 'All', value: 0 },
 {label: 'Analytical Skills', value:1, },
 {label: 'Application Development', value: 2, }, 
 {label: 'Architecture', value: 3,},
@@ -99,7 +102,11 @@ var SRange =[
 {label: '$800,000-$900,000', value: 'S8',},
 {label: '$900,000-$1,000,000', value: 'S9',},  
 ]
-const Filter = ({ navigation }) => {
+const Filter = ({ navigation, candidate, applyJobFilter }) => {
+
+  const [jobTypeArray, setJobTypeArray] = useState(candidate.jobs)
+  const [salaryTypeArray, setSalaryTypeArray] = useState(candidate.jobs)
+  const [skillArray, setSkillArray] = useState(candidate.jobs)
 
 
 return (
@@ -120,7 +127,7 @@ return (
 </View>
 <View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:20}}>
 <Text style={styles.text}>Search Filters</Text>
-<TouchableOpacity>
+<TouchableOpacity onPress={() => applyJobFilter(candidate.jobs) } >
 <Text style={styles.text1}>Clear all</Text>
 </TouchableOpacity>
     </View>
@@ -130,7 +137,14 @@ return (
     <RadioForm
           radio_props={filter}
           initial={0}
-          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          onPress={(value) => { 
+            if(value=="All"){
+              setJobTypeArray(candidate.jobs)
+            }
+            else{
+              setJobTypeArray(candidate.jobs.filter((item) => item.JobType == value.toString() )); 
+            }
+          }}
           buttonSize={8}
           buttonOuterSize={20}
           selectedButtonColor={'green'}
@@ -148,7 +162,14 @@ return (
     <RadioForm
           radio_props={salary}
           initial={0}
-          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          onPress={(value) => { 
+            if(value=="All"){
+              setSalaryTypeArray(candidate.jobs)
+            }
+            else{
+              setSalaryTypeArray(candidate.jobs.filter((item) => item.SalaryType == value.toString() ))
+            }
+          }}
           buttonSize={8}
           buttonOuterSize={20}
           selectedButtonColor={'green'}
@@ -156,7 +177,6 @@ return (
           buttonColor={'#707070'}
           labelStyle={{ fontSize: 13}}
           style={{marginTop:15}}
-      
         />
     </View>
     <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
@@ -174,8 +194,22 @@ return (
     containerStyle={{height:50,width:wp('80%')}}
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#ffffff'}}
-/>
-<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('BrowseJobs')}}>
+    onChangeItem={value => {
+      if(value.label =="All"){
+        setSkillArray(candidate.jobs)
+      }
+      else{
+        setSkillArray(candidate.jobs.filter((item) => item.Skill == value.label ))
+      }
+    }}
+  />
+<TouchableOpacity style={styles.btn} onPress={() => {
+
+  //var filter = jobTypeArray.filter((item) => salaryTypeArray.includes(item) )
+ // applyJobFilter(filter.filter((item) => skillArray.includes(item) ))
+  applyJobFilter(jobTypeArray.filter((item) => salaryTypeArray.includes(item) ))
+  navigation.navigate('BrowseJobs')
+  }}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>
@@ -242,7 +276,7 @@ return (
   )    
 
 }
-export default Filter;
+
 
 const styles = StyleSheet.create({
 
@@ -294,3 +328,9 @@ const styles = StyleSheet.create({
 },
 
 })
+
+const mapStateToProps = ({ candidate }) => ({ candidate })
+
+const mapDispatchToProps = { applyJobFilter }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Filter);

@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left, Item } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import {saveJobs} from  '../redux/actions/candidate';
 import { connect } from 'react-redux';
-const JobApply = ({ navigation, bottom,candidate,jobDetail }) => {
+const JobApply = ({ navigation, bottom,candidate,jobDetail,saveJobs }) => {
   useEffect(() => {
     console.log(candidate.jobDetail)
 }, [])
@@ -17,7 +17,13 @@ const JobApply = ({ navigation, bottom,candidate,jobDetail }) => {
       <View style={[styles.view, { marginBottom: bottom }]}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12, paddingHorizontal: 12 }}>
           <Text style={styles.text}>{candidate.jobDetail.Title}</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+            // console.log(candidate.jobDetail)
+            saveJobs({
+              ...candidate.jobDetail,
+              Job:{ ...candidate.jobDetail} 
+            })
+            }}>
             <Image source={require('../assests/image/heart.png')}></Image>
           </TouchableOpacity>
         </View>
@@ -154,5 +160,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
+const mapDispatchToProps = {  saveJobs }
 
-export default connect(mapStateToProps)(JobApply);
+export default connect(mapStateToProps, mapDispatchToProps)(JobApply);
