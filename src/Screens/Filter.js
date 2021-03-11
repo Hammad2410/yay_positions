@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ToastAndroid } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ToastAndroid, TextInput } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import RadioForm, {
@@ -108,6 +108,10 @@ return (
 <Content >
 <View style={{flex:1}}>
 <View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+<Text style={styles.text}>What</Text>
+<TextInput></TextInput>
+</View>
+<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
 <Text style={styles.text}>Search Filters</Text>
 <TouchableOpacity>
 <Text style={styles.text1}>Clear all</Text>
@@ -164,7 +168,7 @@ return (
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#ffffff'}}
 />
-<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('BrowseJobs')}}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>
@@ -218,7 +222,7 @@ return (
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#ffffff'}}
 />
-<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('Applyjob')}}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('BrowseJobs')}}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>

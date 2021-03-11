@@ -133,6 +133,8 @@ const Educationalinfo = ({ navigation, candidate, updateEducation,resetModal }) 
                         <ProfileText nametext="Degree" marginLeftt={-285} />
                         <TextInputLogin label="degree" value={degree} setter={setDegree} />
                         <ProfileText nametext="Description" marginLeftt={-255} />
+                        <TextInput value={description} placeholder='Description' placeholderTextColor='#707070'
+                         style={styles.textinput} onChangeText={(text) => setDescription(text)} />
                         <ErrorModal message={candidate.error} visible={candidate.error != ''} onPress={resetModal} />
                        
                         {      candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :  
@@ -167,7 +169,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation,resetModal }) 
                                         marginLeft: '20%'
                                     }}
 
-                                    minimumDate={new Date()}
+                                   
                                     onDateChange={(date) => setDate(date)}
 
                                 />
@@ -223,7 +225,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation,resetModal }) 
                                         marginLeft: '20%'
                                     }}
 
-                                    minimumDate={new Date()}
+                                   
                                     onDateChange={(date) => setDate(date)}
 
                                 />
@@ -290,6 +292,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'top'
 
     },
+    
 
 
 })

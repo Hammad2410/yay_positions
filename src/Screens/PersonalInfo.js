@@ -281,7 +281,7 @@ const PersonalInfo = ({ navigation, auth, updatePersonalInfo, updateSkills, upda
                                             marginLeft: '20%'
                                         }}
 
-                                        minimumDate={new Date()}
+                                       
                                         onDateChange={(date) => setDate(date)}
 
                                     />
@@ -337,9 +337,15 @@ const PersonalInfo = ({ navigation, auth, updatePersonalInfo, updateSkills, upda
                                     Choose File
                     </Text>
                             </TouchableOpacity>
+                            
+                            {
+                            Photo=== ''?
                             <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
-                                {Photo.name || 'No File Chosen'}
+                                No File Chosen
+                            </Text>:<Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
+                                Image Added
                             </Text>
+                            }
                         </View>
                         <ProfileText nametext="Experience" marginLeftt={-255} />
                         <DropDownPicker
@@ -504,9 +510,14 @@ const PersonalInfo = ({ navigation, auth, updatePersonalInfo, updateSkills, upda
                                 Choose File
                     </Text>
                         </TouchableOpacity>
-                        <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
-                            {Resume.name || 'No File Chosen'}
-                        </Text>
+                        {
+                            Photo=== ''?
+                            <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
+                                No File Chosen
+                            </Text>:<Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
+                                Resume Added
+                            </Text>
+                            }
                     </View>
                     <View style={{marginLeft:-200}}>
                     <ButtonP Bwidth={ wp('30%')} NameButton="Save Resume" buttonAction={onPressResume} />
@@ -542,9 +553,14 @@ const PersonalInfo = ({ navigation, auth, updatePersonalInfo, updateSkills, upda
                                 Choose File
                     </Text>
                         </TouchableOpacity>
-                        <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
-                            {PPhoto.name || 'No File Chosen'}
-                        </Text>
+                        {
+                            Photo=== ''?
+                            <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
+                                No File Chosen
+                            </Text>:<Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
+                                Photo Added
+                            </Text>
+                            }
                     </View>
                     <View style={{marginLeft:-200}}>
                     <ButtonP Bwidth={ wp('30%')} NameButton="Save Portfolio" buttonAction={onPressPortfolio} />

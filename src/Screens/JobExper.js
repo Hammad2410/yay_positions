@@ -163,7 +163,7 @@ const JobExper = ({ navigation, candidate, updateJob ,resetModal}) => {
                                         marginLeft: '20%'
                                     }}
 
-                                    minimumDate={new Date()}
+                                   
                                     onDateChange={(date) => setDate(date)}
 
                                 />
@@ -219,7 +219,7 @@ const JobExper = ({ navigation, candidate, updateJob ,resetModal}) => {
                                         marginLeft: '20%'
                                     }}
 
-                                    minimumDate={new Date()}
+                                    
                                     onDateChange={(date) => setDate(date)}
 
                                 />

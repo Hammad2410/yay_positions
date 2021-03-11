@@ -9,6 +9,7 @@ const Jobs = ({ navigation, bottom, item }) => {
   return (
 
     <View style={{ flex: 1, alignItems: 'center' }}>
+      <TouchableOpacity onPress={() => navigation.navigate('Applyjob')}>
       <View style={[styles.view, { marginBottom: "2%" }]}>
         <Text style={styles.text}>{item.Title}</Text>
         <Text style={styles.text1}>{item.Location}</Text>
@@ -26,6 +27,7 @@ holiday details.</Text>
           <Text style={styles.text2}>Familiarity with WordPress a plus.</Text>
         </View>
       </View>
+      </TouchableOpacity>
     </View>
 
   )
