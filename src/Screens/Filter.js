@@ -107,11 +107,18 @@ return (
 <MyHeader  navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
-<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<Text style={styles.text}>What</Text>
-<TextInput></TextInput>
+<View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%',marginRight:'3%'}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:5}}>
+
+<TextInput placeholder="What"  style={[styles.textinput]}></TextInput>
+
+<TextInput placeholder="Where" style={[styles.textinput,{marginRight:20}]}></TextInput>
 </View>
-<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('BrowseJobs')}}>
+<Text style={styles.btntext}>Search</Text>
+</TouchableOpacity>
+</View>
+<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:20}}>
 <Text style={styles.text}>Search Filters</Text>
 <TouchableOpacity>
 <Text style={styles.text1}>Clear all</Text>
@@ -273,6 +280,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: '#FFFFFF',
     fontWeight: 'bold'
-  }
+  },
+  textinput: {
+    height: hp('5%'),
+   width:wp('40%'),
+    borderColor: '#707070',
+    borderWidth: 0.5,
+    borderRadius: 5,
+    fontSize: 12,
+    padding: 10,
+    textAlignVertical: 'top'
+
+},
 
 })

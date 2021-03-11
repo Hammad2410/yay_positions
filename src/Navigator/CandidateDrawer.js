@@ -71,7 +71,7 @@ export function DrawerContent(props) {
                             label="View My Profile" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('ViewMyProfile')}}
                         />
-                        <DrawerItem 
+                        {/* <DrawerItem 
                             icon={({color, size}) => (
                                 <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/profile1.png') } />
 
@@ -100,7 +100,7 @@ export function DrawerContent(props) {
                             )}
                             label="Job Experiences" labelStyle={{color:'white'}}
                             onPress={() => {props.navigation.navigate('JobExperiences')}}
-                        />
+                        /> */}
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Image resizeMode='contain' style={{width:25,height:20,tintColor:'#009961'}} source={require('../assests/image/document.png') } />

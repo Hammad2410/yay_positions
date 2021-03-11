@@ -6,6 +6,7 @@ const initialState = {
     invitations: [],
     jobs: [],
     savedJobs: [],
+    jobDetail: null
 };
 
 const candidate = (state = initialState, action) => {
@@ -62,6 +63,12 @@ const candidate = (state = initialState, action) => {
                 loading: false,
                 error: action.message
             }
+
+            case types.CANDIDATE_SELECT_JOB:
+                return{
+                    ...state,
+                    jobDetail:action.job
+                }
 
         default:
             return state;

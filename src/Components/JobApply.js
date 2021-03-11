@@ -1,84 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left } from 'native-base';
+import { Content, Container, Header, Title, Left, Item } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-
-const JobApply = ({ navigation, bottom }) => {
+import { connect } from 'react-redux';
+const JobApply = ({ navigation, bottom,candidate,jobDetail }) => {
+  useEffect(() => {
+    console.log(candidate.jobDetail)
+}, [])
+  
   return (
 
 
     <View style={{ flex: 1, alignItems: 'center' }}>
       <View style={[styles.view, { marginBottom: bottom }]}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12, paddingHorizontal: 12 }}>
-          <Text style={styles.text}>Marketing Manager</Text>
+          <Text style={styles.text}>{candidate.jobDetail.Title}</Text>
           <TouchableOpacity>
             <Image source={require('../assests/image/heart.png')}></Image>
           </TouchableOpacity>
         </View>
-        <Text style={styles.text1}> New York, USA</Text>
-        <Text style={styles.text2}> {'\t'}Applied </Text>
+        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <Text style={styles.text}>Location:</Text>
+        <Text style={styles.text1}>{candidate.jobDetail.Location}</Text>
+        </View>
+        
+        {
+                            candidate.jobDetail.IsApplied === 'false'?
+                            <Text style={[styles.text,{marginLeft:12}]}> Applied </Text>
+                            :
+                            <Text style={[styles.text,{marginLeft:12,marginTop:5}]}>Not Applied </Text>
+                            }
+       
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Job Type:</Text>
-          <Text style={styles.text3}> Full Time</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.JobType}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Level:</Text>
-          <Text style={styles.text3}>Skilled Worker</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.Level}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Experience:</Text>
-          <Text style={styles.text3}>2 years</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.Experience}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Qualification:</Text>
-          <Text style={styles.text3}>Bachelor</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.Qualification}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Salary Type:</Text>
-          <Text style={styles.text3}>Hourly</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.SalaryType}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Salary Range:</Text>
-          <Text style={styles.text3}>200000-300000</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.SalaryRange}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Remote Or In House:</Text>
-          <Text style={styles.text3}>Remote</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.RemoteOrInHouse}</Text>
         </View>
-        <View style={{ flexDirection: 'row', marginHorizontal: 12, marginTop: 10 }}>
-          <Text style={styles.text3}> Catalogue all visual assets for marketing department.
-          Update marketing calendar with ongoing initiatives and
-          holiday details.
-          Familiarity with WordPress a plus.
-</Text>
-        </View>
-        <View style={{ flexDirection: 'row', marginHorizontal: 12, marginTop: 25 }}>
-          <Text style={styles.text3}> Chef Daniel Boulud’s The Dinex Group is seeking a
-          dynamic Marketing Manager to assist the department and
-          build awareness for Daniel Boulud and his restaurants.
-          This position will play a key role in the public-facing
-          marketing initiatives of the company.
-
+       
+        <View style={{ flexDirection: 'column', marginHorizontal: 12, marginTop: 25 }}>
+        <Text style={styles.text}>Description</Text>
+          <Text style={styles.text3}>{candidate.jobDetail.JobDescription}
 </Text>
         </View>
         <View style={{ flexDirection: 'column', marginHorizontal: 12, marginTop: 20 }}>
           <Text style={styles.text}>Essential Duties and Responsibilities</Text>
-          <Text style={[styles.text3, { marginTop: 10, marginBottom: 15 }]}> Chef Daniel Boulud’s The Dinex Group is seeking a
-          dynamic Marketing Manager to assist the department and
-          build awareness for Daniel Boulud and his restaurants.
-          This position will play a key role in the public-facing
-          marketing initiatives of the company.
-
-</Text>
+          <Text style={[styles.text3, { marginTop: 10, marginBottom: 15 }]}>{candidate.jobDetail.Detail}</Text>
         </View>
 
 
@@ -90,7 +88,7 @@ const JobApply = ({ navigation, bottom }) => {
 
   )
 }
-export default JobApply;
+
 
 const styles = StyleSheet.create({
   view: {
@@ -153,3 +151,8 @@ const styles = StyleSheet.create({
 
 
 })
+
+const mapStateToProps = ({ candidate }) => ({ candidate })
+
+
+export default connect(mapStateToProps)(JobApply);

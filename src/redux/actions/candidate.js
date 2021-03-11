@@ -325,3 +325,9 @@ export const resetModal = () => {
         dispatch({ type: types.CANDIDATE_RESET_ERROR })
     }
 }
+
+export const selectJob = (job) => {
+    return (dispatch) => {
+        dispatch({ type: types.CANDIDATE_SELECT_JOB, job:job })
+    }
+}

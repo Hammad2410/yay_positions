@@ -3,13 +3,17 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {connect} from 'react-redux';
+import { selectJob} from '../redux/actions/candidate';
 
-
-const Jobs = ({ navigation, bottom, item }) => {
+const Jobs = ({ navigation, bottom, item, selectJob }) => {
   return (
 
     <View style={{ flex: 1, alignItems: 'center' }}>
-      <TouchableOpacity onPress={() => navigation.navigate('Applyjob')}>
+      <TouchableOpacity onPress={() => {
+        selectJob(item)
+        navigation.navigate('Applyjob')
+        }}>
       <View style={[styles.view, { marginBottom: "2%" }]}>
         <Text style={styles.text}>{item.Title}</Text>
         <Text style={styles.text1}>{item.Location}</Text>
@@ -32,7 +36,7 @@ holiday details.</Text>
 
   )
 }
-export default Jobs;
+
 const styles = StyleSheet.create({
   view: {
     height: 200,
@@ -74,3 +78,9 @@ const styles = StyleSheet.create({
 
 
 })
+
+const mapStateToProps = ({ candidate }) => ({ candidate })
+
+const mapDispatchToProps = { selectJob }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Jobs);
