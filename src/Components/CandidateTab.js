@@ -20,7 +20,7 @@ const CandidateTab = ({ navigation,First,Second,Third,Fourth,Fifth}) => {
       <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('MyResume')}} >
       <Image resizeMode='contain' style={{width:26,height:32,tintColor:Second}} source={require('../assests/image/document.png') } />
       </TouchableOpacity>
-      <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('BrowseJobs')}} >
+      <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('Filter')}} >
       <Image resizeMode='contain' style={{width:35,height:30,tintColor:Third}} source={require('../assests/image/upload.png') } />
       </TouchableOpacity>
       <TouchableOpacity style={{ flex:1}}  onPress={() => {navigation.navigate('SavedJobs')}}>

@@ -6,11 +6,13 @@ import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
 import EmployerTab from '../Components/EmployerTab';
-import { createJob } from '../redux/actions/employer';
+import { createJob,resetModal } from '../redux/actions/employer';
 import { connect } from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
+import ErrorModal from '../Components/ErrorModal';
 
-const CreateJob = ({ navigation, employer, createJob }) => {
+
+const CreateJob = ({ navigation, employer, createJob,resetModal }) => {
 
     const [title, setTitle] = useState('');
     const [level, setLevel] = useState('');
@@ -271,7 +273,8 @@ const CreateJob = ({ navigation, employer, createJob }) => {
                         <TextInput placeholder="Details" placeholderTextColor='#707070' style={styles.textinput}
                             onChangeText={(text) => setDetail(text)}
                         ></TextInput>
-                        <Text style={{ alignSelf: 'center', color: 'red' }}>{employer.error}</Text>
+                         <ErrorModal message={employer.error} visible={employer.error != ''} onPress={resetModal} />
+                        {/* <Text style={{ alignSelf: 'center', color: 'red' }}>{employer.error}</Text> */}
                         {!employer.loading ?  <TouchableOpacity style={styles.button} onPress={() => createJob(title, level, experience, qualification, jobType, salaryType, salaryRange, jobDescription, detail, location, remoteOrInHouse)} >
                             <View >
 
@@ -332,6 +335,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ employer }) => ({ employer })
 
-const mapDispatchToProps = { createJob }
+const mapDispatchToProps = { createJob ,resetModal }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateJob);

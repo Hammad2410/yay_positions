@@ -117,7 +117,7 @@ export const getCandidateProfile = () => {
                 console.log("error: ", error.message)
                 dispatch({ type: types.AUTH_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
             })
     }
 }
@@ -315,7 +315,7 @@ export const ChangePassword = (oldPass, pass, confirmPass) => {
             .catch((error) => {
                 dispatch({ type: types.AUTH_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
             })
     }
 }

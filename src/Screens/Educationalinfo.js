@@ -10,13 +10,14 @@ import Icon from 'react-native-vector-icons/Feather';
 import ButtonP from '../Components/ButtonP';
 
 import DatePicker from 'react-native-date-picker';
+import ErrorModal from '../Components/ErrorModal';
 
 import { connect } from 'react-redux';
-import { updateEducation } from '../redux/actions/candidate';
+import { updateEducation,resetModal } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
 
 
-const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
+const Educationalinfo = ({ navigation, candidate, updateEducation,resetModal }) => {
 
     const [date, setDate] = useState(new Date());
     const [Sdatename, setSDateName] = useState('mm/dd/yy');
@@ -132,12 +133,15 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                         <ProfileText nametext="Degree" marginLeftt={-285} />
                         <TextInputLogin label="degree" value={degree} setter={setDegree} />
                         <ProfileText nametext="Description" marginLeftt={-255} />
-                        <TextInput placeholder="description" value={description} onChangeText={(text) => setDescription(text)} placeholderTextColor='#707070' style={styles.textinput}></TextInput>
-                        <Text style={{ alignSelf: 'center', color: 'red' }}>{candidate.error}</Text>
-                        {      candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :    <View style={{marginLeft:-160}}>         
+                        <TextInput value={description} placeholder='Description' placeholderTextColor='#707070'
+                         style={styles.textinput} onChangeText={(text) => setDescription(text)} />
+                        <ErrorModal message={candidate.error} visible={candidate.error != ''} onPress={resetModal} />
+                       
+                        {      candidate.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> :  
+                          <View style={{marginLeft:-160}}>         
                    <ButtonP Bwidth={ wp('40%')} NameButton="Update Information" buttonAction={onPress} />
                    </View>  
-                     } 
+                    }
 
                     </View>
                     <View>
@@ -165,7 +169,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                         marginLeft: '20%'
                                     }}
 
-                                    minimumDate={new Date()}
+                                   
                                     onDateChange={(date) => setDate(date)}
 
                                 />
@@ -221,7 +225,7 @@ const Educationalinfo = ({ navigation, candidate, updateEducation }) => {
                                         marginLeft: '20%'
                                     }}
 
-                                    minimumDate={new Date()}
+                                   
                                     onDateChange={(date) => setDate(date)}
 
                                 />
@@ -288,12 +292,13 @@ const styles = StyleSheet.create({
         textAlignVertical: 'top'
 
     },
+    
 
 
 })
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = { updateEducation }
+const mapDispatchToProps = { updateEducation,resetModal }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Educationalinfo);

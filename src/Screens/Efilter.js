@@ -162,7 +162,7 @@ return (
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#ffffff'}}
 />
-<TouchableOpacity style={styles.btn}>
+<TouchableOpacity style={styles.btn}  onPress={() => {navigation.navigate('BrowseCandidates')}}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>
@@ -216,7 +216,7 @@ return (
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#ffffff'}}
 />
-<TouchableOpacity style={styles.btn} >
+<TouchableOpacity style={styles.btn}  onPress={() => {navigation.navigate('BrowseCandidates')}} >
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>

@@ -34,7 +34,7 @@ const BrowseJobs = (props) => {
                     <FlatList
                         data={props.candidate.jobs}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item, index }) => <Jobs item={item} />}
+                        renderItem={({ item, index }) => <Jobs item={item} navigation={props.navigation} />}
                     />
 
                     {/* <Jobs bottom={'2%'} /> */}

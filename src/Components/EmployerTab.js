@@ -20,7 +20,7 @@ const EmployerTab = ({ navigation,EFirst,EFifth,ESecond,EThird,EFourth}) => {
       <TouchableOpacity style={{ flex:1}} onPress={() => {navigation.navigate('CreateJob')}} >
       <Image resizeMode='contain' style={{width:38,height:38,tintColor:ESecond}} source={require('../assests/image/create.png') } />
       </TouchableOpacity>
-      <TouchableOpacity style={{ flex:1,marginTop:5}} onPress={() => {navigation.navigate('BrowseCandidates')}} >
+      <TouchableOpacity style={{ flex:1,marginTop:5}} onPress={() => {navigation.navigate('Efilter')}} >
       <Image resizeMode='contain' style={{width:35,height:30,tintColor:EThird}} source={require('../assests/image/upload.png') } />
 
       </TouchableOpacity>
