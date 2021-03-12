@@ -1,6 +1,7 @@
 import * as types from '../actionTypes';
 import axios from 'axios';
 import { BASE_URL } from '../../utils/config';
+import { rescheduleInvite } from './employer';
 
 export const getInvitations = () => {
     return (dispatch, store) => {
@@ -320,6 +321,39 @@ export const ChangePassword = (oldPass, pass, confirmPass) => {
     }
 }
 
+export const applyForJob = (id) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.get(BASE_URL + "/api/candidate/apply?jobid=" + id, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer 02CYK1HtqJtInNJ6jDbc2rD930wrT64D9wCaj-5b_I-QS8E2AvrUOa5TJgTJm2LCw9cdni1POHHdh4xM3WFxo40Fx_okAjM4S4O7u9-I5pXEWZT50QIdwh_oe0XPgvT8KadLSGRKxgRetQnybIpAlH_copZYvHHA06N-2hCNNKj1F6OnXgJUQiw0KhbshGj5OFOczaSX0sMhxaXAX80JX7H9UuBVZNVPuHta7UzlwIT9QVgBfqeP7dpToWrq6zaLiK5lWSmd3etG2tyjkXHZjfba00o3mJUK_IInd0CJV64pvMUjEYqAfEpImUtNA5Xs-w_rl907SM4blx_2SeqOVJ3azyBYCCS2AXGH4A_pQUt-vuil0hOj9ZC9sTkPnDz-NeK1EWGd7g8gpL36DlVD3zOnwBkVqDRK-uboSbRF-wl3gnLyo7vsAqwFdUe7IWfrv1TpvOfSWRR8pq13q3Dh744v7pksRuPOFRA6KY2QtHx-Fuxgm7NQkzn8IlaMjE-tdnPN5b9ciQbedjTXQZTuDDxlgDJdzFXott0wh7gUH7fO2mheVlLM_hsl-oNaqQsE"
+            }
+        })
+            .then((response) => {
+                console.log("Profile : ", response.data)
+                if (response.data.result == 'failure') {
+                    dispatch({ type: types.CANDIDATE_ERROR, message: response.data.error })
+                }
+                else {
+                    dispatch({ type: types.CANDIDATE_ERROR, message: "Applied Successfully" })
+                }
+
+                // dispatch({ type: types.AUTH_PROFILE_FETCHED, profile: response.data.profile })
+            })
+            .catch((error) => {
+
+                console.log("error: ", error.message)
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                // setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+
+
 export const resetModal = () => {
     return (dispatch) => {
         dispatch({ type: types.CANDIDATE_RESET_ERROR })
@@ -328,12 +362,12 @@ export const resetModal = () => {
 
 export const selectJob = (job) => {
     return (dispatch) => {
-        dispatch({ type: types.CANDIDATE_SELECT_JOB, job:job })
+        dispatch({ type: types.CANDIDATE_SELECT_JOB, job: job })
     }
 }
 
 export const applyJobFilter = (jobs) => {
     return (dispatch) => {
-        dispatch({ type: types.CANDIDATE_APPLY_JOB_FILTER, jobs:jobs })
+        dispatch({ type: types.CANDIDATE_APPLY_JOB_FILTER, jobs: jobs })
     }
 }

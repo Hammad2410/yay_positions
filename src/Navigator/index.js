@@ -49,13 +49,14 @@ import CreateJob from '../Screens/CreateJob'
 import Efilter from '../Screens/Efilter'
 import CompanyDetail from '../Screens/CompanyDetail'
 import CProfile from '../Screens/CProfile'
-import { DrawerContent } from './CandidateDrawer';
-import EmployerDrawer from './EmployerNavigatorDrawer'
+import DrawerContent from './CandidateDrawer';
+import EmployerDrawer from './EmployerNavigatorDrawer';
+import Call from '../Screens/Call';
 const CandidateDrawer = () => {
     return (
-       
-        <Drawer.Navigator  drawerContent={props => <DrawerContent {...props} />}>
-            
+
+        <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+
             <Drawer.Screen name="Dashboard" component={Candidate}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
@@ -83,10 +84,10 @@ const CandidateDrawer = () => {
             <Drawer.Screen name="BrowseJobs" component={BrowseJobs}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
-             <Drawer.Screen name="SavedJobs" component={SavedJobs}
+            <Drawer.Screen name="SavedJobs" component={SavedJobs}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
-              
+
         </Drawer.Navigator>
     )
 }
@@ -109,7 +110,10 @@ const Navigator = () => {
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
 
-              
+                <Stack.Screen name="Call" component={Call}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+
                 <Stack.Screen name="Employer" component={EmployerDrawer}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
@@ -131,22 +135,22 @@ const Navigator = () => {
                 <Stack.Screen name="Jobs" component={Jobs}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                 <Stack.Screen name="Invitationentries" component={Invitationentries}
+                <Stack.Screen name="Invitationentries" component={Invitationentries}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                 <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
+                <Stack.Screen name="BrowseCandidates" component={BrowseCandidates}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="MyResume" component={MyResume}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                 <Stack.Screen name="PersonalInfo" component={PersonalInfo}
+                <Stack.Screen name="PersonalInfo" component={PersonalInfo}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                 <Stack.Screen name="MyProfile" component={MyProfile}
+                <Stack.Screen name="MyProfile" component={MyProfile}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
-                 <Stack.Screen name="BrowseJobs" component={BrowseJobs}
+                <Stack.Screen name="BrowseJobs" component={BrowseJobs}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="Invitations" component={Invitations}

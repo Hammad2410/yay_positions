@@ -39,7 +39,7 @@ const Invitationentries = (props) => {
                     <FlatList
                         data={props.candidate.invitations}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item, index }) => <Invitationcard item={item} />}
+                        renderItem={({ item, index }) => <Invitationcard item={item} navigation={props.navigation} />}
                     />
 
                     <View style={{ flexDirection: 'row' }}>

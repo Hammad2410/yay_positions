@@ -19,7 +19,7 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
   const [datename, setDateName] = useState('mm/dd/yy');
   const [DatemodalVisible, setDateModalVisible] = useState(false);
   const DateModal = () => {
-      setDateModalVisible(!DatemodalVisible)
+    setDateModalVisible(!DatemodalVisible)
   }
   return (
     <View style={[styles.view, { marginBottom: bottom }]}>
@@ -31,49 +31,49 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}
-      > 
+      >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-           
-              <Text style={styles.modalText}>Date Time for call</Text>
-              <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
 
-<View style={{
-    height: hp('5%'),
-    width: wp('60%'),
-    borderColor: '#707070',
-    borderWidth: 0.5,
-    borderRadius: 5,
-    fontSize: 12,
-    padding: 10,
-    
-    alignSelf: 'center', flexDirection: 'row',
-    marginLeft:-11
-}}>
-    <TouchableOpacity
+            <Text style={styles.modalText}>Date Time for call</Text>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
 
-        onPress={() => DateModal()}>
-        <Text style={{
+              <View style={{
+                height: hp('5%'),
+                width: wp('60%'),
+                borderColor: '#707070',
+                borderWidth: 0.5,
+                borderRadius: 5,
+                fontSize: 12,
+                padding: 10,
 
-            color: '#707070'
-        }}>{datename}</Text>
+                alignSelf: 'center', flexDirection: 'row',
+                marginLeft: -11
+              }}>
+                <TouchableOpacity
 
-    </TouchableOpacity>
+                  onPress={() => DateModal()}>
+                  <Text style={{
+
+                    color: '#707070'
+                  }}>{datename}</Text>
+
+                </TouchableOpacity>
 
 
-</View>
-<View style={{ marginLeft:-30,marginTop:10}}>
-<TouchableOpacity onPress={() => DateModal()}>
-    <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
-</View>
-</View>
+              </View>
+              <View style={{ marginLeft: -30, marginTop: 10 }}>
+                <TouchableOpacity onPress={() => DateModal()}>
+                  <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
+              </View>
+            </View>
 
-            <View style={{ flex: 1, flexDirection: 'row', marginTop: 10,justifyContent:'space-between' }}>
+            <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, justifyContent: 'space-between' }}>
               <Pressable
                 style={[styles.button, { backgroundColor: '#EA3A3A', marginLeft: -17 }]}
                 onPress={() => {
                   setSentInvite(true);
-                  sendInvite(item.CandidateId, time)
+                  sendInvite(item.CandidateId, datename)
                   setModalVisible(!modalVisible)
                 }}
               >
@@ -126,15 +126,15 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
             <Text style={styles.text3}>{item.Level}</Text>
             <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
             <View style={{ flexDirection: 'row' }}>
-              {!item.InInvited && 
-              <TouchableOpacity disabled={sentInvite} style={styles.btn} onPress={() => {
-                setModalVisible(true)
+              {!item.InInvited &&
+                <TouchableOpacity disabled={sentInvite} style={styles.btn} onPress={() => {
+                  setModalVisible(true)
+                }
+                }
+                >
+                  <Text style={styles.btntext}>{sentInvite ? "Invite Sent" : "Send Invitation"}</Text>
+                </TouchableOpacity>
               }
-              }
-              >
-                <Text style={styles.btntext}>{sentInvite ? "Invite Sent" : "Send Invitation"}</Text>
-              </TouchableOpacity>
-             }
               <TouchableOpacity style={styles.btn1} onPress={() => {
                 // alert(item.CandidateId)
                 changeCandidateId(item.CandidateId)
@@ -149,66 +149,66 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
         </View>
       </View>
       <View>
-                            <Modal
-                                animationType="slide"
-                                transparent={true}
-                                visible={DatemodalVisible}
-                            >
-                                <View style={{
-                                    width: wp('100%'),
-                                    height: '23%', marginTop: '5%'
-                                    , backgroundColor: 'white', flexDirection: 'row',
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    alignSelf: 'center'
-                                }}>
-                                 
-
-                                    <DatePicker style={{ marginHorizontal: '10%' }}
-                                        date={date}
-                                        androidVariant="nativeAndroid"
-                                        mode="datetime"
-                                        minimumDate={new Date()}
-                                        style={{
-                                            width: wp('50%'),
-                                            marginTop: '3%',
-                                            marginLeft: '20%'
-                                        }}
-
-                                       
-                                        onDateChange={(date) => setDate(date)}
-
-                                    />
-                                    <TouchableOpacity style={{
-                                        borderRadius: 5,
-                                        alignSelf: 'flex-start'
-                                        , justifyContent: 'center',
-                                        marginVertical: '3%',
-                                        marginLeft: '4%',
-                                        borderColor: 'grey',
-                                        borderWidth: 1, backgroundColor: '#fff',
-                                        width: wp('20%'), height: hp('5%')
-
-                                    }}
-                                        onPress={() => {
-                                            setDateName(date.toString().substr(0, 21))
-                                            setDateModalVisible(false)
-                                        }}
-                                    >
-
-                                        <Text style={{
-
-                                            paddingHorizontal: '24%', paddingVertical: 4, color: 'black'
-                                        }}>DONE</Text>
-                                    </TouchableOpacity>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={DatemodalVisible}
+        >
+          <View style={{
+            width: wp('100%'),
+            height: '23%', marginTop: '5%'
+            , backgroundColor: 'white', flexDirection: 'row',
+            position: 'absolute',
+            bottom: 0,
+            alignSelf: 'center'
+          }}>
 
 
+            <DatePicker style={{ marginHorizontal: '10%' }}
+              date={date}
+              androidVariant="nativeAndroid"
+              mode="datetime"
+              minimumDate={new Date()}
+              style={{
+                width: wp('50%'),
+                marginTop: '3%',
+                marginLeft: '20%'
+              }}
 
 
-                                </View>
+              onDateChange={(date) => setDate(date)}
 
-                            </Modal>
-                        </View>
+            />
+            <TouchableOpacity style={{
+              borderRadius: 5,
+              alignSelf: 'flex-start'
+              , justifyContent: 'center',
+              marginVertical: '3%',
+              marginLeft: '4%',
+              borderColor: 'grey',
+              borderWidth: 1, backgroundColor: '#fff',
+              width: wp('20%'), height: hp('5%')
+
+            }}
+              onPress={() => {
+                setDateName(date.toString().substr(0, 21))
+                setDateModalVisible(false)
+              }}
+            >
+
+              <Text style={{
+
+                paddingHorizontal: '24%', paddingVertical: 4, color: 'black'
+              }}>DONE</Text>
+            </TouchableOpacity>
+
+
+
+
+          </View>
+
+        </Modal>
+      </View>
     </View>
 
 

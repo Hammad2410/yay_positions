@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader'
 import { connect } from 'react-redux';
 import { getCandidateProfile } from '../redux/actions/employer'
+import { Avatar } from 'react-native-paper';
 
 const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
 
@@ -18,12 +19,12 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
             { employer.candidateProfile != null ? (<>
                 <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view1}>
-                    <Avatar.Image 
-                               source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }}
-                                size={80}
-                              
-                                style={{alignSelf:"center", marginTop: 20 }}
-                            />
+                        <Avatar.Image
+                            source={{ uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage }}
+                            size={80}
+
+                            style={{ alignSelf: "center", marginTop: 20 }}
+                        />
                         {/* <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} /> */}
                         {/* <Image source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50 }} /> */}
                         <Text style={styles.text1}>{employer.candidateProfile.Profile.Name}</Text>

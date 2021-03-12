@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, Modal } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader'
 import CandidateTab from '../Components/CandidateTab';
+import CandidateInvitation from '../Components/CandidateInvitation';
 import { connect } from 'react-redux';
 
 
@@ -23,56 +24,7 @@ const Invitations = ({ navigation, candidate }) => {
           <FlatList
             data={candidate.invitations}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item, index }) =>
-              <View style={styles.view}>
-
-                <View style={{ flexDirection: 'row' }}>
-                  <View style={styles.view1}>
-                    <View style={{ flexDirection: 'column' }}>
-                      <Text style={styles.text2}>Company Name</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                      <Text style={styles.text2}>Phone</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                      <Text style={styles.text2}>Country</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                      <Text style={styles.text2}>Status</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                      <Text style={styles.text2}>Meeting Date</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-                      <Text style={styles.text2}>Is Hired</Text>
-                    </View>
-
-                  </View>
-                  <View style={styles.view2}>
-                    <View style={{ flexDirection: 'column' }}>
-                      <Text style={styles.text3}>{item.Company.CompanyName}</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                      <Text style={styles.text3}>{item.Company.PhoneNo}</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                      <Text style={styles.text3}>{item.Company.Country}</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                      <Text style={styles.text3}>{item.Status}</Text>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                      <View style={{ flexDirection: 'row' }}>
-                        <Text style={{
-                          fontSize: 13,
-                          color: '#000000',
-                          fontFamily: 'Segoe UI',
-                          paddingVertical: 20, paddingRight: 5
-                        }}>{new Date(item.CallDateTime).toUTCString()}</Text>
-                      </View>
-                      <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('40%') }}></View>
-                      <Text style={styles.text3}>{item.IsHired}</Text>
-                    </View>
-
-
-                  </View>
-                </View>
-                <TouchableOpacity style={styles.btn}>
-                  <Text style={styles.btntext}>Join Call</Text>
-                </TouchableOpacity>
-              </View>
-            }
+            renderItem={({ item, index }) => <CandidateInvitation item={item} />}
           />
         </View>
 
