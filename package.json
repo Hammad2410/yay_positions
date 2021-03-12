@@ -10,6 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@daily-co/react-native-daily-js": "^0.7.1",
+    "@daily-co/react-native-webrtc": "^1.75.8",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/checkbox": "^0.5.7",
     "@react-native-community/datetimepicker": "^3.0.9",
     "@react-native-community/masked-view": "^0.1.10",
@@ -28,6 +31,7 @@
     "radio-buttons-react-native": "^1.0.4",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-background-timer": "^2.4.1",
     "react-native-country-picker-modal": "^2.0.0",
     "react-native-date-picker": "^3.2.10",
     "react-native-document-picker": "^5.0.0",
