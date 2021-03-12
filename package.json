@@ -10,8 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@daily-co/react-native-daily-js": "^0.7.1",
-    "@daily-co/react-native-webrtc": "^1.75.8",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/checkbox": "^0.5.7",
     "@react-native-community/datetimepicker": "^3.0.9",
@@ -50,6 +48,7 @@
     "react-native-splash-screen": "^3.2.0",
     "react-native-tags": "^2.2.0",
     "react-native-vector-icons": "^8.0.0",
+    "react-native-webview": "^11.2.4",
     "react-navigation-stack": "react-navigation/stack",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",

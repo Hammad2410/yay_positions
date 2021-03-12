@@ -28,35 +28,32 @@ export const browseCandidate = () => {
 };
 
 export const sendInvite = (id, time) => {
-  return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
 
-    axios
-      .post(
-        BASE_URL + '/api/employer/SendInvite',
-        {
-          candidateid: id,
-          DateTime: time,
-        },
-        {
-          headers: {
-            Authorization: 'bearer ' + store().auth.token,
-            // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
-          },
-        },
-      )
-      .then((response) => {
-        console.log('Response : ', response.data);
-        // alert(id)
-        //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
-      })
-      .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
 
-        // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
-      });
-  };
-};
+        axios.post(BASE_URL + "/api/employer/SendInvite", {
+            candidateid: id,
+            DateTime: time
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                // alert(id)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+                console.log("Error: ", error)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
 
 export const getJobs = () => {
   return (dispatch, store) => {
@@ -396,7 +393,87 @@ export const deleteJob = (id) => {
 };
 
 export const resetModal = () => {
-  return (dispatch) => {
-    dispatch({type: types.EMPLOYER_RESET_ERROR});
-  };
-};
+    return (dispatch) => {
+        dispatch({ type: types.EMPLOYER_RESET_ERROR })
+    }
+}
+
+export const deleteInvite = (id) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.get(BASE_URL + "/api/employer/deleteinvite?id=" + id, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                // console.log("Response : ", response.data)
+                dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
+                // alert(id)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+
+                console.log("Error: ", error)
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+                // dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const rescheduleInvite = (id, time) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.post(BASE_URL + "/api/employer/reschedule", {
+            candidateid: id,
+            DateTime: time
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                // alert(id)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+                console.log("Error: ", error)
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const createRoom = (id) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING })
+
+        axios.get(BASE_URL + "api/employer/createroom?inviteid=" + id, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                //dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
+                // alert(id)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+
+                console.log("Error: ", error)
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message })
+                // dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+  

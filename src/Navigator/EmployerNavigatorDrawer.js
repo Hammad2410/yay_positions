@@ -46,33 +46,33 @@ import Changepass from '../Screens/Changepass';
 import SavedJobs from '../Screens/SavedJobs'
 import CompanyDetail from '../Screens/CompanyDetail'
 
-import { DrawerContent } from './EmployerDrawer';
+import DrawerContent from './EmployerDrawer';
 
 const EmployerDrawer = () => {
     return (
-       
-        <Drawer.Navigator  drawerContent={props => <DrawerContent {...props} />}>
-            
+
+        <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+
             <Drawer.Screen name="Dashboard" component={Employer}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
             <Drawer.Screen name="CompanyDetail" component={CompanyDetail}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
-          
+
             <Drawer.Screen name="Invitations" component={Invitations}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
             <Drawer.Screen name="BrowseCandidates" component={BrowseCandidates}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
-             <Drawer.Screen name="Favorite" component={Favorite}
+            <Drawer.Screen name="Favorite" component={Favorite}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
-             <Drawer.Screen name="Hired" component={Hired}
+            <Drawer.Screen name="Hired" component={Hired}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
-             <Drawer.Screen name="Jobs" component={Jobs}
+            <Drawer.Screen name="Jobs" component={Jobs}
                 options={({ navigation }) => ({ header: (props) => null })}
             />
         </Drawer.Navigator>

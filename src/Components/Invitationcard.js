@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, Pressable } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DatePicker from 'react-native-date-picker';
+import { connect } from 'react-redux';
+import { WebView } from 'react-native-webview';
+import { changeCandidateId, deleteInvite, rescheduleInvite, createRoom } from '../redux/actions/employer';
 
+const Invitationcard = ({ item, navigation, employer, changeCandidateId, deleteInvite, rescheduleInvite, createRoom }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState(new Date());
+  const [datename, setDateName] = useState('mm/dd/yy');
+  const [DatemodalVisible, setDateModalVisible] = useState(false);
+  const DateModal = () => {
+    setDateModalVisible(!DatemodalVisible)
+  }
+  const [openCall, setOpenCall] = useState(false);
 
-
-const Invitationcard = ({ item }) => {
   return (
 
     <View style={styles.view}>
@@ -55,20 +67,159 @@ const Invitationcard = ({ item }) => {
         </View>
       </View>
       <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btntext}>Join Call</Text>
+        <TouchableOpacity style={styles.btn} onPress={() => {
+          if (item.RoomKey != null) {
+            setOpenCall(true);
+          }
+          else {
+            createRoom(item.InviteId);
+          }
+
+        }}>
+          <Text style={styles.btntext}>{item.RoomKey != null ? "Join Call" : "Create Room"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={() => {
+          setModalVisible(true)
+        }
+        }>
           <Text style={styles.btntext}>Reschdule</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={() => {
+          // alert(item.CandidateId)
+          changeCandidateId(item.CandidateId)
+          navigation.navigate("CProfile")
+        }}>
           <Text style={styles.btntext}>View Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn2}>
+        <TouchableOpacity style={styles.btn2} onPress={() => deleteInvite(item.InviteId)}  >
           <Text style={styles.btntext}>Delete</Text>
         </TouchableOpacity>
       </View>
+      <Modal
 
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+
+            <Text style={styles.modalText}>Date Time for call</Text>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+
+              <View style={{
+                height: hp('5%'),
+                width: wp('60%'),
+                borderColor: '#707070',
+                borderWidth: 0.5,
+                borderRadius: 5,
+                fontSize: 12,
+                padding: 10,
+
+                alignSelf: 'center', flexDirection: 'row',
+                marginLeft: -11
+              }}>
+                <TouchableOpacity
+
+                  onPress={() => DateModal()}>
+                  <Text style={{
+
+                    color: '#707070'
+                  }}>{datename}</Text>
+
+                </TouchableOpacity>
+
+
+              </View>
+              <View style={{ marginLeft: -30, marginTop: 10 }}>
+                <TouchableOpacity onPress={() => DateModal()}>
+                  <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, justifyContent: 'space-between' }}>
+              <Pressable
+                style={[styles.button, { backgroundColor: '#EA3A3A', marginLeft: -17 }]}
+                onPress={() => {
+                  // setSentInvite(true);
+                  rescheduleInvite(item.InviteId, datename)
+                  setModalVisible(!modalVisible)
+                }}
+              >
+                <Text style={styles.textStyle}>Reschedule</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, { backgroundColor: '#007AFF' }]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={DatemodalVisible}
+      >
+        <View style={{
+          width: wp('100%'),
+          height: '23%', marginTop: '5%'
+          , backgroundColor: 'white', flexDirection: 'row',
+          position: 'absolute',
+          bottom: 0,
+          alignSelf: 'center'
+        }}>
+          <DatePicker style={{ marginHorizontal: '10%' }}
+            date={date}
+            androidVariant="nativeAndroid"
+            mode="datetime"
+            minimumDate={new Date()}
+            style={{
+              width: wp('50%'),
+              marginTop: '3%',
+              marginLeft: '20%'
+            }}
+            onDateChange={(date) => setDate(date)}
+          />
+          <TouchableOpacity style={{
+            borderRadius: 5,
+            alignSelf: 'flex-start'
+            , justifyContent: 'center',
+            marginVertical: '3%',
+            marginLeft: '4%',
+            borderColor: 'grey',
+            borderWidth: 1, backgroundColor: '#fff',
+            width: wp('20%'), height: hp('5%')
+
+          }}
+            onPress={() => {
+              setDateName(date.toString().substr(0, 21))
+              setDateModalVisible(false)
+            }}
+          >
+            <Text style={{
+
+              paddingHorizontal: '24%', paddingVertical: 4, color: 'black'
+            }}>DONE</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
+      <Modal
+        visible={openCall}
+      >
+        <WebView source={{ uri: 'https://hiring.daily.co/' + item.RoomKey }} onNavigationStateChange={(state) => {
+          if (state.canGoBack) {
+            setOpenCall(false)
+          }
+        }} />
+      </Modal>
     </View>
 
 
@@ -204,9 +355,71 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginLeft: 20
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
 
+    alignSelf: 'center'
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    padding: 35,
+    width: 270,
+    height: 182,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+
+    height: 30,
+
+  },
+
+  buttonClose: {
+    backgroundColor: "rgba(0,54,168,1)",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "400",
+    textAlign: "center",
+    marginTop: -6,
+    fontSize: 16
+  },
+  modalText: {
+    alignSelf: 'center',
+    fontSize: 16,
+    color: 'black',
+    fontWeight: "400",
+    marginTop: 8,
+    textAlign: 'center',
+    width: 160
+  },
+  modalInput: {
+    height: hp('5%'),
+    width: wp('60%'),
+    borderColor: '#707070',
+    borderWidth: 0.5,
+    borderRadius: 5,
+    fontSize: 12,
+    padding: 10,
+    marginTop: 10,
+    alignSelf: 'center',
+  }
 })
 
+const mapStateToProps = ({ employer }) => ({ employer })
 
+const mapDispatchToProps = { changeCandidateId, deleteInvite, rescheduleInvite, createRoom }
 
-export default Invitationcard;
+export default connect(mapStateToProps, mapDispatchToProps)(Invitationcard);

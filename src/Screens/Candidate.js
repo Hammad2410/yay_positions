@@ -6,13 +6,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import SideDrawer from '../Components/Drawer';
 import { connect } from 'react-redux';
 import { resetUserLoggedIn } from '../redux/actions/auth';
-import { getInvitations, getJobs } from '../redux/actions/candidate';
+import { getInvitations, getJobs, getCandidateProfile } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
 
 import {
     NavigationContainer,
     CommonActions,
-  } from '@react-navigation/native';
+} from '@react-navigation/native';
 
 const Candidate = (props) => {
 
@@ -20,6 +20,7 @@ const Candidate = (props) => {
         props.getInvitations()
         props.getJobs()
         props.resetUserLoggedIn()
+        props.getCandidateProfile()
     }, [])
 
     return (
@@ -31,9 +32,9 @@ const Candidate = (props) => {
                         onPress={() => props.navigation.goBack()}>
                         <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity >
-                  
-                        <Text style={styles.text}>Hello Jason </Text>
-                  
+
+                    <Text style={styles.text}>Hello Jason </Text>
+
                 </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Jobs</Text>
@@ -76,18 +77,18 @@ const Candidate = (props) => {
                 </View>
 
                 <TouchableOpacity onPress={() =>
-          props.navigation.dispatch(
-            CommonActions.reset({
-              index: 1,
-              routes: [
-                { name: 'Login' },//to go to initial stack screen
-            ],
-            })
-          )
-        }>
+                    props.navigation.dispatch(
+                        CommonActions.reset({
+                            index: 1,
+                            routes: [
+                                { name: 'Login' },//to go to initial stack screen
+                            ],
+                        })
+                    )
+                }>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
-               
+
             </Content>
             <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'} />
         </Container>
@@ -145,13 +146,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Segoe UI',
         paddingTop: 5,
         paddingRight: 5,
-      
+
     }
 
 })
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = { getInvitations, getJobs, resetUserLoggedIn }
+const mapDispatchToProps = { getInvitations, getJobs, resetUserLoggedIn, getCandidateProfile }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Candidate);

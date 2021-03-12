@@ -3,13 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left, Item } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {saveJobs} from  '../redux/actions/candidate';
+import { saveJobs, applyForJob, resetModal } from '../redux/actions/candidate';
 import { connect } from 'react-redux';
-const JobApply = ({ navigation, bottom,candidate,jobDetail,saveJobs }) => {
+import ErrorModal from '../Components/ErrorModal';
+const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyForJob, resetModal }) => {
   useEffect(() => {
-    console.log(candidate.jobDetail)
-}, [])
-  
+    // console.log(candidate.jobDetail)
+  }, [])
+
   return (
 
 
@@ -21,24 +22,24 @@ const JobApply = ({ navigation, bottom,candidate,jobDetail,saveJobs }) => {
             // console.log(candidate.jobDetail)
             saveJobs({
               ...candidate.jobDetail,
-              Job:{ ...candidate.jobDetail} 
+              Job: { ...candidate.jobDetail }
             })
-            }}>
+          }}>
             <Image source={require('../assests/image/heart.png')}></Image>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
-        <Text style={styles.text}>Location:</Text>
-        <Text style={styles.text1}>{candidate.jobDetail.Location}</Text>
+          <Text style={styles.text}>Location:</Text>
+          <Text style={styles.text1}>{candidate.jobDetail.Location}</Text>
         </View>
-        
+
         {
-                            candidate.jobDetail.IsApplied === 'false'?
-                            <Text style={[styles.text,{marginLeft:12}]}> Applied </Text>
-                            :
-                            <Text style={[styles.text,{marginLeft:12,marginTop:5}]}>Not Applied </Text>
-                            }
-       
+          candidate.jobDetail.IsApplied === 'false' ?
+            <Text style={[styles.text, { marginLeft: 12 }]}> Applied </Text>
+            :
+            <Text style={[styles.text, { marginLeft: 12, marginTop: 5 }]}>Not Applied </Text>
+        }
+
 
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Job Type:</Text>
@@ -74,11 +75,11 @@ const JobApply = ({ navigation, bottom,candidate,jobDetail,saveJobs }) => {
           <Text style={styles.text}>Remote Or In House:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.RemoteOrInHouse}</Text>
         </View>
-       
+
         <View style={{ flexDirection: 'column', marginHorizontal: 12, marginTop: 25 }}>
-        <Text style={styles.text}>Description</Text>
+          <Text style={styles.text}>Description</Text>
           <Text style={styles.text3}>{candidate.jobDetail.JobDescription}
-</Text>
+          </Text>
         </View>
         <View style={{ flexDirection: 'column', marginHorizontal: 12, marginTop: 20 }}>
           <Text style={styles.text}>Essential Duties and Responsibilities</Text>
@@ -87,9 +88,10 @@ const JobApply = ({ navigation, bottom,candidate,jobDetail,saveJobs }) => {
 
 
       </View>
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity style={styles.btn} onPress={() => applyForJob(candidate.jobDetail.Id)}>
         <Text style={styles.btntext}>Apply</Text>
       </TouchableOpacity>
+      <ErrorModal message={candidate.error} visible={candidate.error != ''} onPress={resetModal} />
     </View>
 
   )
@@ -160,6 +162,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = {  saveJobs }
+const mapDispatchToProps = { saveJobs, applyForJob, resetModal }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobApply);
