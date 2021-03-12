@@ -10,68 +10,71 @@ import RadioForm, {
 import MyHeader from '../Components/LoginSignupHeader';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CandidateTab from '../Components/CandidateTab';
-
+import {applyJobFilter} from '../redux/actions/candidate';  
+import {connect} from  'react-redux';
 
 var filter = [
-  { label: "Full Time", value: 0 },
-  { label: "Part Time", value: 1 },
-  { label: "Internship", value: 2 },
-  { label: "Temporary", value: 4 },
-  { label: "Permanent", value: 5 },
-  { label: "Contract", value: 6 },
-  { label: " Freelance", value: 7 },
+  { label: "All", value:"All" },
+  { label: "Full Time", value: "Full Time" },
+  { label: "Part Time", value: "Part Time" },
+  { label: "Internship", value: "Internship" },
+  { label: "Temporary", value: "Temporary" },
+  { label: "Permanent", value: "Permanent" },
+  { label: "Contract", value: "Contract" },
+  { label: " Freelance", value: "Freelance" },
 ];
 
 var salary = [
-  { label: "Hourly", value: 0 },
-  { label: "Weekly", value: 1 },
-  { label: "Monthly", value: 2 },
-  { label: "Yearly", value: 4 },
+  { label: "All", value:"All" },
+  { label: "Hourly", value: "Hourly" },
+  { label: "Weekly", value: "Weekly" },
+  { label: "Monthly", value: "Monthly" },
+  { label: "Yearly", value: "Yearly" },
 
 ];
 
 var job = [
-  { label: "High School", value: 0 },
-  { label: "Bachelors", value: 1 },
-  { label: "Masters", value: 2 },
-  { label: "Doctorate", value: 4 },
-  { label: "Diploma", value: 5 },
-  { label: "MBBS", value: 6 },
+  { label: "High School", value: "High School" },
+  { label: "Bachelors", value: "Bachelors" },
+  { label: "Masters", value: "Masters" },
+  { label: "Doctorate", value: "Doctorate" },
+  { label: "Diploma", value: "Diploma" },
+  { label: "MBBS", value: "MBBS" },
 
 ];
 
 var Skills =[
-  {label: 'Select', value: 0, },
-{label: 'Analytical Skills', value:1, },
-{label: 'Application Development', value: 2, }, 
-{label: 'Architecture', value: 3,},
-{label: 'Arts', value: 4,},
-{label: 'Communication Skills', value: 5, },
-{label: 'Cooking', value: 6, },
-{label: 'Culinary Arts', value: 7,}, 
-{label: 'Data Network', value: 8,},
-{label: 'Designing', value: 9,},  
-{label: 'Development', value: 10,},
-{label: 'Education', value: 11,}, 
-{label: 'Flexibility', value: 12,},  
-{label: 'Food Products', value: 13,}, 
-{label: 'IT Engineering', value: 14,}, 
-{label: 'JS', value: 15,}, 
-{label: 'Managment', value: 16,}, 
-{label: 'Medical and Healthcare', value: 17,},
-{label: 'Modeling', value: 18,},
-{label: 'Office Managment', value: 19},
-{label: 'Painting', value: 20},
-{label: 'Patience', value: 21},
-{label: 'Php', value: 22}, 
-{label: 'Problem Solving', value: 23},
-{label: 'SEO', value: 24},
-{label: 'SMM', value: 25},
-{label: 'Stress Managment', value: 26,},
-{label: 'Team Managment', value: 27,},
-{label: 'Team Work', value: 28,},
-{label: 'Technical', value: 29,},
-{label: 'Trainings', value: 30,},             
+  {label: 'All', value: 'All' },
+{label: 'Analytical Skills', value:'Analytical Skills', },
+{label: 'Application Development', value: 'Application Development', }, 
+{label: 'Architecture', value: 'Architecture',},
+{label: 'Arts', value: 'Arts',},
+{label: 'Communication Skills', value: 'Communication Skills', },
+{label: 'Cooking', value: 'Cooking', },
+{label: 'Culinary Arts', value: 'Culinary Arts',}, 
+{label: 'Data Network', value: 'Data Network',},
+{label: 'Designing', value:  'Designing',},  
+{label: 'Development', value: 'Development',},
+{label: 'Education', value: 'Education',}, 
+{label: 'Flexibility', value: 'Flexibility',},  
+{label: 'Food Products', value: 'Food Products',}, 
+{label: 'IT Engineering', value: 'IT Engineering',}, 
+{label: 'JS', value: 'JS',}, 
+{label: 'Managment', value: 'Managment',}, 
+{label: 'Medical and Healthcare', value: 'Medical and Healthcare',},
+{label: 'Modeling', value: 'Modeling',},
+{label: 'Office Managment', value: 'Office Managment'},
+{label: 'Painting', value: 'Painting'},
+{label: 'Patience', value: 'Patience'},
+{label: 'Php', value:  'Php'}, 
+{label: 'Problem Solving', value: 'Problem Solving'},
+{label: 'SEO', value: 'SEO'},
+{label: 'SMM', value: 'SMM'},
+{label: 'Stress Managment', value: 'Stress Managment',},
+{label: 'Team Managment', value:  'Team Managment',},
+{label: 'Team Work', value:  'Team Work',},
+{label: 'Technical', value: 'Technical',},
+{label: 'Trainings', value: 'Trainings',},             
 ]
 var Jexp =[
 
@@ -99,7 +102,11 @@ var SRange =[
 {label: '$800,000-$900,000', value: 'S8',},
 {label: '$900,000-$1,000,000', value: 'S9',},  
 ]
-const Filter = ({ navigation }) => {
+const Filter = ({ navigation, candidate, applyJobFilter }) => {
+
+  const [jobTypeArray, setJobTypeArray] = useState(candidate.jobs)
+  const [salaryTypeArray, setSalaryTypeArray] = useState(candidate.jobs)
+  const [skillArray, setSkillArray] = useState(candidate.jobs)
 
 
 return (
@@ -107,13 +114,20 @@ return (
 <MyHeader  navigation={navigation}/>
 <Content >
 <View style={{flex:1}}>
-<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
-<Text style={styles.text}>What</Text>
-<TextInput></TextInput>
+<View style={{flexDirection:'column',marginTop:'3%',marginLeft:'10%',marginRight:'3%'}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:5}}>
+
+<TextInput placeholder="What"  style={[styles.textinput]}></TextInput>
+
+<TextInput placeholder="Where" style={[styles.textinput,{marginRight:20}]}></TextInput>
 </View>
-<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('BrowseJobs')}}>
+<Text style={styles.btntext}>Search</Text>
+</TouchableOpacity>
+</View>
+<View style={{marginLeft:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginTop:20}}>
 <Text style={styles.text}>Search Filters</Text>
-<TouchableOpacity>
+<TouchableOpacity onPress={() => applyJobFilter(candidate.jobs) } >
 <Text style={styles.text1}>Clear all</Text>
 </TouchableOpacity>
     </View>
@@ -123,7 +137,14 @@ return (
     <RadioForm
           radio_props={filter}
           initial={0}
-          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          onPress={(value) => { 
+            if(value=="All"){
+              setJobTypeArray(candidate.jobs)
+            }
+            else{
+              setJobTypeArray(candidate.jobs.filter((item) => item.JobType == value.toString() )); 
+            }
+          }}
           buttonSize={8}
           buttonOuterSize={20}
           selectedButtonColor={'green'}
@@ -141,7 +162,14 @@ return (
     <RadioForm
           radio_props={salary}
           initial={0}
-          onPress={(value) => {(value.toString(), ToastAndroid.SHORT)}}
+          onPress={(value) => { 
+            if(value=="All"){
+              setSalaryTypeArray(candidate.jobs)
+            }
+            else{
+              setSalaryTypeArray(candidate.jobs.filter((item) => item.SalaryType == value.toString() ))
+            }
+          }}
           buttonSize={8}
           buttonOuterSize={20}
           selectedButtonColor={'green'}
@@ -149,7 +177,6 @@ return (
           buttonColor={'#707070'}
           labelStyle={{ fontSize: 13}}
           style={{marginTop:15}}
-      
         />
     </View>
     <View style={{borderWidth:1,borderColor:'#E4E4E4',marginHorizontal:'8%',marginTop:15}}/>
@@ -160,15 +187,29 @@ return (
     itemStyle={{
       justifyContent: 'flex-start'
   }}
-    placeholder={'Select your skills'}
+    placeholder={'Select your Skills'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
     containerStyle={{height:50,width:wp('80%')}}
     style={{backgroundColor: '#fffff',borderColor:'#707070',marginTop:10}}
     dropDownStyle={{backgroundColor: '#ffffff'}}
-/>
-<TouchableOpacity style={styles.btn} onPress={() => {navigation.navigate('BrowseJobs')}}>
+    onChangeItem={value => {
+      if(value.label =="All"){
+        setSkillArray(candidate.jobs)
+      }
+      else{
+        setSkillArray(candidate.jobs.filter((item) => item.Skill == value.label ))
+      }
+    }}
+  />
+<TouchableOpacity style={styles.btn} onPress={() => {
+
+  //var filter = jobTypeArray.filter((item) => salaryTypeArray.includes(item) )
+ // applyJobFilter(filter.filter((item) => skillArray.includes(item) ))
+  applyJobFilter(jobTypeArray.filter((item) => salaryTypeArray.includes(item) ))
+  navigation.navigate('BrowseJobs')
+  }}>
 <Text style={styles.btntext}>Search</Text>
 </TouchableOpacity>
     </View>
@@ -180,7 +221,7 @@ return (
     itemStyle={{
       justifyContent: 'flex-start'
   }}
-    placeholder={'Select your skills'}
+    placeholder={'Select Job Experience'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
@@ -214,7 +255,7 @@ return (
     itemStyle={{
       justifyContent: 'flex-start'
   }}
-    placeholder={'Select your skills'}
+    placeholder={'Select Salary Range'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
@@ -235,7 +276,7 @@ return (
   )    
 
 }
-export default Filter;
+
 
 const styles = StyleSheet.create({
 
@@ -273,6 +314,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: '#FFFFFF',
     fontWeight: 'bold'
-  }
+  },
+  textinput: {
+    height: hp('5%'),
+   width:wp('40%'),
+    borderColor: '#707070',
+    borderWidth: 0.5,
+    borderRadius: 5,
+    fontSize: 12,
+    padding: 10,
+    textAlignVertical: 'top'
+
+},
 
 })
+
+const mapStateToProps = ({ candidate }) => ({ candidate })
+
+const mapDispatchToProps = { applyJobFilter }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Filter);

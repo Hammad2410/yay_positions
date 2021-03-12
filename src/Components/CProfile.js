@@ -18,7 +18,14 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
             { employer.candidateProfile != null ? (<>
                 <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view1}>
-                        <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} />
+                    <Avatar.Image 
+                               source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }}
+                                size={80}
+                              
+                                style={{alignSelf:"center", marginTop: 20 }}
+                            />
+                        {/* <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} /> */}
+                        {/* <Image source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50 }} /> */}
                         <Text style={styles.text1}>{employer.candidateProfile.Profile.Name}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -75,46 +82,46 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
 
 
                 </View>
-                { employer.candidateProfile.EducationalInfos.length > 0 && <View style={[styles.view, { marginBottom: bottom }]}>
+                { employer.candidateProfile.EducationalInfos.map((item) => <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view2}>
                         <Text style={styles.text4}>Educational Info</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Degree</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].Degree}</Text>
+                        <Text style={styles.text3}>{item.Degree}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Institute Name</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].InstituteName}</Text>
+                        <Text style={styles.text3}>{item.InstituteName}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Start Date</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].StartDate}</Text>
+                        <Text style={styles.text3}>{item.StartDate}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>End Date</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].EndDate}</Text>
+                        <Text style={styles.text3}>{item.EndDate}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Qualification Title</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].QualificationTitle}</Text>
+                        <Text style={styles.text3}>{item.QualificationTitle}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Grade</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].Grade}</Text>
+                        <Text style={styles.text3}>{item.Grade}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
 
                     <Text style={styles.text5}>Description</Text>
-                    <Text style={styles.text3}>{employer.candidateProfile.EducationalInfos[0].DescriptionEducational}</Text>
+                    <Text style={styles.text3}>{item.DescriptionEducational}</Text>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10, marginBottom: 35 }} />
 
-                </View>}
+                </View>)}
                 {<View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view2}>
                         <Text style={styles.text4}>Job Experience </Text>

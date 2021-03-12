@@ -8,7 +8,7 @@ import JobApply from '../Components/JobApply'
 import CandidateTab from '../Components/CandidateTab';
 
 
-const Applyjob = ({ navigation }) => {
+const Applyjob = ({ navigation,item }) => {
 
     return (
         <Container style={{ backgroundColor: 'white' }} >

@@ -15,9 +15,11 @@ return (
 <Content >
 <View style={{flex:1}}>
     <View style={{marginLeft:25}}>
-<Text style={styles.text}>MyProfile</Text>
+<Text style={styles.text}>My Profile</Text>
 <View style={styles.line}>
 </View>
+<Text style={[styles.text,{color: '#009961',
+        fontSize: 15,marginTop:10}]}>Kindly visit our website to update your Profile</Text>
 </View>
 
 

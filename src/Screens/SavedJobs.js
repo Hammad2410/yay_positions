@@ -57,7 +57,9 @@ const SavedJobs = (props) => {
                             style={{ marginTop: 10 }}
                             data={props.candidate.savedJobs}
                             renderItem={({ item, index }) =>
-                                <TouchableOpacity style={{
+                                <TouchableOpacity 
+                                disabled={true}
+                                style={{
 
                                     flex: 1,
                                     flexDirection: 'row',
@@ -100,7 +102,10 @@ const SavedJobs = (props) => {
                                                 paddingLeft: 20,
                                                 fontSize: 12
                                             }} >{item.Job.Location}</Text>
-                                            <TouchableOpacity onPress={() => { props.saveJobs(item.Job) }}>
+                                            <TouchableOpacity onPress={() => { 
+                                                props.saveJobs(item.Job) 
+                                                // console.log(item.Job)
+                                                }}>
                                                 <Icon name="ios-heart" size={25} color="green" style={{ marginRight: 20 }} />
                                             </TouchableOpacity>
                                         </View>

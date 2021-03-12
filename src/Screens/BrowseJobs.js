@@ -32,7 +32,7 @@ const BrowseJobs = (props) => {
                         </TouchableOpacity>
                     </View>
                     <FlatList
-                        data={props.candidate.jobs}
+                        data={props.candidate.filteredJob}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) => <Jobs item={item} navigation={props.navigation} />}
                     />

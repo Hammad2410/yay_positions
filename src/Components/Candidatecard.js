@@ -8,13 +8,19 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
 import { connect } from 'react-redux';
 import { sendInvite, markFavorite, changeCandidateId } from '../redux/actions/employer';
+import DatePicker from 'react-native-date-picker';
 
 const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, employer, changeCandidateId }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [sentInvite, setSentInvite] = useState(false);
   const [time, setTime] = useState('');
-
+  const [date, setDate] = useState(new Date());
+  const [datename, setDateName] = useState('mm/dd/yy');
+  const [DatemodalVisible, setDateModalVisible] = useState(false);
+  const DateModal = () => {
+      setDateModalVisible(!DatemodalVisible)
+  }
   return (
     <View style={[styles.view, { marginBottom: bottom }]}>
       <Modal
@@ -25,15 +31,44 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}
-      >
+      > 
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Pressable onPress={() => setModalVisible(!modalVisible)}>
+           
               <Text style={styles.modalText}>Date Time for call</Text>
-              <TextInput placeholder='yyyy-mm-dd hh:mm:ss' placeholderTextColor='#707070' style={styles.modalInput} onChangeText={(text) => setTime(text)}></TextInput>
-            </Pressable>
+              <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
 
-            <View style={{ flex: 1, flexDirection: 'row', marginTop: 20 }}>
+<View style={{
+    height: hp('5%'),
+    width: wp('60%'),
+    borderColor: '#707070',
+    borderWidth: 0.5,
+    borderRadius: 5,
+    fontSize: 12,
+    padding: 10,
+    
+    alignSelf: 'center', flexDirection: 'row',
+    marginLeft:-11
+}}>
+    <TouchableOpacity
+
+        onPress={() => DateModal()}>
+        <Text style={{
+
+            color: '#707070'
+        }}>{datename}</Text>
+
+    </TouchableOpacity>
+
+
+</View>
+<View style={{ marginLeft:-30,marginTop:10}}>
+<TouchableOpacity onPress={() => DateModal()}>
+    <Icon name="calendar" size={20} color="#707070" style={{ alignSelf: 'center' }} /></TouchableOpacity>
+</View>
+</View>
+
+            <View style={{ flex: 1, flexDirection: 'row', marginTop: 10,justifyContent:'space-between' }}>
               <Pressable
                 style={[styles.button, { backgroundColor: '#EA3A3A', marginLeft: -17 }]}
                 onPress={() => {
@@ -45,7 +80,7 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
                 <Text style={styles.textStyle}>Send Invitation</Text>
               </Pressable>
               <Pressable
-                style={[styles.button, { backgroundColor: '#007AFF', marginLeft: 48 }]}
+                style={[styles.button, { backgroundColor: '#007AFF' }]}
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <Text style={styles.textStyle}>Close</Text>
@@ -91,11 +126,15 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
             <Text style={styles.text3}>{item.Level}</Text>
             <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
             <View style={{ flexDirection: 'row' }}>
-              {!item.InInvited && <TouchableOpacity disabled={sentInvite} style={styles.btn} onPress={() => {
+              {!item.InInvited && 
+              <TouchableOpacity disabled={sentInvite} style={styles.btn} onPress={() => {
                 setModalVisible(true)
-              }}>
+              }
+              }
+              >
                 <Text style={styles.btntext}>{sentInvite ? "Invite Sent" : "Send Invitation"}</Text>
-              </TouchableOpacity>}
+              </TouchableOpacity>
+             }
               <TouchableOpacity style={styles.btn1} onPress={() => {
                 // alert(item.CandidateId)
                 changeCandidateId(item.CandidateId)
@@ -109,6 +148,67 @@ const Candidatecard = ({ navigation, bottom, item, sendInvite, markFavorite, emp
 
         </View>
       </View>
+      <View>
+                            <Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={DatemodalVisible}
+                            >
+                                <View style={{
+                                    width: wp('100%'),
+                                    height: '23%', marginTop: '5%'
+                                    , backgroundColor: 'white', flexDirection: 'row',
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    alignSelf: 'center'
+                                }}>
+                                 
+
+                                    <DatePicker style={{ marginHorizontal: '10%' }}
+                                        date={date}
+                                        androidVariant="nativeAndroid"
+                                        mode="datetime"
+                                        minimumDate={new Date()}
+                                        style={{
+                                            width: wp('50%'),
+                                            marginTop: '3%',
+                                            marginLeft: '20%'
+                                        }}
+
+                                       
+                                        onDateChange={(date) => setDate(date)}
+
+                                    />
+                                    <TouchableOpacity style={{
+                                        borderRadius: 5,
+                                        alignSelf: 'flex-start'
+                                        , justifyContent: 'center',
+                                        marginVertical: '3%',
+                                        marginLeft: '4%',
+                                        borderColor: 'grey',
+                                        borderWidth: 1, backgroundColor: '#fff',
+                                        width: wp('20%'), height: hp('5%')
+
+                                    }}
+                                        onPress={() => {
+                                            setDateName(date.toString().substr(0, 21))
+                                            setDateModalVisible(false)
+                                        }}
+                                    >
+
+                                        <Text style={{
+
+                                            paddingHorizontal: '24%', paddingVertical: 4, color: 'black'
+                                        }}>DONE</Text>
+                                    </TouchableOpacity>
+
+
+
+
+                                </View>
+
+                            </Modal>
+                        </View>
     </View>
 
 
