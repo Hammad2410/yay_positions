@@ -18,8 +18,14 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
             { employer.candidateProfile != null ? (<>
                 <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view1}>
+                    <Avatar.Image 
+                               source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }}
+                                size={80}
+                              
+                                style={{alignSelf:"center", marginTop: 20 }}
+                            />
                         {/* <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} /> */}
-                        <Image source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50 }} />
+                        {/* <Image source={{uri: 'https://lms.phenomenaltechnology.com/' + employer.candidateProfile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50 }} /> */}
                         <Text style={styles.text1}>{employer.candidateProfile.Profile.Name}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

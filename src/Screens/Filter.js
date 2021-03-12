@@ -34,47 +34,47 @@ var salary = [
 ];
 
 var job = [
-  { label: "High School", value: 0 },
-  { label: "Bachelors", value: 1 },
-  { label: "Masters", value: 2 },
-  { label: "Doctorate", value: 4 },
-  { label: "Diploma", value: 5 },
-  { label: "MBBS", value: 6 },
+  { label: "High School", value: "High School" },
+  { label: "Bachelors", value: "Bachelors" },
+  { label: "Masters", value: "Masters" },
+  { label: "Doctorate", value: "Doctorate" },
+  { label: "Diploma", value: "Diploma" },
+  { label: "MBBS", value: "MBBS" },
 
 ];
 
 var Skills =[
-  {label: 'All', value: 0 },
-{label: 'Analytical Skills', value:1, },
-{label: 'Application Development', value: 2, }, 
-{label: 'Architecture', value: 3,},
-{label: 'Arts', value: 4,},
-{label: 'Communication Skills', value: 5, },
-{label: 'Cooking', value: 6, },
-{label: 'Culinary Arts', value: 7,}, 
-{label: 'Data Network', value: 8,},
-{label: 'Designing', value: 9,},  
-{label: 'Development', value: 10,},
-{label: 'Education', value: 11,}, 
-{label: 'Flexibility', value: 12,},  
-{label: 'Food Products', value: 13,}, 
-{label: 'IT Engineering', value: 14,}, 
-{label: 'JS', value: 15,}, 
-{label: 'Managment', value: 16,}, 
-{label: 'Medical and Healthcare', value: 17,},
-{label: 'Modeling', value: 18,},
-{label: 'Office Managment', value: 19},
-{label: 'Painting', value: 20},
-{label: 'Patience', value: 21},
-{label: 'Php', value: 22}, 
-{label: 'Problem Solving', value: 23},
-{label: 'SEO', value: 24},
-{label: 'SMM', value: 25},
-{label: 'Stress Managment', value: 26,},
-{label: 'Team Managment', value: 27,},
-{label: 'Team Work', value: 28,},
-{label: 'Technical', value: 29,},
-{label: 'Trainings', value: 30,},             
+  {label: 'All', value: 'All' },
+{label: 'Analytical Skills', value:'Analytical Skills', },
+{label: 'Application Development', value: 'Application Development', }, 
+{label: 'Architecture', value: 'Architecture',},
+{label: 'Arts', value: 'Arts',},
+{label: 'Communication Skills', value: 'Communication Skills', },
+{label: 'Cooking', value: 'Cooking', },
+{label: 'Culinary Arts', value: 'Culinary Arts',}, 
+{label: 'Data Network', value: 'Data Network',},
+{label: 'Designing', value:  'Designing',},  
+{label: 'Development', value: 'Development',},
+{label: 'Education', value: 'Education',}, 
+{label: 'Flexibility', value: 'Flexibility',},  
+{label: 'Food Products', value: 'Food Products',}, 
+{label: 'IT Engineering', value: 'IT Engineering',}, 
+{label: 'JS', value: 'JS',}, 
+{label: 'Managment', value: 'Managment',}, 
+{label: 'Medical and Healthcare', value: 'Medical and Healthcare',},
+{label: 'Modeling', value: 'Modeling',},
+{label: 'Office Managment', value: 'Office Managment'},
+{label: 'Painting', value: 'Painting'},
+{label: 'Patience', value: 'Patience'},
+{label: 'Php', value:  'Php'}, 
+{label: 'Problem Solving', value: 'Problem Solving'},
+{label: 'SEO', value: 'SEO'},
+{label: 'SMM', value: 'SMM'},
+{label: 'Stress Managment', value: 'Stress Managment',},
+{label: 'Team Managment', value:  'Team Managment',},
+{label: 'Team Work', value:  'Team Work',},
+{label: 'Technical', value: 'Technical',},
+{label: 'Trainings', value: 'Trainings',},             
 ]
 var Jexp =[
 
@@ -187,7 +187,7 @@ return (
     itemStyle={{
       justifyContent: 'flex-start'
   }}
-    placeholder={'Select your skills'}
+    placeholder={'Select your Skills'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
@@ -221,7 +221,7 @@ return (
     itemStyle={{
       justifyContent: 'flex-start'
   }}
-    placeholder={'Select your skills'}
+    placeholder={'Select Job Experience'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}
@@ -255,7 +255,7 @@ return (
     itemStyle={{
       justifyContent: 'flex-start'
   }}
-    placeholder={'Select your skills'}
+    placeholder={'Select Salary Range'}
     placeholderStyle={{color:'#000000',fontSize:12}}
     arrowSize={20}
     arrowColor={'#47525E'}

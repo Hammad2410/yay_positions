@@ -7,7 +7,9 @@ import MyHeader from './LoginSignupHeader'
 import { connect } from 'react-redux';
 import { getCandidateProfile } from '../redux/actions/candidate'
 import Pdf from 'react-native-pdf';
-
+import {
+    Avatar,
+} from 'react-native-paper';
 const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
 
     const [showModal, setShowModal] = useState(false);
@@ -21,8 +23,13 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
             { auth.profile != null ? (<>
                 <View style={[styles.view, { marginBottom: bottom }]}>
                     <View style={styles.view1}>
+                    <Avatar.Image 
+                               source={{uri: 'https://lms.phenomenaltechnology.com/' + auth.profile.Profile.ProfileImage  }}
+                                size={80}
+                                style={{alignSelf:"center", marginTop: 20 }}
+                            />
                         {/* <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} /> */}
-                        <Image source={{uri: 'https://lms.phenomenaltechnology.com/' + auth.profile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50 }} />
+                        {/* <Image source={{uri: 'https://lms.phenomenaltechnology.com/' + auth.profile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50,borderRadius:5 }} /> */}
                         <Text style={styles.text1}>{auth.profile.Profile.Name}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
