@@ -5,9 +5,10 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { deleteJob } from '../redux/actions/employer';
+import { selectJob } from '../redux/actions/candidate';
 
 
-const Jobcard = ({ navigation, item, deleteJob }) => {
+const Jobcard = ({ navigation, item, deleteJob, selectJob }) => {
   return (
 
     <View style={styles.view}>
@@ -59,16 +60,23 @@ const Jobcard = ({ navigation, item, deleteJob }) => {
         </View>
       </View>
       <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity style={styles.btn1}>
+        <TouchableOpacity style={styles.btn1} onPress={() => {
+          navigation.navigate('EditJob', { job: item })
+        }}>
           <Text style={styles.btntext}>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={() => {
+          selectJob(item)
+          navigation.navigate('Applyjob', { role: 'employer' })
+        }}>
           <Text style={styles.btntext}>Details</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btn2} onPress={() => deleteJob(item.Id)}>
           <Text style={styles.btntext}>Delete</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn3}>
+        <TouchableOpacity style={styles.btn3} onPress={() => {
+          navigation.navigate('AppliedCandidates', { id: item.Id })
+        }}>
           <Text style={styles.btntext}>Candidates</Text>
         </TouchableOpacity>
       </View>
@@ -225,6 +233,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ auth }) => ({ auth })
 
-const mapDispatchToProps = { deleteJob }
+const mapDispatchToProps = { deleteJob, selectJob }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jobcard);

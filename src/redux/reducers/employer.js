@@ -8,7 +8,9 @@ const initialState = {
     favorites: [],
     candidateProfile: null,
     candidateId: null,
-    hired: []
+    hired: [],
+    applied: [],
+    filteredCandidates: [],
 };
 
 const employer = (state = initialState, action) => {
@@ -37,7 +39,8 @@ const employer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                candidates: action.candidates
+                candidates: action.candidates,
+                filteredCandidates: action.candidates,
             }
 
         case types.EMPLOYER_JOBS_FETCHED:
@@ -80,6 +83,19 @@ const employer = (state = initialState, action) => {
                 ...state,
                 hired: action.hired,
                 loading: false
+            }
+
+        case types.EMPLOYER_APPLIED_CANDIDATES_FETCHED:
+            return {
+                ...state,
+                loading: false,
+                applied: action.applied
+            }
+
+        case types.EMPLOYER_APPLY_CANDIDATE_FILTER:
+            return {
+                ...state,
+                filteredCandidates: action.candidates
             }
 
         default:

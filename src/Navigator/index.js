@@ -52,6 +52,9 @@ import CProfile from '../Screens/CProfile'
 import DrawerContent from './CandidateDrawer';
 import EmployerDrawer from './EmployerNavigatorDrawer';
 import Call from '../Screens/Call';
+import EditJob from '../Screens/editJob';
+import AppliedCandidates from '../Screens/AppliedCandidates';
+
 const CandidateDrawer = () => {
     return (
 
@@ -118,6 +121,12 @@ const Navigator = () => {
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="CreateJob" component={CreateJob}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="EditJob" component={EditJob}
+                    options={({ navigation }) => ({ header: (props) => null })}
+                />
+                <Stack.Screen name="AppliedCandidates" component={AppliedCandidates}
                     options={({ navigation }) => ({ header: (props) => null })}
                 />
                 <Stack.Screen name="Applyjob" component={Applyjob}

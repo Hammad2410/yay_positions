@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {connect} from 'react-redux';
-import { selectJob} from '../redux/actions/candidate';
+import { connect } from 'react-redux';
+import { selectJob } from '../redux/actions/candidate';
 
 const Jobs = ({ navigation, bottom, item, selectJob }) => {
   return (
@@ -12,25 +12,25 @@ const Jobs = ({ navigation, bottom, item, selectJob }) => {
     <View style={{ flex: 1, alignItems: 'center' }}>
       <TouchableOpacity onPress={() => {
         selectJob(item)
-        navigation.navigate('Applyjob')
-        }}>
-      <View style={[styles.view, { marginBottom: "2%" }]}>
-        <Text style={styles.text}>{item.Title}</Text>
-        <Text style={styles.text1}>{item.Location}</Text>
-        <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
-          <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
-          <Text style={styles.text2}>Catalogue all visual assets for marketing department.</Text>
-        </View>
-        <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
-          <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
-          <Text style={styles.text2}>Update marketing calendar with ongoing initiatives and
+        navigation.navigate('Applyjob', { role: 'candidate' })
+      }}>
+        <View style={[styles.view, { marginBottom: "2%" }]}>
+          <Text style={styles.text}>{item.Title}</Text>
+          <Text style={styles.text1}>{item.Location}</Text>
+          <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
+            <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
+            <Text style={styles.text2}>Catalogue all visual assets for marketing department.</Text>
+          </View>
+          <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
+            <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
+            <Text style={styles.text2}>Update marketing calendar with ongoing initiatives and
 holiday details.</Text>
+          </View>
+          <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
+            <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
+            <Text style={styles.text2}>Familiarity with WordPress a plus.</Text>
+          </View>
         </View>
-        <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
-          <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
-          <Text style={styles.text2}>Familiarity with WordPress a plus.</Text>
-        </View>
-      </View>
       </TouchableOpacity>
     </View>
 
@@ -83,4 +83,4 @@ const mapStateToProps = ({ candidate }) => ({ candidate })
 
 const mapDispatchToProps = { selectJob }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Jobs);
+export default connect(mapStateToProps, mapDispatchToProps)(Jobs);

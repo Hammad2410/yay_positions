@@ -26,11 +26,11 @@ const Jobs = ({ navigation, employer }) => {
                     <FlatList
                         data={employer.jobs}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item, index }) => <Jobcard item={item} />}
+                        renderItem={({ item, index }) => <Jobcard navigation={navigation} item={item} />}
                     />
                 </View>
             </Content>
-<EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'}/>
+            <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#009961'} EFifth={'#E4E4E4'} />
         </Container>
     )
 

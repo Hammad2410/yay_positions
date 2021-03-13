@@ -194,6 +194,8 @@ export const createJob = (
     location,
     remoteOrInHouse,
 ) => {
+    // alert(level)
+
     return (dispatch, store) => {
         dispatch({ type: types.EMPLOYER_LOADING });
 
@@ -222,12 +224,34 @@ export const createJob = (
             )
             .then((response) => {
                 console.log('Response : ', response.data);
-                dispatch({ type: types.EMPLOYER_JOB_CREATED, message: 'Job Created' });
+                if (response.data.result == 'success') {
+                    axios
+                        .get(BASE_URL + '/api/jobs', {
+                            headers: {
+                                Authorization: 'bearer ' + store().auth.token,
+                                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+                            },
+                        })
+                        .then((response) => {
+                            dispatch({ type: types.EMPLOYER_JOBS_FETCHED, jobs: response.data.jobs });
+                        })
+                        .catch((error) => {
+                            dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
+
+                            // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                        });
+                    dispatch({ type: types.EMPLOYER_JOB_CREATED, message: 'Job Created' });
+                }
+                else {
+                    dispatch({ type: types.EMPLOYER_JOB_CREATED, message: response.data.error });
+                }
+
 
                 // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
                 //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
             })
             .catch((error) => {
+                console.log("Error", error)
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
                 // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
@@ -362,11 +386,12 @@ export const updateCompanyDetail = (
 };
 
 export const deleteJob = (id) => {
+    // alert(id)
     return (dispatch, store) => {
         dispatch({ type: types.EMPLOYER_LOADING });
 
         axios
-            .delete(BASE_URL + '/api/jobs/' + id, {
+            .get(BASE_URL + 'api/deletejob?id=' + id, {
                 headers: {
                     Authorization: 'bearer ' + store().auth.token,
                     // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
@@ -383,6 +408,7 @@ export const deleteJob = (id) => {
                 //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
             })
             .catch((error) => {
+                console.log("Error : ", error)
                 dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
                 // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
@@ -473,8 +499,117 @@ export const createRoom = (id) => {
             })
     }
 }
-<<<<<<< HEAD
-=======
+
+export const editJob = (
+    title,
+    level,
+    experience,
+    qualification,
+    jobType,
+    salaryType,
+    salaryRange,
+    jobDescription,
+    detail,
+    location,
+    remoteOrInHouse,
+    id,
+    posted
+) => {
+    // alert(level)
+
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING });
+
+        axios
+            .post(
+                BASE_URL + '/api/updatejob',
+                {
+                    Title: title,
+                    Level: level,
+                    Experience: experience,
+                    Qualification: qualification,
+                    JobType: jobType,
+                    SalaryType: salaryType,
+                    SalaryRange: salaryRange,
+                    JobDescription: jobDescription,
+                    Detail: detail,
+                    Location: location,
+                    RemoteOrInHouse: remoteOrInHouse,
+                    Id: id,
+                    PostedDate: posted
+                },
+                {
+                    headers: {
+                        Authorization: 'bearer ' + store().auth.token,
+                        // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+                    },
+                },
+            )
+            .then((response) => {
+                console.log('Response : ', response.data);
+                if (response.data.result == 'success') {
+                    axios
+                        .get(BASE_URL + '/api/jobs', {
+                            headers: {
+                                Authorization: 'bearer ' + store().auth.token,
+                                // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+                            },
+                        })
+                        .then((response) => {
+                            dispatch({ type: types.EMPLOYER_JOBS_FETCHED, jobs: response.data.jobs });
+                        })
+                        .catch((error) => {
+                            dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
+
+                            // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                        });
+                    dispatch({ type: types.EMPLOYER_JOB_CREATED, message: 'Job Updated' });
+                }
+                else {
+                    dispatch({ type: types.EMPLOYER_JOB_CREATED, message: response.data.error });
+                }
 
 
->>>>>>> 79f4257dfd3ff0e2fce488e842f161902a9c3b9c
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+                //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
+            })
+            .catch((error) => {
+                console.log("Error", error)
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
+
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            });
+    };
+};
+
+export const getAppliedCandidates = (id) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.EMPLOYER_LOADING });
+
+        axios
+            .get(BASE_URL + '/api/candidatesapplied?jobid=' + id, {
+                headers: {
+                    Authorization: 'bearer ' + store().auth.token,
+                    // Authorization: "Bearer ImR3jcyncQexl3290Mbdco9hCSbbyfC5u8cxii1mU85o_4ekExt3w7jxLjGxug67hfXDfGxlkPJBNpssd327Cbs7N7MJdNNmEeeWtOm5xuCdIJBDNxXT-OvzEycuQBxFr1CpZl3iQL2tTlofPVrs42Y25emZuEerwDstlwnjiA-stovcLA3P0qQK4to9n_WueBoXGoNUvdcmt6y74AAXXh2QhleVZ3WBrJaycGZmmyx-seyeRCPoP36kEdRz9_Dhap-K_5_SCIIVGuPY8Pa3PWTXmjDGCUQhhIHOacNvtpxqVdErnM9Mo93q9alesbzd0xvML-pyKfcIhthFUSl-6V9dPvLQLvRmkus0Bn_WM4uBuDUjwBmTfohfESP_1ZetSLLr3CzKoMr-dZSiisAz4WA9hRCR6XAbvLRaop0bZDqwypPVNPq6UaaRgZuDdafTLwCAX-4Swx_nn47oMdLjH4NaUnn5nAiFnqZqHwiSYfwOT_e9GQ_aVMqUyJkqtWiIHp0DS_jS-ERmvUAIMYHMb6aVPv6V3t9H8w_89ox5FJpaQidjbVL9N48v0s7ujguT"
+                },
+            })
+            .then((response) => {
+                dispatch({
+                    type: types.EMPLOYER_APPLIED_CANDIDATES_FETCHED,
+                    applied: response.data.candidates,
+                });
+            })
+            .catch((error) => {
+                dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
+
+                // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
+            });
+    };
+};
+
+export const applyCandidateFilter = (candidates) => {
+    return (dispatch) => {
+        console.log("candidates:  ", candidates)
+        dispatch({ type: types.EMPLOYER_APPLY_CANDIDATE_FILTER, candidates: candidates })
+    }
+}

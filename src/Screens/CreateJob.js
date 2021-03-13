@@ -6,13 +6,13 @@ import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
 import EmployerTab from '../Components/EmployerTab';
-import { createJob,resetModal } from '../redux/actions/employer';
+import { createJob, resetModal } from '../redux/actions/employer';
 import { connect } from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
 import ErrorModal from '../Components/ErrorModal';
 
 
-const CreateJob = ({ navigation, employer, createJob,resetModal }) => {
+const CreateJob = ({ navigation, employer, createJob, resetModal }) => {
 
     const [title, setTitle] = useState('');
     const [level, setLevel] = useState('');
@@ -25,109 +25,111 @@ const CreateJob = ({ navigation, employer, createJob,resetModal }) => {
     const [location, setLocation] = useState('');
     const [remoteOrInHouse, setRemoteOrInHouse] = useState('');
     const [salaryRange, setSalaryRange] = useState('');
+    const [skill, setSkill] = useState('');
 
-    var Exp=[
-        {label: 'Select', value: 0, }, 
-        {label: '1 year', value: 1,},
-        {label: '2 years', value: 2, },
-        {label: '3 years', value: 3, },
-        {label: '4 years', value: 4, },
-        {label: '5 years', value: 5, },
-        {label: '6 years', value: 6, },
-        {label: '7 years', value: 7, },
-        {label: '8 years', value: 8, },
-        {label: '9 years', value: 9, },
-        {label: '10 years', value: 10, },
-        {label: '10+years', value: 11, },
-            ]
-    var Level =[
-        {label: 'Select', value: 0, }, 
-        {label: 'Fresh', value: 1,},
-        {label: 'Student', value: 2 },
-        {label: 'Skilled Worker', value: 3}, 
-        {label: 'Semi Skilled Worker', value: 4},
-        {label: 'Executive', value: 5},
-        {label: 'Officer', value: 6},
-        {label: 'Specialist', value: 7},
-        {label: 'Manager', value: 8},
-        {label: 'Professional', value: 9}, ]
 
-    var Qual=[
-        {label: 'Select', value: 0, },
-        {label: 'High School', value: 1, }, 
-        {label: 'Bachelor', value: 2,},
-        {label: 'Master', value: 3, },
-        {label: 'Doctorate', value: 4,}, 
-        {label: 'Diploma', value: 5,},
-        {label: 'MBBS', value: 6,},
-        ]
-    var Typ =[
-        {label: 'Select', value: 0 },
-        {label: 'Part Time', value: 1 }, 
-        {label: 'Full Time', value: 2},
-        {label: 'Internship', value: 3 },
-        {label: 'Temporary', value: 4}, 
-        {label: 'Permanent', value: 5},
-        {label: 'Contract', value: 6},
-        {label: 'Freelance', value: 7},
-        ]
-    var STyp =[
-        {label: 'Select', value: 0 },
-        {label: 'Hourly', value: 1 }, 
-        {label: 'Weekly', value: 2},
-        {label: 'Monthly', value: 3 },
-        {label: 'Yearly', value: 4}, 
-       
-        ]
-    var SRange =[
-        {label: 'Select', value: 0 },
-    {label: '$50,000-$100,000', value: 1 },
-    {label: '$200,000-$300,000', value: 2 }, 
-    {label: '$300,000-$400,000', value: 3},
-    {label: '$400,000-$500,000', value: 4},
-    {label: '$500,000-$600,000', value: 5 },
-    {label: '$600,000-$700,000', value: 6 },
-    {label: '$700,000-$800,000', value: 7}, 
-    {label: '$800,000-$900,000', value:8},
-    {label: '$900,000-$1,000,000', value: 9},  
+    var Exp = [
+        { label: 'Select', value: 'Select', },
+        { label: '1 year', value: '1 year', },
+        { label: '2 years', value: '2 years', },
+        { label: '3 years', value: '3 years', },
+        { label: '4 years', value: '4 years', },
+        { label: '5 years', value: '5 years', },
+        { label: '6 years', value: '6 years', },
+        { label: '7 years', value: '7 years', },
+        { label: '8 years', value: '8 years', },
+        { label: '9 years', value: '9 years', },
+        { label: '10 years', value: '10 years', },
+        { label: '10+years', value: '10+years', },
     ]
-    var Remote =[
-        {label: 'Select', value: 0 },
-    {label: 'In House', value: 1 },
-    {label: 'Remote', value: 2 }, 
+    var Level = [
+        { label: 'Select', value: 'Select', },
+        { label: 'Fresh', value: 'Fresh', },
+        { label: 'Student', value: 'Student' },
+        { label: 'Skilled Worker', value: 'Skilled Worker' },
+        { label: 'Semi Skilled Worker', value: 'Semi Skilled Worker' },
+        { label: 'Executive', value: 'Executive' },
+        { label: 'Officer', value: 'Officer' },
+        { label: 'Specialist', value: 'Specialist' },
+        { label: 'Manager', value: 'Manager' },
+        { label: 'Professional', value: 'Professional' },]
+
+    var Qual = [
+        { label: 'Select', value: 'Select', },
+        { label: 'High School', value: 'High School', },
+        { label: 'Bachelor', value: 'Bachelor', },
+        { label: 'Master', value: 'Master', },
+        { label: 'Doctorate', value: 'Doctorate', },
+        { label: 'Diploma', value: 'Diploma', },
+        { label: 'MBBS', value: 'MBBS', },
     ]
-    var Skills =[
-        {label: 'Select', value: 0, },
-    {label: 'Analytical Skills', value:1, },
-    {label: 'Application Development', value: 2, }, 
-    {label: 'Architecture', value: 3,},
-    {label: 'Arts', value: 4,},
-    {label: 'Communication Skills', value: 5, },
-    {label: 'Cooking', value: 6, },
-    {label: 'Culinary Arts', value: 7,}, 
-    {label: 'Data Network', value: 8,},
-    {label: 'Designing', value: 9,},  
-    {label: 'Development', value: 10,},
-    {label: 'Education', value: 11,}, 
-    {label: 'Flexibility', value: 12,},  
-    {label: 'Food Products', value: 13,}, 
-    {label: 'IT Engineering', value: 14,}, 
-    {label: 'JS', value: 15,}, 
-    {label: 'Managment', value: 16,}, 
-    {label: 'Medical and Healthcare', value: 17,},
-    {label: 'Modeling', value: 18,},
-    {label: 'Office Managment', value: 19},
-    {label: 'Painting', value: 20},
-    {label: 'Patience', value: 21},
-    {label: 'Php', value: 22}, 
-    {label: 'Problem Solving', value: 23},
-    {label: 'SEO', value: 24},
-    {label: 'SMM', value: 25},
-    {label: 'Stress Managment', value: 26,},
-    {label: 'Team Managment', value: 27,},
-    {label: 'Team Work', value: 28,},
-    {label: 'Technical', value: 29,},
-    {label: 'Trainings', value: 30,},             
+    var Typ = [
+        { label: 'Select', value: 'Select' },
+        { label: 'Part Time', value: 'Part Time' },
+        { label: 'Full Time', value: 'Full Time' },
+        { label: 'Internship', value: 'Internship' },
+        { label: 'Temporary', value: 'Temporary' },
+        { label: 'Permanent', value: 'Permanent' },
+        { label: 'Contract', value: 'Contract' },
+        { label: 'Freelance', value: 'Freelance' },
+    ]
+    var STyp = [
+        { label: 'Select', value: 'Select' },
+        { label: 'Hourly', value: 'Hourly' },
+        { label: 'Weekly', value: 'Weekly' },
+        { label: 'Monthly', value: 'Monthly' },
+        { label: 'Yearly', value: 'Yearly' },
+
+    ]
+    var SRange = [
+        { label: 'Select', value: 'Select' },
+        { label: '$50,000-$100,000', value: '$50,000-$100,000' },
+        { label: '$200,000-$300,000', value: '$200,000-$300,000' },
+        { label: '$300,000-$400,000', value: '$300,000-$400,000' },
+        { label: '$400,000-$500,000', value: '$400,000-$500,000' },
+        { label: '$500,000-$600,000', value: '$500,000-$600,000' },
+        { label: '$600,000-$700,000', value: '$600,000-$700,000' },
+        { label: '$700,000-$800,000', value: '$700,000-$800,000' },
+        { label: '$800,000-$900,000', value: '$800,000-$900,000' },
+        { label: '$900,000-$1,000,000', value: '$900,000-$1,000,000' },
+    ]
+    var Remote = [
+        { label: 'Select', value: 'Select' },
+        { label: 'In House', value: 'In House' },
+        { label: 'Remote', value: 'Remote' },
+    ]
+    var Skills = [
+        { label: 'Select', value: 'Select', },
+        { label: 'Analytical Skills', value: 'Analytical Skills', },
+        { label: 'Application Development', value: 'Application Development', },
+        { label: 'Architecture', value: 'Architecture', },
+        { label: 'Arts', value: 'Arts', },
+        { label: 'Communication Skills', value: 'Communication Skills', },
+        { label: 'Cooking', value: 'Cooking', },
+        { label: 'Culinary Arts', value: 'Culinary Arts', },
+        { label: 'Data Network', value: 'Data Network', },
+        { label: 'Designing', value: 'Designing', },
+        { label: 'Development', value: 'Development', },
+        { label: 'Education', value: 'Education', },
+        { label: 'Flexibility', value: 'Flexibility', },
+        { label: 'Food Products', value: 'Food Products', },
+        { label: 'IT Engineering', value: 'IT Engineering', },
+        { label: 'JS', value: 'JS', },
+        { label: 'Managment', value: 'Managment', },
+        { label: 'Medical and Healthcare', value: 'Medical and Healthcare', },
+        { label: 'Modeling', value: 'Modeling', },
+        { label: 'Office Managment', value: 'Office Managment' },
+        { label: 'Painting', value: 'Painting' },
+        { label: 'Patience', value: 'Patience' },
+        { label: 'Php', value: 'Php' },
+        { label: 'Problem Solving', value: 'Problem Solving' },
+        { label: 'SEO', value: 'SEO' },
+        { label: 'SMM', value: 'SMM' },
+        { label: 'Stress Managment', value: 'Stress Managment', },
+        { label: 'Team Managment', value: 'Team Managment', },
+        { label: 'Team Work', value: 'Team Work', },
+        { label: 'Technical', value: 'Technical', },
+        { label: 'Trainings', value: 'Trainings', },
     ]
     return (
         <Container>
@@ -148,121 +150,128 @@ const CreateJob = ({ navigation, employer, createJob,resetModal }) => {
                         <TextInputLogin label="Title" value={title} setter={setTitle} />
                         <ProfileText nametext="Level" marginLeftt={-285} />
                         <DropDownPicker
-                                items={Level}
-                                itemStyle={{
+                            items={Level}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                                //    defaultValue={Level}
-                                // onChangeItem={item => setLevel(item.value)}
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            //    defaultValue={Level}
+                            onChangeItem={item => setLevel(item.value)}
+                        />
                         <ProfileText nametext="Experience" marginLeftt={-255} />
                         <DropDownPicker
-                                items={Exp}
-                                itemStyle={{
+                            items={Exp}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setExperience(item.value)}
+                        />
                         <ProfileText nametext="Qualification" marginLeftt={-245} />
                         <DropDownPicker
-                                items={Qual}
-                                itemStyle={{
+                            items={Qual}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                                
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setQualification(item.value)}
+
+                        />
                         <ProfileText nametext="Job Type" marginLeftt={-265} />
                         <DropDownPicker
-                                items={Typ}
-                                itemStyle={{
+                            items={Typ}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setJobType(item.value)}
+                        />
                         <ProfileText nametext="Salary Type" marginLeftt={-252} />
                         <DropDownPicker
-                                items={STyp}
-                                itemStyle={{
+                            items={STyp}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setSalaryType(item.value)}
+                        />
                         <ProfileText nametext="Salary Range" marginLeftt={-245} />
                         <DropDownPicker
-                                items={SRange}
-                                itemStyle={{
+                            items={SRange}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setSalaryRange(item.value)}
+                        />
                         <ProfileText nametext="Location" marginLeftt={-267} />
                         <TextInputLogin label="Location" value={location} setter={setLocation} />
                         <ProfileText nametext="Remote or Inhouse" marginLeftt={-212} />
                         <DropDownPicker
-                                items={Remote}
-                                itemStyle={{
+                            items={Remote}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                            />
-                             <ProfileText nametext="Select Skills" marginLeftt={-250} />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setRemoteOrInHouse(item.value)}
+                        />
+                        <ProfileText nametext="Select Skills" marginLeftt={-250} />
                         <DropDownPicker
-                                items={Skills}
-                                itemStyle={{
+                            items={Skills}
+                            itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                                placeholder={'Select'}
-                                placeholderStyle={{color:'#707070',fontSize:12}}
-                                arrowSize={20}
-                                arrowColor={'#47525E'}
-                                containerStyle={{height: 40,  width:wp('80%'),}}
-                                style={{backgroundColor: '#fffff',borderColor:'#707070',alignSelf:'center',borderRadius:5,borderWidth:0.5,}}
-                                dropDownStyle={{backgroundColor: '#ffffff'}}
-                            />
+                            placeholder={'Select'}
+                            placeholderStyle={{ color: '#707070', fontSize: 12 }}
+                            arrowSize={20}
+                            arrowColor={'#47525E'}
+                            containerStyle={{ height: 40, width: wp('80%'), }}
+                            style={{ backgroundColor: '#fffff', borderColor: '#707070', alignSelf: 'center', borderRadius: 5, borderWidth: 0.5, }}
+                            dropDownStyle={{ backgroundColor: '#ffffff' }}
+                            onChangeItem={item => setSkill(item.value)}
+                        />
                         {/* <ProfileText nametext="Select Skills" marginLeftt={-248} />
                         <TextInputLogin label="Test" value={} setter={setTitle}/> */}
                         <ProfileText nametext="Job Description" marginLeftt={-230} />
@@ -273,9 +282,9 @@ const CreateJob = ({ navigation, employer, createJob,resetModal }) => {
                         <TextInput placeholder="Details" placeholderTextColor='#707070' style={styles.textinput}
                             onChangeText={(text) => setDetail(text)}
                         ></TextInput>
-                         <ErrorModal message={employer.error} visible={employer.error != ''} onPress={resetModal} />
+                        <ErrorModal message={employer.error} visible={employer.error != ''} onPress={resetModal} />
                         {/* <Text style={{ alignSelf: 'center', color: 'red' }}>{employer.error}</Text> */}
-                        {!employer.loading ?  <TouchableOpacity style={styles.button} onPress={() => createJob(title, level, experience, qualification, jobType, salaryType, salaryRange, jobDescription, detail, location, remoteOrInHouse)} >
+                        {!employer.loading ? <TouchableOpacity style={styles.button} onPress={() => createJob(title, level, experience, qualification, jobType, salaryType, salaryRange, jobDescription, detail, location, remoteOrInHouse)} >
                             <View >
 
                                 <Text style={{ textAlign: 'center', marginTop: 5, color: '#009961', fontWeight: 'bold' }} >Create Job</Text>
@@ -327,14 +336,14 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         // marginLeft: -158,
         marginTop: 30,
-        marginLeft:-215
-        
+        marginLeft: -215
+
     },
 
 })
 
 const mapStateToProps = ({ employer }) => ({ employer })
 
-const mapDispatchToProps = { createJob ,resetModal }
+const mapDispatchToProps = { createJob, resetModal }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateJob);
