@@ -33,7 +33,7 @@ const Candidate = (props) => {
                         <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity >
 
-                    <Text style={styles.text}>Hello Jason </Text>
+                    <Text style={styles.text}>Hello {props.auth.profile != null && props.auth.profile.Profile.Email} </Text>
 
                 </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
 
 })
 
-const mapStateToProps = ({ candidate }) => ({ candidate })
+const mapStateToProps = ({ candidate, auth }) => ({ candidate, auth })
 
 const mapDispatchToProps = { getInvitations, getJobs, resetUserLoggedIn, getCandidateProfile }
 

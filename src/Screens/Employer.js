@@ -13,10 +13,10 @@ import EmployerTab from '../Components/EmployerTab'
 import {
     NavigationContainer,
     CommonActions,
-  } from '@react-navigation/native';
+} from '@react-navigation/native';
 
-const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations, resetUserLoggedIn }) => {
-   
+const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations, resetUserLoggedIn, auth }) => {
+
 
     useEffect(() => {
         browseCandidate()
@@ -40,7 +40,7 @@ const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites
                         onPress={() => navigation.goBack()}>
                         <Icon style={{ paddingLeft: 25 }} name="arrow-back-outline" size={20} color='#E4E4E4' />
                     </TouchableOpacity>
-                    <Text style={styles.text}>Hello Jason </Text>
+                    <Text style={styles.text}>Hello {auth.profile != null && auth.profile.CompanyName} </Text>
                 </View>
                 <View style={{ marginLeft: 30, marginTop: 18 }}>
                     <Text style={styles.text1}>All Applicants</Text>
@@ -81,18 +81,18 @@ const Employer = ({ navigation, browseCandidate, employer, getJobs, getFavorites
                     </View>
                 </View>
                 <TouchableOpacity onPress={() =>
-          navigation.dispatch(
-            CommonActions.reset({
-              index: 1,
-              routes: [
-                { name: 'Login' },//to go to initial stack screen
-            ],
-            })
-          )
-        }>
+                    navigation.dispatch(
+                        CommonActions.reset({
+                            index: 1,
+                            routes: [
+                                { name: 'Login' },//to go to initial stack screen
+                            ],
+                        })
+                    )
+                }>
                     <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
                 </TouchableOpacity>
-               
+
 
             </Content>
             <EmployerTab navigation={navigation} EFirst={'#E4E4E4'} ESecond={'#E4E4E4'} EThird={'#E4E4E4'} EFourth={'#E4E4E4'} EFifth={'#E4E4E4'} />
@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
         fontFamily: 'Segoe UI',
         paddingTop: 5,
         paddingRight: 5,
-        
+
 
 
     }
 
 })
 
-const mapStateToProps = ({ employer }) => ({ employer })
+const mapStateToProps = ({ employer, auth }) => ({ employer, auth })
 
 const mapDispatchToProps = { browseCandidate, getJobs, getFavorites, getHiredCandidates, getCompanyProfile, getInvitations, resetUserLoggedIn }
 

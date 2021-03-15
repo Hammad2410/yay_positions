@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import {
   TextInput,
   ActivityIndicator,
 } from 'react-native';
-import {Content, Container, Tabs, Tab} from 'native-base';
+import { Content, Container, Tabs, Tab } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -21,11 +21,11 @@ import MyHeader from '../Components/LoginSignupHeader';
 import ProfileText from '../Components/ProfileText';
 import CandidateTab from '../Components/CandidateTab';
 import ButtonP from '../Components/ButtonP';
-import {ChangePassword} from '../redux/actions/candidate';
-import {connect} from 'react-redux';
-import {color} from 'react-native-reanimated';
+import { ChangePassword } from '../redux/actions/candidate';
+import { connect } from 'react-redux';
+import { color } from 'react-native-reanimated';
 
-const Changepass = ({navigation, ChangePassword, auth}) => {
+const Changepass = ({ navigation, ChangePassword, auth }) => {
   const [OldPass, setOldPass] = useState('');
   const [NewPass, setNewPass] = useState('');
   const [confirmPass, setChangePass] = useState('');
@@ -34,16 +34,16 @@ const Changepass = ({navigation, ChangePassword, auth}) => {
     <Container>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Change Password</Text>
             <View style={styles.line}></View>
           </View>
-          <View style={{marginTop: 10, alignItems: 'center'}}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
             <ProfileText nametext="Old Password" marginLeftt={-240} />
             <TextInput
               onChangeText={(OldPass) => setOldPass(OldPass)}
-              placeholder="Selection34"
+              placeholder="Old Password"
               placeholderTextColor="#707070"
               secureTextEntry
               style={styles.textinput}
@@ -51,7 +51,7 @@ const Changepass = ({navigation, ChangePassword, auth}) => {
             <ProfileText nametext="New Password" marginLeftt={-235} />
             <TextInput
               onChangeText={(NewPass) => setNewPass(NewPass)}
-              placeholder="*********"
+              placeholder="New Password"
               placeholderTextColor="#707070"
               secureTextEntry
               style={styles.textinput}
@@ -59,7 +59,7 @@ const Changepass = ({navigation, ChangePassword, auth}) => {
             <ProfileText nametext="Change Password" marginLeftt={-218} />
             <TextInput
               onChangeText={(ChangePass) => setChangePass(ChangePass)}
-              placeholder="*********"
+              placeholder="Confirm Password"
               placeholderTextColor="#707070"
               secureTextEntry
               style={styles.textinput}
@@ -69,7 +69,7 @@ const Changepass = ({navigation, ChangePassword, auth}) => {
               <ActivityIndicator size={'large'} color={'#009961'} />
             ) : (
               <TouchableOpacity
-                style={{marginLeft: -240}}
+                style={{ marginLeft: -240 }}
                 onPress={() => ChangePassword(OldPass, NewPass, confirmPass)}>
                 <View style={styles.button}>
                   <Text style={styles.btext}>Save</Text>
@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({ auth }) => ({ auth });
 
-const mapDispatchToProps = {ChangePassword};
+const mapDispatchToProps = { ChangePassword };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Changepass);

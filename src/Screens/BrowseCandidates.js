@@ -26,7 +26,7 @@ const BrowseCandidates = ({ navigation, employer }) => {
                     </View>
                     {/* <Candidatecard /> */}
                     <FlatList
-                        data={employer.candidates}
+                        data={employer.filteredCandidates}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) => <Candidatecard navigation={navigation} bottom={'10%'} item={item} />}
                     />
