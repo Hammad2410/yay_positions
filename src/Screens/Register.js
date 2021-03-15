@@ -94,7 +94,7 @@ const Register = (props) => {
                         <TextInputLogin value label="Password" value={password} setter={setPassword} />
                         <TextInputLogin value label="Confirm Password" value={confirmPassword} setter={setConfirmPassword} />
                     </View>
-                    <Text style={{ alignSelf: 'center', color: 'red' }}>{props.auth.error}</Text>
+                    {/* <Text style={{ alignSelf: 'center', color: 'red' }}>{props.auth.error}</Text> */}
                     {
                         props.auth.loading ? <ActivityIndicator size={"large"} color={'#009961'} /> : <TouchableOpacity style={styles.btn} onPress={() => props.register(email, name, country, role, password, confirmPassword)}>
                             <Text style={styles.btntext}>Register</Text>
