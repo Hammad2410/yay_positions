@@ -10,6 +10,9 @@ import EmployerTab from '../Components/EmployerTab'
 import { connect } from 'react-redux';
 
 const Invitationentries = (props) => {
+
+    const [search, setSearch] = useState('');
+
     return (
         <Container style={{ backgroundColor: 'white' }} >
             <MyHeader navigation={props.navigation} />
@@ -33,11 +36,13 @@ const Invitationentries = (props) => {
                         />
                         <Text style={styles.text2}>entries</Text>
                         <Text style={styles.text3}>Search:</Text>
-                        <TextInput style={styles.input} />
+                        <TextInput style={styles.input} onChangeText={(text) => {
+                            setSearch(text)
+                        }} />
                     </View>
 
                     <FlatList
-                        data={props.candidate.invitations}
+                        data={props.candidate.invitations.filter((item) => JSON.stringify(item).toLowerCase().includes(search.toLowerCase()))}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) => <Invitationcard item={item} navigation={props.navigation} />}
                     />

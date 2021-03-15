@@ -80,7 +80,9 @@ export const saveJobs = (job) => {
             }
         })
             .then((response) => {
+
                 if (store().candidate.savedJobs.filter((item) => item.Job.Id == job.Id).length == 0) {
+                    // alert("Working")
                     dispatch({ type: types.CANDIDATE_SAVED_JOBS_FETCHED, jobs: store().candidate.savedJobs.push(job) })
                 }
                 else {
@@ -91,10 +93,10 @@ export const saveJobs = (job) => {
             })
             .catch((error) => {
 
-                console.log("error: ", error.message)
-                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+                // console.log("error: ", job)
+                // dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
 
-                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+                // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
             })
     }
 }
@@ -351,6 +353,73 @@ export const applyForJob = (id) => {
             })
     }
 }
+
+export const deleteResume = () => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.post(BASE_URL + "/api/candidate/DeleteResume", {
+
+        }, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer 7dfs0t_Pk1ekqVtHV_tLQtepZmZU-jsZLUzgT3pCLdFaCh66qv4mQdSm3evROMjt4AFeCshoiNFymYe0X56rwNzsdgwW36AWD_0CKW5f_D1Bn36np9Z7eh1d892AVbC3bNrlWLTJpd8IVmo1cRa5Kdgh7e9CHmDSqJ4CORfRP_63ZTkqletrgzqAyr6OVWCL7bBeBwE3W4x7d0_YxzP3CDye2Ai1i1jgn8cCsH2uIBkZ3msw0uStv3i4LutZTzyw39a5eNl0gkt-9V94hJpZKLuf8lw7WUqQZr8pxmnJhg7gybsdBegMyVrdqgV75GX6UPePMbk0B54TJo4F4TuZJTZ7wJF0tvxgkihScBVlzraLu95HBt9WHT-tD8RRS38g8WcDJVHdNHEuqRRrcpMLjXfCGoxS8K7JJX63iVjDD75kECQ0kRL7fHHmoPYfpHc341wpJjL_lzGGfsj5bOhcNfvSnPYjouDaZDUlKi-mtZ3i0Pr055zj_aItep_ztLOhHH6T8QERZ_baZvneV-9ICs_Bdwm141MxI_51LL1Ni3JrrLZeb5uelatKbmF7Q_IU"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                alert("Resume Deleted")
+                // dispatch({ type: types.CANDIDATE_EDUCATION_ADDED, message: "Education Added" })
+                // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+            .catch((error) => {
+                dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+    }
+}
+
+export const acceptInvitation = (id) => {
+    return (dispatch, store) => {
+        dispatch({ type: types.CANDIDATE_LOADING })
+
+        axios.get(BASE_URL + "/api/candidate/AcceptInvitation?id=" + id, {
+            headers: {
+                Authorization: "bearer " + store().auth.token
+                // Authorization: "Bearer GD14fLiO27Ty0HRbblZNwDjvJxbfYqneDMlly7T9fP-aYcXaiAnKOQXkLZpiOJ-OSXweuvVYGd8tRR-sjaVa4EJ2xA0B_vqQFZaB6yvZKmK2a3Q9W1gXcEGwrwWFANEWWfqAk2YUKDtptMNJURn5FLiNY0hZ4ldyuxeEUsA-VSCJuoc1Y73x_OQLoG3YPLoSxtp0pa5P3ba7nVoDD1f5U0y_MHrR85-HQnqDs3la61f_8p_MTAeuJuPfyOvZdOvkAWvaNwXQlDJenQvfHQU4RH--q2QTRpbcFtxq3QMNRvaNZ8kJW2RC2lqkhDUgWvAd-0bH9NuKpMOom1dZiHRBuFxv2O2rtNdZUDc7PX6Nkvd8cKxWdf3YNWUDjNL5ges10_EHYd3D-S86e2NrG1llHol6qfpZObBqdvnzA2jhoBkGuByr0EGt_lVMcosQu61k_lkcG_EbwRr3B10Rbbu32prM-MTfhznzLTjlSbs5xOIzf06UJKkVg1J8kkdVjb7bnpgaGrS26EQ_IWf7c-_kJvk7oA28_6Yy8hhSXblak-ln8LmtTtHDTprE0gZFBFdY"
+            }
+        })
+            .then((response) => {
+                console.log("Response : ", response.data)
+                dispatch({
+                    type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.map((item) => {
+                        if (item.InviteId == id) {
+                            return {
+                                ...item,
+                                Status: 'Accepted',
+                                // RoomKey: 'room' + id
+                            }
+                        }
+                        else {
+                            return {
+                                ...item
+                            }
+                        }
+                    })
+                })
+
+            })
+            .catch((error) => {
+
+                // console.log("error: ", job)
+                // dispatch({ type: types.CANDIDATE_ERROR, message: error.message })
+
+                // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
+            })
+    }
+}
+
 
 
 

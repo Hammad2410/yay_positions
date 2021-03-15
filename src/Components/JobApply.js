@@ -3,13 +3,17 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Content, Container, Header, Title, Left, Item } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Icons from 'react-native-vector-icons/FontAwesome';
 import { saveJobs, applyForJob, resetModal } from '../redux/actions/candidate';
 import { connect } from 'react-redux';
 import ErrorModal from '../Components/ErrorModal';
 const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyForJob, resetModal, role }) => {
   useEffect(() => {
     // console.log(candidate.jobDetail)
-  }, [])
+  }, [candidate.saveJobs])
+
+
+  const [pressed, setPressed] = useState(candidate.savedJobs.filter((item1) => item1.Id == candidate.jobDetail.Id).length == 0)
 
   return (
 
@@ -20,12 +24,14 @@ const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyFor
           <Text style={styles.text}>{candidate.jobDetail.Title}</Text>
           {role != 'employer' && <TouchableOpacity onPress={() => {
             // console.log(candidate.jobDetail)
+            setPressed(!pressed)
             saveJobs({
               ...candidate.jobDetail,
               Job: { ...candidate.jobDetail }
             })
           }}>
-            <Image source={require('../assests/image/heart.png')}></Image>
+            <Icons color={'green'} name={pressed ? 'heart-o' : 'heart'} size={18} ></Icons>
+            {/* <Image source={require('../assests/image/heart.png')}></Image> */}
           </TouchableOpacity>}
         </View>
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>

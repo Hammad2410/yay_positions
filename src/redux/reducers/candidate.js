@@ -36,7 +36,7 @@ const candidate = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                invitations: action.invitations
+                invitations: [...action.invitations]
             }
 
         case types.CANDIDATE_JOBS_FETCHED:

@@ -49,7 +49,12 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                         <View
                             style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.text2}>Email Address</Text>
-                            <Text style={styles.text3}>{auth.profile.Profile.Email}</Text>
+                            <Text style={{
+                                color: 'black',
+                                fontSize: 13,
+                                fontFamily: 'Segoe UI',
+                                padding: 15
+                            }}>{auth.profile.Profile.Email}</Text>
                         </View>
                         <View
                             style={{

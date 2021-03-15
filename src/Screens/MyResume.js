@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, Button, Modal, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, Button, Modal, TextInput, Dimensions } from 'react-native';
 import { Content, Container, Tabs, Tab } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
 import CandidateTab from '../Components/CandidateTab';
-
+import { deleteResume } from '../redux/actions/candidate';
 import { connect } from 'react-redux';
 import { getCandidateProfile } from '../redux/actions/candidate'
 import Pdf from 'react-native-pdf';
 
-const MyResume = ({ navigation, auth }) => {
+const MyResume = ({ navigation, auth, deleteResume }) => {
 
 
     const [showModal, setShowModal] = useState(false);
@@ -42,7 +42,7 @@ const MyResume = ({ navigation, auth }) => {
                                 <Text style={styles.btext} >View</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ marginLeft: 25 }} >
+                        <TouchableOpacity style={{ marginLeft: 25 }} onPress={() => deleteResume()}  >
                             <View style={styles.button}>
 
                                 <Text style={styles.btext} >Delete</Text>
@@ -57,7 +57,7 @@ const MyResume = ({ navigation, auth }) => {
                     visible={showModal}
                     onRequestClose={() => setShowModal(false)}
                 >
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1, }}>
                         <Pdf
                             source={{ uri: auth.profile.Resumes.length > 0 ? 'https://lms.phenomenaltechnology.com' + auth.profile.Resumes[0].ResumePath : null }}
                             onLoadComplete={(numberOfPages, filePath) => {
@@ -114,9 +114,16 @@ const styles = StyleSheet.create({
         marginTop: 30
 
     },
+    pdf: {
+        flex: 1,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+    },
 
 })
 
 const mapStateToProps = ({ auth }) => ({ auth })
 
-export default connect(mapStateToProps)(MyResume);
+const mapDispatchToProps = { deleteResume }
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyResume);
