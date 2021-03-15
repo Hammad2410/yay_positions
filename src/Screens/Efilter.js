@@ -107,6 +107,9 @@ const Efilter = ({ navigation, employer, applyCandidateFilter }) => {
   const [jobTypeArray, setJobTypeArray] = useState(employer.candidates);
   const [salaryTypeArray, setSalaryTypeArray] = useState(employer.candidates);
   const [skillArray, setSkillArray] = useState(employer.candidates);
+  const [experienceTypeArray, setExperienceTypeArray] = useState(employer.candidates);
+  const [qualificationTypeArray, setQualificationTypeArray] = useState(employer.candidates);
+  const [salaryRangeArray, setSalaryRangeArray] = useState(employer.candidates);
 
 
   return (
@@ -194,15 +197,16 @@ const Efilter = ({ navigation, employer, applyCandidateFilter }) => {
                 if (value.label == 'All') {
                   setSkillArray(employer.candidates);
                 } else {
+                  // console.log(employer.candidates[0])
                   setSkillArray(
-                    employer.candidates.filter((item) => item.Skill.includes(value.label)),
+                    employer.candidates.filter((item) => item.Skills.includes(value.label)),
                   );
                 }
               }}
             />
             <TouchableOpacity style={styles.btn} onPress={() => {
-              // var filter = jobTypeArray.filter((item) => salaryTypeArray.includes(item))
-              // applyCandidateFilter(filter.filter((item) => skillArray.includes(item)))
+              var filter = jobTypeArray.filter((item) => salaryTypeArray.includes(item))
+              applyCandidateFilter(filter.filter((item) => skillArray.includes(item)))
               // applyCandidateFilter(
               //   jobTypeArray.filter((item) => salaryTypeArray.includes(item)),
               // );
@@ -226,6 +230,17 @@ const Efilter = ({ navigation, employer, applyCandidateFilter }) => {
               containerStyle={{ height: 50, width: wp('80%') }}
               style={{ backgroundColor: '#fffff', borderColor: '#707070', marginTop: 10 }}
               dropDownStyle={{ backgroundColor: '#ffffff' }}
+              onPress={(value) => {
+                if (value == 'All') {
+                  setExperienceTypeArray(employer.candidates);
+                } else {
+                  setExperienceTypeArray(
+                    employer.candidates.filter(
+                      (item) => item.Experience == value.toString(),
+                    ),
+                  );
+                }
+              }}
             />
           </View>
           <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 20 }} />
@@ -242,7 +257,17 @@ const Efilter = ({ navigation, employer, applyCandidateFilter }) => {
               buttonColor={'#707070'}
               labelStyle={{ fontSize: 13 }}
               style={{ marginTop: 15 }}
-
+              onPress={(value) => {
+                if (value == 'All') {
+                  setQualificationTypeArray(employer.candidates);
+                } else {
+                  setQualificationTypeArray(
+                    employer.candidates.filter(
+                      (item) => item.Experience == value.toString(),
+                    ),
+                  );
+                }
+              }}
             />
           </View>
           <View style={{ borderWidth: 1, borderColor: '#E4E4E4', marginHorizontal: '8%', marginTop: 15 }} />
@@ -260,8 +285,23 @@ const Efilter = ({ navigation, employer, applyCandidateFilter }) => {
               containerStyle={{ height: 50, width: wp('80%') }}
               style={{ backgroundColor: '#fffff', borderColor: '#707070', marginTop: 10 }}
               dropDownStyle={{ backgroundColor: '#ffffff' }}
+              onChangeItem={(value) => {
+                if (value.label == 'All') {
+                  setSalaryRangeArray(employer.candidates);
+                } else {
+                  setSalaryRangeArray(
+                    employer.candidates.filter(
+                      (item) => item.Experience == value.label,
+                    ),
+                  );
+                }
+              }}
             />
-            <TouchableOpacity style={styles.btn} onPress={() => { navigation.navigate('BrowseCandidates') }} >
+            <TouchableOpacity style={styles.btn} onPress={() => {
+              var filter = experienceTypeArray.filter((item) => qualificationTypeArray.includes(item))
+              applyCandidateFilter(filter.filter((item) => salaryRangeArray.includes(item)))
+              navigation.navigate('BrowseCandidates')
+            }} >
               <Text style={styles.btntext}>Search</Text>
             </TouchableOpacity>
           </View>
