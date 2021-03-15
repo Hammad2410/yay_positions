@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator, Modal } from 'react-native';
 import { Content, Container, Header, Title, Left } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -7,12 +7,13 @@ import MyHeader from './LoginSignupHeader'
 import { connect } from 'react-redux';
 import { getCandidateProfile } from '../redux/actions/employer'
 import { Avatar } from 'react-native-paper';
-
+import Pdf from 'react-native-pdf';
 const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
-
-    useEffect(() => {
-        getCandidateProfile();
-    }, [employer.candidateId])
+    const [showModal, setShowModal] = useState(false);
+    // useEffect(() => {
+    //     getCandidateProfile();
+    //     console.log("Profile : ", employer.candidateProfile)
+    // }, [employer.candidateId])
 
     return (
         <View style={{ flex: 1 }}>
@@ -159,19 +160,54 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                         <Text style={styles.text4}>Resumes</Text>
                     </View>
 
-                    <TouchableOpacity style={styles.btn1}>
+                    <TouchableOpacity style={styles.btn1} onPress={() => {
+                        if (employer.candidateProfile.Resumes.length > 0) {
+                            setShowModal(true);
+                        } else {
+                            alert('Resume not found');
+                        }
+                    }}>
                         <Text style={styles.btntext}>View</Text>
                     </TouchableOpacity>
 
                 </View>
-                <View style={[styles.view, { marginBottom: 30 }]}>
+                { employer.candidateProfile.PortFolios.length > 0 && <View style={[styles.view, { marginBottom: 30 }]}>
                     <View style={styles.view2}>
                         <Text style={styles.text4}>Resumes</Text>
                     </View>
+                    {
+                        employer.candidateProfile.PortFolios.map((item) => <Image resizeMode="contain" source={{ uri: "https://lms.phenomenaltechnology.com" + item.Path }} style={{ margin: 15, width: 100, height: 100 }}></Image>)
+                    }
 
-                    <Image resizeMode="contain" source={require('../assests/image/resume.png')} style={{ margin: 15 }}></Image>
+                </View>}
 
-                </View>
+                <Modal visible={showModal} onRequestClose={() => setShowModal(false)}>
+                    <View style={{ flex: 1 }}>
+                        <Pdf
+                            source={{
+                                uri:
+                                    employer.candidateProfile.length > 0
+                                        ? 'https://lms.phenomenaltechnology.com' +
+                                        employer.candidateProfile.Resumes[0].ResumePath
+                                        : null,
+                            }}
+                            onLoadComplete={(numberOfPages, filePath) => {
+                                console.log(`number of pages: ${numberOfPages}`);
+                            }}
+                            onPageChanged={(page, numberOfPages) => {
+                                console.log(`current page: ${page}`);
+                            }}
+                            onError={(error) => {
+                                console.log(error);
+                            }}
+                            onPressLink={(uri) => {
+                                console.log(`Link presse: ${uri}`);
+                            }}
+                            style={styles.pdf}
+                        />
+                    </View>
+                </Modal>
+
             </>) : <ActivityIndicator size={'large'} color={'#009961'} style={{ justifyContent: 'center', alignItems: 'center' }} />
             }
         </View>

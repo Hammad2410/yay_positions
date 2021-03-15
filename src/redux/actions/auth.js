@@ -27,7 +27,7 @@ export const login = (email, password) => {
         }).
             catch((error) => {
                 console.log("Error: ", error.toString())
-                dispatch({ type: types.AUTH_ERROR, message: error.message })
+                dispatch({ type: types.AUTH_ERROR, message: "Invalid email or password" })
 
                 // setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000)
             })

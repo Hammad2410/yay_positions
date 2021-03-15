@@ -8,22 +8,22 @@ import JobApply from '../Components/JobApply'
 import CandidateTab from '../Components/CandidateTab';
 
 
-const Applyjob = ({ navigation,item }) => {
+const Applyjob = ({ navigation, item, route }) => {
 
     return (
         <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader navigation={navigation}/>
+            <MyHeader navigation={navigation} />
             <Content >
                 <View style={{ flex: 1 }}>
                     <View style={{ marginLeft: 40 }}>
-                        <Text style={styles.text}>Browse Jobs</Text>
+                        <Text style={styles.text}>{route.params.role === 'employer' ? "Job Detail" : "Browse Jobs"}</Text>
                         <View style={styles.line}>
                         </View>
                     </View>
-                    <JobApply bottom={'2%'} />
+                    <JobApply bottom={'2%'} role={route.params.role} />
                 </View>
             </Content>
-            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+            <CandidateTab navigation={navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'} />
 
         </Container>
     )

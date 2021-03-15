@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { saveJobs, applyForJob, resetModal } from '../redux/actions/candidate';
 import { connect } from 'react-redux';
 import ErrorModal from '../Components/ErrorModal';
-const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyForJob, resetModal }) => {
+const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyForJob, resetModal, role }) => {
   useEffect(() => {
     // console.log(candidate.jobDetail)
   }, [])
@@ -18,7 +18,7 @@ const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyFor
       <View style={[styles.view, { marginBottom: bottom }]}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12, paddingHorizontal: 12 }}>
           <Text style={styles.text}>{candidate.jobDetail.Title}</Text>
-          <TouchableOpacity onPress={() => {
+          {role != 'employer' && <TouchableOpacity onPress={() => {
             // console.log(candidate.jobDetail)
             saveJobs({
               ...candidate.jobDetail,
@@ -26,7 +26,7 @@ const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyFor
             })
           }}>
             <Image source={require('../assests/image/heart.png')}></Image>
-          </TouchableOpacity>
+          </TouchableOpacity>}
         </View>
         <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
           <Text style={styles.text}>Location:</Text>
@@ -88,11 +88,11 @@ const JobApply = ({ navigation, bottom, candidate, jobDetail, saveJobs, applyFor
 
 
       </View>
-      <TouchableOpacity style={styles.btn} onPress={() => applyForJob(candidate.jobDetail.Id)}>
+      { role != 'employer' && <TouchableOpacity style={styles.btn} onPress={() => applyForJob(candidate.jobDetail.Id)}>
         <Text style={styles.btntext}>Apply</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>}
       <ErrorModal message={candidate.error} visible={candidate.error != ''} onPress={resetModal} />
-    </View>
+    </View >
 
   )
 }
