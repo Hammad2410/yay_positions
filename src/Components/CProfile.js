@@ -32,7 +32,12 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>Email Address</Text>
-                        <Text style={styles.text3}>{employer.candidateProfile.Profile.Email}</Text>
+                        <Text style={{
+                            color: 'black',
+                            fontSize: 11,
+                            fontFamily: 'Segoe UI',
+                            padding: 15
+                        }}>{employer.candidateProfile.Profile.Email}</Text>
                     </View>
                     <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', alignItems: 'center', marginHorizontal: 10 }} />
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

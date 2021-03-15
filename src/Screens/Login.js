@@ -15,8 +15,8 @@ const Login = ({ login, navigation, auth, resetModal }) => {
 
 
     const [role, setRole] = useState('Candidate');
-    const [email, setEmail] = useState('hanzalarasool2515@gmail.com');
-    const [password, setPassword] = useState('Hanzala@786');
+    const [email, setEmail] = useState('phenomenal.technology@gmail.com');
+    const [password, setPassword] = useState('Stronghold 3');
     const [isSelected, setSelection] = useState(false);
 
 

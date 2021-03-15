@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, Modal } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { WebView } from 'react-native-webview';
+import { acceptInvitation } from '../redux/actions/candidate';
+import { connect } from 'react-redux';
 
-const CandidateInvitations = ({ item }) => {
+const CandidateInvitations = ({ item, acceptInvitation }) => {
     const [openCall, setOpenCall] = useState(false);
 
     return (
@@ -61,18 +63,22 @@ const CandidateInvitations = ({ item }) => {
 
             {
                 item.Status == 'Pending' &&
-                <TouchableOpacity style={styles.btn} onPress={() => { setOpenCall(true) }}>
+                <TouchableOpacity style={styles.btn} onPress={() => { acceptInvitation(item.InviteId) }}>
                     <Text style={styles.btntext}>{"Accept Invitation"}</Text>
                 </TouchableOpacity>
             }
             <Modal
                 visible={openCall}
             >
-                <WebView source={{ uri: 'https://hiring.daily.co/' + item.RoomKey }} onNavigationStateChange={(state) => {
-                    if (state.canGoBack) {
-                        setOpenCall(false)
-                    }
-                }} />
+                <WebView source={{ uri: 'https://hiring.daily.co/' + item.RoomKey }}
+                    geolocationEnabled={true}
+                    mediaPlaybackRequiresUserAction={false}
+                    javaScriptEnabled={true}
+                    onNavigationStateChange={(state) => {
+                        if (state.canGoBack) {
+                            setOpenCall(false)
+                        }
+                    }} />
             </Modal>
         </View>
     )
@@ -167,4 +173,8 @@ const styles = StyleSheet.create({
 
 })
 
-export default CandidateInvitations
+const mapStateToProps = ({ candidate }) => ({ candidate })
+
+const mapDispatchToProps = { acceptInvitation }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CandidateInvitations)

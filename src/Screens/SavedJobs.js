@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react
 import { Content, Container, Tabs, Tab } from 'native-base';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
-import { getSavedJobs, saveJobs } from '../redux/actions/candidate';
+import { getSavedJobs, saveJobs, selectJob } from '../redux/actions/candidate';
 import { connect } from 'react-redux';
 import CandidateTab from '../Components/CandidateTab';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -57,27 +57,32 @@ const SavedJobs = (props) => {
                             style={{ marginTop: 10 }}
                             data={props.candidate.savedJobs}
                             renderItem={({ item, index }) =>
-                                <TouchableOpacity 
-                                disabled={true}
-                                style={{
+                                <TouchableOpacity
+                                    // disabled={true}
+                                    style={{
 
-                                    flex: 1,
-                                    flexDirection: 'row',
-                                    marginVertical: 5,
-                                    width: wp('90%'),
-                                    height: 100,
-                                    borderRadius: 5,
-                                    alignSelf: 'center',
-                                    backgroundColor: 'white',
-                                    shadowColor: "#000",
-                                    shadowOffset: {
-                                        width: 0,
-                                        height: 2
-                                    },
-                                    shadowOpacity: 0.25,
-                                    shadowRadius: 4,
-                                    elevation: 5
-                                }}>
+                                        flex: 1,
+                                        flexDirection: 'row',
+                                        marginVertical: 5,
+                                        width: wp('90%'),
+                                        // height: 100,
+                                        borderRadius: 5,
+                                        alignSelf: 'center',
+                                        backgroundColor: 'white',
+                                        shadowColor: "#000",
+                                        shadowOffset: {
+                                            width: 0,
+                                            height: 2
+                                        },
+                                        shadowOpacity: 0.25,
+                                        shadowRadius: 4,
+                                        elevation: 5,
+                                        // paddingBottom: 5
+                                    }} onPress={() => {
+                                        console.log(item)
+                                        props.selectJob(item.Job)
+                                        props.navigation.navigate('Applyjob', { role: 'candidate' })
+                                    }}>
 
                                     <View style={{ flex: 1 }}>
                                         <View style={{
@@ -102,17 +107,17 @@ const SavedJobs = (props) => {
                                                 paddingLeft: 20,
                                                 fontSize: 12
                                             }} >{item.Job.Location}</Text>
-                                            <TouchableOpacity onPress={() => { 
-                                                props.saveJobs(item.Job) 
+                                            <TouchableOpacity onPress={() => {
+                                                props.saveJobs(item.Job)
                                                 // console.log(item.Job)
-                                                }}>
+                                            }}>
                                                 <Icon name="ios-heart" size={25} color="green" style={{ marginRight: 20 }} />
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{
                                             flex: 1,
                                             flexDirection: 'row',
-
+                                            marginBottom: 5
 
                                         }}>
                                             <Text style={{
@@ -131,7 +136,7 @@ const SavedJobs = (props) => {
 
                 </View>
             </Content>
-            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#009961'} Fifth={'#E4E4E4'}/>
+            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#009961'} Fifth={'#E4E4E4'} />
         </Container>
     )
 }
@@ -162,6 +167,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ candidate }) => ({ candidate })
 
-const mapDispatchToProps = { getSavedJobs, saveJobs }
+const mapDispatchToProps = { getSavedJobs, saveJobs, selectJob }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SavedJobs);

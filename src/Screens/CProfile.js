@@ -49,7 +49,7 @@ const CProfile = ({ navigation, employer, markFavorite, sendInvite, getCandidate
                             <View style={{ alignItems: 'flex-end', marginTop: 5, marginLeft: 80 }}>
 
                                 <Icons color={'#001F3F'} name={'square-o'} size={35}></Icons>
-                                <Icon color={'green'} name={employer.favorites.filter((item1) => item1.CandidateId == employer.candidateProfile.Profile.CandidateId).length == 0 ? 'heart-o' : 'heart'} size={15} style={{ marginTop: -27, marginRight: 6.5 }}></Icon>
+                                <Icons color={'green'} name={employer.favorites.filter((item1) => item1.CandidateId == employer.candidateProfile.Profile.CandidateId).length == 0 ? 'heart-o' : 'heart'} size={15} style={{ marginTop: -27, marginRight: 6.5 }}></Icons>
 
                             </View>
                         </TouchableOpacity>

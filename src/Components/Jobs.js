@@ -17,7 +17,8 @@ const Jobs = ({ navigation, bottom, item, selectJob }) => {
         <View style={[styles.view, { marginBottom: "2%" }]}>
           <Text style={styles.text}>{item.Title}</Text>
           <Text style={styles.text1}>{item.Location}</Text>
-          <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
+          <Text style={styles.text2}>{item.JobDescription}</Text>
+          {/* <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
             <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
             <Text style={styles.text2}>Catalogue all visual assets for marketing department.</Text>
           </View>
@@ -29,7 +30,7 @@ holiday details.</Text>
           <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
             <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
             <Text style={styles.text2}>Familiarity with WordPress a plus.</Text>
-          </View>
+          </View> */}
         </View>
       </TouchableOpacity>
     </View>
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: '#000000',
     fontFamily: 'Segoe UI',
-    paddingLeft: 10,
+    paddingLeft: 18,
     paddingRight: 10
 
   }

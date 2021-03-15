@@ -6,10 +6,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DatePicker from 'react-native-date-picker';
 import { connect } from 'react-redux';
 import { WebView } from 'react-native-webview';
-import { changeCandidateId, deleteInvite, rescheduleInvite, createRoom } from '../redux/actions/employer';
+import { changeCandidateId, deleteInvite, rescheduleInvite, createRoom, hireCandidate } from '../redux/actions/employer';
 
-const Invitationcard = ({ item, navigation, employer, changeCandidateId, deleteInvite, rescheduleInvite, createRoom }) => {
+const Invitationcard = ({ item, navigation, employer, changeCandidateId, deleteInvite, rescheduleInvite, createRoom, hireCandidate }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [hireModalVisible, setHireModalVisible] = useState(false);
   const [time, setTime] = useState('');
   const [date, setDate] = useState(new Date());
   const [datename, setDateName] = useState('mm/dd/yy');
@@ -201,6 +202,7 @@ const Invitationcard = ({ item, navigation, employer, changeCandidateId, deleteI
             onPress={() => {
               setDateName(date.toString().substr(0, 21))
               setDateModalVisible(false)
+
             }}
           >
             <Text style={{
@@ -214,13 +216,55 @@ const Invitationcard = ({ item, navigation, employer, changeCandidateId, deleteI
       <Modal
         visible={openCall}
       >
-        <WebView source={{ uri: 'https://hiring.daily.co/' + item.RoomKey }} onNavigationStateChange={(state) => {
-          if (state.canGoBack) {
-            setOpenCall(false)
-          }
-        }} />
+        <WebView source={{ uri: 'https://hiring.daily.co/' + item.RoomKey }}
+          geolocationEnabled={true}
+          mediaPlaybackRequiresUserAction={false}
+          javaScriptEnabled={true}
+          onNavigationStateChange={(state) => {
+            if (state.canGoBack) {
+              setOpenCall(false)
+              setHireModalVisible(true);
+            }
+          }} />
       </Modal>
-    </View>
+      <Modal
+
+        transparent={true}
+        visible={hireModalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setHireModalVisible(!hireModalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+
+            <Text style={styles.modalText}>Did you Hire?</Text>
+
+
+            <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, justifyContent: 'space-between' }}>
+              <Pressable
+                style={[styles.button, { backgroundColor: '#EA3A3A', marginLeft: -17 }]}
+                onPress={() => {
+                  // setSentInvite(true);
+                  hireCandidate(item.InviteId)
+                  setHireModalVisible(!hireModalVisible);
+                }}
+              >
+                <Text style={styles.textStyle}>Yes</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, { backgroundColor: '#007AFF' }]}
+                onPress={() => setHireModalVisible(!hireModalVisible)}
+              >
+                <Text style={styles.textStyle}>No</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+
+      </Modal>
+    </View >
 
 
   )
@@ -420,6 +464,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ employer }) => ({ employer })
 
-const mapDispatchToProps = { changeCandidateId, deleteInvite, rescheduleInvite, createRoom }
+const mapDispatchToProps = { changeCandidateId, deleteInvite, rescheduleInvite, createRoom, hireCandidate }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Invitationcard);
