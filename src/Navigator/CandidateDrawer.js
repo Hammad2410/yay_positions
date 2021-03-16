@@ -48,7 +48,7 @@ function DrawerContent(props) {
                 style={{alignSelf: 'center'}}
               />
               <View style={{flexDirection: 'column'}}>
-                <Title style={styles.title}>
+                <Title style={[styles.title, {alignSelf: 'center'}]}>
                   {props.auth.profile != null &&
                     props.auth.profile.Profile.Email}
                 </Title>

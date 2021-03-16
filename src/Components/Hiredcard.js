@@ -1,65 +1,111 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left } from 'native-base';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {Content, Container, Header, Title, Left} from 'native-base';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import MyHeader from './LoginSignupHeader'
+import MyHeader from './LoginSignupHeader';
 
-
-const Hiredcard = ({ navigation, bottom, item }) => {
+const Hiredcard = ({navigation, bottom, item}) => {
   return (
-
-
-    <View style={[styles.view, { marginBottom: bottom }]}>
-      <View style={{ flexDirection: 'row' }}>
+    <View style={[styles.view, {marginBottom: bottom}]}>
+      <View style={{flexDirection: 'row'}}>
         <View style={styles.view1}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <Text style={styles.text2}>Name</Text>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                marginLeft: 10,
+                width: wp('40%'),
+              }}></View>
             <Text style={styles.text2}>Phone No</Text>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                marginLeft: 10,
+                width: wp('40%'),
+              }}></View>
             <Text style={styles.text2}>Meeting Date</Text>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                marginLeft: 10,
+                width: wp('40%'),
+              }}></View>
             <Text style={styles.text2}>Status</Text>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', marginLeft: 10, width: wp('40%') }}></View>
-
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                marginLeft: 10,
+                width: wp('40%'),
+              }}></View>
           </View>
-
         </View>
         <View style={styles.view2}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <Text style={styles.text3}>{item.Title}</Text>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                width: wp('42%'),
+              }}></View>
             <Text style={styles.text3}>{item.PhoneNo}</Text>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
-            <View style={{ flexDirection: 'row' }}>
-              <Text style={{
-                fontSize: 13,
-                color: '#000000',
-                fontFamily: 'Segoe UI',
-                paddingVertical: 20, paddingRight: 5
-              }}>02/11/2021</Text>
-              <Text style={{
-                fontSize: 13,
-                color: '#000000',
-                fontFamily: 'Segoe UI',
-                paddingVertical: 20,
-              }}>5:26:00 PM</Text>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                width: wp('42%'),
+              }}></View>
+            <View style={{flexDirection: 'row'}}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000000',
+                  // fontFamily: 'Segoe UI',
+                  paddingVertical: 20,
+                  paddingRight: 5,
+                }}>
+                02/11/2021
+              </Text>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000000',
+                  // fontFamily: 'Segoe UI',
+                  paddingVertical: 20,
+                }}>
+                5:26:00 PM
+              </Text>
             </View>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                width: wp('42%'),
+              }}></View>
             <TouchableOpacity style={styles.btn1}>
               <Text style={styles.btntext}>Hired</Text>
             </TouchableOpacity>
-            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('42%') }}></View>
+            <View
+              style={{
+                borderWidth: 0.5,
+                borderColor: '#E4E4E4',
+                width: wp('42%'),
+              }}></View>
           </View>
-
         </View>
       </View>
     </View>
-
-
-  )
-}
+  );
+};
 export default Hiredcard;
 
 const styles = StyleSheet.create({
@@ -73,13 +119,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#009961',
     borderColor: '#707070',
     borderWidth: 2,
-    marginTop: 10
+    marginTop: 10,
   },
   text1: {
     fontSize: 13,
     color: '#009961',
-    fontFamily: 'Segoe UI',
-
+    // fontFamily: 'Segoe UI',
   },
   view: {
     height: 310,
@@ -92,7 +137,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   view1: {
     width: wp('38%'),
@@ -101,15 +146,14 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 12,
     borderTopLeftRadius: 12,
     marginLeft: 10,
-    marginVertical: 14
-
+    marginVertical: 14,
   },
   text2: {
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    fontFamily: 'Segoe UI',
-    padding: 20
+    // fontFamily: 'Segoe UI',
+    padding: 20,
   },
   view2: {
     width: wp('40%'),
@@ -118,14 +162,14 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 12,
     borderTopLeftRadius: 12,
     marginLeft: 10,
-    marginVertical: 14
+    marginVertical: 14,
   },
   text3: {
     fontSize: 13,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    // fontFamily: 'Segoe UI',
     paddingVertical: 20,
-    textAlign: 'right'
+    textAlign: 'right',
   },
 
   btn1: {
@@ -135,19 +179,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     marginVertical: 10,
-    marginLeft: 75
-
-
+    marginLeft: 75,
   },
-  btntext:
-  {
-    fontFamily: 'Segoe UI',
+  btntext: {
+    // fontFamily: 'Segoe UI',
     fontSize: 13,
     textAlign: 'center',
     justifyContent: 'center',
     color: '#FFFFFF',
-    fontWeight: 'bold'
-  }
-
-
-})
+    fontWeight: 'bold',
+  },
+});

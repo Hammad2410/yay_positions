@@ -22,12 +22,43 @@ import ProfileText from '../Components/ProfileText';
 import CandidateTab from '../Components/CandidateTab';
 import {deleteResume} from '../redux/actions/candidate';
 import {connect} from 'react-redux';
-import {getCandidateProfile} from '../redux/actions/candidate';
+import {getCandidateProfile, updateResume} from '../redux/actions/candidate';
 import Pdf from 'react-native-pdf';
+import DocumentPicker from 'react-native-document-picker';
+import ButtonP from '../Components/ButtonP';
+var RNFS = require('react-native-fs');
 
-const MyResume = ({navigation, auth, deleteResume}) => {
+const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
   const [showModal, setShowModal] = useState(false);
+  const [Resume, setResume] = useState('');
 
+  const openResume = async () => {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+      });
+
+      RNFS.readFile(res.uri, 'base64').then((res1) => {
+        setResume('data:' + res.type + ';base64,' + res1);
+      });
+
+      console.log(
+        res.uri,
+        res.type, // mime type
+        res.name,
+        res.size,
+      );
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // User cancelled the picker, exit any dialogs or menus and move on
+      } else {
+        throw err;
+      }
+    }
+  };
+  const onPressResume = () => {
+    updateResume(Resume);
+  };
   return (
     <Container>
       <MyHeader navigation={navigation} />
@@ -58,6 +89,50 @@ const MyResume = ({navigation, auth, deleteResume}) => {
                 <Text style={styles.btext}>Delete</Text>
               </View>
             </TouchableOpacity>
+          </View>
+
+          <View style={{marginTop: 20, alignItems: 'center'}}>
+            <ProfileText nametext="Add Resume" marginLeftt={-235} />
+            <View
+              style={{
+                height: hp('5%'),
+                width: wp('80%'),
+                borderColor: '#707070',
+                borderWidth: 0.5,
+                borderRadius: 5,
+                fontSize: 12,
+                padding: 10,
+                marginBottom: 15,
+                alignSelf: 'center',
+                flexDirection: 'row',
+                marginLeft: -6,
+              }}>
+              <TouchableOpacity
+                onPress={() => openResume()}
+                style={{
+                  borderColor: '#707070',
+                  backgroundColor: '#E4E4E4',
+                  width: 90,
+                }}>
+                <Text style={{textAlign: 'center'}}>Choose File</Text>
+              </TouchableOpacity>
+              {Resume === '' ? (
+                <Text style={{paddingHorizontal: '5%', color: '#707070'}}>
+                  No File Chosen
+                </Text>
+              ) : (
+                <Text style={{paddingHorizontal: '5%', color: '#707070'}}>
+                  Resume Added
+                </Text>
+              )}
+            </View>
+            <View style={{marginLeft: -200}}>
+              <ButtonP
+                Bwidth={wp('30%')}
+                NameButton="Save Resume"
+                buttonAction={onPressResume}
+              />
+            </View>
           </View>
         </View>
 
@@ -141,6 +216,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({auth}) => ({auth});
 
-const mapDispatchToProps = {deleteResume};
+const mapDispatchToProps = {deleteResume, updateResume};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyResume);

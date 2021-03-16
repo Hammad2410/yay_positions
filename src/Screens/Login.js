@@ -8,6 +8,8 @@ import {
   Image,
   ActivityIndicator,
   TextInput,
+  BackHandler,
+  Alert,
 } from 'react-native';
 import {
   Content,
@@ -17,6 +19,8 @@ import {
   Footer,
   FooterTab,
   Button,
+  Header,
+  Left,
 } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import {
@@ -29,7 +33,7 @@ import CheckBox from '@react-native-community/checkbox';
 import {connect} from 'react-redux';
 import {login, resetModal} from '../redux/actions/auth';
 import ErrorModal from '../Components/ErrorModal';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 const Login = ({login, navigation, auth, resetModal}) => {
   const [role, setRole] = useState('Candidate');
   const [email, setEmail] = useState('');
@@ -56,10 +60,38 @@ const Login = ({login, navigation, auth, resetModal}) => {
     setEmail(email1);
     setPassword(password1);
   };
+  const backAction = () => {
+    Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {text: 'YES', onPress: () => BackHandler.exitApp()},
+    ]);
+    return true;
+  };
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', backAction);
+
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+  }, []);
 
   return (
     <Container>
-      <MyHeader navigation={navigation} />
+      <Header
+        androidStatusBarColor="white"
+        style={{
+          backgroundColor: 'white',
+          elevation: 0,
+        }}>
+        <Left style={{flex: 1}}>
+          <TouchableOpacity onPress={() => backAction()}>
+            <Icon name="arrow-back-outline" size={30} color={'#E4E4E4'} />
+          </TouchableOpacity>
+        </Left>
+      </Header>
       <Content contentContainerStyle={{flex: 1, backgroundColor: 'white'}}>
         <View style={{flex: 1}}>
           <View style={{marginTop: 30, marginLeft: 40}}>
