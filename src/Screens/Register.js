@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -25,8 +25,8 @@ import {
 } from 'react-native-responsive-screen';
 import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
-import {connect} from 'react-redux';
-import {register, resetUserRegistered} from '../redux/actions/auth';
+import { connect } from 'react-redux';
+import { register, resetUserRegistered } from '../redux/actions/auth';
 import CountryPicker from 'react-native-country-picker-modal';
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -50,15 +50,15 @@ const Register = (props) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={props.navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginTop: 30, marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginTop: 30, marginLeft: 40 }}>
             <Text style={styles.text}>Register</Text>
             <View style={styles.line}></View>
           </View>
-          <View style={{height: 200, alignItems: 'center', marginTop: '7%'}}>
+          <View style={{ height: 200, alignItems: 'center', marginTop: '7%' }}>
             <TextInputLogin value={email} setter={setEmail} label="Email" />
             <TextInputLogin label="Name" value={name} setter={setName} />
             <View style={styles.switchContainer}>
@@ -86,7 +86,7 @@ const Register = (props) => {
               </Button>
             </View>
           </View>
-          <View style={{alignItems: 'center', height: 170}}>
+          <View style={{ alignItems: 'center', height: 170 }}>
             <View
               style={{
                 flex: 1,
@@ -118,7 +118,7 @@ const Register = (props) => {
               {country !== null ? (
                 <Text style={styles.data}>{country.name}</Text>
               ) : (
-                <Text style={{fontSize: 15}}>United States</Text>
+                <Text style={{ fontSize: 15 }}>United States</Text>
               )}
             </View>
             <TextInput
@@ -148,7 +148,7 @@ const Register = (props) => {
                 props.register(
                   email,
                   name,
-                  country,
+                  country.name,
                   role,
                   password,
                   confirmPassword,
@@ -159,7 +159,7 @@ const Register = (props) => {
           )}
         </View>
       </Content>
-      <Footer style={{backgroundColor: '#009961', height: 40}}></Footer>
+      <Footer style={{ backgroundColor: '#009961', height: 40 }}></Footer>
     </Container>
   );
 };
@@ -225,8 +225,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({ auth }) => ({ auth });
 
-const mapDispatchToProps = {register, resetUserRegistered};
+const mapDispatchToProps = { register, resetUserRegistered };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
