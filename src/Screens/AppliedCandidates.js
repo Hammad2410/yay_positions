@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -17,8 +17,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
 import Candidatecard from '../Components/Candidatecard';
 import EmployerTab from '../Components/EmployerTab';
-import {connect} from 'react-redux';
-import {getAppliedCandidates} from '../redux/actions/employer';
+import { connect } from 'react-redux';
+import { getAppliedCandidates } from '../redux/actions/employer';
 
 const AppliedCandidates = ({
   navigation,
@@ -31,19 +31,19 @@ const AppliedCandidates = ({
   }, [route.params]);
 
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       {employer.loading ? (
         <ActivityIndicator
           size={'large'}
           color={'#009961'}
-          style={{justifyContent: 'center', alignItems: 'center'}}
+          style={{ justifyContent: 'center', alignItems: 'center' }}
         />
       ) : (
         <>
           <Content>
-            <View style={{flex: 1}}>
-              <View style={{marginLeft: 40}}>
+            <View style={{ flex: 1 }}>
+              <View style={{ marginLeft: 40 }}>
                 <Text style={styles.text}>Applied Candidates</Text>
                 <View style={styles.line}></View>
               </View>
@@ -61,7 +61,7 @@ const AppliedCandidates = ({
               <FlatList
                 data={employer.applied}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({item, index}) => (
+                renderItem={({ item, index }) => (
                   <Candidatecard
                     navigation={navigation}
                     bottom={'10%'}
@@ -86,7 +86,6 @@ const AppliedCandidates = ({
 };
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   text: {
     color: '#707070',
     fontSize: 20,
@@ -97,40 +96,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#009961',
     borderColor: '#707070',
     borderWidth: 2,
-    marginTop: 10,
+    marginTop: 10
   },
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
-  },
-});
-=======
-    text: {
-        color: '#707070',
-        fontSize: 20,
-    },
-    line: {
-        height: 5,
-        width: wp('11%'),
-        backgroundColor: '#009961',
-        borderColor: '#707070',
-        borderWidth: 2,
-        marginTop: 10
-    },
-    text1: {
-        fontSize: 13,
-        color: '#009961',
-        //fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
 
-    },
+  },
 
 
 })
->>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
-const mapDispatchToProps = {getAppliedCandidates};
+const mapDispatchToProps = { getAppliedCandidates };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppliedCandidates);

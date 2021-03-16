@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -16,20 +16,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
 import Candidatecard from '../Components/Candidatecard';
 import EmployerTab from '../Components/EmployerTab';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-const BrowseCandidates = ({navigation, employer}) => {
+const BrowseCandidates = ({ navigation, employer }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Browse Candidates</Text>
             <View style={styles.line}></View>
           </View>
           <View
-            style={{alignItems: 'flex-end', marginTop: 15, marginRight: 25}}>
+            style={{ alignItems: 'flex-end', marginTop: 15, marginRight: 25 }}>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('Efilter');
@@ -41,7 +41,7 @@ const BrowseCandidates = ({navigation, employer}) => {
           <FlatList
             data={employer.filteredCandidates}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <Candidatecard
                 navigation={navigation}
                 bottom={'10%'}
@@ -64,7 +64,6 @@ const BrowseCandidates = ({navigation, employer}) => {
 };
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   text: {
     color: '#707070',
     fontSize: 20,
@@ -75,38 +74,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#009961',
     borderColor: '#707070',
     borderWidth: 2,
-    marginTop: 10,
+    marginTop: 10
   },
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
-  },
-});
-=======
-    text: {
-        color: '#707070',
-        fontSize: 20,
-    },
-    line: {
-        height: 5,
-        width: wp('11%'),
-        backgroundColor: '#009961',
-        borderColor: '#707070',
-        borderWidth: 2,
-        marginTop: 10
-    },
-    text1: {
-        fontSize: 13,
-        color: '#009961',
-        //fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
 
-    },
+  },
 
 
 })
->>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
 export default connect(mapStateToProps)(BrowseCandidates);

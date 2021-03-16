@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import {
   View,
@@ -10,7 +10,7 @@ import {
   Pressable,
   TextInput,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 
 import {
   widthPercentageToDP as wp,
@@ -18,7 +18,7 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   sendInvite,
   markFavorite,
@@ -45,7 +45,7 @@ const Candidatecard = ({
     setDateModalVisible(!DatemodalVisible);
   };
   return (
-    <View style={[styles.view, {marginBottom: bottom}]}>
+    <View style={[styles.view, { marginBottom: bottom }]}>
       <Modal
         transparent={true}
         visible={modalVisible}
@@ -56,7 +56,7 @@ const Candidatecard = ({
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Date Time for call</Text>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View
                 style={{
                   height: hp('5%'),
@@ -87,7 +87,7 @@ const Candidatecard = ({
                     name="calendar"
                     size={20}
                     color="#707070"
-                    style={{alignSelf: 'center'}}
+                    style={{ alignSelf: 'center' }}
                   />
                 </TouchableOpacity>
               </View>
@@ -120,7 +120,7 @@ const Candidatecard = ({
               <Pressable
                 style={[
                   styles.button,
-                  {backgroundColor: '#007AFF', marginRight: -10},
+                  { backgroundColor: '#007AFF', marginRight: -10 },
                 ]}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>Close</Text>
@@ -131,7 +131,7 @@ const Candidatecard = ({
       </Modal>
 
       <TouchableOpacity onPress={() => markFavorite(item)}>
-        <View style={{alignItems: 'flex-end', padding: 10}}>
+        <View style={{ alignItems: 'flex-end', padding: 10 }}>
           <Icon color={'#001F3F'} name={'square-o'} size={35}></Icon>
           <Icon
             color={'green'}
@@ -143,12 +143,12 @@ const Candidatecard = ({
                 : 'heart'
             }
             size={15}
-            style={{marginTop: -27, marginRight: 6.5}}></Icon>
+            style={{ marginTop: -27, marginRight: 6.5 }}></Icon>
         </View>
       </TouchableOpacity>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.view1}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text2}>Name</Text>
             <View
               style={{
@@ -192,7 +192,7 @@ const Candidatecard = ({
           </View>
         </View>
         <View style={styles.view2}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text3}>{item.FullName}</Text>
             <View
               style={{
@@ -221,7 +221,7 @@ const Candidatecard = ({
                 borderColor: '#E4E4E4',
                 width: wp('42%'),
               }}></View>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               {!item.InInvited && (
                 <TouchableOpacity
                   disabled={sentInvite}
@@ -270,7 +270,7 @@ const Candidatecard = ({
               alignSelf: 'center',
             }}>
             <DatePicker
-              style={{marginHorizontal: '10%'}}
+              style={{ marginHorizontal: '10%' }}
               date={date}
               androidVariant="nativeAndroid"
               mode="datetime"
@@ -325,12 +325,8 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
-<<<<<<< HEAD
-    // fontFamily: 'Segoe UI',
-=======
     //fontFamily: 'Segoe UI',
 
->>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
   },
   view: {
     height: 400,
@@ -343,7 +339,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
   view1: {
     width: wp('38%'),
@@ -358,13 +354,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-<<<<<<< HEAD
-    // fontFamily: 'Segoe UI',
-    padding: 20,
-=======
     //fontFamily: 'Segoe UI',
     padding: 20
->>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
   },
   view2: {
     width: wp('40%'),
@@ -378,11 +369,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
-<<<<<<< HEAD
-    // fontFamily: 'Segoe UI',
-=======
     //fontFamily: 'Segoe UI',
->>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
     paddingVertical: 20,
     textAlign: 'right',
   },
@@ -403,14 +390,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 10,
   },
-<<<<<<< HEAD
-  btntext: {
-    // fontFamily: 'Segoe UI',
-=======
   btntext:
   {
     //fontFamily: 'Segoe UI',
->>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
     fontSize: 11,
     textAlign: 'center',
     justifyContent: 'center',
@@ -476,8 +458,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
-const mapDispatchToProps = {sendInvite, markFavorite, changeCandidateId};
+const mapDispatchToProps = { sendInvite, markFavorite, changeCandidateId };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Candidatecard);
