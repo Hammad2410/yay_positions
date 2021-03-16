@@ -7,6 +7,7 @@ import {
   Image,
   Modal,
   Pressable,
+  RefreshControl,
 } from 'react-native';
 import {Content, Container, Header, Title, Left} from 'native-base';
 import {

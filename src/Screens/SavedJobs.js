@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 import {Content, Container, Tabs, Tab} from 'native-base';
 import {
@@ -22,6 +23,14 @@ const SavedJobs = (props) => {
   useEffect(() => {
     props.getSavedJobs();
   }, []);
+  const [reefreshing, setRefreshing] = useState(false);
+  const onRefresh = () => {
+    props.getSavedJobs();
+    // setRefreshing(true);
+    // fetchData().then(() => {
+    //   setRefreshing(true);
+    // });
+  };
 
   const [messages, setMessage] = useState([
     {
@@ -47,7 +56,14 @@ const SavedJobs = (props) => {
   return (
     <Container>
       <MyHeader navigation={props.navigation} />
-      <Content contentContainerStyle={{flex: 1, backgroundColor: 'white'}}>
+      <Content
+        contentContainerStyle={{flex: 1, backgroundColor: 'white'}}
+        refreshControl={
+          <RefreshControl
+            refreshing={props.candidate.loading}
+            onRefresh={onRefresh}
+          />
+        }>
         <View style={{flex: 1}}>
           <View style={{marginTop: 30, marginLeft: 21}}>
             <Text style={styles.text}>Saved Jobs</Text>

@@ -56,7 +56,7 @@ const Candidatecard = ({
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Date Time for call</Text>
-            <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <View
                 style={{
                   height: hp('5%'),
@@ -65,22 +65,23 @@ const Candidatecard = ({
                   borderWidth: 0.5,
                   borderRadius: 5,
                   fontSize: 12,
-                  padding: 10,
-
-                  alignSelf: 'center',
+                  alignItems: 'center',
                   flexDirection: 'row',
-                  marginLeft: -11,
                 }}>
                 <TouchableOpacity onPress={() => DateModal()}>
                   <Text
                     style={{
                       color: '#707070',
+                      marginLeft: '5%',
                     }}>
                     {datename}
                   </Text>
                 </TouchableOpacity>
               </View>
-              <View style={{marginLeft: -30, marginTop: 10}}>
+              <View
+                style={{
+                  marginLeft: -30,
+                }}>
                 <TouchableOpacity onPress={() => DateModal()}>
                   <Icon
                     name="calendar"
@@ -96,13 +97,18 @@ const Candidatecard = ({
               style={{
                 flex: 1,
                 flexDirection: 'row',
-                marginTop: 10,
+                marginTop: 25,
                 justifyContent: 'space-between',
+                alignItems: 'center',
               }}>
               <Pressable
                 style={[
                   styles.button,
-                  {backgroundColor: '#EA3A3A', marginLeft: -17},
+                  {
+                    backgroundColor: '#EA3A3A',
+                    marginLeft: -12,
+                    alignItems: 'center',
+                  },
                 ]}
                 onPress={() => {
                   setSentInvite(true);
@@ -112,7 +118,10 @@ const Candidatecard = ({
                 <Text style={styles.textStyle}>Send Invitation</Text>
               </Pressable>
               <Pressable
-                style={[styles.button, {backgroundColor: '#007AFF'}]}
+                style={[
+                  styles.button,
+                  {backgroundColor: '#007AFF', marginRight: -10},
+                ]}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>Close</Text>
               </Pressable>
@@ -279,11 +288,11 @@ const Candidatecard = ({
                 alignSelf: 'flex-start',
                 justifyContent: 'center',
                 marginVertical: '3%',
-                marginLeft: '4%',
+                marginLeft: '3%',
                 borderColor: 'grey',
                 borderWidth: 1,
                 backgroundColor: '#fff',
-                width: wp('20%'),
+                width: wp('22%'),
                 height: hp('5%'),
                 alignItems: 'center',
               }}
@@ -398,8 +407,7 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     padding: 35,
-    width: 270,
-    height: 182,
+    height: '25%',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
@@ -414,8 +422,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     elevation: 2,
-
-    height: 30,
   },
 
   buttonClose: {
@@ -425,7 +431,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '400',
     textAlign: 'center',
-    marginTop: -6,
+
     fontSize: 16,
   },
   modalText: {
@@ -433,9 +439,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
     fontWeight: '400',
-    marginTop: 8,
+
     textAlign: 'center',
-    width: 160,
+    marginBottom: 5,
   },
   modalInput: {
     height: hp('5%'),

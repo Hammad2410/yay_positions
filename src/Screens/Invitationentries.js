@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 import {Content, Container, Header, Title, Left} from 'native-base';
 import {
@@ -19,14 +20,23 @@ import MyHeader from '../Components/LoginSignupHeader';
 import Invitationcard from '../Components/Invitationcard';
 import EmployerTab from '../Components/EmployerTab';
 import {connect} from 'react-redux';
+import {getInvitations} from '../redux/actions/employer';
 
 const Invitationentries = (props) => {
   const [search, setSearch] = useState('');
-
+  const onRefresh = () => {
+    props.getInvitations();
+  };
   return (
     <Container style={{backgroundColor: 'white'}}>
       <MyHeader navigation={props.navigation} />
-      <Content>
+      <Content
+        refreshControl={
+          <RefreshControl
+            refreshing={props.candidate.loading}
+            onRefresh={onRefresh}
+          />
+        }>
         <View style={{flex: 1}}>
           <View style={{marginLeft: 40}}>
             <Text style={styles.text}>Invitations</Text>
@@ -118,7 +128,7 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 12,
     color: 'black',
-    // fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe UI',
     fontWeight: 'bold',
     paddingLeft: 20,
     paddingRight: 5,
@@ -127,7 +137,7 @@ const styles = StyleSheet.create({
   text2: {
     fontSize: 12,
     color: 'black',
-    // fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe UI',
     fontWeight: 'bold',
     paddingLeft: 5,
     paddingRight: 5,
@@ -136,7 +146,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 12,
     color: 'black',
-    // fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe UI',
     fontWeight: 'bold',
     marginLeft: 50,
     paddingRight: 5,
@@ -154,25 +164,27 @@ const styles = StyleSheet.create({
   text4: {
     fontSize: 12,
     color: '#666666',
-    // fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe UI',
     marginLeft: 20,
     paddingTop: 15,
   },
   text5: {
     fontSize: 12,
     color: '#666666',
-    // fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe UI',
     marginLeft: 80,
     paddingTop: 15,
   },
   text6: {
     fontSize: 12,
     color: '#666666',
-    // fontFamily: 'Segoe UI',
+    fontFamily: 'Segoe UI',
     paddingTop: 15,
   },
 });
 
 const mapStateToProps = ({candidate}) => ({candidate});
 
-export default connect(mapStateToProps)(Invitationentries);
+const mapDispatchToProps = {getInvitations};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Invitationentries);

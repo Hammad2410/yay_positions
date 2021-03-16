@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  RefreshControl,
+} from 'react-native';
 import {Content, Container, Header, Title, Left} from 'native-base';
 import {
   widthPercentageToDP as wp,
@@ -44,9 +51,25 @@ const Employer = ({
     resetUserLoggedIn();
   }, []);
 
+  const onRefresh = () => {
+    browseCandidate();
+    getJobs();
+    getFavorites();
+    getHiredCandidates();
+    getCompanyProfile();
+    getInvitations();
+    resetUserLoggedIn();
+    // setRefreshing(true);
+    // fetchData().then(() => {
+    //   setRefreshing(true);
+    // });
+  };
   return (
     <Container style={{backgroundColor: 'white'}}>
-      <Content>
+      <Content
+        refreshControl={
+          <RefreshControl refreshing={employer.loading} onRefresh={onRefresh} />
+        }>
         <EmployerDrawer navigation={navigation} />
 
         <View
