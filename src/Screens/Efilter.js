@@ -453,7 +453,11 @@ const styles = StyleSheet.create({
   text: {
     color: '#707070',
     fontSize: 17,
+<<<<<<< HEAD
     // fontFamily: 'Segoe UI',
+=======
+    //fontFamily: 'Segoe UI',
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
   },
 
   text1: {
@@ -465,7 +469,11 @@ const styles = StyleSheet.create({
   text2: {
     color: '#000000',
     fontSize: 14,
+<<<<<<< HEAD
     // fontFamily: 'Segoe UI',
+=======
+    //fontFamily: 'Segoe UI',
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
   },
   btn: {
     width: wp('20%'),
@@ -475,8 +483,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
   },
+<<<<<<< HEAD
   btntext: {
     // fontFamily: 'Segoe UI',
+=======
+  btntext:
+  {
+    //fontFamily: 'Segoe UI',
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
     fontSize: 14,
     textAlign: 'center',
     justifyContent: 'center',

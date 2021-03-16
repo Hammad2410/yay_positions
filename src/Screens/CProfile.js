@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
   Modal,
   Pressable,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -20,7 +20,7 @@ import MyHeader from '../Components/LoginSignupHeader';
 import Profile from '../Components/CProfile';
 import EmployerTab from '../Components/EmployerTab';
 import Icons from 'react-native-vector-icons/FontAwesome';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   markFavorite,
   sendInvite,
@@ -51,17 +51,17 @@ const CProfile = ({
   }, [employer.candidateId]);
 
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
         {employer.candidateProfile != null ? (
-          <View style={{flex: 1}}>
-            <View style={{marginLeft: 25}}>
+          <View style={{ flex: 1 }}>
+            <View style={{ marginLeft: 25 }}>
               <Text style={styles.text}>Candidate Profile</Text>
               <View style={styles.line}></View>
             </View>
             <View
-              style={{flex: 1, flexDirection: 'row', alignContent: 'center'}}>
+              style={{ flex: 1, flexDirection: 'row', alignContent: 'center' }}>
               <TouchableOpacity
                 disabled={sentInvite || employer.candidateProfile.InInvited}
                 onPress={() => setModalVisible(true)}>
@@ -77,7 +77,7 @@ const CProfile = ({
                     marginLeft: 100,
                     marginTop: 5,
                   }}>
-                  <Text style={{textAlign: 'center', marginTop: 5}}>
+                  <Text style={{ textAlign: 'center', marginTop: 5 }}>
                     {sentInvite || employer.candidateProfile.InInvited
                       ? ' Invited'
                       : 'Send Invite'}
@@ -86,7 +86,7 @@ const CProfile = ({
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => markFavorite(employer.candidateProfile.Profile)}
-                style={{marginLeft: 140}}>
+                style={{ marginLeft: 140 }}>
                 <View
                   style={{
                     alignItems: 'flex-end',
@@ -105,7 +105,7 @@ const CProfile = ({
                         : 'heart'
                     }
                     size={15}
-                    style={{marginTop: -27, marginRight: 6.5}}></Icons>
+                    style={{ marginTop: -27, marginRight: 6.5 }}></Icons>
                 </View>
               </TouchableOpacity>
             </View>
@@ -116,7 +116,7 @@ const CProfile = ({
           <ActivityIndicator
             size={'large'}
             color={'#009961'}
-            style={{justifyContent: 'center', alignItems: 'center'}}
+            style={{ justifyContent: 'center', alignItems: 'center' }}
           />
         )}
       </Content>
@@ -136,7 +136,7 @@ const CProfile = ({
             alignSelf: 'center',
           }}>
           <DatePicker
-            style={{marginHorizontal: '10%'}}
+            style={{ marginHorizontal: '10%' }}
             date={date}
             androidVariant="nativeAndroid"
             mode="datetime"
@@ -220,7 +220,7 @@ const CProfile = ({
                     name="calendar"
                     size={20}
                     color="#707070"
-                    style={{alignSelf: 'center'}}
+                    style={{ alignSelf: 'center' }}
                   />
                 </TouchableOpacity>
               </View>
@@ -256,7 +256,7 @@ const CProfile = ({
               <Pressable
                 style={[
                   styles.button,
-                  {backgroundColor: '#007AFF', marginRight: -10},
+                  { backgroundColor: '#007AFF', marginRight: -10 },
                 ]}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>Close</Text>
@@ -417,8 +417,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
-const mapDispatchToProps = {markFavorite, sendInvite, getCandidateProfile};
+const mapDispatchToProps = { markFavorite, sendInvite, getCandidateProfile };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CProfile);

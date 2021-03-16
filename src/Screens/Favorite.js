@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,16 +15,16 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
 import Favoritecard from '../Components/Favoritecard';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import EmployerTab from '../Components/EmployerTab';
 
-const Favorite = ({navigation, employer}) => {
+const Favorite = ({ navigation, employer }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Favorite</Text>
             <View style={styles.line}></View>
           </View>
@@ -32,7 +32,7 @@ const Favorite = ({navigation, employer}) => {
           <FlatList
             data={employer.favorites}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <Favoritecard
                 bottom={'10%'}
                 item={item}
@@ -74,6 +74,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
 export default connect(mapStateToProps)(Favorite);

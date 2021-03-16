@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,18 +9,18 @@ import {
   Modal,
   Dimensions,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
-import {connect} from 'react-redux';
-import {getCandidateProfile} from '../redux/actions/candidate';
+import { connect } from 'react-redux';
+import { getCandidateProfile } from '../redux/actions/candidate';
 import Pdf from 'react-native-pdf';
-import {Avatar} from 'react-native-paper';
-const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
+import { Avatar } from 'react-native-paper';
+const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -28,10 +28,10 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
   }, []);
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       {auth.profile != null ? (
         <>
-          <View style={[styles.view, {marginBottom: bottom}]}>
+          <View style={[styles.view, { marginBottom: bottom }]}>
             <View style={styles.view1}>
               <Avatar.Image
                 source={{
@@ -40,14 +40,14 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                     auth.profile.Profile.ProfileImage,
                 }}
                 size={80}
-                style={{alignSelf: 'center', marginTop: 20}}
+                style={{ alignSelf: 'center', marginTop: 20 }}
               />
               {/* <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} /> */}
               {/* <Image source={{uri: 'https://yaypositions.org/' + auth.profile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50,borderRadius:5 }} /> */}
               <Text style={styles.text1}>{auth.profile.Profile.Name}</Text>
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Email Address</Text>
               <Text
                 style={{
@@ -68,7 +68,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Gender</Text>
               <Text style={styles.text3}>{auth.profile.Profile.Gender}</Text>
             </View>
@@ -81,7 +81,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Salary Range</Text>
               <Text style={styles.text3}>
                 {auth.profile.Profile.SalaryRange}
@@ -96,7 +96,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Qualification</Text>
               <Text style={styles.text3}>
                 {auth.profile.Profile.Qualification}
@@ -112,12 +112,12 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
           </View>
-          <View style={[styles.view, {marginBottom: bottom}]}>
+          <View style={[styles.view, { marginBottom: bottom }]}>
             <View style={styles.view2}>
               <Text style={styles.text4}>Custom Fields </Text>
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Country</Text>
               <Text style={styles.text3}>{auth.profile.Country}</Text>
             </View>
@@ -130,7 +130,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Level</Text>
               <Text style={styles.text3}>{auth.profile.Profile.Level}</Text>
             </View>
@@ -143,7 +143,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text style={styles.text2}>Experience</Text>
               <Text style={styles.text3}>
                 {auth.profile.Profile.Experience}
@@ -159,7 +159,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               }}
             />
           </View>
-          <View style={[styles.view, {marginBottom: bottom}]}>
+          <View style={[styles.view, { marginBottom: bottom }]}>
             <View style={styles.view2}>
               <Text style={styles.text4}>Skills and Tools</Text>
             </View>
@@ -178,12 +178,12 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
             ))}
           </View>
           {auth.profile.EducationalInfos.map((item) => (
-            <View style={[styles.view, {marginBottom: bottom}]}>
+            <View style={[styles.view, { marginBottom: bottom }]}>
               <View style={styles.view2}>
                 <Text style={styles.text4}>Educational Info</Text>
               </View>
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Degree</Text>
                 <Text style={styles.text3}>{item.Degree}</Text>
               </View>
@@ -196,7 +196,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Institute Name</Text>
                 <Text style={styles.text3}>{item.InstituteName}</Text>
               </View>
@@ -209,7 +209,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Start Date</Text>
                 <Text style={styles.text3}>{item.StartDate}</Text>
               </View>
@@ -222,7 +222,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>End Date</Text>
                 <Text style={styles.text3}>{item.EndDate}</Text>
               </View>
@@ -235,7 +235,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Qualification Title</Text>
                 <Text style={styles.text3}>{item.QualificationTitle}</Text>
               </View>
@@ -248,7 +248,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Grade</Text>
                 <Text style={styles.text3}>{item.Grade}</Text>
               </View>
@@ -275,12 +275,12 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
             </View>
           ))}
           {auth.profile.JobExperiences.map((item) => (
-            <View style={[styles.view, {marginBottom: bottom}]}>
+            <View style={[styles.view, { marginBottom: bottom }]}>
               <View style={styles.view2}>
                 <Text style={styles.text4}>Job Experience </Text>
               </View>
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Organization Name</Text>
                 <Text style={styles.text3}>{item.OrganizationName}</Text>
               </View>
@@ -293,7 +293,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Your Role</Text>
                 <Text style={styles.text3}>{item.YourRole}</Text>
               </View>
@@ -306,7 +306,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>Start Date</Text>
                 <Text style={styles.text3}>{item.JobStartDate}</Text>
               </View>
@@ -319,7 +319,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                 }}
               />
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={styles.text2}>End Date</Text>
                 <Text style={styles.text3}>{item.JobEndDate}</Text>
               </View>
@@ -346,7 +346,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
               />
             </View>
           ))}
-          <View style={[styles.view, {marginBottom: bottom}]}>
+          <View style={[styles.view, { marginBottom: bottom }]}>
             <View style={styles.view2}>
               <Text style={styles.text4}>Resumes</Text>
             </View>
@@ -364,7 +364,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
             </TouchableOpacity>
           </View>
           {auth.profile.PortFolios.length > 0 && (
-            <View style={[styles.view, {marginBottom: 30}]}>
+            <View style={[styles.view, { marginBottom: 30 }]}>
               <View style={styles.view2}>
                 <Text style={styles.text4}>Resumes</Text>
               </View>
@@ -374,7 +374,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
                   source={{
                     uri: 'https://yaypositions.org' + item.Path,
                   }}
-                  style={{margin: 15, width: 100, height: 100}}></Image>
+                  style={{ margin: 15, width: 100, height: 100 }}></Image>
               ))}
               {/* <Image
                             resizeMode="contain"
@@ -383,13 +383,13 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
             </View>
           )}
           <Modal visible={showModal} onRequestClose={() => setShowModal(false)}>
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
               <Pdf
                 source={{
                   uri:
                     auth.profile.Resumes.length > 0
                       ? 'https://yaypositions.org' +
-                        auth.profile.Resumes[0].ResumePath
+                      auth.profile.Resumes[0].ResumePath
                       : null,
                 }}
                 onLoadComplete={(numberOfPages, filePath) => {
@@ -413,7 +413,7 @@ const Profile = ({navigation, bottom, auth, getCandidateProfile}) => {
         <ActivityIndicator
           size={'large'}
           color={'#009961'}
-          style={{justifyContent: 'center', alignItems: 'center'}}
+          style={{ justifyContent: 'center', alignItems: 'center' }}
         />
       )}
     </View>
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
   view1: {
     width: wp('90%'),
@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     paddingBottom: 15,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
   view2: {
     width: wp('90%'),
@@ -469,7 +469,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 10,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
   text1: {
     color: 'white',
@@ -532,8 +532,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({ auth }) => ({ auth });
 
-const mapDispatchToProps = {getCandidateProfile};
+const mapDispatchToProps = { getCandidateProfile };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   FlatList,
   Modal,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -17,22 +17,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
 import CandidateTab from '../Components/CandidateTab';
 import CandidateInvitation from '../Components/CandidateInvitation';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-const Invitations = ({navigation, candidate}) => {
+const Invitations = ({ navigation, candidate }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Invitations</Text>
             <View style={styles.line}></View>
           </View>
           <FlatList
             data={candidate.invitations}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => <CandidateInvitation item={item} />}
+            renderItem={({ item, index }) => <CandidateInvitation item={item} />}
           />
         </View>
       </Content>
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
+
   },
   view: {
     height: 460,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
   view1: {
     width: wp('38%'),
@@ -93,8 +94,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    // fontFamily: 'Segoe UI',
-    padding: 20,
+    //fontFamily: 'Segoe UI',
+    padding: 20
   },
   view2: {
     width: wp('40%'),
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     textAlign: 'right',
   },
@@ -120,8 +121,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
   },
-  btntext: {
-    // fontFamily: 'Segoe UI',
+  btntext:
+  {
+    //fontFamily: 'Segoe UI',
     fontSize: 14,
     textAlign: 'center',
     justifyContent: 'center',
@@ -130,6 +132,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({candidate}) => ({candidate});
+const mapStateToProps = ({ candidate }) => ({ candidate });
 
 export default connect(mapStateToProps)(Invitations);

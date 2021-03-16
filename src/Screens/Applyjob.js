@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -10,13 +10,13 @@ import MyHeader from '../Components/LoginSignupHeader';
 import JobApply from '../Components/JobApply';
 import CandidateTab from '../Components/CandidateTab';
 
-const Applyjob = ({navigation, item, route}) => {
+const Applyjob = ({ navigation, item, route }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>
               {route.params.role === 'employer' ? 'Job Detail' : 'Browse Jobs'}
             </Text>
@@ -49,11 +49,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#009961',
     borderColor: '#707070',
     borderWidth: 2,
-    marginTop: 10,
+    marginTop: 10
   },
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
+
   },
-});
+
+
+})

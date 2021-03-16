@@ -86,6 +86,7 @@ const AppliedCandidates = ({
 };
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   text: {
     color: '#707070',
     fontSize: 20,
@@ -104,6 +105,29 @@ const styles = StyleSheet.create({
     // fontFamily: 'Segoe UI',
   },
 });
+=======
+    text: {
+        color: '#707070',
+        fontSize: 20,
+    },
+    line: {
+        height: 5,
+        width: wp('11%'),
+        backgroundColor: '#009961',
+        borderColor: '#707070',
+        borderWidth: 2,
+        marginTop: 10
+    },
+    text1: {
+        fontSize: 13,
+        color: '#009961',
+        //fontFamily: 'Segoe UI',
+
+    },
+
+
+})
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
 
 const mapStateToProps = ({employer}) => ({employer});
 

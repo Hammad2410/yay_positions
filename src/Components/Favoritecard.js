@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
-import {connect} from 'react-redux';
-import {markFavorite, changeCandidateId} from '../redux/actions/employer';
+import { connect } from 'react-redux';
+import { markFavorite, changeCandidateId } from '../redux/actions/employer';
 
 const Favoritecard = ({
   navigation,
@@ -18,15 +18,15 @@ const Favoritecard = ({
   changeCandidateId,
 }) => {
   return (
-    <View style={[styles.view, {marginBottom: bottom}]}>
+    <View style={[styles.view, { marginBottom: bottom }]}>
       <TouchableOpacity onPress={() => markFavorite(item)}>
-        <View style={{alignItems: 'flex-end', padding: 10}}>
+        <View style={{ alignItems: 'flex-end', padding: 10 }}>
           <Icon color={'#009860'} name={'heart'} size={20}></Icon>
         </View>
       </TouchableOpacity>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.view1}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text2}>Name</Text>
             <View
               style={{
@@ -70,7 +70,7 @@ const Favoritecard = ({
           </View>
         </View>
         <View style={styles.view2}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text3}>{item.FullName}</Text>
             <View
               style={{
@@ -99,7 +99,7 @@ const Favoritecard = ({
                 borderColor: '#E4E4E4',
                 width: wp('42%'),
               }}></View>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <Text style={styles.text3}>
                 {!item.InInvited ? 'Not Invited' : 'Already Invited'}
               </Text>
@@ -141,7 +141,8 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
+
   },
   view: {
     height: 400,
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
   view1: {
     width: wp('38%'),
@@ -169,8 +170,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    // fontFamily: 'Segoe UI',
-    padding: 20,
+    //fontFamily: 'Segoe UI',
+    padding: 20
   },
   view2: {
     width: wp('40%'),
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     textAlign: 'right',
   },
@@ -198,8 +199,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginLeft: 5,
   },
-  btntext: {
-    // fontFamily: 'Segoe UI',
+  btntext:
+  {
+    //fontFamily: 'Segoe UI',
     fontSize: 11,
     textAlign: 'center',
     justifyContent: 'center',
@@ -208,8 +210,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
-const mapDispatchToProps = {markFavorite, changeCandidateId};
+const mapDispatchToProps = { markFavorite, changeCandidateId };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favoritecard);

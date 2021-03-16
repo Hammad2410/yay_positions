@@ -325,7 +325,12 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
+<<<<<<< HEAD
     // fontFamily: 'Segoe UI',
+=======
+    //fontFamily: 'Segoe UI',
+
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
   },
   view: {
     height: 400,
@@ -353,8 +358,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
+<<<<<<< HEAD
     // fontFamily: 'Segoe UI',
     padding: 20,
+=======
+    //fontFamily: 'Segoe UI',
+    padding: 20
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
   },
   view2: {
     width: wp('40%'),
@@ -368,7 +378,11 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
+<<<<<<< HEAD
     // fontFamily: 'Segoe UI',
+=======
+    //fontFamily: 'Segoe UI',
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
     paddingVertical: 20,
     textAlign: 'right',
   },
@@ -389,8 +403,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 10,
   },
+<<<<<<< HEAD
   btntext: {
     // fontFamily: 'Segoe UI',
+=======
+  btntext:
+  {
+    //fontFamily: 'Segoe UI',
+>>>>>>> d2552b2e5f31b73f0cfc8cbf7c7f9d3b4ba47b39
     fontSize: 11,
     textAlign: 'center',
     justifyContent: 'center',

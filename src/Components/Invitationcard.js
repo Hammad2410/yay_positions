@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -9,15 +9,15 @@ import {
   Pressable,
   RefreshControl,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DatePicker from 'react-native-date-picker';
-import {connect} from 'react-redux';
-import {WebView} from 'react-native-webview';
+import { connect } from 'react-redux';
+import { WebView } from 'react-native-webview';
 import {
   changeCandidateId,
   deleteInvite,
@@ -49,9 +49,9 @@ const Invitationcard = ({
 
   return (
     <View style={styles.view}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.view1}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text2}>Company Name</Text>
             <View
               style={{
@@ -95,7 +95,7 @@ const Invitationcard = ({
           </View>
         </View>
         <View style={styles.view2}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text3}>{item.Company.CompanyName}</Text>
             <View
               style={{
@@ -111,23 +111,14 @@ const Invitationcard = ({
                 width: wp('43%'),
               }}></View>
             <Text style={styles.text3}>{item.Status}</Text>
-            <View
-              style={{
-                borderWidth: 0.5,
-                borderColor: '#E4E4E4',
-                width: wp('43%'),
-              }}></View>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000000',
-                  // fontFamily: 'Segoe UI',
-                  paddingVertical: 20,
-                  paddingRight: 5,
-                }}>
-                {new Date(item.CallDateTime).toUTCString()}
-              </Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('43%') }}></View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{
+                fontSize: 13,
+                color: '#000000',
+                //fontFamily: 'Segoe UI',
+                paddingVertical: 20, paddingRight: 5
+              }}>{new Date(item.CallDateTime).toUTCString()}</Text>
             </View>
             <View
               style={{
@@ -135,7 +126,7 @@ const Invitationcard = ({
                 borderColor: '#E4E4E4',
                 width: wp('43%'),
               }}></View>
-            <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
               <Text style={styles.text4}>{item.IsHired.toString()}</Text>
               <TouchableOpacity disabled={true} style={styles.btn1}>
                 <Text style={styles.btntext1}>Hired</Text>
@@ -150,7 +141,7 @@ const Invitationcard = ({
           </View>
         </View>
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
@@ -196,7 +187,7 @@ const Invitationcard = ({
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Date Time for call</Text>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View
                 style={{
                   height: hp('5%'),
@@ -218,13 +209,13 @@ const Invitationcard = ({
                   </Text>
                 </TouchableOpacity>
               </View>
-              <View style={{marginLeft: -30}}>
+              <View style={{ marginLeft: -30 }}>
                 <TouchableOpacity onPress={() => DateModal()}>
                   <Icon
                     name="calendar"
                     size={20}
                     color="#707070"
-                    style={{alignSelf: 'center'}}
+                    style={{ alignSelf: 'center' }}
                   />
                 </TouchableOpacity>
               </View>
@@ -257,7 +248,7 @@ const Invitationcard = ({
               <Pressable
                 style={[
                   styles.button,
-                  {backgroundColor: '#007AFF', marginRight: -10},
+                  { backgroundColor: '#007AFF', marginRight: -10 },
                 ]}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>Close</Text>
@@ -282,7 +273,7 @@ const Invitationcard = ({
             alignSelf: 'center',
           }}>
           <DatePicker
-            style={{marginHorizontal: '10%'}}
+            style={{ marginHorizontal: '10%' }}
             date={date}
             androidVariant="nativeAndroid"
             mode="datetime"
@@ -326,7 +317,7 @@ const Invitationcard = ({
 
       <Modal visible={openCall}>
         <WebView
-          source={{uri: 'https://hiring.daily.co/' + item.RoomKey}}
+          source={{ uri: 'https://hiring.daily.co/' + item.RoomKey }}
           geolocationEnabled={true}
           mediaPlaybackRequiresUserAction={false}
           javaScriptEnabled={true}
@@ -359,7 +350,7 @@ const Invitationcard = ({
               <Pressable
                 style={[
                   styles.button,
-                  {backgroundColor: '#EA3A3A', marginLeft: -17},
+                  { backgroundColor: '#EA3A3A', marginLeft: -17 },
                 ]}
                 onPress={() => {
                   // setSentInvite(true);
@@ -369,7 +360,7 @@ const Invitationcard = ({
                 <Text style={styles.textStyle}>Yes</Text>
               </Pressable>
               <Pressable
-                style={[styles.button, {backgroundColor: '#007AFF'}]}
+                style={[styles.button, { backgroundColor: '#007AFF' }]}
                 onPress={() => setHireModalVisible(!hireModalVisible)}>
                 <Text style={styles.textStyle}>No</Text>
               </Pressable>
@@ -399,7 +390,7 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
   },
 
   view: {
@@ -414,7 +405,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
 
   view1: {
@@ -431,8 +422,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    // fontFamily: 'Segoe UI',
-    padding: 20,
+    //fontFamily: 'Segoe UI',
+    padding: 20
   },
 
   view2: {
@@ -448,7 +439,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     textAlign: 'right',
   },
@@ -463,8 +454,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
 
-  btntext: {
-    // fontFamily: 'Segoe UI',
+  btntext:
+  {
+    //fontFamily: 'Segoe UI',
     fontSize: 11,
     textAlign: 'center',
     justifyContent: 'center',
@@ -491,8 +483,9 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
 
-  btntext1: {
-    // fontFamily: 'Segoe UI',
+  btntext1:
+  {
+    //fontFamily: 'Segoe UI',
     fontSize: 13,
     textAlign: 'center',
     justifyContent: 'center',
@@ -503,7 +496,7 @@ const styles = StyleSheet.create({
   text4: {
     fontSize: 13,
     color: '#000000',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     marginLeft: 20,
   },
@@ -568,7 +561,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
 const mapDispatchToProps = {
   changeCandidateId,

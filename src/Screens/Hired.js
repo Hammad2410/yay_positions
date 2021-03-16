@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -16,22 +16,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MyHeader from '../Components/LoginSignupHeader';
 import Hiredcard from '../Components/Hiredcard';
 import EmployerTab from '../Components/EmployerTab';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-const Hired = ({navigation, employer}) => {
+const Hired = ({ navigation, employer }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Hired</Text>
             <View style={styles.line} />
           </View>
           <FlatList
             data={employer.hired}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <Hiredcard bottom={'10%'} item={item} />
             )}
           />
@@ -61,15 +61,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#009961',
     borderColor: '#707070',
     borderWidth: 2,
-    marginTop: 10,
+    marginTop: 10
   },
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
-  },
-});
+    //fontFamily: 'Segoe UI',
 
-const mapStateToProps = ({employer}) => ({employer});
+  },
+
+
+})
+
+const mapStateToProps = ({ employer }) => ({ employer });
 
 export default connect(mapStateToProps)(Hired);

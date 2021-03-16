@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   FlatList,
   RefreshControl,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -19,8 +19,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import MyHeader from '../Components/LoginSignupHeader';
 import Invitationcard from '../Components/Invitationcard';
 import EmployerTab from '../Components/EmployerTab';
-import {connect} from 'react-redux';
-import {getInvitations} from '../redux/actions/employer';
+import { connect } from 'react-redux';
+import { getInvitations } from '../redux/actions/employer';
 
 const Invitationentries = (props) => {
   const [search, setSearch] = useState('');
@@ -28,7 +28,7 @@ const Invitationentries = (props) => {
     props.getInvitations();
   };
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={props.navigation} />
       <Content
         refreshControl={
@@ -37,25 +37,25 @@ const Invitationentries = (props) => {
             onRefresh={onRefresh}
           />
         }>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Invitations</Text>
             <View style={styles.line}></View>
           </View>
-          <View style={{flexDirection: 'row', marginTop: 15}}>
+          <View style={{ flexDirection: 'row', marginTop: 15 }}>
             <Text style={styles.text1}>Show</Text>
             <DropDownPicker
               placeholder={'10'}
-              placeholderStyle={{color: '#000000', fontSize: 10}}
+              placeholderStyle={{ color: '#000000', fontSize: 10 }}
               arrowSize={20}
               arrowColor={'#666666'}
-              containerStyle={{height: 45, width: wp('18%')}}
+              containerStyle={{ height: 45, width: wp('18%') }}
               style={{
                 backgroundColor: '#fffff',
                 borderColor: '#707070',
                 marginTop: 10,
               }}
-              dropDownStyle={{backgroundColor: '#009961'}}
+              dropDownStyle={{ backgroundColor: '#009961' }}
             />
             <Text style={styles.text2}>entries</Text>
             <Text style={styles.text3}>Search:</Text>
@@ -72,12 +72,12 @@ const Invitationentries = (props) => {
               JSON.stringify(item).toLowerCase().includes(search.toLowerCase()),
             )}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <Invitationcard item={item} navigation={props.navigation} />
             )}
           />
 
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Text style={styles.text4}>Showing 1 to 1 of entries</Text>
             <TouchableOpacity>
               <Text style={styles.text5}>Previous</Text>
@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({candidate}) => ({candidate});
+const mapStateToProps = ({ candidate }) => ({ candidate });
 
-const mapDispatchToProps = {getInvitations};
+const mapDispatchToProps = { getInvitations };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Invitationentries);

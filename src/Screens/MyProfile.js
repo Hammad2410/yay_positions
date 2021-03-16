@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -18,21 +18,21 @@ import Profile from '../Components/Profile';
 import CandidateTab from '../Components/CandidateTab';
 import SideDrawer from '../Components/Drawer';
 
-const MyProfile = ({navigation}) => {
+const MyProfile = ({ navigation }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
         {/* <SideDrawer navigation={navigation} /> */}
 
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 25}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 25 }}>
             <Text style={styles.text}>My Profile</Text>
             <View style={styles.line}></View>
             <Text
               style={[
                 styles.text,
-                {color: '#009961', fontSize: 15, marginTop: 10},
+                { color: '#009961', fontSize: 15, marginTop: 10 },
               ]}>
               Kindly visit our website to update your Profile
             </Text>

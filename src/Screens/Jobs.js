@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -18,15 +18,15 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import MyHeader from '../Components/LoginSignupHeader';
 import Jobcard from '../Components/Jobcard';
 import EmployerTab from '../Components/EmployerTab';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-const Jobs = ({navigation, employer}) => {
+const Jobs = ({ navigation, employer }) => {
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>Jobs</Text>
             <View style={styles.line}></View>
           </View>
@@ -40,7 +40,7 @@ const Jobs = ({navigation, employer}) => {
           <FlatList
             data={employer.jobs}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <Jobcard navigation={navigation} item={item} />
             )}
           />
@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer}) => ({employer});
+const mapStateToProps = ({ employer }) => ({ employer });
 
 export default connect(mapStateToProps)(Jobs);

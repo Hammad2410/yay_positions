@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   RefreshControl,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,8 +15,8 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import EmployerDrawer from '../Components/EmployerDrawer';
-import {connect} from 'react-redux';
-import {resetUserLoggedIn} from '../redux/actions/auth';
+import { connect } from 'react-redux';
+import { resetUserLoggedIn } from '../redux/actions/auth';
 import {
   browseCandidate,
   getJobs,
@@ -27,7 +27,7 @@ import {
 } from '../redux/actions/employer';
 import EmployerTab from '../Components/EmployerTab';
 
-import {NavigationContainer, CommonActions} from '@react-navigation/native';
+import { NavigationContainer, CommonActions } from '@react-navigation/native';
 
 const Employer = ({
   navigation,
@@ -65,7 +65,7 @@ const Employer = ({
     // });
   };
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <Content
         refreshControl={
           <RefreshControl refreshing={employer.loading} onRefresh={onRefresh} />
@@ -80,7 +80,7 @@ const Employer = ({
           }}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Icon
-              style={{paddingLeft: 25}}
+              style={{ paddingLeft: 25 }}
               name="arrow-back-outline"
               size={20}
               color="#E4E4E4"
@@ -90,10 +90,10 @@ const Employer = ({
             Hello {auth.profile != null && auth.profile.CompanyName}{' '}
           </Text>
         </View>
-        <View style={{marginLeft: 30, marginTop: 18}}>
+        <View style={{ marginLeft: 30, marginTop: 18 }}>
           <Text style={styles.text1}>All Applicants</Text>
         </View>
-        <View style={[styles.view, {backgroundColor: '#001F3F'}]}>
+        <View style={[styles.view, { backgroundColor: '#001F3F' }]}>
           <Text
             style={{
               color: '#FFFFFF',
@@ -106,10 +106,10 @@ const Employer = ({
             {employer.candidates.length}
           </Text>
 
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.text2}>All Applicants</Text>
             <Icon
-              style={{paddingRight: 15, paddingBottom: 10}}
+              style={{ paddingRight: 15, paddingBottom: 10 }}
               name="stats-chart-sharp"
               size={45}
               color="#24963E"
@@ -135,7 +135,7 @@ const Employer = ({
                   navigation.navigate('BrowseCandidates');
                 }}>
                 <Icon
-                  style={{paddingRight: 15, paddingBottom: 10}}
+                  style={{ paddingRight: 15, paddingBottom: 10 }}
                   name="arrow-forward-circle"
                   size={30}
                   color="white"
@@ -144,7 +144,7 @@ const Employer = ({
             </View>
           </View>
         </View>
-        <View style={{marginLeft: 30, marginTop: 18}}>
+        <View style={{ marginLeft: 30, marginTop: 18 }}>
           <Text style={styles.text1}>All Jobs</Text>
         </View>
         <View style={styles.view}>
@@ -160,10 +160,10 @@ const Employer = ({
             {employer.jobs.length}
           </Text>
 
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.text2}>All Jobs</Text>
             <Icon
-              style={{paddingRight: 15, paddingBottom: 10}}
+              style={{ paddingRight: 15, paddingBottom: 10 }}
               name="stats-chart-sharp"
               size={45}
               color="#24963E"
@@ -189,7 +189,7 @@ const Employer = ({
                   navigation.navigate('Jobs');
                 }}>
                 <Icon
-                  style={{paddingRight: 15, paddingBottom: 10}}
+                  style={{ paddingRight: 15, paddingBottom: 10 }}
                   name="arrow-forward-circle"
                   size={30}
                   color="white"
@@ -204,12 +204,12 @@ const Employer = ({
               CommonActions.reset({
                 index: 1,
                 routes: [
-                  {name: 'Login'}, //to go to initial stack screen
+                  { name: 'Login' }, //to go to initial stack screen
                 ],
               }),
             )
           }>
-          <Text style={{marginTop: '35%', marginLeft: '80%'}}>Log Off</Text>
+          <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
         </TouchableOpacity>
       </Content>
       <EmployerTab
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({employer, auth}) => ({employer, auth});
+const mapStateToProps = ({ employer, auth }) => ({ employer, auth });
 
 const mapDispatchToProps = {
   browseCandidate,

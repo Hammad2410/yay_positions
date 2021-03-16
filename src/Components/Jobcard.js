@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {connect} from 'react-redux';
-import {deleteJob} from '../redux/actions/employer';
-import {selectJob} from '../redux/actions/candidate';
+import { connect } from 'react-redux';
+import { deleteJob } from '../redux/actions/employer';
+import { selectJob } from '../redux/actions/candidate';
 
-const Jobcard = ({navigation, item, deleteJob, selectJob}) => {
+const Jobcard = ({ navigation, item, deleteJob, selectJob }) => {
   return (
     <View style={styles.view}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <View style={styles.view1}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text2}>Title</Text>
             <View
               style={{
@@ -60,7 +60,7 @@ const Jobcard = ({navigation, item, deleteJob, selectJob}) => {
           </View>
         </View>
         <View style={styles.view2}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text3}>{item.Title}</Text>
             <View
               style={{
@@ -90,41 +90,29 @@ const Jobcard = ({navigation, item, deleteJob, selectJob}) => {
                 width: wp('43%'),
               }}></View>
             <Text style={styles.text3}>{item.RemoteOrInHouse}</Text>
-            <View
-              style={{
-                borderWidth: 0.5,
-                borderColor: '#E4E4E4',
-                width: wp('43%'),
-              }}></View>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000000',
-                  // fontFamily: 'Segoe UI',
-                  paddingVertical: 20,
-                  paddingRight: 5,
-                }}>
-                {item.PostedDate.substr(0, 10)}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000000',
-                  // fontFamily: 'Segoe UI',
-                  paddingVertical: 20,
-                }}>
-                {item.PostedDate.substr(11, 5)}
-              </Text>
+            <View style={{ borderWidth: 0.5, borderColor: '#E4E4E4', width: wp('43%') }}></View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{
+                fontSize: 13,
+                color: '#000000',
+                //fontFamily: 'Segoe UI',
+                paddingVertical: 20, paddingRight: 5
+              }}>{item.PostedDate.substr(0, 10)}</Text>
+              <Text style={{
+                fontSize: 13,
+                color: '#000000',
+                //fontFamily: 'Segoe UI',
+                paddingVertical: 20,
+              }}>{item.PostedDate.substr(11, 5)}</Text>
             </View>
           </View>
         </View>
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity
           style={styles.btn1}
           onPress={() => {
-            navigation.navigate('EditJob', {job: item});
+            navigation.navigate('EditJob', { job: item });
           }}>
           <Text style={styles.btntext}>Edit</Text>
         </TouchableOpacity>
@@ -132,7 +120,7 @@ const Jobcard = ({navigation, item, deleteJob, selectJob}) => {
           style={styles.btn}
           onPress={() => {
             selectJob(item);
-            navigation.navigate('Applyjob', {role: 'employer'});
+            navigation.navigate('Applyjob', { role: 'employer' });
           }}>
           <Text style={styles.btntext}>Details</Text>
         </TouchableOpacity>
@@ -144,7 +132,7 @@ const Jobcard = ({navigation, item, deleteJob, selectJob}) => {
         <TouchableOpacity
           style={styles.btn3}
           onPress={() => {
-            navigation.navigate('AppliedCandidates', {id: item.Id});
+            navigation.navigate('AppliedCandidates', { id: item.Id });
           }}>
           <Text style={styles.btntext}>Candidates</Text>
         </TouchableOpacity>
@@ -171,7 +159,7 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
   },
 
   view: {
@@ -186,7 +174,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
   },
 
   view1: {
@@ -203,7 +191,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     paddingLeft: 20,
   },
@@ -221,7 +209,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     textAlign: 'right',
   },
@@ -236,8 +224,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
 
-  btntext: {
-    // fontFamily: 'Segoe UI',
+  btntext:
+  {
+    //fontFamily: 'Segoe UI',
     fontSize: 11,
     textAlign: 'center',
     justifyContent: 'center',
@@ -274,8 +263,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
 
-  btntext1: {
-    // fontFamily: 'Segoe UI',
+
+  btntext1:
+  {
+    //fontFamily: 'Segoe UI',
     fontSize: 13,
     textAlign: 'center',
     justifyContent: 'center',
@@ -286,14 +277,14 @@ const styles = StyleSheet.create({
   text4: {
     fontSize: 13,
     color: '#000000',
-    // fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     marginLeft: 20,
   },
 });
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({ auth }) => ({ auth });
 
-const mapDispatchToProps = {deleteJob, selectJob};
+const mapDispatchToProps = { deleteJob, selectJob };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jobcard);
