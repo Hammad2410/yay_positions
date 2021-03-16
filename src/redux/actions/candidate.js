@@ -80,7 +80,7 @@ export const getSavedJobs = () => {
 
 export const saveJobs = (job) => {
   return (dispatch, store) => {
-    dispatch({type: types.CANDIDATE_LOADING});
+    // dispatch({type: types.CANDIDATE_LOADING});
 
     axios
       .get(BASE_URL + '/api/candidate/Favourite?jobid=' + job.Id, {

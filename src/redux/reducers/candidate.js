@@ -43,6 +43,7 @@ const candidate = (state = initialState, action) => {
         ...state,
         jobs: action.jobs,
         filteredJob: action.jobs,
+        loading: false,
       };
 
     case types.CANDIDATE_SAVED_JOBS_FETCHED:
