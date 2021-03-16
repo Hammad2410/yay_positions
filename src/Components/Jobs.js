@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left } from 'native-base';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {Content, Container, Header, Title, Left} from 'native-base';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { connect } from 'react-redux';
-import { selectJob } from '../redux/actions/candidate';
+import {connect} from 'react-redux';
+import {selectJob} from '../redux/actions/candidate';
 
-const Jobs = ({ navigation, bottom, item, selectJob }) => {
+const Jobs = ({navigation, bottom, item, selectJob}) => {
   return (
-
-    <View style={{ flex: 1, alignItems: 'center' }}>
-      <TouchableOpacity onPress={() => {
-        selectJob(item)
-        navigation.navigate('Applyjob', { role: 'candidate' })
-      }}>
-        <View style={[styles.view, { marginBottom: "2%" }]}>
+    <View style={{flex: 1, alignItems: 'center'}}>
+      <TouchableOpacity
+        onPress={() => {
+          selectJob(item);
+          navigation.navigate('Applyjob', {role: 'candidate'});
+        }}>
+        <View style={[styles.view, {marginBottom: '2%'}]}>
           <Text style={styles.text}>{item.Title}</Text>
           <Text style={styles.text1}>{item.Location}</Text>
           <Text style={styles.text2}>{item.JobDescription}</Text>
@@ -34,9 +37,8 @@ holiday details.</Text>
         </View>
       </TouchableOpacity>
     </View>
-
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   view: {
@@ -49,39 +51,34 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   text: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    // fontFamily: 'Segoe UI',
     fontWeight: 'bold',
     paddingTop: 20,
-    paddingLeft: 20
-
+    paddingLeft: 20,
   },
   text1: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    // fontFamily: 'Segoe UI',
     paddingTop: 10,
-    paddingLeft: 18
+    paddingLeft: 18,
   },
   text2: {
     fontSize: 10,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    // fontFamily: 'Segoe UI',
     paddingLeft: 18,
-    paddingRight: 10
+    paddingRight: 10,
+  },
+});
 
-  }
+const mapStateToProps = ({candidate}) => ({candidate});
 
-
-
-})
-
-const mapStateToProps = ({ candidate }) => ({ candidate })
-
-const mapDispatchToProps = { selectJob }
+const mapDispatchToProps = {selectJob};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);

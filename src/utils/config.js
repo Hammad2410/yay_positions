@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://lms.phenomenaltechnology.com/';
+export const BASE_URL = 'https://yaypositions.org/';
