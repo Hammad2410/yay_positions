@@ -51,7 +51,7 @@ const Invitationcard = ({ item, navigation, employer, changeCandidateId, deleteI
               <Text style={{
                 fontSize: 13,
                 color: '#000000',
-                fontFamily: 'Segoe UI',
+                //fontFamily: 'Segoe UI',
                 paddingVertical: 20, paddingRight: 5
               }}>{new Date(item.CallDateTime).toUTCString()}</Text>
             </View>
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     color: '#009961',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
   },
 
   view: {
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     padding: 20
   },
 
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 13,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     textAlign: 'right'
   },
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
 
   btntext:
   {
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     fontSize: 11,
     textAlign: 'center',
     justifyContent: 'center',
@@ -384,7 +384,7 @@ const styles = StyleSheet.create({
 
   btntext1:
   {
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     fontSize: 13,
     textAlign: 'center',
     justifyContent: 'center',
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
   text4: {
     fontSize: 13,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingVertical: 20,
     marginLeft: 20
   },

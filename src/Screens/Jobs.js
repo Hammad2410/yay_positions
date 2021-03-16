@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingLeft: 20,
         paddingRight: 5,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     text2: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingLeft: 5,
         paddingRight: 5,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     text3: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         marginLeft: 50,
         paddingRight: 5,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 
     btntext:
     {
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontSize: 11,
         textAlign: 'center',
         justifyContent: 'center',

@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingLeft: 20,
         paddingRight: 5,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     text2: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingLeft: 5,
         paddingRight: 5,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     text3: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         marginLeft: 50,
         paddingRight: 5,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     text4: {
         fontSize: 12,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         marginLeft: 20,
         paddingTop: 15
 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     text5: {
         fontSize: 12,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         marginLeft: 80,
         paddingTop: 15
 
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     text6: {
         fontSize: 12,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         paddingTop: 15
 
     },

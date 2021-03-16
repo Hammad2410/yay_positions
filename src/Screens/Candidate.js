@@ -41,7 +41,7 @@ const Candidate = (props) => {
                 </View>
 
                 <View style={[styles.view, { backgroundColor: '#001F3F' }]}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.jobs.length}</Text>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.jobs.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>All Jobs</Text>
@@ -60,7 +60,7 @@ const Candidate = (props) => {
                     <Text style={styles.text1}>All invitations</Text>
                 </View>
                 <View style={styles.view}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontFamily: 'Calibri', fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.invitations.length}</Text>
+                    <Text style={{ color: '#FFFFFF', fontSize: 41, fontWeight: 'bold', paddingTop: 20, paddingLeft: 15 }}>{props.candidate.invitations.length}</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.text2}>All invitations</Text>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: '500',
         marginRight: 70,
         marginBottom: 2
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 12,
         color: '#001F3F',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: '500',
         paddingRight: 25,
         paddingTop: 4
@@ -129,13 +129,13 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 16,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
 
     },
     text2: {
         fontSize: 16,
         color: 'white',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         paddingLeft: 20,
         paddingTop: 20
 
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     text3: {
         fontSize: 16,
         color: 'white',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         paddingTop: 5,
         paddingRight: 5,
 

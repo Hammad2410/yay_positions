@@ -119,26 +119,26 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     fontWeight: 'bold',
 
   },
   text1: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingLeft: 12
   },
   text2: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingLeft: 10
   },
   text3: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingLeft: 4,
     textAlign: 'left',
 
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   },
   btntext:
   {
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     fontSize: 14,
     textAlign: 'center',
     justifyContent: 'center',

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     fontWeight: 'bold',
     paddingTop: 20,
     paddingLeft: 20
@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 12,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingTop: 10,
     paddingLeft: 18
   },
   text2: {
     fontSize: 10,
     color: '#000000',
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     paddingLeft: 18,
     paddingRight: 10
 

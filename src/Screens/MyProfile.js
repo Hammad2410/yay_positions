@@ -9,24 +9,26 @@ import CandidateTab from '../Components/CandidateTab';
 
 const MyProfile = ({ navigation }) => {
 
-return (
-<Container style={{backgroundColor:'white'}} >
-<MyHeader navigation={navigation}/>
-<Content >
-<View style={{flex:1}}>
-    <View style={{marginLeft:25}}>
-<Text style={styles.text}>My Profile</Text>
-<View style={styles.line}>
-</View>
-<Text style={[styles.text,{color: '#009961',
-        fontSize: 15,marginTop:10}]}>Kindly visit our website to update your Profile</Text>
-</View>
+    return (
+        <Container style={{ backgroundColor: 'white' }} >
+            <MyHeader navigation={navigation} />
+            <Content >
+                <View style={{ flex: 1 }}>
+                    <View style={{ marginLeft: 25 }}>
+                        <Text style={styles.text}>My Profile</Text>
+                        <View style={styles.line}>
+                        </View>
+                        <Text style={[styles.text, {
+                            color: '#009961',
+                            fontSize: 15, marginTop: 10
+                        }]}>Kindly visit our website to update your Profile</Text>
+                    </View>
 
 
                     <Profile bottom={10} />
                 </View>
             </Content>
-            <CandidateTab navigation={navigation} First={'#009961'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+            <CandidateTab navigation={navigation} First={'#009961'} Second={'#E4E4E4'} Third={'#E4E4E4'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'} />
         </Container>
     )
 }
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingLeft: 20,
         paddingRight: 5,
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     text2: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingLeft: 5,
         paddingRight: 5,
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     text3: {
         fontSize: 12,
         color: 'black',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         marginLeft: 50,
         paddingRight: 5,
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     text4: {
         fontSize: 12,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         marginLeft: 20,
         paddingTop: 15
 
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     text5: {
         fontSize: 12,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         marginLeft: 80,
         paddingTop: 15
 
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     text6: {
         fontSize: 12,
         color: '#666666',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         paddingTop: 15
 
     },

@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#707070',
     fontSize: 17,
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
   },
 
   text1: {
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
   text2: {
     color: '#000000',
     fontSize: 14,
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
   },
   btn: {
     width: wp('20%'),
@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
   },
   btntext:
   {
-    fontFamily: 'Segoe UI',
+    //fontFamily: 'Segoe UI',
     fontSize: 14,
     textAlign: 'center',
     justifyContent: 'center',

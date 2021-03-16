@@ -52,7 +52,7 @@ const Profile = ({ navigation, bottom, auth, getCandidateProfile }) => {
                             <Text style={{
                                 color: 'black',
                                 fontSize: 13,
-                                fontFamily: 'Segoe UI',
+                                //fontFamily: 'Segoe UI',
                                 padding: 15
                             }}>{auth.profile.Profile.Email}</Text>
                         </View>
@@ -464,34 +464,34 @@ const styles = StyleSheet.create({
     text1: {
         color: 'white',
         fontSize: 19,
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: '500',
         paddingTop: 2,
     },
     text2: {
         color: 'black',
         fontSize: 13,
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         padding: 15,
     },
     text3: {
         color: 'black',
         fontSize: 13,
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         padding: 15,
     },
     text4: {
         color: 'white',
         fontSize: 17,
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: '500',
         margin: 5,
     },
     text5: {
         color: 'black',
         fontSize: 13,
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontWeight: 'bold',
         paddingTop: 15,
         paddingHorizontal: 15,
@@ -508,7 +508,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     btntext: {
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
         fontSize: 13,
         textAlign: 'center',
         justifyContent: 'center',

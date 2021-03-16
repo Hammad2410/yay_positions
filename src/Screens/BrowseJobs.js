@@ -17,7 +17,7 @@ const BrowseJobs = (props) => {
 
     return (
         <Container style={{ backgroundColor: 'white' }} >
-            <MyHeader navigation={props.navigation}/>
+            <MyHeader navigation={props.navigation} />
             <Content >
                 <View style={{ flex: 1 }}>
                     <View style={{ marginLeft: 40 }}>
@@ -40,7 +40,7 @@ const BrowseJobs = (props) => {
                     {/* <Jobs bottom={'2%'} /> */}
                 </View>
             </Content>
-            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'}/>
+            <CandidateTab navigation={props.navigation} First={'#E4E4E4'} Second={'#E4E4E4'} Third={'#009961'} Fourth={'#E4E4E4'} Fifth={'#E4E4E4'} />
         </Container>
     )
 
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 13,
         color: '#009961',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
 
     },
 

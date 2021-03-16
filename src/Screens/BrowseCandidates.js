@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 13,
         color: '#009961',
-        fontFamily: 'Segoe UI',
+        //fontFamily: 'Segoe UI',
 
     },
 
