@@ -312,7 +312,7 @@ export const updateSkills = (skills) => {
 
 export const updateResume = (resume) => {
   return (dispatch, store) => {
-    dispatch({type: types.CANDIDATE_LOADING});
+    // dispatch({type: types.CANDIDATE_LOADING});
 
     axios
       .post(
@@ -436,19 +436,15 @@ export const applyForJob = (id) => {
 
 export const deleteResume = () => {
   return (dispatch, store) => {
-    dispatch({type: types.CANDIDATE_LOADING});
+    // dispatch({type: types.CANDIDATE_LOADING});
 
     axios
-      .get(
-        BASE_URL + '/api/candidate/deleteResume',
-        {},
-        {
-          headers: {
-            Authorization: 'bearer ' + store().auth.token,
-            // Authorization: "Bearer 7dfs0t_Pk1ekqVtHV_tLQtepZmZU-jsZLUzgT3pCLdFaCh66qv4mQdSm3evROMjt4AFeCshoiNFymYe0X56rwNzsdgwW36AWD_0CKW5f_D1Bn36np9Z7eh1d892AVbC3bNrlWLTJpd8IVmo1cRa5Kdgh7e9CHmDSqJ4CORfRP_63ZTkqletrgzqAyr6OVWCL7bBeBwE3W4x7d0_YxzP3CDye2Ai1i1jgn8cCsH2uIBkZ3msw0uStv3i4LutZTzyw39a5eNl0gkt-9V94hJpZKLuf8lw7WUqQZr8pxmnJhg7gybsdBegMyVrdqgV75GX6UPePMbk0B54TJo4F4TuZJTZ7wJF0tvxgkihScBVlzraLu95HBt9WHT-tD8RRS38g8WcDJVHdNHEuqRRrcpMLjXfCGoxS8K7JJX63iVjDD75kECQ0kRL7fHHmoPYfpHc341wpJjL_lzGGfsj5bOhcNfvSnPYjouDaZDUlKi-mtZ3i0Pr055zj_aItep_ztLOhHH6T8QERZ_baZvneV-9ICs_Bdwm141MxI_51LL1Ni3JrrLZeb5uelatKbmF7Q_IU"
-          },
+      .get(BASE_URL + '/api/candidate/DeleteResume', {
+        headers: {
+          Authorization: 'bearer ' + store().auth.token,
+          // Authorization: "Bearer 7dfs0t_Pk1ekqVtHV_tLQtepZmZU-jsZLUzgT3pCLdFaCh66qv4mQdSm3evROMjt4AFeCshoiNFymYe0X56rwNzsdgwW36AWD_0CKW5f_D1Bn36np9Z7eh1d892AVbC3bNrlWLTJpd8IVmo1cRa5Kdgh7e9CHmDSqJ4CORfRP_63ZTkqletrgzqAyr6OVWCL7bBeBwE3W4x7d0_YxzP3CDye2Ai1i1jgn8cCsH2uIBkZ3msw0uStv3i4LutZTzyw39a5eNl0gkt-9V94hJpZKLuf8lw7WUqQZr8pxmnJhg7gybsdBegMyVrdqgV75GX6UPePMbk0B54TJo4F4TuZJTZ7wJF0tvxgkihScBVlzraLu95HBt9WHT-tD8RRS38g8WcDJVHdNHEuqRRrcpMLjXfCGoxS8K7JJX63iVjDD75kECQ0kRL7fHHmoPYfpHc341wpJjL_lzGGfsj5bOhcNfvSnPYjouDaZDUlKi-mtZ3i0Pr055zj_aItep_ztLOhHH6T8QERZ_baZvneV-9ICs_Bdwm141MxI_51LL1Ni3JrrLZeb5uelatKbmF7Q_IU"
         },
-      )
+      })
       .then((response) => {
         console.log('Response : ', response.data);
         alert('Resume Deleted');
@@ -456,6 +452,7 @@ export const deleteResume = () => {
         // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
       })
       .catch((error) => {
+        console.log('Error : ', error);
         dispatch({type: types.CANDIDATE_ERROR, message: error.message});
 
         setTimeout(() => dispatch({type: types.CANDIDATE_RESET_ERROR}), 5000);

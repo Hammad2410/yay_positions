@@ -59,6 +59,7 @@ export const register = (
   confirmPassword,
 ) => {
   return (dispatch) => {
+    // alert(confirmPassword);
     dispatch({type: types.AUTH_LOADING});
 
     axios
@@ -71,6 +72,13 @@ export const register = (
         ConfirmPassword: confirmPassword,
       })
       .then((response) => {
+        console.log('Error : ', response.data);
+        if (response.data.result == 'success') {
+          dispatch({type: types.AUTH_USER_REGISTERED});
+          alert('Registered Successfully');
+        } else {
+          alert(response.data.error);
+        }
         dispatch({type: types.AUTH_USER_REGISTERED});
       })
       .catch((error) => {
@@ -98,5 +106,11 @@ export const resetUserLoggedIn = () => {
 export const resetModal = () => {
   return (dispatch) => {
     dispatch({type: types.AUTH_RESET_ERROR});
+  };
+};
+
+export const logout = () => {
+  return (dispatch) => {
+    dispatch({type: types.AUTH_LOGOUT});
   };
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,18 +8,18 @@ import {
   ActivityIndicator,
   Modal,
 } from 'react-native';
-import { Content, Container, Header, Title, Left } from 'native-base';
+import {Content, Container, Header, Title, Left} from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MyHeader from './LoginSignupHeader';
-import { connect } from 'react-redux';
-import { getCandidateProfile } from '../redux/actions/employer';
-import { Avatar } from 'react-native-paper';
+import {connect} from 'react-redux';
+import {getCandidateProfile} from '../redux/actions/employer';
+import {Avatar} from 'react-native-paper';
 import Pdf from 'react-native-pdf';
-const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
+const Profile = ({navigation, bottom, employer, getCandidateProfile}) => {
   const [showModal, setShowModal] = useState(false);
   // useEffect(() => {
   //     getCandidateProfile();
@@ -27,10 +27,10 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
   // }, [employer.candidateId])
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       {employer.candidateProfile != null ? (
         <>
-          <View style={[styles.view, { marginBottom: bottom }]}>
+          <View style={[styles.view, {marginBottom: bottom}]}>
             <View style={styles.view1}>
               <Avatar.Image
                 source={{
@@ -39,7 +39,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                     employer.candidateProfile.Profile.ProfileImage,
                 }}
                 size={80}
-                style={{ alignSelf: 'center', marginTop: 20 }}
+                style={{alignSelf: 'center', marginTop: 20}}
               />
               {/* <Image source={require('../assests/image/profile.png')} style={{ marginTop: 20 }} /> */}
               {/* <Image source={{uri: 'https://yaypositions.org/' + employer.candidateProfile.Profile.ProfileImage  }} resizeMode={'contain'} style={{ marginTop: 20, height:50,width:50 }} /> */}
@@ -48,7 +48,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               </Text>
             </View>
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Email Address</Text>
               <Text
                 style={{
@@ -69,7 +69,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Gender</Text>
               <Text style={styles.text3}>
                 {employer.candidateProfile.Profile.Gender}
@@ -84,7 +84,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Salary Range</Text>
               <Text style={styles.text3}>
                 {employer.candidateProfile.Profile.SalaryRange}
@@ -99,7 +99,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Qualification</Text>
               <Text style={styles.text3}>
                 {employer.candidateProfile.Profile.Qualification}
@@ -115,12 +115,12 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
           </View>
-          <View style={[styles.view, { marginBottom: bottom }]}>
+          <View style={[styles.view, {marginBottom: bottom}]}>
             <View style={styles.view2}>
               <Text style={styles.text4}>Custom Fields </Text>
             </View>
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Country</Text>
               <Text style={styles.text3}>
                 {employer.candidateProfile.Country}
@@ -135,7 +135,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Level</Text>
               <Text style={styles.text3}>
                 {employer.candidateProfile.Profile.Level}
@@ -150,7 +150,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text style={styles.text2}>Experience</Text>
               <Text style={styles.text3}>
                 {employer.candidateProfile.Profile.Experience}
@@ -166,7 +166,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               }}
             />
           </View>
-          <View style={[styles.view, { marginBottom: bottom }]}>
+          <View style={[styles.view, {marginBottom: bottom}]}>
             <View style={styles.view2}>
               <Text style={styles.text4}>Skills and Tools</Text>
             </View>
@@ -185,12 +185,12 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
             ))}
           </View>
           {employer.candidateProfile.EducationalInfos.map((item) => (
-            <View style={[styles.view, { marginBottom: bottom }]}>
+            <View style={[styles.view, {marginBottom: bottom}]}>
               <View style={styles.view2}>
                 <Text style={styles.text4}>Educational Info</Text>
               </View>
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Degree</Text>
                 <Text style={styles.text3}>{item.Degree}</Text>
               </View>
@@ -203,7 +203,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Institute Name</Text>
                 <Text style={styles.text3}>{item.InstituteName}</Text>
               </View>
@@ -216,7 +216,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Start Date</Text>
                 <Text style={styles.text3}>{item.StartDate}</Text>
               </View>
@@ -229,7 +229,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>End Date</Text>
                 <Text style={styles.text3}>{item.EndDate}</Text>
               </View>
@@ -242,7 +242,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Qualification Title</Text>
                 <Text style={styles.text3}>{item.QualificationTitle}</Text>
               </View>
@@ -255,7 +255,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Grade</Text>
                 <Text style={styles.text3}>{item.Grade}</Text>
               </View>
@@ -282,12 +282,12 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
             </View>
           ))}
           {
-            <View style={[styles.view, { marginBottom: bottom }]}>
+            <View style={[styles.view, {marginBottom: bottom}]}>
               <View style={styles.view2}>
                 <Text style={styles.text4}>Job Experience </Text>
               </View>
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Organization Name</Text>
                 <Text style={styles.text3}>Test</Text>
               </View>
@@ -300,7 +300,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Your Role</Text>
                 <Text style={styles.text3}>Test</Text>
               </View>
@@ -313,7 +313,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>Start Date</Text>
                 <Text style={styles.text3}>12-24-2019</Text>
               </View>
@@ -326,7 +326,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                 }}
               />
               <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={styles.text2}>End Date</Text>
                 <Text style={styles.text3}>02-11-2021</Text>
               </View>
@@ -353,7 +353,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
               />
             </View>
           }
-          <View style={[styles.view, { marginBottom: bottom }]}>
+          <View style={[styles.view, {marginBottom: bottom}]}>
             <View style={styles.view2}>
               <Text style={styles.text4}>Resumes</Text>
             </View>
@@ -371,7 +371,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
             </TouchableOpacity>
           </View>
           {employer.candidateProfile.PortFolios.length > 0 && (
-            <View style={[styles.view, { marginBottom: 30 }]}>
+            <View style={[styles.view, {marginBottom: 30}]}>
               <View style={styles.view2}>
                 <Text style={styles.text4}>Resumes</Text>
               </View>
@@ -381,35 +381,52 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
                   source={{
                     uri: 'https://yaypositions.org' + item.Path,
                   }}
-                  style={{ margin: 15, width: 100, height: 100 }}></Image>
+                  style={{margin: 15, width: 100, height: 100}}></Image>
               ))}
             </View>
           )}
 
           <Modal visible={showModal} onRequestClose={() => setShowModal(false)}>
-            <View style={{ flex: 1 }}>
-              <Pdf
-                source={{
-                  uri:
-                    employer.candidateProfile.length > 0
-                      ? 'https://yaypositions.org' +
-                      employer.candidateProfile.Resumes[0].ResumePath
-                      : null,
-                }}
-                onLoadComplete={(numberOfPages, filePath) => {
-                  console.log(`number of pages: ${numberOfPages}`);
-                }}
-                onPageChanged={(page, numberOfPages) => {
-                  console.log(`current page: ${page}`);
-                }}
-                onError={(error) => {
-                  console.log(error);
-                }}
-                onPressLink={(uri) => {
-                  console.log(`Link presse: ${uri}`);
-                }}
-                style={styles.pdf}
-              />
+            <View style={{flex: 1}}>
+              {employer.candidateProfile.Resumes.length > 0 &&
+              employer.candidateProfile.Resumes[0].ResumePath.includes(
+                '.pdf',
+              ) ? (
+                <Pdf
+                  source={{
+                    uri:
+                      employer.candidateProfile.Resumes.length > 0
+                        ? 'https://yaypositions.org' +
+                          employer.candidateProfile.Resumes[0].ResumePath
+                        : null,
+                  }}
+                  onLoadComplete={(numberOfPages, filePath) => {
+                    console.log(`number of pages: ${numberOfPages}`);
+                  }}
+                  onPageChanged={(page, numberOfPages) => {
+                    console.log(`current page: ${page}`);
+                  }}
+                  onError={(error) => {
+                    console.log(error);
+                  }}
+                  onPressLink={(uri) => {
+                    console.log(`Link presse: ${uri}`);
+                  }}
+                  style={styles.pdf}
+                />
+              ) : (
+                <Image
+                  source={{
+                    uri:
+                      employer.candidateProfile.Resumes.length > 0
+                        ? 'https://yaypositions.org' +
+                          employer.candidateProfile.Resumes[0].ResumePath
+                        : null,
+                  }}
+                  resizeMode="contain"
+                  style={{flex: 1}}
+                />
+              )}
             </View>
           </Modal>
         </>
@@ -417,7 +434,7 @@ const Profile = ({ navigation, bottom, employer, getCandidateProfile }) => {
         <ActivityIndicator
           size={'large'}
           color={'#009961'}
-          style={{ justifyContent: 'center', alignItems: 'center' }}
+          style={{justifyContent: 'center', alignItems: 'center'}}
         />
       )}
     </View>
@@ -448,7 +465,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   view1: {
     width: wp('90%'),
@@ -461,7 +478,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     paddingBottom: 15,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   view2: {
     width: wp('90%'),
@@ -473,7 +490,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   text1: {
     color: 'white',
@@ -531,8 +548,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ employer }) => ({ employer });
+const mapStateToProps = ({employer}) => ({employer});
 
-const mapDispatchToProps = { getCandidateProfile };
+const mapDispatchToProps = {getCandidateProfile};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

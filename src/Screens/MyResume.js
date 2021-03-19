@@ -138,28 +138,43 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
 
         <Modal visible={showModal} onRequestClose={() => setShowModal(false)}>
           <View style={{flex: 1}}>
-            <Pdf
-              source={{
-                uri:
-                  auth.profile.Resumes.length > 0
-                    ? 'https://yaypositions.org' +
-                      auth.profile.Resumes[0].ResumePath
-                    : null,
-              }}
-              onLoadComplete={(numberOfPages, filePath) => {
-                console.log(`number of pages: ${numberOfPages}`);
-              }}
-              onPageChanged={(page, numberOfPages) => {
-                console.log(`current page: ${page}`);
-              }}
-              onError={(error) => {
-                console.log(error);
-              }}
-              onPressLink={(uri) => {
-                console.log(`Link presse: ${uri}`);
-              }}
-              style={styles.pdf}
-            />
+            {auth.profile.Resumes.length > 0 &&
+            auth.profile.Resumes[0].ResumePath.includes('.pdf') ? (
+              <Pdf
+                source={{
+                  uri:
+                    auth.profile.Resumes.length > 0
+                      ? 'https://yaypositions.org' +
+                        auth.profile.Resumes[0].ResumePath
+                      : null,
+                }}
+                onLoadComplete={(numberOfPages, filePath) => {
+                  console.log(`number of pages: ${numberOfPages}`);
+                }}
+                onPageChanged={(page, numberOfPages) => {
+                  console.log(`current page: ${page}`);
+                }}
+                onError={(error) => {
+                  console.log(error);
+                }}
+                onPressLink={(uri) => {
+                  console.log(`Link presse: ${uri}`);
+                }}
+                style={styles.pdf}
+              />
+            ) : (
+              <Image
+                source={{
+                  uri:
+                    auth.profile.Resumes.length > 0
+                      ? 'https://yaypositions.org' +
+                        auth.profile.Resumes[0].ResumePath
+                      : null,
+                }}
+                resizeMode="contain"
+                style={{flex: 1}}
+              />
+            )}
           </View>
         </Modal>
       </Content>
