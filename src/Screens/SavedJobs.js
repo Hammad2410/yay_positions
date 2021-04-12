@@ -31,6 +31,7 @@ const SavedJobs = (props) => {
     //   setRefreshing(true);
     // });
   };
+  const regex = /(<([^>]+)>)/gi;
 
   const [messages, setMessage] = useState([
     {
@@ -158,7 +159,12 @@ const SavedJobs = (props) => {
                           fontSize: 10,
                           marginTop: -2,
                         }}>
-                        {item.Job.JobDescription}
+                        {
+                          (item.Job.JobDescription = item.Job.JobDescription.replace(
+                            regex,
+                            '',
+                          ))
+                        }
                       </Text>
                     </View>
                   </View>

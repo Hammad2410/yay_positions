@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left } from 'native-base';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {Content, Container, Header, Title, Left} from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { connect } from 'react-redux';
-import { selectJob } from '../redux/actions/candidate';
+import {connect} from 'react-redux';
+import {selectJob} from '../redux/actions/candidate';
 
-const Jobs = ({ navigation, bottom, item, selectJob }) => {
+const Jobs = ({navigation, bottom, item, selectJob}) => {
+  const regex = /(<([^>]+)>)/gi;
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
+    <View style={{flex: 1, alignItems: 'center'}}>
       <TouchableOpacity
         onPress={() => {
           selectJob(item);
-          navigation.navigate('Applyjob', { role: 'candidate' });
+          navigation.navigate('Applyjob', {role: 'candidate'});
         }}>
-        <View style={[styles.view, { marginBottom: '2%' }]}>
+        <View style={[styles.view, {marginBottom: '2%'}]}>
           <Text style={styles.text}>{item.Title}</Text>
           <Text style={styles.text1}>{item.Location}</Text>
-          <Text style={styles.text2}>{item.JobDescription}</Text>
+          <Text style={styles.text2}>
+            {(item.JobDescription = item.JobDescription.replace(regex, ''))}
+          </Text>
           {/* <View style={{ flexDirection: 'row', marginLeft: '8%', marginTop: '4%' }} >
             <Icon name={'circle'} style={{ paddingTop: 2 }} ></Icon>
             <Text style={styles.text2}>Catalogue all visual assets for marketing department.</Text>
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   text: {
     fontSize: 12,
@@ -77,8 +80,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ candidate }) => ({ candidate });
+const mapStateToProps = ({candidate}) => ({candidate});
 
-const mapDispatchToProps = { selectJob };
+const mapDispatchToProps = {selectJob};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);

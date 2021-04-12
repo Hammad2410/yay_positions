@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Content, Container, Header, Title, Left, Item } from 'native-base';
+import React, {useState, useEffect} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {Content, Container, Header, Title, Left, Item} from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome';
-import { saveJobs, applyForJob, resetModal } from '../redux/actions/candidate';
-import { connect } from 'react-redux';
+import {saveJobs, applyForJob, resetModal} from '../redux/actions/candidate';
+import {connect} from 'react-redux';
 import ErrorModal from '../Components/ErrorModal';
 const JobApply = ({
   navigation,
@@ -28,10 +28,10 @@ const JobApply = ({
     candidate.savedJobs.filter((item1) => item1.Id == candidate.jobDetail.Id)
       .length == 0,
   );
-
+  const regex = /(<([^>]+)>)/gi;
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
-      <View style={[styles.view, { marginBottom: bottom }]}>
+    <View style={{flex: 1, alignItems: 'center'}}>
+      <View style={[styles.view, {marginBottom: bottom}]}>
         <View
           style={{
             flexDirection: 'row',
@@ -47,7 +47,7 @@ const JobApply = ({
                 setPressed(!pressed);
                 saveJobs({
                   ...candidate.jobDetail,
-                  Job: { ...candidate.jobDetail },
+                  Job: {...candidate.jobDetail},
                 });
               }}>
               <Icons
@@ -58,50 +58,50 @@ const JobApply = ({
             </TouchableOpacity>
           )}
         </View>
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Location:</Text>
           <Text style={styles.text1}>{candidate.jobDetail.Location}</Text>
         </View>
 
         {candidate.jobDetail.IsApplied === 'false' ? (
-          <Text style={[styles.text, { marginLeft: 12 }]}> Applied </Text>
+          <Text style={[styles.text, {marginLeft: 12}]}> Applied </Text>
         ) : (
-          <Text style={[styles.text, { marginLeft: 12, marginTop: 5 }]}>
+          <Text style={[styles.text, {marginLeft: 12, marginTop: 5}]}>
             Not Applied{' '}
           </Text>
         )}
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Job Type:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.JobType}</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Level:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.Level}</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Experience:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.Experience}</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Qualification:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.Qualification}</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Salary Type:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.SalaryType}</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Salary Range:</Text>
           <Text style={styles.text3}>{candidate.jobDetail.SalaryRange}</Text>
         </View>
 
-        <View style={{ flexDirection: 'row', paddingLeft: 12, marginTop: 10 }}>
+        <View style={{flexDirection: 'row', paddingLeft: 12, marginTop: 10}}>
           <Text style={styles.text}>Remote Or In House:</Text>
           <Text style={styles.text3}>
             {candidate.jobDetail.RemoteOrInHouse}
@@ -115,7 +115,14 @@ const JobApply = ({
             marginTop: 25,
           }}>
           <Text style={styles.text}>Description</Text>
-          <Text style={styles.text3}>{candidate.jobDetail.JobDescription}</Text>
+          <Text style={styles.text3}>
+            {
+              (candidate.jobDetail.JobDescription = candidate.jobDetail.JobDescription.replace(
+                regex,
+                '',
+              ))
+            }
+          </Text>
         </View>
         <View
           style={{
@@ -124,8 +131,13 @@ const JobApply = ({
             marginTop: 20,
           }}>
           <Text style={styles.text}>Essential Duties and Responsibilities</Text>
-          <Text style={[styles.text3, { marginTop: 10, marginBottom: 15 }]}>
-            {candidate.jobDetail.Detail}
+          <Text style={[styles.text3, {marginTop: 10, marginBottom: 15}]}>
+            {
+              (candidate.jobDetail.Detail = candidate.jobDetail.Detail.replace(
+                regex,
+                '',
+              ))
+            }
           </Text>
         </View>
       </View>
@@ -155,30 +167,30 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
   },
   text: {
     fontSize: 12,
     color: '#000000',
-    //fontFamily: 'Segoe UI',
+    // fontFamily: 'Segoe UI',
     fontWeight: 'bold',
   },
   text1: {
     fontSize: 12,
     color: '#000000',
-    //fontFamily: 'Segoe UI',
-    paddingLeft: 12
+    // fontFamily: 'Segoe UI',
+    paddingLeft: 12,
   },
   text2: {
     fontSize: 12,
     color: '#000000',
-    //fontFamily: 'Segoe UI',
-    paddingLeft: 10
+    // fontFamily: 'Segoe UI',
+    paddingLeft: 10,
   },
   text3: {
     fontSize: 12,
     color: '#000000',
-    //fontFamily: 'Segoe UI',
+    // fontFamily: 'Segoe UI',
     paddingLeft: 4,
     textAlign: 'left',
   },
@@ -191,9 +203,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 25,
   },
-  btntext:
-  {
-    //fontFamily: 'Segoe UI',
+  btntext: {
+    // fontFamily: 'Segoe UI',
     fontSize: 14,
     textAlign: 'center',
     justifyContent: 'center',
@@ -202,8 +213,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ candidate }) => ({ candidate });
+const mapStateToProps = ({candidate}) => ({candidate});
 
-const mapDispatchToProps = { saveJobs, applyForJob, resetModal };
+const mapDispatchToProps = {saveJobs, applyForJob, resetModal};
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobApply);

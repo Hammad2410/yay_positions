@@ -79,6 +79,17 @@ const candidate = (state = initialState, action) => {
         filteredJob: action.jobs,
       };
 
+    case types.AUTH_LOGOUT:
+      return {
+        loading: false,
+        error: '',
+        invitations: [],
+        jobs: [],
+        savedJobs: [],
+        jobDetail: null,
+        filteredJob: [],
+      };
+
     default:
       return state;
   }

@@ -60,23 +60,23 @@ const Login = ({login, navigation, auth, resetModal}) => {
     setEmail(email1);
     setPassword(password1);
   };
-  const backAction = () => {
-    Alert.alert('Hold on!', 'Are you sure you want to go back?', [
-      {
-        text: 'Cancel',
-        onPress: () => null,
-        style: 'cancel',
-      },
-      {text: 'YES', onPress: () => BackHandler.exitApp()},
-    ]);
-    return true;
-  };
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', backAction);
+  // const backAction = () => {
+  //   Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+  //     {
+  //       text: 'Cancel',
+  //       onPress: () => null,
+  //       style: 'cancel',
+  //     },
+  //     {text: 'YES', onPress: () => BackHandler.exitApp()},
+  //   ]);
+  //   return true;
+  // };
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', backAction);
 
-    return () =>
-      BackHandler.removeEventListener('hardwareBackPress', backAction);
-  }, []);
+  //   return () =>
+  //     BackHandler.removeEventListener('hardwareBackPress', backAction);
+  // }, []);
 
   return (
     <Container>
@@ -86,11 +86,11 @@ const Login = ({login, navigation, auth, resetModal}) => {
           backgroundColor: 'white',
           elevation: 0,
         }}>
-        <Left style={{flex: 1}}>
+        {/* <Left style={{flex: 1}}>
           <TouchableOpacity onPress={() => backAction()}>
             <Icon name="arrow-back-outline" size={30} color={'#E4E4E4'} />
           </TouchableOpacity>
-        </Left>
+        </Left> */}
       </Header>
       <Content contentContainerStyle={{flex: 1, backgroundColor: 'white'}}>
         <View style={{flex: 1}}>
