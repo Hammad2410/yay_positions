@@ -50,7 +50,7 @@ const Employer = ({
     getCompanyProfile();
     getInvitations();
     resetUserLoggedIn();
-    logout();
+    // logout();
   }, []);
 
   const onRefresh = () => {

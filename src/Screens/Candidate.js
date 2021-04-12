@@ -31,7 +31,7 @@ const Candidate = (props) => {
     props.getJobs();
     props.resetUserLoggedIn();
     props.getCandidateProfile();
-    props.logout();
+    // props.logout();
   }, []);
 
   const onRefresh = () => {
