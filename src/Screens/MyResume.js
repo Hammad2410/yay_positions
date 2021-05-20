@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import {
   TextInput,
   Dimensions,
 } from 'react-native';
-import {Content, Container, Tabs, Tab} from 'native-base';
+import { Content, Container, Tabs, Tab } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -20,15 +20,15 @@ import MyHeader from '../Components/LoginSignupHeader';
 import TextInputLogin from '../Components/TextInput';
 import ProfileText from '../Components/ProfileText';
 import CandidateTab from '../Components/CandidateTab';
-import {deleteResume} from '../redux/actions/candidate';
-import {connect} from 'react-redux';
-import {getCandidateProfile, updateResume} from '../redux/actions/candidate';
+import { deleteResume } from '../redux/actions/candidate';
+import { connect } from 'react-redux';
+import { getCandidateProfile, updateResume } from '../redux/actions/candidate';
 import Pdf from 'react-native-pdf';
 import DocumentPicker from 'react-native-document-picker';
 import ButtonP from '../Components/ButtonP';
 var RNFS = require('react-native-fs');
 
-const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
+const MyResume = ({ navigation, auth, deleteResume, updateResume }) => {
   const [showModal, setShowModal] = useState(false);
   const [Resume, setResume] = useState('');
 
@@ -63,14 +63,14 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
     <Container>
       <MyHeader navigation={navigation} />
       <Content>
-        <View style={{flex: 1}}>
-          <View style={{marginLeft: 40}}>
+        <View style={{ flex: 1 }}>
+          <View style={{ marginLeft: 40 }}>
             <Text style={styles.text}>My Resumes</Text>
             <View style={styles.line}></View>
           </View>
-          <View style={{alignItems: 'center', flexDirection: 'row'}}>
+          <View style={{ alignItems: 'center', flexDirection: 'row' }}>
             <TouchableOpacity
-              style={{marginLeft: 35}}
+              style={{ marginLeft: 35 }}
               onPress={() => {
                 if (auth.profile.Resumes.length > 0) {
                   setShowModal(true);
@@ -83,7 +83,7 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{marginLeft: 25}}
+              style={{ marginLeft: 25 }}
               onPress={() => deleteResume()}>
               <View style={styles.button}>
                 <Text style={styles.btext}>Delete</Text>
@@ -91,7 +91,7 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
             </TouchableOpacity>
           </View>
 
-          <View style={{marginTop: 20, alignItems: 'center'}}>
+          <View style={{ marginTop: 20, alignItems: 'center' }}>
             <ProfileText nametext="Add Resume" marginLeftt={-235} />
             <View
               style={{
@@ -114,19 +114,19 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
                   backgroundColor: '#E4E4E4',
                   width: 90,
                 }}>
-                <Text style={{textAlign: 'center'}}>Choose File</Text>
+                <Text style={{ textAlign: 'center' }}>Choose File</Text>
               </TouchableOpacity>
               {Resume === '' ? (
-                <Text style={{paddingHorizontal: '5%', color: '#707070'}}>
+                <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
                   No File Chosen
                 </Text>
               ) : (
-                <Text style={{paddingHorizontal: '5%', color: '#707070'}}>
+                <Text style={{ paddingHorizontal: '5%', color: '#707070' }}>
                   Resume Added
                 </Text>
               )}
             </View>
-            <View style={{marginLeft: -200}}>
+            <View style={{ marginLeft: -200 }}>
               <ButtonP
                 Bwidth={wp('30%')}
                 NameButton="Save Resume"
@@ -137,15 +137,15 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
         </View>
 
         <Modal visible={showModal} onRequestClose={() => setShowModal(false)}>
-          <View style={{flex: 1}}>
+          <View style={{ flex: 1 }}>
             {auth.profile.Resumes.length > 0 &&
-            auth.profile.Resumes[0].ResumePath.includes('.pdf') ? (
+              auth.profile.Resumes[0].ResumePath.includes('.pdf') ? (
               <Pdf
                 source={{
                   uri:
                     auth.profile.Resumes.length > 0
                       ? 'https://yaypositions.org' +
-                        auth.profile.Resumes[0].ResumePath
+                      auth.profile.Resumes[0].ResumePath
                       : null,
                 }}
                 onLoadComplete={(numberOfPages, filePath) => {
@@ -168,11 +168,11 @@ const MyResume = ({navigation, auth, deleteResume, updateResume}) => {
                   uri:
                     auth.profile.Resumes.length > 0
                       ? 'https://yaypositions.org' +
-                        auth.profile.Resumes[0].ResumePath
+                      auth.profile.Resumes[0].ResumePath
                       : null,
                 }}
                 resizeMode="contain"
-                style={{flex: 1}}
+                style={{ flex: 1 }}
               />
             )}
           </View>
@@ -229,8 +229,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({ auth }) => ({ auth });
 
-const mapDispatchToProps = {deleteResume, updateResume};
+const mapDispatchToProps = { deleteResume, updateResume };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyResume);
