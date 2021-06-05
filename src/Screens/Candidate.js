@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,15 @@ import {
   Image,
   RefreshControl,
 } from 'react-native';
-import {Content, Container, Header, Title, Left} from 'native-base';
+import { Content, Container, Header, Title, Left } from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import SideDrawer from '../Components/Drawer';
-import {connect} from 'react-redux';
-import {resetUserLoggedIn, logout} from '../redux/actions/auth';
+import { connect } from 'react-redux';
+import { resetUserLoggedIn, logout } from '../redux/actions/auth';
 import {
   getInvitations,
   getJobs,
@@ -23,7 +23,7 @@ import {
 } from '../redux/actions/candidate';
 import CandidateTab from '../Components/CandidateTab';
 
-import {NavigationContainer, CommonActions} from '@react-navigation/native';
+import { NavigationContainer, CommonActions } from '@react-navigation/native';
 
 const Candidate = (props) => {
   useEffect(() => {
@@ -46,7 +46,7 @@ const Candidate = (props) => {
   };
 
   return (
-    <Container style={{backgroundColor: 'white'}}>
+    <Container style={{ backgroundColor: 'white' }}>
       <Content
         refreshControl={
           <RefreshControl
@@ -63,7 +63,7 @@ const Candidate = (props) => {
           }}>
           <TouchableOpacity onPress={() => props.navigation.goBack()}>
             <Icon
-              style={{paddingLeft: 25}}
+              style={{ paddingLeft: 25 }}
               name="arrow-back-outline"
               size={20}
               color="#E4E4E4"
@@ -75,16 +75,16 @@ const Candidate = (props) => {
             {props.auth.profile != null && props.auth.profile.Profile.Email}{' '}
           </Text>
         </View>
-        <View style={{marginLeft: 30, marginTop: 18}}>
+        <View style={{ marginLeft: 30, marginTop: 18 }}>
           <Text style={styles.text1}>All Jobs</Text>
         </View>
 
-        <View style={[styles.view, {backgroundColor: '#001F3F'}]}>
+        <View style={[styles.view, { backgroundColor: '#001F3F' }]}>
           <Text
             style={{
               color: '#FFFFFF',
               fontSize: 41,
-              fontFamily: 'Calibri',
+              // fontFamily: 'Calibri',
               fontWeight: 'bold',
               paddingTop: 20,
               paddingLeft: 15,
@@ -92,10 +92,10 @@ const Candidate = (props) => {
             {props.candidate.jobs.length}
           </Text>
 
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.text2}>All Jobs</Text>
             <Icon
-              style={{paddingRight: 15, paddingBottom: 10}}
+              style={{ paddingRight: 15, paddingBottom: 10 }}
               name="stats-chart-sharp"
               size={45}
               color="#24963E"
@@ -121,7 +121,7 @@ const Candidate = (props) => {
                   props.navigation.navigate('BrowseJobs');
                 }}>
                 <Icon
-                  style={{paddingRight: 15, paddingBottom: 10}}
+                  style={{ paddingRight: 15, paddingBottom: 10 }}
                   name="arrow-forward-circle"
                   size={30}
                   color="white"
@@ -130,7 +130,7 @@ const Candidate = (props) => {
             </View>
           </View>
         </View>
-        <View style={{marginLeft: 30, marginTop: 18}}>
+        <View style={{ marginLeft: 30, marginTop: 18 }}>
           <Text style={styles.text1}>All invitations</Text>
         </View>
         <View style={styles.view}>
@@ -138,7 +138,7 @@ const Candidate = (props) => {
             style={{
               color: '#FFFFFF',
               fontSize: 41,
-              fontFamily: 'Calibri',
+              // fontFamily: 'Calibri',
               fontWeight: 'bold',
               paddingTop: 20,
               paddingLeft: 15,
@@ -146,10 +146,10 @@ const Candidate = (props) => {
             {props.candidate.invitations.length}
           </Text>
 
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={styles.text2}>All invitations</Text>
             <Icon
-              style={{paddingRight: 15, paddingBottom: 10}}
+              style={{ paddingRight: 15, paddingBottom: 10 }}
               name="stats-chart-sharp"
               size={45}
               color="#24963E"
@@ -175,7 +175,7 @@ const Candidate = (props) => {
                   props.navigation.navigate('Invitations');
                 }}>
                 <Icon
-                  style={{paddingRight: 15, paddingBottom: 10}}
+                  style={{ paddingRight: 15, paddingBottom: 10 }}
                   name="arrow-forward-circle"
                   size={30}
                   color="white"
@@ -191,13 +191,13 @@ const Candidate = (props) => {
               CommonActions.reset({
                 index: 1,
                 routes: [
-                  {name: 'Login'}, //to go to initial stack screen
+                  { name: 'Login' }, //to go to initial stack screen
                 ],
               }),
             ),
               logout();
           }}>
-          <Text style={{marginTop: '35%', marginLeft: '80%'}}>Log Off</Text>
+          <Text style={{ marginTop: '35%', marginLeft: '80%' }}>Log Off</Text>
         </TouchableOpacity>
       </Content>
       <CandidateTab
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({candidate, auth}) => ({candidate, auth});
+const mapStateToProps = ({ candidate, auth }) => ({ candidate, auth });
 
 const mapDispatchToProps = {
   getInvitations,
