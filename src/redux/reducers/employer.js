@@ -11,6 +11,7 @@ const initialState = {
   hired: [],
   applied: [],
   filteredCandidates: [],
+  package: false,
 };
 
 const employer = (state = initialState, action) => {
@@ -96,6 +97,19 @@ const employer = (state = initialState, action) => {
         ...state,
         filteredCandidates: action.candidates,
       };
+
+    case types.EMPLOYER_BUY_PACKAGE:
+      return {
+        ...state,
+        package: true,
+        loading: false,
+      }
+
+    case types.EMPLOYER_RESET_BUY_PACKAGE:
+      return {
+        ...state,
+        package: false
+      }
 
     case types.AUTH_LOGOUT:
       return {

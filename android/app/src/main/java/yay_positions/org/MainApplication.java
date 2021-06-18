@@ -1,4 +1,4 @@
-package yay_positions.yay_positions;
+package yay_positions.org;
 
 import android.app.Application;
 import android.content.Context;
@@ -8,7 +8,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.yay_positions.BuildConfig;
+import yay_positions.org.BuildConfig;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

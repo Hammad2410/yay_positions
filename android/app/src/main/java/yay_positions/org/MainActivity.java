@@ -1,4 +1,4 @@
-package yay_positions.yay_positions;
+package yay_positions.org;
 
 import android.os.Bundle;
 

@@ -1,10 +1,10 @@
 import * as types from '../actionTypes';
 import axios from 'axios';
-import {BASE_URL} from '../../utils/config';
+import { BASE_URL } from '../../utils/config';
 
 export const browseCandidate = () => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/candidates', {
@@ -20,7 +20,7 @@ export const browseCandidate = () => {
         });
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -51,7 +51,7 @@ export const sendInvite = (id, time) => {
         //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
         console.log('Error: ', error);
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -60,7 +60,7 @@ export const sendInvite = (id, time) => {
 
 export const getJobs = () => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/jobs', {
@@ -70,10 +70,10 @@ export const getJobs = () => {
         },
       })
       .then((response) => {
-        dispatch({type: types.EMPLOYER_JOBS_FETCHED, jobs: response.data.jobs});
+        dispatch({ type: types.EMPLOYER_JOBS_FETCHED, jobs: response.data.jobs });
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -82,7 +82,7 @@ export const getJobs = () => {
 
 export const getFavorites = () => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/FavouriteCandidates', {
@@ -98,7 +98,7 @@ export const getFavorites = () => {
         });
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -107,7 +107,7 @@ export const getFavorites = () => {
 
 export const markFavorite = (job) => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(
@@ -149,13 +149,13 @@ export const markFavorite = (job) => {
 
 export const getCandidateProfile = () => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(
         BASE_URL +
-          '/api/employer/CandidateProfile?id=' +
-          store().employer.candidateId,
+        '/api/employer/CandidateProfile?id=' +
+        store().employer.candidateId,
         {
           headers: {
             Authorization: 'bearer ' + store().auth.token,
@@ -164,24 +164,38 @@ export const getCandidateProfile = () => {
         },
       )
       .then((response) => {
-        console.log('Profile : ', response.data.profile);
-        dispatch({
-          type: types.EMPLOYER_CANDIDATE_PROFILE_FETCHED,
-          profile: response.data.candidateprofile,
-        });
+        console.log('Profile : ', response.data);
+        if (response.data.result !== 'failure') {
+          dispatch({
+            type: types.EMPLOYER_CANDIDATE_PROFILE_FETCHED,
+            profile: response.data.candidateprofile,
+          });
+        }
+        else {
+          dispatch({
+            type: types.EMPLOYER_BUY_PACKAGE
+          });
+        }
+
       })
       .catch((error) => {
         // console.log('error: ', error.message);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
   };
 };
 
+export const resetPackageModal = () => {
+  return (dispatch) => {
+    dispatch({ type: types.EMPLOYER_RESET_BUY_PACKAGE })
+  }
+}
+
 export const changeCandidateId = (id) => {
   return (dispatch) => {
-    dispatch({type: types.EMPLOYER_SET_CANDIDATE_ID, id: id});
+    dispatch({ type: types.EMPLOYER_SET_CANDIDATE_ID, id: id });
   };
 };
 
@@ -201,7 +215,7 @@ export const createJob = (
   // alert(level)
 
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .post(
@@ -243,11 +257,11 @@ export const createJob = (
               });
             })
             .catch((error) => {
-              dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+              dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
               // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             });
-          dispatch({type: types.EMPLOYER_JOB_CREATED, message: 'Job Created'});
+          dispatch({ type: types.EMPLOYER_JOB_CREATED, message: 'Job Created' });
         } else {
           dispatch({
             type: types.EMPLOYER_JOB_CREATED,
@@ -260,7 +274,7 @@ export const createJob = (
       })
       .catch((error) => {
         console.log('Error', error);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -269,7 +283,7 @@ export const createJob = (
 
 export const getHiredCandidates = () => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/hiredcandidates', {
@@ -285,7 +299,7 @@ export const getHiredCandidates = () => {
         });
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -294,7 +308,7 @@ export const getHiredCandidates = () => {
 
 export const getCompanyProfile = () => {
   return (dispatch, store) => {
-    dispatch({type: types.AUTH_LOADING});
+    dispatch({ type: types.AUTH_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/profile', {
@@ -312,16 +326,16 @@ export const getCompanyProfile = () => {
       })
       .catch((error) => {
         console.log('error: ', error.message);
-        dispatch({type: types.AUTH_ERROR, message: error.message});
+        dispatch({ type: types.AUTH_ERROR, message: error.message });
 
-        setTimeout(() => dispatch({type: types.AUTH_RESET_ERROR}), 5000);
+        setTimeout(() => dispatch({ type: types.AUTH_RESET_ERROR }), 5000);
       });
   };
 };
 
 export const getInvitations = () => {
   return (dispatch, store) => {
-    dispatch({type: types.CANDIDATE_LOADING});
+    dispatch({ type: types.CANDIDATE_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/Invitations', {
@@ -337,9 +351,9 @@ export const getInvitations = () => {
         });
       })
       .catch((error) => {
-        dispatch({type: types.CANDIDATE_ERROR, message: error.message});
+        dispatch({ type: types.CANDIDATE_ERROR, message: error.message });
 
-        setTimeout(() => dispatch({type: types.CANDIDATE_RESET_ERROR}), 5000);
+        setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000);
       });
   };
 };
@@ -354,7 +368,7 @@ export const updateCompanyDetail = (
   about,
 ) => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .post(
@@ -380,13 +394,13 @@ export const updateCompanyDetail = (
       )
       .then((response) => {
         console.log('Response : ', response.data);
-        dispatch({type: types.EMPLOYER_ERROR, message: ''});
+        dispatch({ type: types.EMPLOYER_ERROR, message: '' });
         alert('Profile Updated');
         // dispatch({ type: types.CANDIDATE_EDUCATION_ADDED, message: "Education Added" })
         // setTimeout(() => dispatch({ type: types.CANDIDATE_RESET_ERROR }), 5000)
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -396,7 +410,7 @@ export const updateCompanyDetail = (
 export const deleteJob = (id) => {
   // alert(id)
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + 'api/deletejob?id=' + id, {
@@ -421,7 +435,7 @@ export const deleteJob = (id) => {
       })
       .catch((error) => {
         console.log('Error : ', error);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -430,14 +444,14 @@ export const deleteJob = (id) => {
 
 export const resetModal = () => {
   return (dispatch) => {
-    dispatch({type: types.EMPLOYER_RESET_ERROR});
+    dispatch({ type: types.EMPLOYER_RESET_ERROR });
   };
 };
 
 export const deleteInvite = (id) => {
   // alert(id)
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/deleteinvite?id=' + id, {
@@ -459,7 +473,7 @@ export const deleteInvite = (id) => {
       })
       .catch((error) => {
         console.log('Error: ', error);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
         // dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -469,7 +483,7 @@ export const deleteInvite = (id) => {
 export const hireCandidate = (id) => {
   // alert(id)
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/employer/changetohired?id=' + id, {
@@ -500,7 +514,7 @@ export const hireCandidate = (id) => {
       })
       .catch((error) => {
         console.log('Error: ', error);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
         // dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -509,7 +523,7 @@ export const hireCandidate = (id) => {
 
 export const rescheduleInvite = (id, time) => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .post(
@@ -531,7 +545,7 @@ export const rescheduleInvite = (id, time) => {
         //dispatch({ type: types.EMPLOYER_CANDIDATES_FETCHED, candidates: response.data.candidates })
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
         console.log('Error: ', error);
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -540,7 +554,7 @@ export const rescheduleInvite = (id, time) => {
 
 export const createRoom = (id) => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + 'api/employer/createroom?inviteid=' + id, {
@@ -576,7 +590,7 @@ export const createRoom = (id) => {
       })
       .catch((error) => {
         console.log('Error: ', error);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
         // dispatch({ type: types.CANDIDATE_INVITATION_FETCHED, invitations: store().candidate.invitations.filter((item) => item.InviteId != id) })
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -601,7 +615,7 @@ export const editJob = (
   // alert(level)
 
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .post(
@@ -645,11 +659,11 @@ export const editJob = (
               });
             })
             .catch((error) => {
-              dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+              dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
               // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
             });
-          dispatch({type: types.EMPLOYER_JOB_CREATED, message: 'Job Updated'});
+          dispatch({ type: types.EMPLOYER_JOB_CREATED, message: 'Job Updated' });
         } else {
           dispatch({
             type: types.EMPLOYER_JOB_CREATED,
@@ -662,7 +676,7 @@ export const editJob = (
       })
       .catch((error) => {
         console.log('Error', error);
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });
@@ -671,7 +685,7 @@ export const editJob = (
 
 export const getAppliedCandidates = (id) => {
   return (dispatch, store) => {
-    dispatch({type: types.EMPLOYER_LOADING});
+    dispatch({ type: types.EMPLOYER_LOADING });
 
     axios
       .get(BASE_URL + '/api/candidatesapplied?jobid=' + id, {
@@ -687,7 +701,7 @@ export const getAppliedCandidates = (id) => {
         });
       })
       .catch((error) => {
-        dispatch({type: types.EMPLOYER_ERROR, message: error.message});
+        dispatch({ type: types.EMPLOYER_ERROR, message: error.message });
 
         // setTimeout(() => dispatch({ type: types.EMPLOYER_RESET_ERROR }), 5000)
       });

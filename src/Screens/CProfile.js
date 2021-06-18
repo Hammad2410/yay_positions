@@ -25,6 +25,7 @@ import {
   markFavorite,
   sendInvite,
   getCandidateProfile,
+  resetPackageModal
 } from '../redux/actions/employer';
 import DatePicker from 'react-native-date-picker';
 
@@ -34,6 +35,7 @@ const CProfile = ({
   markFavorite,
   sendInvite,
   getCandidateProfile,
+  resetPackageModal
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [sentInvite, setSentInvite] = useState(false);
@@ -112,13 +114,15 @@ const CProfile = ({
 
             <Profile bottom={10} navigation={navigation} />
           </View>
-        ) : (
-          <ActivityIndicator
+        ) : <>{
+          !employer.package && <ActivityIndicator
             size={'large'}
             color={'#009961'}
             style={{ justifyContent: 'center', alignItems: 'center' }}
           />
-        )}
+        }
+        </>
+        }
       </Content>
       <Modal
         animationType="slide"
@@ -262,6 +266,36 @@ const CProfile = ({
                 <Text style={styles.textStyle}>Close</Text>
               </Pressable>
             </View>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={employer.package}>
+        <View
+          style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={{ fontSize: 27, color: 'black', fontWeight: '600', textAlign: 'center' }}>Viewed</Text>
+            <Text style={styles.modalText}>Please upgrade to see more profiles</Text>
+            <TouchableOpacity
+              style={{
+                borderRadius: 5,
+                alignSelf: 'center',
+                justifyContent: 'center',
+                marginVertical: '3%',
+                marginLeft: '3%',
+                backgroundColor: '#7cd1f9',
+                width: wp('22%'),
+                height: hp('5%'),
+                alignItems: 'center',
+              }}
+              onPress={() => {
+                resetPackageModal()
+                navigation.goBack()
+              }}>
+              <Text style={{ color: "#FFF" }}>OK</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -419,6 +453,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ employer }) => ({ employer });
 
-const mapDispatchToProps = { markFavorite, sendInvite, getCandidateProfile };
+const mapDispatchToProps = { markFavorite, sendInvite, getCandidateProfile, resetPackageModal };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CProfile);

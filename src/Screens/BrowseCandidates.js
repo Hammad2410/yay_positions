@@ -40,14 +40,16 @@ const BrowseCandidates = ({ navigation, employer }) => {
           {/* <Candidatecard /> */}
           <FlatList
             data={employer.filteredCandidates}
+            horizontal={true}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <Candidatecard
                 navigation={navigation}
-                bottom={'10%'}
+                bottom={'1%'}
                 item={item}
               />
             )}
+            showsHorizontalScrollIndicator={false}
           />
         </View>
       </Content>
