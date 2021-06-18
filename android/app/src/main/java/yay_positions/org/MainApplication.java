@@ -1,4 +1,4 @@
-package com.yay_positions;
+package yay_positions.yay_positions;
 
 import android.app.Application;
 import android.content.Context;
@@ -8,6 +8,8 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.yay_positions.BuildConfig;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
